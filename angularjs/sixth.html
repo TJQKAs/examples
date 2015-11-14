@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-ng-app="demoApp">
+ <head>
+  <title>Using Angular JS Directives </title>
+ </head>
+<body>
+<div data-ng-controller="SimpleController">
+     Name:
+     <br/>
+     <input type="text" data-ng-model="name" />
+     </br>
+     <ul>
+     <li data-ng-repeat="cust in customers | filter:name | orderBy:'city'">
+         {{cust.name | uppercase }} - {{cust.city | lowercase}} </li>
+     </ul>
+</div>
+<script src="angular.min.js"></script>
+<script>
+   var demoApp = angular.module('demoApp',[]);
+
+   var controllers = {};
+  controllers.SimpleController = function($scope){
+   $scope.customers =  [
+   {name: 'Bobby Jones', city:'SinCity'},{name: 'Adam Smith', city:'SinCity'},
+   {name: 'Adam Smith', city:'SunCity'},{name: 'Adam Peters', city:'SunCity'},
+   {name: 'Aaron Smith', city:'SunCity'},{name: 'John Smith', city:'SinCity'},
+   {name: 'Moe Smith', city:'SinCity'},  {name: 'Adam Jones', city:'SunCity'},
+   {name: 'Moe Jones', city:'SinCity'},  {name: 'Kate Jones', city:'SunCity'},
+   {name: 'Kelly Smith', city:'SinCity'},{name: 'Bill Jones', city:'SinCity'}
+  ];
+};
+
+   demoApp.controller(controllers);
+
+
+</script>
+</body>
+</html>
