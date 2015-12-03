@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Object Oriented Javascript</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+ function Animal(){
+   this.name = "Animal";
+
+   this.toString = function(){
+     return "My name is " + this.name;
+   };
+ }
+
+ function Canine(){
+   this.name = "Canine";
+ }
+
+ function Wolf(){
+   this.name = "Wolf";
+ }
+
+  // overwrite funcion (put all objects of Animal inside Canine)
+  Canine.prototype = new Animal();
+
+  // oevrrite function (put all obkects of Canine inside Wolf)
+  Wolf.prototype = new Canine();
+
+  //reset constructor
+  Canine.prototype.constuctor = Canine;
+  Wolf.prototype.constuctor = Wolf;
+
+  var arcticWolf = new Wolf();
+
+  document.write(arcticWolf.toString() + "<br/>");
+
+  document.write("Wolf is a instance of Animal ? : " + (arcticWolf instanceof Animal) + "<br/2>");
+
+  // add variables to our function Animal
+  Animal.prototype.sound = "Grrrr";
+  Animal.prototype.getSound = function(){
+    return this.name + " says " + this.sound;
+  }
+  Canine.prototype.sound = "Woof";
+  Wolf.prototype.sound = "Grrrrrr Wooooooof";
+
+  document.write(arcticWolf.getSound() + "<br/>");
+
+  function Rodent(){
+    this.name = "Rodent";
+  }
+  function Rat(){
+    this.name = "Rat";
+  }
+
+  //put all objects of Animal to Rodent
+  Rodent.prototype = new Animal();
+  //put all objects of Rodent in Rat
+  Rat.prototype = Rodent.prototype;
+
+  //reset constructor
+  Rodent.prototype.constructor = Rodent;
+  Rat.prototype.constructor = Rat;
+
+  // new variable gets properties of Rat
+  var caneRat = new Rat();
+
+  //show new variable
+  document.write(caneRat.toString() + "<br/>");
+
+
+
+  function extend(Child, Parent){
+    var Temp = function(){};
+
+    Temp.prototype =  Parent.prototype;
+
+    Child.prototype =new Temp();
+
+    Child.prototype.constructor = Child;
+  }
+
+
+  function Deer (){
+    this.name = "Deer";
+    this.sound = "Snort";
+  }
+
+  extend(Deer, Animal);
+
+  var elk = new Deer();
+
+  document.write(elk.getSound() + "<br/>");
+
+
+  </script>
+</body>
+</html>

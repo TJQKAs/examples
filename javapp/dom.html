@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <script src="javapp.js"></script>
+      <style type="text/css">
+
+    </style>
+  </head>
+
+<!-- define size of our form div    -->
+
+<div style="width: 700px; height: 250px;" id="sampDiv">
+<p>“The fund, which one of the people <em>described as the largest such effort in history,
+is meant to pay for research and development of</em> new clean-energy technologies.</p>
+<p><em>It will include contributions from other billionaires and philanthropies, as well
+as a commitment by the United States and other participating nations to double their
+ budget for clean energy research and development, according to the people with knowledge
+ of the plans,</em> who asked not to be identified because they were not authorized to discuss
+ the fund.</p>
+<p>The announcement of the fund, which has the joint backing of the governments of
+the United States, China, India and other countries,<b> the people said, is intended
+to give momentum to the two-week Paris climate talks.</b></p></div>
+
+<img src="pred.jpg" id="logo2" alt="PRED logo" height="100" width="100"><br/>
+
+<button id=goToGoogle>Go to Google</button><br/>
+<button id=forwardPage>Forward Page</button><br/>
+<button id=backPage>Back Page</button><br/>
+<button id=reload>Reload Page</button><br/>
+
+<script>
+// some information about page
+document.write("Current URL:", window.location.href,"<br/>");
+document.write("Current HOST:", window.location.hostname,"<br/>");
+document.write("Current PATH:", window.location.pathname,"<br/>");
+
+// function for page navigation
+//go to google
+document.getElementById('goToGoogle').onclick = function(event){
+  window.location.href="http://google.com"
+}
+// next page
+document.getElementById('forwardPage').onclick = function(event) {
+  history.forward();
+}
+// previous page
+document.getElementById('backPage').onclick = function(event){
+  history.back();
+}
+// reload page
+document.getElementById('reload').onclick = function(event){
+  window.location.reload(true);
+}
+</script>
+<script>
+
+// change second p element in our page
+var pElements = document.getElementsByTagName('p');
+pElements[1].style.backgroundColor = '#7FB256';
+
+// change color of second element in the page
+document.childNodes[1].style.backgroundColor = '#4C1DC3';
+
+//change second element in sampDiv
+var sampDiv = document.getElementById('sampDiv');
+sampDiv.childNodes[1].style.backgroundColor ='#015812';
+
+// change second element in the first element
+sampDiv.childNodes[1].childNodes[1].style.backgroundColor = "#ff8080";
+
+
+// add some new text
+var paragraph3 = document.createElement('p');
+paragraph3.setAttribute("id","paragraph3");
+paragraph3.innerHTML = "it will include contributions from other sources";
+sampDiv.appendChild(paragraph3);
+
+sampDiv.insertBefore(paragraph3, sampDiv.childNodes[0]);
+
+
+</script>
+    </body>
+</hmtl>

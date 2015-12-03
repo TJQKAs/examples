@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <script src="javapp.js"></script>
+      <style type="text/css">
+    </style>
+  </head>
+  <body>
+
+    <div>
+    Enter your name :
+    <input id="name" name="name" type="text" size="30">
+    <onblur="isTheFieldEmpty(this, document.getElementById('name_help'))" />
+    <span id="name_help"></span>
+    </div>
+
+<script>
+
+var custArray = ["Tom","Bob","Bill","Bat"];
+var getCust = function(index){
+  if(index > custArray.length){
+    throw new RangeError("Index must be greater than zero and  less than " + custArray.length);
+  } else { custArray[index];
+  }
+}
+
+try {
+  document.write("Customer :", getCust(5), "<br/>");
+}
+catch(ex){
+  if (ex instanceof RangeError){
+    document.write(ex.message + "<br/>");
+  }
+}
+
+</script>
+    </body>
+</hmtl>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <script src="javapp.js"></script>
+      <style type="text/css">
+       <body {font-size: 1.6em}
+       .hidden {display:none;}
+       .show {display: inline !important;}
+         button{
+          border: 2px solid black; background: #E5E4E2;
+          front-size: .5em; front-weight: bold; color: black;
+          padding: .8em 2em;
+          margin-top: .4em;
+         }>
+
+
+    </style>
+  </head>
+    <body>
+      <script>
+     function inArray(arrayToCheck, value ){
+       for(i=0; i<arrayToCheck.length; i++){
+       if(arrayToCheck[i] === value){
+         return true;
+       }
+     }
+     return false;
+   }
+   var randArray =[11,56,7,76,6,8,7,86,79,679,7,9,768,6,34,5,23,52]
+   document.write("we check is our element in array: ", inArray(randArray,8),"<br/>");
+
+   function times2(num){
+     var var2 = 2;
+     return var2 * num;
+   }
+
+   function times3(num){
+     return num * 3;
+   }
+
+   function multiply(func, num){
+     return func(num);
+   }
+
+   document.write("2 * 66 = ",multiply(times2,66),"<br />");
+   document.write("3 * 66 = ",multiply(times3,66),"<br />");
+
+   // function expressions
+
+   var triple = function(num){
+     return num * 3;
+   }
+  document.write(" 3 * 45 = ", multiply(triple,45) ,"<br />");
+
+  function getSum(){
+
+   var sum = 0;
+   for(i = 0; i < arguments.length; i++)
+   {
+  sum += arguments[i];
+   }
+    return sum;
+  }
+  document.write("Sum = ", getSum(1,2,3,4,5,6,7,8,9,10),"<br/>");
+
+  function times2(theArray){
+  var newArray = [];
+  for(i = 0; i<theArray.length; i++){
+    newArray.push(theArray[i]*2);
+  }
+  return newArray;
+  }
+
+  document.write("Array doubled = ",times2([4,5,6,7,8,3,4,5,6,7,8,9]).toString(),"<br/2>");
+</script>
+   RECURSION
+<script >
+  function factorial(num){
+
+    if (num <=1){
+      return 1;
+    } else {
+      return num * factorial(num-1);
+    }
+  }
+ document.write("factorial of 14 = ", factorial(14) ,"<br/>");
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Tutorial</title>
+
+  <style type="text/css">
+  .highlight { background-color: yellow; }
+  </style>
+
+  <!-- Get the JQuery library
+  Jquery 1 & 2 are the same except JQuery 2 doesn't
+  support IE 6, 7, and 8 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+<h1>Random Stuff</h1>
+
+<p id="p_one"><img src="pred.jpg" id="logo2" alt="Pred Logo" height="180" width="180">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <em>Aenean pretium</em>, ipsum quis ultrices aliquet, lacus urna ultrices odio, eu interdum tortor tortor quis ligula. <a href="#">Morbi finibus</a> auctor ipsum vel tempus. Nullam gravida leo ac iaculis pretium. <b>In pretium varius nisi</b>, quis tristique ipsum semper vitae. Mauris eu aliquet odio. Pellentesque tristique sem turpis, id gravida nunc consequat vel. <a href="#">Nullam nec condimentum magna</a>. Sed dignissim interdum risus ac mattis. In hac habitasse platea dictumst. Vivamus placerat tristique vestibulum. Pellentesque quis eleifend nisl. Quisque mollis aliquam enim eu ullamcorper.</p>
+<p id="p_two">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pretium, ipsum quis ultrices aliquet, lacus urna ultrices odio, eu interdum tortor tortor quis ligula. <a href="mailto:derekbanas@verizon.net">Morbi finibus</a> auctor ipsum vel tempus. Nullam gravida leo ac iaculis pretium. In pretium varius nisi, quis tristique ipsum semper vitae. Mauris eu aliquet odio. Pellentesque tristique sem turpis, id <a href="http://google.com">gravida nunc consequat</a> vel. Nullam nec condimentum magna. Sed dignissim interdum risus ac mattis. <a href="http://www.newthinktank.com/wordpress/PersonalityTest.pdf">In hac habitasse</a> platea dictumst. Vivamus placerat tristique vestibulum. Pellentesque quis eleifend nisl. Quisque mollis aliquam enim eu ullamcorper.</p>
+
+<p id="p_three">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <i>Aenean pretium,</i> ipsum quis ultrices aliquet, lacus urna ultrices odio, eu interdum tortor tortor quis ligula.</p>
+
+<table id="tableData">
+<caption>Baseball</caption>
+<thead>
+<tr>
+<td colspan="4">Best Baseball Players</td>
+</tr>
+</thead>
+<tfoot>
+<tr><td colspan="4">* Hall of Fame</td></tr>
+</tfoot>
+<tbody>
+<tr>
+<td></td>
+<td>Average</td>
+<td>RBIs</td>
+<td>Homeruns</td>
+</tr>
+<tr>
+<td><a href="#">Hank Aaron*</a></td>
+<td>.305</td>
+<td>2297</td>
+<td>755</td>
+</tr>
+<tr>
+<td><a href="#">Babe Ruth*</a></td>
+<td>.342</td>
+<td>2214</td>
+<td>714</td>
+</tr>
+<tr>
+<td><a href="#">Barry Bonds</a></td>
+<td>.298</td>
+<td>1996</td>
+<td>762</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="bestSelling">Best Selling Childrens Books</h2>
+
+<ol id="oListTypes">
+<li>Harry Potter
+<ol id="oListIndent">
+<li>and the Sorcerer's Stone</li>
+<li>and the Half-Blood Prince</li>
+<li>and the Chamber of Secrets</li>
+<li>Prisoner of Azkaban</li>
+<li name="best_book">and the Goblet of Fire</li>
+<li>and the Order of the Phoenix</li>
+<li>and the Deathly Hallows</li>
+</ol>
+</li>
+<li>The Very Hungry Caterpillar</li>
+</ol>
+
+<input type="text" id="yourName" size="50">
+
+<input type="text" id="listStuff" size="50"><br />
+
+<h2 id="trackEvents">Tracking Events</h2>
+
+Mouse Click : X : <input type="text" id="mClickXPos">
+Y : <input type="text" id="mClickYPos"><br />
+
+Mouse Move : X : <input type="text" id="mMoveXPos">
+Y : <input type="text" id="mMoveYPos"><br />
+
+Key Pressed : <input type="text" id="keyPressed"><br />
+
+<span id="formEvent">Form Event</span> : <input type="text" id="inputFormEvent"><br /><br />
+
+<img src="1.jpg" id="accident" alt="accident">
+<div id="jsonData"></div>
+<button type="button" id="getData">Get Data</button>
+
+<script type="text/javascript">
+
+$("document").ready(function(){
+  //set width 500
+  $("#wrapper").css("width", 500);
+  //
+  $("#wrapper").css("margin", "auto");
+  //shift left logo
+  $("#logo2").css("float", "left");
+  // paragraph 2 become green
+  $("#p_two").css("color", "green");
+
+  //we can put background inside second paragraph
+  $("#p_two").css({
+    "background" : "url('13.jpg') repeat-y"
+  });
+
+  // change all a-tag links changed color
+  $("a").css("color", "yellow");
+
+  // we change a-tag inside table-form into blue
+  $("#tableData a").css("color","blue");
+
+  // we change a-tag ling to orange after em-tag
+  $("em + a").css("color","orange");
+
+  //inside paragraph we change every em-tag
+  $("p > em").css("color","grey");
+
+  //we third line in our Harry Porter list we change to brown
+  $("#oListIndent li:nth-child(3)").css("color", "brown");
+
+  //select text with id name in list-item
+  $("li[name]").html("'and the Goblet of Fire'");
+
+  // change  text value in input form
+  $("input[type='text']#yourName").val("Myname");
+
+  //find text which has a link to google and change it
+  $("a[href*='google']").css("font-weight", "bolder");
+
+  //select image by first letters of its name and change image
+  $("img[alt^='Pred']").css({
+    "border-color": "green",
+    "border-width": "25px",
+    "border-style": "solid"
+  });
+
+  //find links with refer -"g" and change color to cyan
+  $("a[href^='http://g']").css("color", "cyan");
+
+  //find the text which have refer to mailto and change color to red
+  $("a[href^='mailto:']").css("color","red");
+
+  //change image with alt name
+  $("img[alt^='Pred']").width(200).height(200);
+
+  //find a refer to document with "pdf" extension and change color
+  $("a[href$='pdf']").css("color", "blue");
+
+  //in the table we set color to even line brown to odd line red
+  $("#tableData tr:even").css("background-color", "#493829");
+  $("#tableData tr:odd").css("background-color", "#fb1616");
+
+  //change the color of background and color of the first element of the table
+  $("#tableData tr:first").css({
+    "background-color" : "#601e9e",
+    "color": "#ef5836"
+  });
+
+  //change the color of background and color of the last element of the table
+  $("#tableData tr:last").css({
+    "background-color" : "#ef5836",
+    "color": "#601e9e"
+  });
+
+  //find the list-iten which not contain elements "and"
+  $("#oListTypes li:not(:contains(and))").css("color", "red");
+
+  $("p:has(i)").html("<i>Some normal text</i>").show();
+
+  // Append adds text at the end of an element
+  $("p:has(i)").append(" I go at the end");
+
+  // Prepend adds text at the beginning of an element
+  $("p:has(i)").prepend("I go at the beginning ");
+
+  // Add a new element before the targeted one
+  $("p:has(i)").before("<p id='before_p'>A new paragraph before</p>");
+
+  // Add a new element after the targeted one
+  $("p:has(i)").after("<p id='after_p'>A new paragraph after</p>");
+
+  // When the element with the id 'after_p' is clicked
+  // remove it from the document
+  $("#after_p").click(function() {
+    $(this).remove();
+  });
+
+  // Replace an element with another on click
+  $("#before_p").click(function() {
+    $(this).replaceWith('<p>I\'m the new paragraph</p>');
+  });
+
+  // Perform a different action on each matching element
+ $("#oListIndent li").each(function(index) {
+
+   // Get the value in the input element
+   var inputListStuff = $("#listStuff").val();
+
+   // Assign a new value to the input element
+   // $(this).text() gets the value for each individual
+   // li element
+   $("#listStuff").val(inputListStuff + ", " + $(this).text());
+ });
+
+   // CHANGING ELEMENT ATTRIBUTES
+
+   // Add a class to elements
+  // .removeClass() will take the class away
+  $("#oListIndent li").addClass("Harry_Potter");
+  $(".Harry_Potter").css("color", "#69CBF5");
+
+
+  $("#oListIndent li").click(function() {
+  $(this).toggleClass("highlight");
+
+  // Get the changing background color and display it
+  // in the input element
+  var bgColor = $(this).css("background-color");
+  $("input[type=text]#yourName").val(bgColor);
+});
+
+$("#logo2").click(function() {
+
+    // Get the value stored in an attribute
+    var imgName = $(this).attr("src");
+    $("input[type=text]#yourName").val(imgName);
+
+    // Change the value of an attribute
+    $("#logo2").attr("src", "1.jpg");
+  });
+
+  // Trigger events on mouseover
+    $("#logo2").mouseover(function() {
+      $("#logo2").attr("src", "11.jpg").width(300).height(300).css({
+        "border-color": "black",
+        "border-width": "5px",
+        "border-style": "dotted"
+      });
+    });
+
+    // Trigger events on mouseout
+    $("#logo2").mouseout(function() {
+      $("#logo2").attr("src", "12.jpg").width(300).height(300).css({
+        "border-color": "black",
+        "border-width": "20px",
+        "border-style": "solid"
+      });
+    });
+
+    // Handle mouseover and mouseout with hover
+    $("h2").hover(function() {
+      // mouseover
+      $("h2").css("color", "green");
+    }, function() {
+      // mouseout
+      $("h2").css("color", "black");
+    });
+
+    // Perform an action on double click
+    $("#logo2").dblclick(function() {
+    $("#logo2").attr("src", "13.jpg").width(400).height(300).css({
+      "border-color": "red",
+      "border-width": "10px",
+      "border-style": "dotted"
+    });
+    });
+
+    // Get the document x and y position on click
+    $(document).click(function(e) {
+      $("#mClickXPos").val(e.pageX);
+      $("#mClickYPos").val(e.pageY);
+    });
+
+     // Get the x and y as the mouse moves
+     // Use screenX and screenY to get x and y for the screen
+     $(document).mousemove(function(e) {
+       $("#mMoveXPos").val(e.screenX);
+       $("#mMoveYPos").val(e.screenY);
+     });
+
+      // Show key pressed on the keyboard
+      // You can also use keydown() and keyup()
+      $(document).keypress(function(e){
+
+      // e.which returns the keycode which we convert into
+      // the key with fromCharCode
+        var keyPressed = String.fromCharCode(e.which)
+        $("#keyPressed").val(keyPressed);
+      });
+
+      // Execute when input loses focus
+      $("#inputFormEvent").blur(function() {
+      $("#formEvent").text("Left Input Element");
+      });
+
+      // Execute when input value changes (Conflicts with blur)
+      $("#inputFormEvent").change(function() {
+      $("#formEvent").text("Input Element Changed");
+     });
+
+      // Execute when input gains focus
+      $("#inputFormEvent").focus(function() {
+      $("#formEvent").text("Input Element Focused");
+     });
+
+      // Execute when input value is selected
+      $("#inputFormEvent").select(function() {
+      $("#formEvent").text("Input Element Selected");
+     });
+
+
+     // We can assign events with on and pass the event to
+     // track, an argument to pass and the function to call
+     // You can attach multiple events by seperating them with
+     // a space ex. "mouseover keypress"
+
+    function showWhatTouched(e){
+         alert(e.data.message);
+    }
+
+    var bsMsg = { message:"Best Selling Touched" };
+    var teMsg = { message:"Track Events Touched" };
+    $("#bestSelling").on("mouseover", bsMsg, showWhatTouched);
+    $("#trackEvents").on("mouseover", teMsg, showWhatTouched);
+
+
+    // Catch when the document loads with ready()
+    // Catch if the browser resizes with resize()
+    // Catch when an element is scrolled with scroll()
+
+    // Create simple slide show
+    var accidentImgs = ["11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg"];
+
+    var focusImg = 1;
+
+    $("#accident").click(function() {
+
+    var image = accidentImgs[focusImg];
+    focusImg++;
+    if(focusImg > 5){
+    focusImg = 0;
+      }
+    $("#accident").attr("src", image).width(400).height(300);
+    });
+
+    // JQUERY ANIMATIONS
+
+    // hide an element on click
+    $("#p_one").click(function() {
+    $(this).hide();
+    });
+
+    // slowly fade out an element over 2000 ms
+    // You can also use fast, normal, and slow
+    $("#p_two").click(function() {
+    $(this).fadeOut(2000);
+
+    // Redisplay the hidden element
+    // You can also use .toggle(), .show() and .fadeIn()
+    $("#p_one").fadeToggle(2000);
+  });
+
+    // Fade an image to a given opacity
+    $("#logo2").click(function() {
+    $(this).fadeTo('slow', .50);
+  });
+
+    // Target td that contains 'Bonds'
+    $("td:contains('Bonds')").click(function() {
+
+    // Hide row that contains a td that contains 'Bonds'
+    $("tr:has(td:contains('Bonds'))").slideUp(1000);
+  });
+
+    // Make the Bonds row reappear
+    // You can also use slideToggle()
+    $("td:contains('Hall')").click(function() {
+    $("tr:has(td:contains('Bonds'))").slideDown(1000);
+  });
+
+  // You can create custom animations with animate
+  $("#p_one").click(function() {
+
+    // To define left, right, top or bottom the element must
+    // have a position property of relative or absolute
+    $(this).css("position", "relative");
+
+    // Pass an object that contains the properties to change,
+    // duration in milliseconds, easing function to use for
+    // the transition and the function to call after the
+    // animation completes
+    // The easing method functions are "swing or "linear"
+    // You also have the JQuery UI animations : easeInQuad,
+    // easeOutQuad, easeInOutQuad, easeInCubic, easeOutCubic,
+    // easeInOutCubic, easeInQuart, easeOutQuart,
+    // easeInOutQuart, easeInQuint, easeOutQuint,
+    // easeInOutQuint, easeInExpo, easeOutExpo,
+    // easeInOutExpo, easeInSine, easeOutSine, easeInOutSine,
+    // easeInCirc, easeOutCirc, easeInOutCirc, easeInElastic,
+    // easeOutElastic, easeInOutElastic, easeInBack,
+    // easeOutBack, easeInOutBack, easeInBounce,
+    // easeOutBounce, easeInOutBounce
+    $("#p_one").animate(
+    {
+      left: 300,
+      opacity: .5,
+      'font-size': "22px",
+      width: 300
+    }, 2000, "easeInQuad", function(){alert("All Done");});
+  });
+
+
+
+});
+
+
+
+   </script>
+
+
+
+</body>
+</html>

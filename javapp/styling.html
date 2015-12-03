@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <script src="javapp.js"></script>
+      <style type="text/css">
+       <body {font-size: 1.6em}
+       .hidden {display:none;}
+       .show {display: inline !important;}
+         button{
+          border: 2px solid black; background: #E5E4E2;
+          front-size: .5em; front-weight: bold; color: black;
+          padding: .8em 2em;
+          margin-top: .4em;
+         }>
+    </style>
+  </head>
+
+<!-- define size of our form div    -->
+
+<div style="width: 500px; height: 500px;" id="sampDiv">
+
+  “I’ve come here personally, as the leader of the world’s largest
+  economy and the second-largest emitter,” Mr. Obama said, “to say
+  that the United States of America not only recognizes our role in
+  creating this problem, we embrace our responsibility to do something about it.”
+  In a speech interrupted by repeated beeps warning that he had exceeded
+  his time limit, Mr. Obama said in Le Bourget that the climate conference
+  represented an important turning point in world history because the leaders
+  attending the meeting now recognize the urgency of the problem.
+</div>
+
+<button id="chgBkColor">background Color</button>
+<button id="chgBkImg">background Image</button>
+<button id="chgBorderStyle">border Style</button>
+<button id="chgBorderWidth">border Width</button>
+<button id="chgBorderColor">border Color</button>
+
+<script>
+
+document.getElementById('chgBkColor').onclick = function(event){
+  document.getElementById('sampDiv').style.backgroundColor = "#990000";
+}
+
+document.getElementById('chgBkImg').onclick = function(event){
+  document.getElementById('sampDiv').style.backgroundImage = "url('pred.jpg')";
+}
+
+document.getElementById('chgBorderStyle').onclick = function(event){
+  document.getElementById('sampDiv').style.borderStyle = "double";
+}
+
+document.getElementById('chgBorderWidth').onclick = function(event){
+  document.getElementById('sampDiv').style.borderWidth = "25px";
+}
+
+document.getElementById('chgBorderColor').onclick = function(event){
+  document.getElementById('sampDiv').style.borderColor = "#6644aa";
+}
+
+
+</script>
+    </body>
+</hmtl>

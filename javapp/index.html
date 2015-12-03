@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <script src="javapp.js"></script>
+      <style type="text/css">
+       <body {font-size: 1.6em}
+       .hidden {display:none;}
+       .show {display: inline !important;}
+         button{
+          border: 2px solid black; background: #E5E4E2;
+          front-size: .5em; front-weight: bold; color: black;
+          padding: .8em 2em;
+          margin-top: .4em;
+         }>
+
+
+    </style>
+  </head>
+    <body>
+
+     <p id="sayHello"></p>
+<script>
+     var yourName = prompt("what is your name?");
+       if(yourName !=null){
+         document.getElementById("sayHello").innerHTML = "Hello " + yourName;
+         }  else {
+           alert("Please enter your name");
+         }
+</script>
+    </body>
+</hmtl>

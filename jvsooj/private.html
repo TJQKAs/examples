@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Object Oriented Javascript</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+//privet objects
+
+function SecretCode(){
+  var password = 45;
+  this.guessPas = function(pas){
+    if(pas > password){
+      return "lower";
+    } else if (pas < password) {
+      return "higher";
+    } else {
+      return "You guessed it";
+    }
+  }
+}
+
+// var secret = 45
+var secret = new SecretCode();
+
+
+document.write("Value of password : " + secret.password + "<br/>");
+
+// check our pass
+document.write("Is 45 the password : " + secret.guessPas(45) + "<br/>");
+
+SecretCode.prototype.getSecret = function(){
+  return this.password;
+}
+document.write("The secret number is " + secret.getSecret( )+ "<br/>");
+
+  </script>
+</body>
+</html>

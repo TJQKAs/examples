@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <script src="javapp.js"></script>
+      <style type="text/css">
+       <body {font-size: 1.6em}
+       .hidden {display:none;}
+       .show {display: inline !important;}
+         button{
+          border: 2px solid black; background: #E5E4E2;
+          front-size: .5em; front-weight: bold; color: black;
+          padding: .8em 2em;
+          margin-top: .4em;
+         }>
+
+
+    </style>
+  </head>
+    <body>
+      <script>
+
+    //  calculations
+     document.write("5+4 = ", 5+4, "<br/>");
+     document.write("5+4 = " +5+4, "<br/>");
+     var balance = 1776.87;
+     document.write("Monthly payment:  ", (balance/12).toFixed(2),"<br/>")
+
+     var randNum = 5;
+     document.write("randNum++ = ", randNum++,"<br />");
+     document.write("++randNum = ", ++randNum,"<br />");
+
+     document.write("Math.E= ", Math.E, "<br/>");
+     document.write("Math.Pi = ", Math.PI, "<br/>");
+
+     document.write("Random #(1-49) = ", Math.floor((Math.random()*49)+1),"<br/>");
+     document.write("Convert String : ", Number("3.14"),"<br/>");
+     document.write("Convert Int : ", parseInt("5"),"<br/>");
+     document.write("Convert Float : ", parseFloat("5.67"),"<br/>");
+
+     var randStr = "A long " + " string that "  +  "goes on and on";
+     document.write("String length ", randStr.length +  "<br/>");
+     document.write("Index for \"goes\" : ", randStr.indexOf("goes"),"<br/>");
+     document.write("randStr.slice(19, 23) :", randStr.slice(19,23) + "<br/>");
+     document.write("randStr.slice(from 19)", randStr.slice(19) +  "<br/>");
+     document.write("randStr.replace(and on, forever)", randStr.replace("and on","forever") + "<br/>");
+
+     var randStrArray = randStr.split("");
+
+     randStr = randStr.trim();
+     document.write(randStr.toUpperCase() + "<br/>");
+     document.write(randStr.toLowerCase() + "<br/>");
+
+
+    var strToStyle = "This is different ways";
+    document.write("Big: ", strToStyle.big(),"<br/>");
+
+</script>
+    </body>
+</hmtl>

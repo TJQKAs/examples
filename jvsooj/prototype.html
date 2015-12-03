@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Object Oriented Javascript</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+function getSum(num1, num2){
+  return num1 + num2;
+}
+//show the numbs of function arguments
+document.write("Numbs of arguments: " + getSum.length + "<br/2>" );
+
+function Mammal(name){
+  this.name = name;
+  this.getInfo = function(){
+    return "Mammal name is " + this.name;
+  }
+}
+
+Mammal.prototype.sound = "Grrrrr";
+
+Mammal.prototype.makeSound = function(){
+  return this.name + " says " + this.sound;
+}
+
+var grover = new Mammal("Grover");
+document.write(grover.makeSound() + "<br/>");
+
+for(var prop in grover){
+  document.write(prop + " : " + grover[prop] + "<br/>");
+}
+//we check if name is part of grover
+document.write("name Property of grover : " + grover.hasOwnProperty("name") + "<br/>");
+
+//we check if sound is part of grover
+document.write("sound Property of grover : " + grover.hasOwnProperty("sound") + "<br/>");
+
+// array objects
+//function check if we have the requirement element in array
+Array.prototype.inArray = function inArray(value){
+  for(i=0; i<this.length; i++){
+    if(this[i]===value){
+      return true;
+    }
+  }
+  return false;
+}
+
+var sampArray = [1,2,4,53,34,21,58,51,3,28,767,998];
+
+document.write("Do we have 58 in array: " + sampArray.inArray(58) + "<br/>");
+
+  </script>
+</body>
+</html>

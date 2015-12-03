@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <script src="javapp.js"></script>
+      <style type="text/css">
+    </style>
+  </head>
+  <body>
+
+    <div>
+    Enter your name :
+    <input id="name" name="name" type="text" size="30">
+    <onblur="isTheFieldEmpty(this, document.getElementById('name_help'))" />
+    <span id="name_help"></span>
+    </div>
+
+<!-- validation  -->
+  <script>
+function editNodeText(regex, input, helpId, helpMessage){
+  if(!regex.test(input)){
+    if(helpId !=null)
+    while(helpId.childNodes[0]){
+      helpId.removeChild(helpId.childNodes[0]);
+    }
+    helpId.appendChild(document.createTextNode(helpMessage));
+  } else {
+    if(helpId != null) {
+  while(helpId.childNodes[0]){
+    helpId.removeChild(helpId.childNodes[0]);
+    }
+  }
+}
+}
+
+function isTheFieldEmpty(inputField, helpId){
+  return editNodeText(/^[A-Za-z\.\' \-]{1,15}\s?[A-Za-z\.\' \-]{1,15}\s?[[A-Za-z\.\' \-]{1,15}/, inputField.value, helpId, "Please enter a valid name");
+}
+
+
+</script>
+
+<div style="width: 500px; height: 200px;">
+</div>
+<script>
+
+// variable cust1 and its properties
+var cust1 = {
+  name: "James Dean",
+  street: "Awesome lake",
+  city: "Dallas",
+  state: "Texas",
+  email: "axxxaa@gmail.com",
+  balance: 60000,
+  payDownBal: function(amtPaid){
+    this.balance -= amtPaid;
+  },
+  addToBal: function(amtTopup){
+    this.balance += amtTopup;
+  },
+};
+document.write("Customer Name : ", cust1.name, "<br/>");
+
+cust1.street = "90210 hollywood";
+
+document.write("Customer Street : ", cust1.street,"<br/>");
+
+cust1.country = "USA";
+
+document.write("Customer Country : ", cust1.country,"<br/>");
+
+// show all properties of var cast1
+delete cust1.country;
+for(var prop in cust1){
+  if(cust1.hasOwnProperty(prop)){
+    document.write(prop,"<br/>");
+  }
+}
+
+
+function getInfo(cust){
+  return cust1.name + " lives at " + cust1.street + " in " + cust1.city + " , " + cust1.state + " , email : " + cust1.email + " has a balance " + cust1.balance;
+}
+
+document.write(getInfo(cust1),"<br/>")
+// waste some money
+cust1.payDownBal(25000);
+// top up deposit
+cust1.addToBal(13000);
+document.write(getInfo(cust1),"<br/>");
+
+// object constuctor
+
+function Customer(name, street, city, state, country, email, balance){
+  this.name = name;
+  this.street = street;
+  this.city = city;
+  this.state = state;
+  this.country = country;
+  this.email = email;
+  this.balance = balance;
+  this.payDownBalance = function(amount){
+    this.balance -= amount;
+  };
+  this.addBalance = function(amountAdd){
+    this.balance += amountAdd;
+  };
+}
+
+var cust2 = new Customer("John Small","Loserstreet","Suncity","Nevada","USA","curly@gmail.com",2000);
+cust2.addBalance(66.66);
+
+// prototype creation
+
+Customer.prototype.isCreditAvail = true;
+
+Customer.prototype.toString = function(){
+return this.name + " lives at " + this.street + " in " + this.city + " , " + this.state + " , email : " + this.email + " has a balance " + this.balance + " Creditworthy: " + this.isCreditAvail;
+};
+
+document.write(cust2.toString());
+
+
+
+
+
+</script>
+    </body>
+</hmtl>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Object Oriented Javascript</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+// basic object
+
+  var customer = {
+    name: "John Smith",
+    speak: function(){
+      return "My name is " + this.name;
+    },
+    address: {
+      street: '123 Mansion St',
+      city: 'Suncity',
+      state:'CA'
+    }
+  };
+
+document.write(customer.speak() + "<br/>");
+
+//refer to object street inside object address
+document.write(customer.name + ", lives at" + customer.address.street + "<br/>");
+
+// add object to object address
+customer.address.country = "USA"
+// show all
+document.write(customer.address.country + "<br/>");
+
+// constructor of functions
+function Person(name, street){
+  this.name = name;
+  this.street = street;
+
+  this.info = function(){
+    return "My name is " + this.name + " and I live on " + this.street;
+  }
+}
+
+// create new object
+var johnDoe = new Person("John Doe", "250 Goodge Street");
+// show this object
+document.write(johnDoe.info() + "<br/>");
+
+//check weither JohnDoe instance of Person
+document.write("John Doe is a Person " + (johnDoe instanceof Person) + "<br/>");
+
+//function changes name
+function changeName(person){
+  person.name = "Sue Doe";
+}
+// thus we change name of John Doe by putting him as argument in function changeName
+changeName(johnDoe);
+document.write("John Doe became " + johnDoe.name + "<br/>");
+
+  </script>
+</body>
+</html>

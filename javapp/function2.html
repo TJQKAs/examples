@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <script src="javapp.js"></script>
+      <style type="text/css">
+       <body {font-size: 1.6em}
+       .hidden {display:none;}
+       .show {display: inline !important;}
+         button{
+          border: 2px solid black; background: #E5E4E2;
+          front-size: .5em; front-weight: bold; color: black;
+          padding: .8em 2em;
+          margin-top: .4em;
+         }>
+    </style>
+  </head>
+<script>
+   function openAlert(mess){
+     alert(mess);
+   }
+</script>
+    <a href="JavaScript:void(0)" onClick="alert('Hello everybody!');"> Say
+      Hello </a><br />
+
+    <a href="JavaScript:void(0)" onClick="openAlert('How are you?');"> Say
+      Something </a><br />
+
+    <a href="JavaScript:void(0)"
+    onmouseover="this.style.color='red';"
+    onmouseout="this.style.color='blue';"
+    ondblclick="this.text='You clicked on me twice';"
+    onmousedown="this.text='Don\'t press to hard';"
+    onmouseup="this.text='Thank you'"> Make me red</a><br />
+
+   <input type="text" id="randInput"
+   onChange="var dataEntered=document.
+   getElementById('randInput').value;
+   alert('User Typed ' + dataEntered)"
+
+  <form action="#" id="sampForm">
+
+  <input id='charInput' type="text">
+  <p id="keyData"> Key Data Here </p>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form><br/>
+<img src="term.jpeg" id="logo">
+<button id="logoButton"> Get Logo </button>
+<input id='mouseInput' type="text" size="30"><br/>
+
+Mouse X: <input type="text" id="mouseX"><br/>
+Mouse Y: <input type="text" id="mouseY"><br/>
+
+<button id="clearInputs"> Clear all inputs</button>
+
+
+<script>
+
+function getChar(event){
+if(event.which == null){
+  return String.fromCharCode(event.keyCode);
+} else if (event.which !=0 && event.charCode !=0 ){
+  return String.fromCharCode(event.which);
+} else {
+  return null;
+}
+}
+
+    document.getElementById('charInput').onkeypress =
+    function(event){
+    var char = getChar(event || window.event)
+    if(!char) return false;
+    document.getElementById('keyData').innerHTML= char + " was clicked ";
+    return true;
+  }
+
+    document.getElementById('charInput').onfocus = function(event)
+       {
+        document.getElementById('keyData').innerHTML="Input Gained Focus";
+       }
+
+    document.getElementById('charInput').onselect = function(event)
+        {
+        document.getElementById('keyData').innerHTML="Text Selected";
+        }
+// when we click to Get Logo which is logoButton we see the logo
+
+    document.getElementById('logoButton').onclick = function(event)
+        {
+        document.getElementById('logo').className="show";
+        }
+
+
+// when we click to logo it disappear
+
+    document.getElementById('logo').onclick = function(event)
+        {
+         document.getElementById('logo').className="hidden";
+        }
+
+// when we move on our mouse to logo it turns to predator
+
+    document.getElementById('logo').onmouseover = function(event)
+        {
+        document.getElementById('logo').src="pred.jpg";
+        document.getElementById('mouseInput').value="Mouse Over Image";
+        }
+
+// when we move out our mouse from logo it turns to terminator
+
+    document.getElementById('logo').onmouseout = function(event)
+        {
+        document.getElementById('logo').src="term.jpeg";
+        document.getElementById('mouseInput').value="Mouse Left Image";
+        }
+
+// we can track the mouse coursor and see the X,Y coordinates
+
+    document.body.onmousemove = function(e){
+      e = e || event.window;
+      var pageX = e.pageX;
+      var pageY = e.pageY;
+      if(pageX === undefined){
+        pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+        pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+      }
+      document.getElementById('mouseX').value = pageX;
+      document.getElementById('mouseY').value = pageY;
+    };
+
+    //  clear input by click
+
+      document.getElementById('clearInputs').onclick = function(event){
+        var inputElements = document.getElementsByTagName('input');
+        for(var i = 0; i < inputElements.length; i++){
+          if(inputElements[i].type == "text"){
+            inputElements[i].value = "";
+          }
+        }
+      }
+
+</script>
+
+
+    </body>
+</hmtl>
