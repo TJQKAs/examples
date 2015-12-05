@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Hello everybody</title>
+  <style type="text/css">
+     .redText{color: red;}
+     .blueText{color: blue;}
+     .greenText{color: green;}
+  </style>
+  <!-- set correct location to handlebars file -->
+  <script src="node_modules/handlebars/dist/handlebars.js"></script>
+</head>
+<body>
+  <div id="quoteData"></div>
+  <script id="quote-template" type="text/x-handlebars-template">
+
+ <!-- place where we display our info  -->
+<h3>Favorite {{name}} Quotes </h3>
+<ol>{{#each quotes}}
+<li>{{quote}}
+    {{/each}}
+</ol>
+
+<!-- using of tripe moustache  (it makes your text declined)-->
+{{{billiBounce}}}<br/><br/>
+
+<!-- we create a link by helper -->
+{{makeLink "Billy Bounce Game" "https://www.pokerstars.uk/" }}<br/>
+
+<!-- Custom helper -->
+{{changeColor "Make my text red" color="red"}}<br/>
+
+<!-- Customer helper where we define our greeting -->
+{{sayHello lang="spanish"}}<br/>
+
+
+
+</script>
+
+<script type="text/javascript">
+
+var quoteInfo = document.getElementById("quote-template").innerHTML;
+
+var template = Handlebars.compile(quoteInfo);
+
+//this is our registerhelper in argument our link makeLink and function which works with information which associated with makeLink
+Handlebars.registerHelper("makeLink", function(text, url){
+
+  //use everytime to avoid code injection
+  text=Handlebars.Utils.escapeExpression(text);
+  url=Handlebars.Utils.escapeExpression(url);
+
+  // we set value to this var of values of our url and text var
+  var theLink = '<a href="'+ url +'">' + text + '</a>';
+
+  //  "SafeString" prevents to being escaped because we use before "escapeExpression" for that reason.
+  return new Handlebars.SafeString(theLink);
+});
+
+
+//create our registerHelper which change the color depending what we've set in our customerhelper function
+Handlebars.registerHelper("changeColor", function(text, options){
+  text=Handlebars.Utils.escapeExpression(text);
+  if(options.hash.color === "red"){
+    // we don't change the previous text
+    return new Handlebars.SafeString("<span class='redText'>" + text + "</span>");
+  } else if(options.hash.color === "blue"){
+    return new Handlebars.SafeString("<span class='blueText'>" + text + "</span>");
+  } else {
+    return new Handlebars.SafeString("<span class='greenText'>" + text + "</span>");
+  }
+});
+
+// registerhelper which return greeting depending which language we've set in our customer helper
+Handlebars.registerHelper("sayHello", function(options){
+  switch(options.data.lang){
+    case "spanish":
+     return "Hola";
+      break;
+    case "russian":
+     return "Privet";
+      break;
+    default:
+     return "Hello";
+  }
+});
+
+
+var quoteData = template({
+  name: "John Doe",
+  quotes: [
+    {quote: "Jobs have been lost as companies have scrambled to cut costs and the sector has complained that the government is sending an inconsistent message on its suppor" },
+    {quote: "Without business action, Mr Polman argues, climate change targets will never be met."},
+    {quote: "I said to Mr Polman that appeared to be exactly what the government was doing."},
+    {quote: "We are absolutely committed to getting a global deal in Paris, which will create a level playing field for businesses, driving innovation and growing the low carbon economy"}
+  ],
+  billiBounce: '<i> The UK government says it plans to significantly reduce subsidies paid to small-scale green power installations. Under the proposals, the amount of money paid to home owners and businesses producing electricity from roof-top solar and small wind turbines will be limited from January 2016. Subsidy schemes could be closed to new entrants from the start of next year. Ministers want to ensure that consumers who pay for the schemes through their bills get the best deal possible. They admitted in July that spending on renewable energy schemes was set to be higher than expected. </i>'},
+  {data:{
+    lang: "spanish"
+  }
+});
+
+document.getElementById("quoteData").innerHTML += quoteData;
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Hello everybody</title>
+  <!-- set correct location to handlebars file -->
+  <script src="node_modules/handlebars/dist/handlebars.js"></script>
+</head>
+<body>
+
+  <!--  div-form where all info is generated -->
+  <div  id="eugeneData"></div>
+  <script type="text/javascript">
+
+    //create var with paragraph with my phrase (here the way of the my data presentation)
+    var myInfo = "<p> My name is {{name}} and I live at {{street}} in {{city}}, {{country}} </p>";
+
+    // add function which provide my output of data
+    var template = Handlebars.compile(myInfo);
+
+    // set all info
+    var data = template({name: "Eugene", street: "Bastwick", city: "London", country: "UK" });
+
+    //find element with id eugeneData and add all data which generated
+    document.getElementById("eugeneData").innerHTML += data;
+
+  </script>
+</body>
+</head>
+</html>

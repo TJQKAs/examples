@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> Hello everybody</title>
+   <script src="node_modules/handlebars/dist/handlebars.js"></script>
+   <script src="groceries.js"></script>
+    </head>
+     <body>
+   <!-- here we place our buutons -->
+       <div id="contentDiv"></div>
+
+      <script id="grocery-template" type="text/x-handlebars-template">
+
+
+        <!-- {{#each groceries}}
+        <div class="grocery-item">
+        <p>Item: {{this.item}}</p>
+      </div>
+        {{/each}} -->
+
+
+     </script>
+
+   <script type="text/javascript">
+
+  //  after we create the file groceries.js
+  var template = Handlebars.templates['groceries'];
+
+  //we don't need of two lines below after we have groceries.js
+  //  var templateInfo = document.getElementById("grocery-template").innerHTML;
+  //  var template = Handlebars.compile(templateInfo);
+
+   var context = {
+     groceries:[
+       {item: "Potatoe"},
+       {item: "Flour"},
+       {item: "Orange"},
+       {item: "Lemon"},
+       {item: "Beans"}
+     ]
+   };
+
+   var templateData = template(context);
+
+   document.getElementById("contentDiv").innerHTML += templateData;
+
+
+    </script>
+  </body>
+</html>

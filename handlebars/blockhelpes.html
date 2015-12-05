@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> Hello everybody</title>
+   <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    </head>
+     <body>
+   <!-- here we place our buutons -->
+       <div id="contentDiv"></div>
+
+
+      <script id="the-template" type="text/x-handlebars-template">
+        <!-- blockhelpers -->
+        {{#makeRadio "size"}}
+        Small
+        Medium
+        Large
+        {{/makeRadio}}
+
+        <!-- blockhelper make action depeding if numbers are the same -->
+        {{#areEqual 1 2}}
+        Numbers are equal
+        {{else}}
+        Numbers are not equal
+        {{/areEqual}}<br/>
+
+         <!-- blockhelper change pictures depending of the condition "isActive" -->
+        {{#if "isActive"}}
+        <img src="13.jpg" alt="Active">
+        {{else}}
+        <img src="15.jpg" alt="Active">
+        {{/if}}
+
+     </script>
+
+   <script type="text/javascript">
+
+   //get element by id and target it to templateInfo
+   var templateInfo = document.getElementById("the-template").innerHTML;
+
+   //compile this
+   var template = Handlebars.compile(templateInfo);
+
+
+   //create registerHelper which create a bunch of radio buttons with options
+   Handlebars.registerHelper("makeRadio", function(name, options){
+
+     //generate new list of the buttons and assign it to var radioList "fn()" return a string and save it in the radio list
+     //  {{#makeRadio "size"}} - here we retrieve our data
+     var radioList = options.fn();
+     //how we show result - split and each with new line
+     radioList=radioList.trim().split("\n");
+
+     // output for the buttons
+     var output = "";
+
+     // how we display list  for each element
+     for(var val in radioList){
+       var item = radioList[val].trim();
+       //radio - name = size , so we put all in output
+       output += '<input type="radio" name"' + name + '"value="' + item + '">' + item + '<br/>';
+     }
+
+     //now return outpu
+     return output;
+   });
+
+   //create registerHelper which have in arg num1,num2 and option
+   Handlebars.registerHelper("areEqual", function(num1, num2, options){
+     if(num1 === num2){
+       //first
+       return options.fn(this);
+     } else {
+       // else inverse second meaning from blockhelper
+       return options.inverse(this);
+     }
+   });
+
+   Handlebars.registerHelper("if", function(data, options){
+     if(data === "isActive"){
+       return options.fn(this);
+     } else {
+       return options.inverse(this);
+     }
+
+   });
+
+  //set all passing data to variable
+   var templateData = template({});
+
+   //where we gonna place all data from var templateData
+   document.getElementById("contentDiv").innerHTML += templateData;
+
+
+    </script>
+  </body>
+</html>

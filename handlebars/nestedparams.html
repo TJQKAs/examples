@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> Hello everybody</title>
+   <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    </head>
+     <body>
+   <!-- here we place our buutons -->
+       <div id="contentDiv"></div>
+
+      <script id="the-template" type="text/x-handlebars-template">
+
+        <div class="live-1">
+          <h3>{{title}}</h3>
+          {{#with techData}}
+          <div class="isbn">{{{isbn}}}</div>
+          <div class="author">{{{author}}}</div>
+          {{/with}}
+          </div>
+
+     </script>
+
+   <script type="text/javascript">
+
+var templateInfo = document.getElementById("the-template").innerHTML;
+
+var template=Handlebars.compile(templateInfo);
+
+Handlebars.registerHelper("with", function(context, options){
+  return options.fn(context);
+});
+
+//our data
+var templateData = template({
+  title: "You live only twice",
+  techData: {
+    isbn: "600-499-9049-8884",
+    author: "James Bond"
+  }
+});
+
+//place where we gonna release data from template
+document.getElementById('contentDiv').innerHTML += templateData;
+
+    </script>
+  </body>
+</html>
