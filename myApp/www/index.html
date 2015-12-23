@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="data:application/octet-stream;base64,Ly8gSW9uaWMgU3RhcnRlciBBcHAKCi8vIGFuZ3VsYXIubW9kdWxlIGlzIGEgZ2xvYmFsIHBsYWNlIGZvciBjcmVhdGluZywgcmVnaXN0ZXJpbmcgYW5kIHJldHJpZXZpbmcgQW5ndWxhciBtb2R1bGVzCi8vICdzdGFydGVyJyBpcyB0aGUgbmFtZSBvZiB0aGlzIGFuZ3VsYXIgbW9kdWxlIGV4YW1wbGUgKGFsc28gc2V0IGluIGEgPGJvZHk+IGF0dHJpYnV0ZSBpbiBpbmRleC5odG1sKQovLyB0aGUgMm5kIHBhcmFtZXRlciBpcyBhbiBhcnJheSBvZiAncmVxdWlyZXMnCmFuZ3VsYXIubW9kdWxlKCdzdGFydGVyJywgWydpb25pYyddKQoKLnJ1bihmdW5jdGlvbigkaW9uaWNQbGF0Zm9ybSkgewogICRpb25pY1BsYXRmb3JtLnJlYWR5KGZ1bmN0aW9uKCkgewogICAgaWYod2luZG93LmNvcmRvdmEgJiYgd2luZG93LmNvcmRvdmEucGx1Z2lucy5LZXlib2FyZCkgewogICAgICAvLyBIaWRlIHRoZSBhY2Nlc3NvcnkgYmFyIGJ5IGRlZmF1bHQgKHJlbW92ZSB0aGlzIHRvIHNob3cgdGhlIGFjY2Vzc29yeSBiYXIgYWJvdmUgdGhlIGtleWJvYXJkCiAgICAgIC8vIGZvciBmb3JtIGlucHV0cykKICAgICAgY29yZG92YS5wbHVnaW5zLktleWJvYXJkLmhpZGVLZXlib2FyZEFjY2Vzc29yeUJhcih0cnVlKTsKCiAgICAgIC8vIERvbid0IHJlbW92ZSB0aGlzIGxpbmUgdW5sZXNzIHlvdSBrbm93IHdoYXQgeW91IGFyZSBkb2luZy4gSXQgc3RvcHMgdGhlIHZpZXdwb3J0CiAgICAgIC8vIGZyb20gc25hcHBpbmcgd2hlbiB0ZXh0IGlucHV0cyBhcmUgZm9jdXNlZC4gSW9uaWMgaGFuZGxlcyB0aGlzIGludGVybmFsbHkgZm9yCiAgICAgIC8vIGEgbXVjaCBuaWNlciBrZXlib2FyZCBleHBlcmllbmNlLgogICAgICBjb3Jkb3ZhLnBsdWdpbnMuS2V5Ym9hcmQuZGlzYWJsZVNjcm9sbCh0cnVlKTsKICAgIH0KICAgIGlmKHdpbmRvdy5TdGF0dXNCYXIpIHsKICAgICAgU3RhdHVzQmFyLnN0eWxlRGVmYXVsdCgpOwogICAgfQogIH0pOwp9KQo="></script>
+  </head>
+  <body ng-app="starter">
+<!-- our search bar below -->
+    <ion-pane>
+      <ion-header-bar class="bar-dark">
+        <h2 class="title">Artist list</h2>
+      </ion-header-bar>
+      <div class="bar bar-subheader item-input-inset bar-calm">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" placeholder="Search">
+        </label>
+      </div>
+      <ion-content class="has-subheader">
+    <ion-list>
+      <ion-item class="item-thumbnail-right item-text-wrap">
+        <img src="/img/alien.jpg" alt="Photo">
+        <h2>Name</h2>
+        <h3>Reknown</h3>
+        <p>
+Alien vs. Predator, also known as AVP: Alien vs. Predator and often shortened to AVP, is a 2004 science fiction film directed by Paul W. S. Anderson and starring Sanaa Lathan, Raoul Bova, Lance Henriksen, Ewen Bremner, Colin Salmon and Tommy Flanagan.
+        </p>
+      </ion-item>
+    </ion-list>
+      </ion-content>
+
+
+
+    </ion-pane>
+  </body>
+</html>
