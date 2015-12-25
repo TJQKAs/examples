@@ -19,29 +19,43 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="data:application/octet-stream;base64,Ly8gSW9uaWMgU3RhcnRlciBBcHAKCi8vIGFuZ3VsYXIubW9kdWxlIGlzIGEgZ2xvYmFsIHBsYWNlIGZvciBjcmVhdGluZywgcmVnaXN0ZXJpbmcgYW5kIHJldHJpZXZpbmcgQW5ndWxhciBtb2R1bGVzCi8vICdzdGFydGVyJyBpcyB0aGUgbmFtZSBvZiB0aGlzIGFuZ3VsYXIgbW9kdWxlIGV4YW1wbGUgKGFsc28gc2V0IGluIGEgPGJvZHk+IGF0dHJpYnV0ZSBpbiBpbmRleC5odG1sKQovLyB0aGUgMm5kIHBhcmFtZXRlciBpcyBhbiBhcnJheSBvZiAncmVxdWlyZXMnCmFuZ3VsYXIubW9kdWxlKCdzdGFydGVyJywgWydpb25pYyddKQoKLnJ1bihmdW5jdGlvbigkaW9uaWNQbGF0Zm9ybSkgewogICRpb25pY1BsYXRmb3JtLnJlYWR5KGZ1bmN0aW9uKCkgewogICAgaWYod2luZG93LmNvcmRvdmEgJiYgd2luZG93LmNvcmRvdmEucGx1Z2lucy5LZXlib2FyZCkgewogICAgICAvLyBIaWRlIHRoZSBhY2Nlc3NvcnkgYmFyIGJ5IGRlZmF1bHQgKHJlbW92ZSB0aGlzIHRvIHNob3cgdGhlIGFjY2Vzc29yeSBiYXIgYWJvdmUgdGhlIGtleWJvYXJkCiAgICAgIC8vIGZvciBmb3JtIGlucHV0cykKICAgICAgY29yZG92YS5wbHVnaW5zLktleWJvYXJkLmhpZGVLZXlib2FyZEFjY2Vzc29yeUJhcih0cnVlKTsKCiAgICAgIC8vIERvbid0IHJlbW92ZSB0aGlzIGxpbmUgdW5sZXNzIHlvdSBrbm93IHdoYXQgeW91IGFyZSBkb2luZy4gSXQgc3RvcHMgdGhlIHZpZXdwb3J0CiAgICAgIC8vIGZyb20gc25hcHBpbmcgd2hlbiB0ZXh0IGlucHV0cyBhcmUgZm9jdXNlZC4gSW9uaWMgaGFuZGxlcyB0aGlzIGludGVybmFsbHkgZm9yCiAgICAgIC8vIGEgbXVjaCBuaWNlciBrZXlib2FyZCBleHBlcmllbmNlLgogICAgICBjb3Jkb3ZhLnBsdWdpbnMuS2V5Ym9hcmQuZGlzYWJsZVNjcm9sbCh0cnVlKTsKICAgIH0KICAgIGlmKHdpbmRvdy5TdGF0dXNCYXIpIHsKICAgICAgU3RhdHVzQmFyLnN0eWxlRGVmYXVsdCgpOwogICAgfQogIH0pOwp9KQo="></script>
+    <script src="js/app.js"></script>
   </head>
   <body ng-app="starter">
 <!-- our search bar below -->
-    <ion-pane>
-      <ion-header-bar class="bar-dark">
-        <h2 class="title">Artist list</h2>
+    <ion-pane ng-controller="ListController">
+      <ion-header-bar class="bar-positive">
+        <!-- Here we add button and bind with the ng-click, showDelete which delete element in that case we can't call showReorder anymore  -->
+        <button class="button button-icon ion-trash-a" ng-click="data.showDelete = !data.showDelete; data.showReorder = false;"></button>
+        <h2 class="title">Brochure of the courses</h2>
+        <!-- Here we add button and bind with the ng-click and showreorder which reorders the list, we can't delete this elems so (false)  -->
+        <button class="button button-icon ion-navicon" ng-click="data.showReorder = !data.showReorder; data.showDelete = false;"></button>
       </ion-header-bar>
       <div class="bar bar-subheader item-input-inset bar-calm">
         <label class="item-input-wrapper">
           <i class="icon ion-search placeholder-icon"></i>
-          <input type="search" placeholder="Search">
+          <!-- we switch on our filter we bind filter with var query which will get meaning by input  -->
+          <input type="search" ng-model="query" placeholder="Search">
         </label>
       </div>
+      <!-- here we implement our controller to retrieve data from json -->
       <ion-content class="has-subheader">
-    <ion-list>
-      <ion-item class="item-thumbnail-right item-text-wrap">
-        <img src="/img/alien.jpg" alt="Photo">
-        <h2>Name</h2>
-        <h3>Reknown</h3>
-        <p>
-Alien vs. Predator, also known as AVP: Alien vs. Predator and often shortened to AVP, is a 2004 science fiction film directed by Paul W. S. Anderson and starring Sanaa Lathan, Raoul Bova, Lance Henriksen, Ewen Bremner, Colin Salmon and Tommy Flanagan.
-        </p>
+        <!-- add directive to our list that activates this button, if it's true it shows the button -->
+    <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+       <!-- here we set what we should repeat to each element in our json file -->
+      <ion-item ng-repeat="item in courses | filter: query"
+      class="item-thumbnail-right item-text-wrap">
+        <img src="{{item.Thumbnails[0].FullURL}}" >
+        <h2>{{item.Title}}</h2>
+        <h2>ID:{{item.ID}}</h2>
+        <h2>Duration:{{item.DurationInSeconds}}</h2>
+        <!-- also we set limit size of description that should be showed us by 50 chars  -->
+        <!-- also if length of description more than 50 chars I want see ... -->
+        <p><h3>Short description:{{item.ShortDescription | limitTo: 50}}{{item.ShortDescription.length > 50 ? '&hellip;' : ''}}</h3></p>
+        <!-- create button, button directive delete  when smbd clicks to item (so we should create onItemDelete fucntion) -->
+      <ion-delete-button class="ion-ios-trash" ng-click="onItemDelete(item)"></ion-delete-button>
+        <!-- create button, button directive we execute a function when smbd reorders courses (position of element in array) -->
+      <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
       </ion-item>
     </ion-list>
       </ion-content>

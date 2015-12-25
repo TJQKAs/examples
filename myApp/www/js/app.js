@@ -22,3 +22,21 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+     //first our controller which retrieves data from data.json
+.controller('ListController',['$scope','$http',function($scope,$http){
+  $http.get('js/data.json').success(function(data){
+    $scope.courses=data;
+     //our function which delete items when we click on trash-button
+      $scope.onItemDelete = function(item){
+      $scope.courses.splice($scope.courses.indexOf(item),1);
+    }
+
+    // function which splice our array and we can reorder our elements of array
+      $scope.moveItem = function(item,fromIndex,toIndex){
+      //splice our array courses and pass fromIndex
+      $scope.courses.splice(fromIndex,1);
+      $scope.courses.splice(toIndex,0,item);
+    };
+  });
+}]);
