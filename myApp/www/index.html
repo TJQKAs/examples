@@ -43,9 +43,10 @@
         <!-- add directive to our list that activates this button, if it's true it shows the button -->
     <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
        <!-- here we set what we should repeat to each element in our json file -->
-      <ion-item ng-repeat="item in courses | filter: query"
+                        <!-- conditional class change back ground after we perform toggleStar function -->
+      <ion-item ng-class="{'star' : item.star}" ng-repeat="item in courses | filter: query"
       class="item-thumbnail-left item-icon-right item-text-wrap">
-        <img src="{{item.Thumbnails[0].FullURL}}" >
+        <img ng-src="{{item.Thumbnails[0].FullURL}}" >
         <h2>{{item.Title}}</h2>
         <h2>ID:{{item.ID}}</h2>
         <h2>Duration:{{item.DurationInSeconds}}</h2>

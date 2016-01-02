@@ -1,1 +1,5 @@
 /* Empty. Add your own CSS if you like */
+/*when we click to star we change background color of item-content */
+.star>.item-content {
+  background-color: #f5d1ff !important;
+}
