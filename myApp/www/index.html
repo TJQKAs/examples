@@ -44,7 +44,7 @@
     <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
        <!-- here we set what we should repeat to each element in our json file -->
       <ion-item ng-repeat="item in courses | filter: query"
-      class="item-thumbnail-right item-text-wrap">
+      class="item-thumbnail-left item-icon-right item-text-wrap">
         <img src="{{item.Thumbnails[0].FullURL}}" >
         <h2>{{item.Title}}</h2>
         <h2>ID:{{item.ID}}</h2>
@@ -52,6 +52,9 @@
         <!-- also we set limit size of description that should be showed us by 50 chars  -->
         <!-- also if length of description more than 50 chars I want see ... -->
         <p><h3>Short description:{{item.ShortDescription | limitTo: 50}}{{item.ShortDescription.length > 50 ? '&hellip;' : ''}}</h3></p>
+        <!-- create forms to put stars to course which we like -->
+        <button class="button button-clear icon ion-star button-assertive" ng-click="toggleStar(item)" ng-show="item.star"></button>
+        <ion-option-button class="button-calm" ng-click="toggleStar(item)"><i class="icon ion-star"></i></ion-option-button>
         <!-- create button, button directive delete  when smbd clicks to item (so we should create onItemDelete fucntion) -->
       <ion-delete-button class="ion-ios-trash" ng-click="onItemDelete(item)"></ion-delete-button>
         <!-- create button, button directive we execute a function when smbd reorders courses (position of element in array) -->

@@ -32,6 +32,13 @@ angular.module('starter', ['ionic'])
       $scope.courses.splice($scope.courses.indexOf(item),1);
     }
 
+      //toggleStar function that create stars when we click on star
+      $scope.toggleStar = function(item){
+        item.star = !item.star;
+    }
+
+
+
     // function which splice our array and we can reorder our elements of array
       $scope.moveItem = function(item,fromIndex,toIndex){
       //splice our array courses and pass fromIndex
