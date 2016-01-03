@@ -49,13 +49,24 @@ angular.module('starter', ['ionic'])
       }
     }
   })
+
+  .state('tabs.detail',{
+    url:'/list/:aId',
+    views:{
+      'list-tab':{
+        templateUrl:'templates/detail.html',
+        controller: 'ListController'
+      }
+    }
+  })
   $urlRouterProvider.otherwise('/tab/home');
 })
 
      //first our controller which retrieves data from data.json
-.controller('ListController',['$scope','$http',function($scope,$http){
+.controller('ListController',['$scope','$http','$state',function($scope,$http,$state){
   $http.get('js/data.json').success(function(data){
     $scope.courses=data;
+    $scope.whichcourse=$state.params.aId;
      //our function which delete items when we click on trash-button
       $scope.onItemDelete = function(item){
       $scope.courses.splice($scope.courses.indexOf(item),1);
