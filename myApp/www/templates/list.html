@@ -22,7 +22,7 @@
      <!-- here we set what we should repeat to each element in our json file -->
                       <!-- conditional class change back ground after we perform toggleStar function -->
     <ion-item ng-class="{'star' : item.star}" ng-repeat="item in courses | filter: query"
-    class="item-thumbnail-left item-icon-right item-text-wrap">
+    class="item-thumbnail-left item-icon-right item-text-wrap" href="#tab/list/{{item.Title}}">
       <img ng-src="{{item.Thumbnails[0].FullURL}}" >
       <h2>{{item.Title}}</h2>
       <h2>ID:{{item.ID}}</h2>
