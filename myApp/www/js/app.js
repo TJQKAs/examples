@@ -26,7 +26,7 @@ angular.module('starter', ['ionic'])
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
   .state('tabs',{
-    url: '/tabs',
+    url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
