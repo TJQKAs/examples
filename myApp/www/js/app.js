@@ -23,6 +23,25 @@ angular.module('starter', ['ionic'])
   });
 })
 
+.config(function($stateProvider, $urlRouterProvider){
+  $stateProvider
+  .state('tabs',{
+    url: '/tabs',
+    abstract: true,
+    templateUrl: 'templates/tabs.html'
+  })
+  .state('tabs.list',{
+    url:'/list',
+    views:{
+      'list-tab':{
+        templateUrl:'templates/list.html',
+        controller: 'ListController'
+      }
+    }
+  })
+  $urlRouterProvider.otherwise('/tab/list');
+})
+
      //first our controller which retrieves data from data.json
 .controller('ListController',['$scope','$http',function($scope,$http){
   $http.get('js/data.json').success(function(data){
@@ -30,6 +49,13 @@ angular.module('starter', ['ionic'])
      //our function which delete items when we click on trash-button
       $scope.onItemDelete = function(item){
       $scope.courses.splice($scope.courses.indexOf(item),1);
+    }
+
+    $scope.doRefresh = function(){
+      $http.get('js/data.json').success(function(data){
+        $scope.courses=data;
+        $scope.$broadcast('scroll.refreshComplete');
+      });
     }
 
       //toggleStar function that create stars when we click on star
