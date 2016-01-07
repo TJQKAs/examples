@@ -3,8 +3,24 @@
     <head>
       <title>
       </title>
-    </head>
-    <body>
+      <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+      <script>
+      var stage;
+       function init(){
+         stage = new createjs.Stage("myCanvas");
 
+         var ball = new createjs.Shape();
+         ball.graphics.beginFill("#0004ff").drawCircle(0,0,80);
+         ball.x = 80;
+         ball.y = 220;
+         stage.addChild(ball);
+         stage.update();
+       }
+      </script>
+    </head>
+    <body onload="init()">
+<canvas id="myCanvas" width="600" height="600">
+  Alternative content
+</canvas>
     </body>
   </html>
