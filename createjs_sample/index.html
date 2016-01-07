@@ -10,14 +10,17 @@
          stage = new createjs.Stage("myCanvas");
 
          var ball = new createjs.Shape();
+         ball.addEventListener("click",handleClick);
          ball.graphics.beginFill("#0004ff").drawCircle(0,0,80);
          ball.x = 80;
          ball.y = 220;
 
-         createjs.Tween.get(ball, {loop:true}).to({x:500}, 50).to({x:50}, 50);
+         createjs.Tween.get(ball, {loop:true}).to({x:500}, 5000).to({x:50}, 5000);
          createjs.Ticker.addEventListener("tick", tick);
          stage.addChild(ball);
-         stage.update();
+       }
+       function handleClick(event) {
+         console.log("clicked");
        }
 
        function tick(event){
