@@ -1,0 +1,88 @@
+<!-- code describe conditon and display list of the choices which made by random function -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <style type="text/css">
+       <body {font-size: 1.6em}
+       .hidden {display:none;}
+       .show {display: inline !important;}
+         button{
+          border: 2px solid black; background: #E5E4E2;
+          front-size: .5em; front-weight: bold; color: black;
+          padding: .8em 2em;
+          margin-top: .4em;
+         }>
+    </style>
+  </head>
+    <body>
+      <ul id="place1"></ul>
+      <h1 id-"place2"></h1>
+      <script>
+      //function
+    function numb649(){
+      // array to fill
+      var chodarray = [];
+
+      // cycle till i will be 6
+      for(i=0; i < 7; i++){
+        // generate numbers
+        var numB = Math.floor((Math.random()*49)+1);
+        chodarray.push(numB);
+        // by this statement we delete elem in array which aren't unique
+        chodarray = chodarray.filter(function (e, j, chodarray) {
+        return chodarray.lastIndexOf(e) === j;
+        });
+        // we assing to var i - number of array length
+        i = chodarray.length;
+        }
+        // sort our elem in array
+         return chodarray.sort();
+       }
+
+      function numb649array(){
+        // create array to which we input our chodarray elems
+        var str1 = [];
+        // quantity of elems
+        for (j=0; j<30;j++){
+        //each elem with new string
+        var mull = "<br/>" + numb649();
+        // push to array
+        str1.push(mull);
+        }
+        // delete from array elems which repeat
+        str1 = str1.filter(function (e, j, str1) {
+        return str1.lastIndexOf(e) === j;
+        });
+        // return result
+        return str1;
+      }
+
+      var du = numb649array();
+      var mu = du.length;
+      // how many unique elems do we have
+      console.log(mu);
+      // display result on html in form 
+     document.getElementById("place1").innerHTML=(du);
+
+
+    // document.write(chop1(),"<br/>");
+    // document.getElementById("place1").innerHTML=(du);
+    // print each elem 1
+    //  du.forEach(function(entry) {
+      //  du[entry] = du[entry] + "<br/>";
+      //  console.log(entry);
+  //      document.getElementById("place1").innerHTML=(du);
+  //  });
+
+    // for (i=0;i<du.length;i++)
+    // {
+    // document.write(du[i] + "<br >");
+    // document.getElementById("place2").innerHTML=(du[i]);
+    //
+    // }
+ //
+
+      </script>
+</body>
+</html>

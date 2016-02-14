@@ -13,11 +13,10 @@
           padding: .8em 2em;
           margin-top: .4em;
          }>
-
-
     </style>
   </head>
     <body>
+      <li id="place1"></li>
       <script>
      var tomSmith = ["Tom Smith", "Stone hills 123", 120.77];
      document.write("1 st index ",tomSmith[0],"<br />");
@@ -56,6 +55,9 @@
      for(i = 0; i<tomSmith.length; i++){
        document.write("Array " + i, tomSmith[i], "<br/>");
      }
+
+     var youName = "Johnvbfbd";
+     document.getElementById("place1").innerHTML =  youName;
 </script>
 </body>
 </html>

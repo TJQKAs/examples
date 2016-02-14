@@ -1,0 +1,71 @@
+<!-- code describe conditon and display list of the choices which made by random function -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <style type="text/css">
+       <body {font-size: 1.6em}
+       .hidden {display:none;}
+       .show {display: inline !important;}
+         button{
+          border: 2px solid black; background: #E5E4E2;
+          front-size: .5em; front-weight: bold; color: black;
+          padding: .8em 2em;
+          margin-top: .4em;
+         }>
+    </style>
+  </head>
+    <body>
+      <ul id="place1"></ul>
+      <script>
+      //function
+    function chop1(){
+      // array to fill
+      var chodarray = [];
+      // cycle
+      for(i=1; i < 1001; i++){
+        var age = Math.floor((Math.random()*99)+1);
+        if ((age >=10)&&(age <= 20)){
+          var chod = "This guy is a teenager";
+        }
+        else if ((age>20)&&(age<=35)) {
+          var chod = "This guy is young mate";
+        }
+        else if ((age>35)&&(age<=65)) {
+          var chod = "This guy is very adult";
+        }
+          else {
+            var chod = "I think he is too old";
+          }
+          //push elements to array
+          var chod = "<br/>" + i + ". " + chod;
+          chodarray.push(chod);
+        }
+        // return result
+        return chodarray;
+      }
+      //
+      // document.write(chop1(),"<br/>");
+      var du = chop1();
+      // document.getElementById("place1").innerHTML=(du);
+
+
+
+    // print each elem 1
+     du.forEach(function(entry) {
+      //  du[entry] = du[entry] + "<br/>";
+      //  console.log(entry);
+       document.getElementById("place1").innerHTML=(du);
+   });
+
+    // for (i=0;i<du.length;i++)
+    // {
+    // document.write(du[i] + "<br >");
+    // document.getElementById("place2").innerHTML=(du[i]);
+    //
+    // }
+ //
+
+      </script>
+</body>
+</html>
