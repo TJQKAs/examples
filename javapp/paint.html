@@ -1,0 +1,60 @@
+<html>
+  <head>
+      <title> Colors </title>
+  </head>
+  <body onload="setbackground();">
+  <body>
+  <script type="text/javascript">
+
+// function which changes color in interval
+  function setbackground()
+  {
+    //set time frame
+   window.setTimeout("setbackground()", Math.floor((Math.random()*800)+1));
+   // change rgb color
+  function changeColor(){
+      var a = Math.floor((Math.random()*254)+1);
+      var b = Math.floor((Math.random()*254)+1);
+      var c = Math.floor((Math.random()*254)+1);
+      var rgb = 'rgb(' + a + ',' + b + ',' + c + ')';
+      return rgb;
+    }
+     // change body
+      document.body.style.backgroundColor = changeColor();
+     }
+
+     // function which changes color in interval
+       function setback()
+       {
+         //set time frame
+        window.setTimeout("setback()", Math.floor((Math.random()*800)+1));
+        // change rgb color
+       function changeColorT(){
+           var a = Math.floor((Math.random()*254)+1);
+           var b = Math.floor((Math.random()*254)+1);
+           var c = Math.floor((Math.random()*254)+1);
+           var rgb = 'rgb(a,b,c)';
+           return rgb;
+         }
+           document.body.style.backgroundColor = changeColor();
+          }
+
+
+
+  </script>
+
+  <table bgcolor="setbackground();" cellspacing="2" border="1" cellpadding="5" height="600" width="600" >
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+
+
+  </body>
+</html>

@@ -39,14 +39,15 @@
      document.write("Convert Float : ", parseFloat("5.67"),"<br/>");
 
      var randStr = "A long " + " string that "  +  "goes on and on";
+     document.write(randStr + "<br/>");
      document.write("String length ", randStr.length +  "<br/>");
      document.write("Index for \"goes\" : ", randStr.indexOf("goes"),"<br/>");
-     document.write("randStr.slice(19, 23) :", randStr.slice(19,23) + "<br/>");
+     document.write("randStr.slice(19, 23) :", randStr.slice(19,23), "<br/>");
      document.write("randStr.slice(from 19)", randStr.slice(19) +  "<br/>");
      document.write("randStr.replace(and on, forever)", randStr.replace("and on","forever") + "<br/>");
 
      var randStrArray = randStr.split("");
-
+     document.write("split :", randStrArray,"<br/>");
      randStr = randStr.trim();
      document.write(randStr.toUpperCase() + "<br/>");
      document.write(randStr.toLowerCase() + "<br/>");

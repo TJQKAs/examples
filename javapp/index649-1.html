@@ -16,11 +16,9 @@
     </style>
   </head>
     <body>
-      <h2> Your lucky numbers!!!</h2>
       <ul id="place1"></ul>
-      <h1 id="place2"></h1>
+      <h1 id-"place2"></h1>
       <script>
-
       //function
     function numb649(){
       // array to fill
@@ -46,9 +44,9 @@
         // create array to which we input our chodarray elems
         var str1 = [];
         // quantity of elems
-        for (j=0; j<10000;j++){
+        for (j=0; j<30;j++){
         //each elem with new string
-        var mull = "<div style='width: 35px; height: 35px; font-size:12px; border:solid; background:rgb(124,252,0);'>" + (j+1) + "<br/>" + " <div style='width: 150px; height: 30px; font-size:20px; border:solid; background:rgb(0,191,255);'>" + numb649() + "</div></div>";
+        var mull = "<br/>" + numb649();
         // push to array
         str1.push(mull);
         }
@@ -56,13 +54,6 @@
         str1 = str1.filter(function (e, j, str1) {
         return str1.lastIndexOf(e) === j;
         });
-
-        var numbid = 1;
-
-        // for(i = 0; i < str1.length; i++){
-        //   str1.unshift((i+1) + " - ");
-        // }
-
         // return result
         return str1;
       }
@@ -75,6 +66,22 @@
      document.getElementById("place1").innerHTML=(du);
 
 
+    // document.write(chop1(),"<br/>");
+    // document.getElementById("place1").innerHTML=(du);
+    // print each elem 1
+    //  du.forEach(function(entry) {
+      //  du[entry] = du[entry] + "<br/>";
+      //  console.log(entry);
+  //      document.getElementById("place1").innerHTML=(du);
+  //  });
+
+    // for (i=0;i<du.length;i++)
+    // {
+    // document.write(du[i] + "<br >");
+    // document.getElementById("place2").innerHTML=(du[i]);
+    //
+    // }
+ //
 
       </script>
 </body>
