@@ -28,24 +28,35 @@
      <th class="tg-031e" width="33%">
        <ul id="place1"></ul>
      </th>
-     <th class="tg-031e" width="33%"></th>
-     <th class="tg-yw4l" width="34%"></th>
+     <th class="tg-031e" width="33%">
+     </th>
+     <th class="tg-yw4l" width="34%">
+
+       <form> Amount of numbers:<br/>
+         <input type="number" name="enter" class="enter" value="" id="lolz"/></br>
+          Number of options:<br/>
+         <input type="number" name="enter" class="enter" value="" id="molz"/><br/>
+         <input type="button" value="click" OnClick="kk()"/>
+       </form>
+
+     </th>
    </tr>
  </table>
-
-
-
-
-      <h1 id="place2"></h1>
       <script>
+
+
+      var lol = document.getElementById('lolz');
+      var mol = document.getElementById('molz');
+      function kk() {
+      var elems = lol.value;
+      var choice = mol.value;
 
       //function
     function numb649(){
       // array to fill
       var chodarray = [];
-
       // cycle till i will be 6
-      for(i=0; i < 7; i++){
+      for(i=0; i <= elems; i++){
         // generate numbers
         var numB = Math.floor((Math.random()*49)+1);
         chodarray.push(numB);
@@ -59,14 +70,13 @@
         // sort our elem in array
          return chodarray.sort();
        }
-
       function numb649array(){
         // create array to which we input our chodarray elems
         var str1 = [];
         // quantity of elems
-        for (j=0; j<100;j++){
+        for (j=0; j<choice;j++){
         //each elem with new string
-        var mull = "<div style='width: 10%; height: 10%; font-size:100%; border:solid; background:rgb(124,252,0);'>" + (j+1) + "<br/>" + " <div style='width: 800%; height: 50%; font-size:130%; border:solid; background:rgb(0,191,255);'>" + numb649() + "</div></div>";
+        var mull = "<div style='width: 10%; height: 10%; font-size:100%; border:solid; background:rgb(124,252,0);'>" + "<br/>" + " <div style='width: 800%; height: 50%; font-size:130%; border:solid; background:rgb(0,191,255);'>" + numb649() + "</div></div>";
         // push to array
         str1.push(mull);
         }
@@ -74,14 +84,8 @@
         str1 = str1.filter(function (e, j, str1) {
         return str1.lastIndexOf(e) === j;
         });
-
-        var numbid = 1;
-
-        // for(i = 0; i < str1.length; i++){
-        //   str1.unshift((i+1) + " - ");
-        // }
-
-        // return result
+        j = str1.length;
+        // var numbid = 1;
         return str1;
       }
 
@@ -92,8 +96,7 @@
       // display result on html in form
      document.getElementById("place1").innerHTML=(du);
 
-
-
+   }
       </script>
 </body>
 </html>
