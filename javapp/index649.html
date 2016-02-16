@@ -16,8 +16,26 @@
     </style>
   </head>
     <body>
-      <h2> Your lucky numbers!!!</h2>
-      <ul id="place1"></ul>
+    <style type="text/css">
+ .tg  {border-collapse:collapse;border-spacing:0;}
+ .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+ .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+ .tg .tg-yw4l{vertical-align:top}
+ </style>
+ <h2 align="center";> Your lucky numbers!!!</h2>
+ <table class="tg" width="100%" align="left";>
+   <tr>
+     <th class="tg-031e" width="33%">
+       <ul id="place1"></ul>
+     </th>
+     <th class="tg-031e" width="33%"></th>
+     <th class="tg-yw4l" width="34%"></th>
+   </tr>
+ </table>
+
+
+
+
       <h1 id="place2"></h1>
       <script>
 
@@ -46,9 +64,9 @@
         // create array to which we input our chodarray elems
         var str1 = [];
         // quantity of elems
-        for (j=0; j<10000;j++){
+        for (j=0; j<100;j++){
         //each elem with new string
-        var mull = "<div style='width: 35px; height: 35px; font-size:12px; border:solid; background:rgb(124,252,0);'>" + (j+1) + "<br/>" + " <div style='width: 150px; height: 30px; font-size:20px; border:solid; background:rgb(0,191,255);'>" + numb649() + "</div></div>";
+        var mull = "<div style='width: 10%; height: 10%; font-size:100%; border:solid; background:rgb(124,252,0);'>" + (j+1) + "<br/>" + " <div style='width: 800%; height: 50%; font-size:130%; border:solid; background:rgb(0,191,255);'>" + numb649() + "</div></div>";
         // push to array
         str1.push(mull);
         }
