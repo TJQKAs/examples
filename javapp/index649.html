@@ -18,8 +18,8 @@
     <body>
     <style type="text/css">
  .tg  {border-collapse:collapse;border-spacing:0;}
- .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
- .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+ .tg td{font-family:Arial, sans-serif;font-size:14% auto;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+ .tg th{font-family:Arial, sans-serif;font-size:14% auto;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
  .tg .tg-yw4l{vertical-align:top}
  </style>
  <h2 align="center";> Your lucky numbers!!!</h2>
@@ -32,33 +32,61 @@
      </th>
      <th class="tg-yw4l" width="34%">
 
-       <form> Amount of numbers:<br/>
-         <input type="number" name="enter" class="enter" value="" id="lolz"/></br>
-          Number of options:<br/>
-         <input type="number" name="enter" class="enter" value="" id="molz"/><br/>
-         <input type="button" value="click" OnClick="kk()"/>
-       </form>
+       <form> Number of elements (for example 6):<br/>
+         <input type="number" name="enter" class="enter" value="" placeholder="Type numb of elem..." id="lolz"/></br>
+          from the row of numbers (for example 49):<br/>
+         <input type="number" name="enter" class="enter" value="" placeholder="Type size of numb row..." id="dolz"/></br>
+          Amount of combinations (for example 20):<br/>
+         <input type="number" name="enter" class="enter" value="" placeholder="Type numb of comb..." id="molz"/><br/>
+         <input type="button" value="Get your combinations" OnClick="getOurData()"/>
+   </form><br/>
+
+   <table class="tg" width="100%" align="center";>
+     <tr>
+       <th>
+<textarea id="textbox">Type something here</textarea> <button id="create">Create file</button> <a download="info.txt" id="downloadlink" style="display: none">Download</a>
+
+       </th>
+     </tr>
+     <tr>
+       <td></td>
+     </tr>
+     <tr>
+       <td></td>
+     </tr>
+   </table>
 
      </th>
    </tr>
  </table>
       <script>
 
-
       var lol = document.getElementById('lolz');
+      var dol = document.getElementById('dolz');
       var mol = document.getElementById('molz');
-      function kk() {
-      var elems = lol.value;
-      var choice = mol.value;
-
+      // assign to variables data which was gotten by input form
+      function getOurData() {
+        //numbers in case
+      // var elems = lol.value;
+       // number of cases
+      // var choice = mol.value;
+      //size of row of numb
+      // var sizeNum = dol.value;
       //function
+
+      var elems = 6;
+       // number of cases
+      var choice = 20;
+      //size of row of numb
+      var sizeNum = 49;
+
     function numb649(){
       // array to fill
       var chodarray = [];
       // cycle till i will be 6
       for(i=0; i <= elems; i++){
         // generate numbers
-        var numB = Math.floor((Math.random()*49)+1);
+        var numB = Math.floor((Math.random()*sizeNum)+1);
         chodarray.push(numB);
         // by this statement we delete elem in array which aren't unique
         chodarray = chodarray.filter(function (e, j, chodarray) {
@@ -70,13 +98,14 @@
         // sort our elem in array
          return chodarray.sort();
        }
-      function numb649array(){
+
+        function numb649array(){
         // create array to which we input our chodarray elems
         var str1 = [];
         // quantity of elems
         for (j=0; j<choice;j++){
         //each elem with new string
-        var mull = "<div style='width: 10%; height: 10%; font-size:100%; border:solid; background:rgb(124,252,0);'>" + "<br/>" + " <div style='width: 800%; height: 50%; font-size:130%; border:solid; background:rgb(0,191,255);'>" + numb649() + "</div></div>";
+        var mull = "<div style='width: auto; height: auto; font-size:14pt auto; border:solid; background:rgb(0,191,255);'>" + numb649().join(" - ") + "</div>";
         // push to array
         str1.push(mull);
         }
@@ -87,16 +116,50 @@
         j = str1.length;
         // var numbid = 1;
         return str1;
-      }
 
-      var du = numb649array();
-      var mu = du.length;
+      }
+      var mu = numb649array().length;
+      var du = numb649array().join("<br/>");
       // how many unique elems do we have
       console.log(mu);
       // display result on html in form
      document.getElementById("place1").innerHTML=(du);
 
+
+     (function () {
+     var textFile = null,
+       makeTextFile = function (text) {
+         var data = new Blob([text], {type: 'text/plain'});
+
+         // If we are replacing a previously generated file we need to
+         // manually revoke the object URL to avoid memory leaks.
+         if (textFile !== null) {
+           window.URL.revokeObjectURL(textFile);
+         }
+
+         textFile = window.URL.createObjectURL(data);
+
+         return textFile;
+       };
+
+
+       var create = document.getElementById('create'),
+         textbox = document.getElementById('textbox');
+
+       create.addEventListener('click', function () {
+         var link = document.getElementById('downloadlink');
+         link.href = makeTextFile(textbox.value);
+         link.style.display = 'block';
+       }, false);
+     })();
+
+
+
+
+
+
    }
-      </script>
+
+   </script>
 </body>
 </html>
