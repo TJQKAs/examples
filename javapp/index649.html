@@ -22,7 +22,7 @@
  .tg th{font-family:Arial, sans-serif;font-size:14% auto;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
  .tg .tg-yw4l{vertical-align:top}
  </style>
- <h2 align="center";> Your lucky numbers!!!</h2>
+ <h2 align="center";> Your rigth numbers here!!!</h2>
  <table class="tg" width="100%" align="left";>
    <tr>
      <th class="tg-031e" width="33%">
@@ -64,24 +64,25 @@
  </table>
       <script>
 
+      // find info which we've typed in the forms
       var lol = document.getElementById('lolz');
       var dol = document.getElementById('dolz');
       var mol = document.getElementById('molz');
       // assign to variables data which was gotten by input form
       function getOurData() {
         //numbers in case
-      // var elems = lol.value;
+      var elems = lol.value;
        // number of cases
-      // var choice = mol.value;
+      var choice = mol.value;
       //size of row of numb
-      // var sizeNum = dol.value;
+      var sizeNum = dol.value;
       //function
 
-      var elems = 6;
+      // var elems = 6;
        // number of cases
-      var choice = 20;
+      // var choice = 20;
       //size of row of numb
-      var sizeNum = 49;
+      // var sizeNum = 49;
 
     function numb649(){
       // array to fill
@@ -108,7 +109,8 @@
         // quantity of elems
         for (j=0; j<choice;j++){
         //each elem with new string
-        var mull = "<div style='width: auto; height: auto; font-size:14pt auto; border:solid; background:rgb(0,191,255);'>" + numb649().join(" - ") + "</div>";
+        var mull = numb649().join("-") + "\n";
+        // var mull = "<div style='width: auto; height: auto; font-size:14pt auto; border:solid; background:rgb(0,191,255);'>" + numb649().join(" - ") + "</div>";
         // push to array
         str1.push(mull);
         }
@@ -118,18 +120,40 @@
         });
         j = str1.length;
         // var numbid = 1;
+
         return str1;
       }
 
-      var mu = numb649array().length;
-      var du = numb649array().join("<br/>");
+    // assing data from the function to the var
+      var str1 = numb649array();
+  // copy array because we need different format of outputs
+      var array2 = str1.slice();
+
+   // modify our str1 array because i need a view, not only numbers
+      for(l=0; l<str1.length; l++){
+        str1[l] = "<div style='width: auto; height: auto; font-size:14pt auto; border:solid; background:rgb(0,191,255);'>" + str1[l] + "</div>";
+      }
+
+      // use console for check
+     console.log(array2.join(""));
+     console.log(str1);
+
+
+     // display length of array
+      var mu = str1.length;
+    // we'll show it in your screen
+      var du = str1.join("<br/>");
+      // we'll send it to your txt file
+      var pu = array2.join("\n");
+
+
       // how many unique elems do we have
       console.log(mu);
       // display result on html in form
      document.getElementById("place1").innerHTML=(du);
 
 
-///////////////////////
+//////////////////// that's how we've created filr and put there all our data
 
      (function () {
  var textFile = null,
@@ -150,7 +174,7 @@
 
    create.addEventListener('click', function () {
      var link = document.getElementById('downloadlink');
-     link.href = makeTextFile(du);
+     link.href = makeTextFile(pu);
      link.style.display = 'block';
    }, false);
  })();
