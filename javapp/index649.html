@@ -2,7 +2,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- <meta charset="utf-8">
       <style type="text/css">
        <body {font-size: 1.6em}
        .hidden {display:none;}
@@ -13,16 +14,122 @@
           padding: .8em 2em;
           margin-top: .4em;
          }>
-    </style>
+    </style> -->
   </head>
     <body>
     <style type="text/css">
- .tg  {border-collapse:collapse;border-spacing:0;}
+ /*.tg  {border-collapse:collapse;border-spacing:0;}
  .tg td{font-family:Arial, sans-serif;font-size:14% auto;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
- .tg th{font-family:Arial, sans-serif;font-size:14% auto;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+ .tg th{font-family:Arial, sans-serif;font-size:14% auto;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}*/
  .tg .tg-yw4l{vertical-align:top}
+ .col-sm-5 { width: 41.66666666666667%;
+   }
+
+   .btn {
+     background: #34a5d9;
+     background-image: -webkit-linear-gradient(top, #34a5d9, #009fcf);
+     background-image: -moz-linear-gradient(top, #34a5d9, #009fcf);
+     background-image: -ms-linear-gradient(top, #34a5d9, #009fcf);
+     background-image: -o-linear-gradient(top, #34a5d9, #009fcf);
+     background-image: linear-gradient(to bottom, #34a5d9, #009fcf);
+     -webkit-border-radius: 59;
+     -moz-border-radius: 59;
+     border-radius: 59px;
+     text-shadow: 1px 3px 2px #0505e6;
+     font-family: Arial;
+     color: #030357;
+     font-size: 17px;
+     padding: 10px 23px 12px 16px;
+     text-decoration: none;
+   }
+
+   .btn:hover {
+     background: #00eeff;
+     text-decoration: none;
+   }
+
+   .divdata {
+     width: 180px;
+     height: 46px;
+
+     border: 0px rgb(234, 238, 245) ridge;
+
+     padding: 7px;
+
+     margin: 26px;
+
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+     filter: alpha(opacity=60);
+     -moz-opacity: 0.6;
+     -khtml-opacity: 0.6;
+     opacity: 0.6;
+
+     -webkit-box-sizing: inherit;
+     -moz-box-sizing: inherit;
+     box-sizing: inherit;
+
+     background: rgb(22, 230, 255);
+
+     color: rgb(1, 1, 1);
+     font-size: 18px;
+     font-weight: bold;
+     font-family: 'Times New Roman', Times, serif;
+     font-style: normal;
+     text-decoration: blink;
+     text-align: center;
+
+     line-height: 1.55em;
+     text-shadow: 1px 0px 0px rgb(0, 0, 0);
+
+     -moz-box-shadow:  0px 0px 16px 9px rgb(36, 208, 242);
+     -webkit-box-shadow:  0px 0px 16px 9px rgb(36, 208, 242);
+     box-shadow:  0px 0px 16px 9px rgb(36, 208, 242);
+   }
+.divdata2 {
+  width: 35px;
+height: 13px;
+
+padding: 3px;
+
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=63)";
+filter: alpha(opacity=63);
+-moz-opacity: 0.63;
+-khtml-opacity: 0.63;
+opacity: 0.63;
+
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+
+background: rgb(29, 200, 252);
+
+color: rgb(1, 1, 1);
+font-size: 10px;
+font-weight: bold;
+font-family: 'Times New Roman', Times, serif;
+font-style: normal;
+text-decoration: blink;
+text-align: center;
+
+line-height: 1.2em;
+letter-spacing: 0em;
+text-shadow: 1px 0px 0px rgb(0, 0, 0);
+
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+
+-moz-box-shadow:  0px 2px 24px 9px rgb(138, 187, 191);
+-webkit-box-shadow:  0px 2px 24px 9px rgb(138, 187, 191);
+box-shadow:  0px 2px 24px 9px rgb(138, 187, 191);
+
+}
+
+
+
+
  </style>
- <h2 align="center";> Your rigth numbers here!!!</h2>
+ <h2 align="center";> Your rigth numbers here!!!</h2><br/><br/><br/>
  <table class="tg" width="100%" align="left";>
    <tr>
      <th class="tg-031e" width="33%">
@@ -37,17 +144,15 @@
           from the row of numbers (for example 49):<br/>
          <input type="number" name="enter" class="enter" value="" placeholder="Type size of numb row..." id="dolz"/></br>
           Amount of combinations (for example 20):<br/>
-         <input type="number" name="enter" class="enter" value="" placeholder="Type numb of comb..." id="molz"/><br/>
-         <input type="button" value="Get your combinations" OnClick="getOurData()"/>
+         <input type="number" name="enter" class="enter" value="" placeholder="Type numb of comb..." id="molz"/><br/><br/>
+         <input type="button" class="btn" value="Get your combinations" OnClick="getOurData()"/>
    </form><br/>
 
    <table class="tg" width="100%" align="center";>
      <tr>
        <th>
-
-         <!-- <textarea id="textbox">Type something here</textarea>  -->
-         <button id="create">Create file</button> <a download="info.txt" id="downloadlink" style="display: none">Download</a>
-
+         <button class="btn" id="create">Create file</button><br/><br/>
+         <button class="btn" download="info.txt" id="downloadlink" style="display: none">Download</button>
 
        </th>
      </tr>
@@ -71,18 +176,18 @@
       // assign to variables data which was gotten by input form
       function getOurData() {
         //numbers in case
-      var elems = lol.value;
+      // var elems = lol.value;
        // number of cases
-      var choice = mol.value;
+      // var choice = mol.value;
       //size of row of numb
-      var sizeNum = dol.value;
+      // var sizeNum = dol.value;
       //function
 
-      // var elems = 6;
+      var elems = 6;
        // number of cases
-      // var choice = 20;
+      var choice = 20;
       //size of row of numb
-      // var sizeNum = 49;
+      var sizeNum = 49;
 
     function numb649(){
       // array to fill
@@ -110,8 +215,6 @@
         for (j=0; j<choice;j++){
         //each elem with new string
         var mull = numb649().join("-") + "\n";
-        // var mull = "<div style='width: auto; height: auto; font-size:14pt auto; border:solid; background:rgb(0,191,255);'>" + numb649().join(" - ") + "</div>";
-        // push to array
         str1.push(mull);
         }
         // delete from array elems which repeat
@@ -131,7 +234,7 @@
 
    // modify our str1 array because i need a view, not only numbers
       for(l=0; l<str1.length; l++){
-        str1[l] = "<div style='width: auto; height: auto; font-size:14pt auto; border:solid; background:rgb(0,191,255);'>" + str1[l] + "</div>";
+        str1[l] = "<div class='divdata2'>" + (l+1) +"</div><br/><div class='divdata'>" + str1[l] + "</div>";
       }
 
       // use console for check
