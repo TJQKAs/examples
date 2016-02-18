@@ -124,12 +124,19 @@ border-radius: 4px;
 box-shadow:  0px 2px 24px 9px rgb(138, 187, 191);
 
 }
+.div_text_shadow
+{
+  color: rgb(193, 197, 247);
+font-size: 50px;
+background-color: rgb(52,165,217);
+text-shadow: rgb(3, 3, 3) 4px 4px 4px;
+}
 
-
-
+.css-input { border-style:solid; padding:5px; font-size:14px; border-width:10px; border-radius:50px; background-color:#23dafa; border-color:#9facd4; color:#693bcc; box-shadow: 1px 0px 9px 0px rgba(16,53,201,.33); text-shadow:0px 0px 5px rgba(42,42,42,.82); font-weight:bold; font-style:italic; font-family:serif;  }
+.css-input:focus { outline:none; }
 
  </style>
- <h2 align="center";> Your rigth numbers here!!!</h2><br/><br/><br/>
+ <h2 class='div_text_shadow' align="center";> Your right numbers here!!!</h2><br/><br/><br/>
  <table class="tg" width="100%" align="left";>
    <tr>
      <th class="tg-031e" width="33%">
@@ -140,11 +147,11 @@ box-shadow:  0px 2px 24px 9px rgb(138, 187, 191);
      <th class="tg-yw4l" width="34%">
 
        <form> Number of elements (for example 6):<br/>
-         <input type="number" name="enter" class="enter" value="" placeholder="Type numb of elem..." id="lolz"/></br>
+         <input class='css-input' type="number" name="enter" class="enter" value="" placeholder="Type numb of elem..." id="lolz"/></br>
           from the row of numbers (for example 49):<br/>
-         <input type="number" name="enter" class="enter" value="" placeholder="Type size of numb row..." id="dolz"/></br>
+         <input class='css-input' type="number" name="enter" class="enter" value="" placeholder="Type size of numb row..." id="dolz"/></br>
           Amount of combinations (for example 20):<br/>
-         <input type="number" name="enter" class="enter" value="" placeholder="Type numb of comb..." id="molz"/><br/><br/>
+         <input class='css-input' type="number" name="enter" class="enter" value="" placeholder="Type numb of comb..." id="molz"/><br/><br/>
          <input type="button" class="btn" value="Get your combinations" OnClick="getOurData()"/>
    </form><br/>
 
