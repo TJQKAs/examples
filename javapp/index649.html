@@ -44,7 +44,10 @@
    <table class="tg" width="100%" align="center";>
      <tr>
        <th>
-<textarea id="textbox">Type something here</textarea> <button id="create">Create file</button> <a download="info.txt" id="downloadlink" style="display: none">Download</a>
+
+         <!-- <textarea id="textbox">Type something here</textarea>  -->
+         <button id="create">Create file</button> <a download="info.txt" id="downloadlink" style="display: none">Download</a>
+
 
        </th>
      </tr>
@@ -116,8 +119,8 @@
         j = str1.length;
         // var numbid = 1;
         return str1;
-
       }
+
       var mu = numb649array().length;
       var du = numb649array().join("<br/>");
       // how many unique elems do we have
@@ -126,39 +129,41 @@
      document.getElementById("place1").innerHTML=(du);
 
 
+///////////////////////
+
      (function () {
-     var textFile = null,
-       makeTextFile = function (text) {
-         var data = new Blob([text], {type: 'text/plain'});
+ var textFile = null,
+   makeTextFile = function (text) {
+     var data = new Blob([text], {type: 'text/plain'});
 
-         // If we are replacing a previously generated file we need to
-         // manually revoke the object URL to avoid memory leaks.
-         if (textFile !== null) {
-           window.URL.revokeObjectURL(textFile);
-         }
+     // If we are replacing a previously generated file we need to
+     // manually revoke the object URL to avoid memory leaks.
+     if (textFile !== null) {
+       window.URL.revokeObjectURL(textFile);
+     }
 
-         textFile = window.URL.createObjectURL(data);
+     textFile = window.URL.createObjectURL(data);
 
-         return textFile;
-       };
-
-
-       var create = document.getElementById('create'),
-         textbox = document.getElementById('textbox');
-
-       create.addEventListener('click', function () {
-         var link = document.getElementById('downloadlink');
-         link.href = makeTextFile(textbox.value);
-         link.style.display = 'block';
-       }, false);
-     })();
+     return textFile;
+   };
 
 
-
-
-
-
+   create.addEventListener('click', function () {
+     var link = document.getElementById('downloadlink');
+     link.href = makeTextFile(du);
+     link.style.display = 'block';
+   }, false);
+ })();
    }
+
+
+
+
+
+
+
+
+
 
    </script>
 </body>
