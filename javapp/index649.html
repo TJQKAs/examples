@@ -3,18 +3,7 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!-- <meta charset="utf-8">
-      <style type="text/css">
-       <body {font-size: 1.6em}
-       .hidden {display:none;}
-       .show {display: inline !important;}
-         button{
-          border: 2px solid black; background: #E5E4E2;
-          front-size: .5em; front-weight: bold; color: black;
-          padding: .8em 2em;
-          margin-top: .4em;
-         }>
-    </style> -->
+
   </head>
     <body>
     <style type="text/css">
@@ -159,7 +148,7 @@ text-shadow: rgb(3, 3, 3) 4px 4px 4px;
      <tr>
        <th>
          <button class="btn" id="create">Create file</button><br/><br/>
-         <button class="btn" download="info.txt" id="downloadlink" style="display: none">Download</button>
+         <a class="btn" download="info.txt" id="downloadlink" style="display: none; width:120px;">Download</a>
 
        </th>
      </tr>
@@ -284,19 +273,11 @@ text-shadow: rgb(3, 3, 3) 4px 4px 4px;
 
    create.addEventListener('click', function () {
      var link = document.getElementById('downloadlink');
-     link.href = makeTextFile(pu);
-     link.style.display = 'block';
+    link.href = makeTextFile(pu);
+    link.style.display = 'block';
    }, false);
  })();
    }
-
-
-
-
-
-
-
-
 
 
    </script>
