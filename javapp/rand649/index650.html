@@ -1,0 +1,365 @@
+<!-- code describe conditon and display list of the choices which made by random function -->
+<!doctype html>
+<html lang="en">
+<title> Rignum - Right numbers! </title>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.7.0/math.min.js" type="text/javascript"></script>
+  </head>
+    <body>
+    <style type="text/css">
+ /*.tg  {border-collapse:collapse;border-spacing:0;}
+ .tg td{font-family:Arial, sans-serif;font-size:14% auto;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+ .tg th{font-family:Arial, sans-serif;font-size:14% auto;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}*/
+ .tg .tg-yw4l{vertical-align:top}
+ .col-sm-5 { width: 41.66666666666667%;
+   }
+
+   .btn {
+     background: #f74343;
+ background-image: -webkit-linear-gradient(top, #f74343, #f2c94e);
+ background-image: -moz-linear-gradient(top, #f74343, #f2c94e);
+ background-image: -ms-linear-gradient(top, #f74343, #f2c94e);
+ background-image: -o-linear-gradient(top, #f74343, #f2c94e);
+ background-image: linear-gradient(to bottom, #f74343, #f2c94e);
+ -webkit-border-radius: 56;
+ -moz-border-radius: 56;
+ border-radius: 56px;
+ text-shadow: 0px 0px 0px #000000;
+ font-family: Georgia;
+ color: #000000;
+ font-size: 20px;
+ padding: 6px 22px 6px 6px;
+ border: solid #f7f7f7 0px;
+ text-decoration: none;
+}
+
+.btn:hover {
+ background: #ffdd54;
+ background-image: -webkit-linear-gradient(top, #ffdd54, #c2f536);
+ background-image: -moz-linear-gradient(top, #ffdd54, #c2f536);
+ background-image: -ms-linear-gradient(top, #ffdd54, #c2f536);
+ background-image: -o-linear-gradient(top, #ffdd54, #c2f536);
+ background-image: linear-gradient(to bottom, #ffdd54, #c2f536);
+ text-decoration: none;
+   }
+
+   .divdata {
+     width: 180px;
+height: 46px;
+
+border: 3px rgb(247,67,67) solid;
+
+padding: 8px;
+
+margin: 0px;
+
+-webkit-box-sizing: inherit;
+-moz-box-sizing: inherit;
+box-sizing: inherit;
+
+background: rgb(241, 178, 108);
+
+color: rgb(25,25,25);
+font-size: 16px auto;
+font-weight: bold;
+font-family: inherit;
+font-style: normal;
+text-decoration: inherit;
+text-align: center;
+
+line-height: 1.3em;
+letter-spacing: 0em;
+text-shadow: 0px 0px 0px rgb(89,89,89);
+
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+
+-moz-box-shadow: inset -2px 2px 69px 0px rgb(255, 255, 255);
+-webkit-box-shadow: inset -2px 2px 69px 0px rgb(255, 255, 255);
+box-shadow: inset -2px 2px 69px 0px rgb(255, 255, 255);
+
+   }
+.divdata2 {
+  width: 35px;
+height: 13px;
+
+padding: 3px;
+
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=63)";
+filter: alpha(opacity=63);
+-moz-opacity: 0.63;
+-khtml-opacity: 0.63;
+opacity: 0.63;
+
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+
+background: rgb(255, 123, 0);
+
+color: rgb(1, 1, 1);
+font-size: 14px auto;
+font-weight: bold;
+font-family: 'Times New Roman', Times, serif;
+font-style: normal;
+text-decoration: blink;
+text-align: center;
+
+line-height: 1.2em;
+letter-spacing: 0em;
+text-shadow: 1px 0px 0px rgb(0, 0, 0);
+
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+
+}
+
+/*first paragraph*/
+.text_title2
+{
+color: rgb(13, 11, 4);
+font-size: 16px;
+background-color: rgb(255, 255, 255);
+text-shadow: rgb(150, 150, 150) 1px 1px 0px, rgb(171, 168, 168) 1px 1px 1px;
+}
+
+.command_text
+{
+color: rgb(247, 148, 19);
+font-size: 16px;
+background-color: rgb(255, 255, 255);
+text-shadow: rgba(255, 255, 255, 0.2) 3px 2px 3px;
+}
+
+
+
+/*text in the title*/
+.div_text_shadow
+{
+  color: rgb(255,255,255);
+font-size: 50px;
+background-color: rgb(255, 123, 0);
+text-shadow: rgb(31, 17, 7) 4px 4px 4px;
+}
+
+.css-input { border-style:solid; padding:5px; font-size:14px; border-width:3px; border-radius:50px; background-color:#FF9B17; border-color:#060504; color:#060504; box-shadow: 1px 0px 9px 0px rgba(16,53,201,.33); text-shadow:0px 0px 0px rgba(0,0,51,.82); font-weight:bold; font-style:italic; font-family:serif;  }
+.css-input:focus { outline:none; }
+
+
+
+
+ </style>
+ <h2 class='div_text_shadow' align="center";> Your right numbers here!!!</h2><br/><br/><br/>
+ <table class="tg" width="100%" align="left";>
+   <tr>
+     <th class="tg-031e" width="25%">
+       <ul id="place1"></ul>
+
+     </th>
+     <th class="tg-yw4l" width="38%">
+       <p class="text_title2">We are glad to see you dear guest on this website. Look the news about your local lottery.
+       What is the jackpot today? Maybe a couple of hundreds millions, maybe not.</p><br/><br/>
+
+       <p class="command_text">1. Fill the quantity of the numbers which you should guess.<br/><br/>
+
+       2. Fill the quantity of numbers of the row, which the lottery has.<br/><br/>
+       3. Fill the number of combinations which you are going to get, then push "Get your combinations", to see it.<br/><br/>
+
+       4. Push "Create file" and "Download" to get your combinations in "txt" file. <br/><br/>
+
+       5. Join the lottery with the Right Numbers and get the Prize! </p><br/>
+
+       <p align="center" class="text_title2">Well, maybe not right now,</br> we just multiply your luck!!!</p><br/><br/>
+
+     </th>
+     <th class="tg-yw4l" width="2%">
+     </th>
+     <th class="tg-yw4l" width="30%">
+
+       <form> Number of elements (for example 6):<br/>
+         <input class='css-input' type="number" name="quantity" class="enter" value="" placeholder="Type numb of elem..." id="lolz"/></br>
+          from the row of numbers (for example 49):<br/>
+         <input class='css-input' type="number" name="quantity" class="enter" value="" placeholder="Type size of numb row..." id="dolz"/></br>
+          Amount of combinations (for example 20):<br/>
+         <input class='css-input' type="number" name="quantity" class="enter" value="" placeholder="Type numb of comb..." id="molz"/><br/><br/>
+         <input type="button" class="btn" value="Get your combinations" OnClick="getOurData()"/>
+   </form><br/>
+
+   <table class="tg" width="100%" align="center";>
+     <tr>
+       <th>
+         <button class="btn" id="create">Create file</button><br/><br/>
+         <a class="btn" download="info.txt" id="downloadlink" style="display: none; width:120px;">Download</a>
+
+       </th>
+     </tr>
+     <tr>
+       <td></td>
+     </tr>
+     <tr>
+       <td></td>
+     </tr>
+   </table>
+
+     </th>
+   </tr>
+ </table>
+      <script>
+
+      console.log(math.sqrt(4));
+
+      // find info which we've typed in the forms
+      var lol = document.getElementById('lolz');
+      var dol = document.getElementById('dolz');
+      var mol = document.getElementById('molz');
+      // assign to variables data which was gotten by input form
+      function getOurData() {
+        //numbers in case
+        if (lol.value < 8){
+        var elems = lol.value;
+      } else
+      {
+        alert("Please, set the size of combination less than 8!");
+      }
+
+
+      if (mol.value < 101){
+      var choice = mol.value;
+    } else
+    {
+      alert("Please, set the number of combinations not more than 100!");
+    }
+
+
+     if (dol.value < 50){
+      var sizeNum = dol.value;
+   }  else
+   {
+    alert("Please, set the row of lottery less or equal 49!");
+   }
+
+
+/////////////for debugging////
+      // var elems = 6;
+       // number of cases
+      // var choice = 20;
+      //size of row of numb
+      // var sizeNum = 49;
+
+//////////////////////////////
+
+    function numb649(){
+      // array to fill
+      var chodarray = [];
+      // cycle till i will be 6
+      for(i=0; i <= elems; i++){
+        // generate numbers
+        var numB = Math.floor((Math.random()*sizeNum)+1);
+        chodarray.push(numB);
+        // by this statement we delete elem in array which aren't unique
+        chodarray = chodarray.filter(function (e, j, chodarray) {
+        return chodarray.lastIndexOf(e) === j;
+        });
+        // we assing to var i - number of array length
+        i = chodarray.length;
+        }
+        // sort our elem in array
+
+         /// math part this my variation filter, throws away the combinations with index lower than 0.33
+         var averrow = math.std(chodarray)/((sizeNum-1)/2);
+         var averrow = Math.round(averrow*100)/100;
+         while(averrow < 0.5){
+           numb649();
+           break;
+         }
+         chodarray.sort();
+         console.log(averrow);
+         return chodarray;
+       }
+
+        function numb649array(){
+        // create array to which we input our chodarray elems
+        var str1 = [];
+        // quantity of elems
+        for (j=0; j<choice;j++){
+        //each elem with new string
+        var mull = numb649().join("-") + "\n";
+        str1.push(mull);
+        }
+        // delete from array elems which repeat
+        str1 = str1.filter(function (e, j, str1) {
+        return str1.lastIndexOf(e) === j;
+        });
+        j = str1.length;
+        // var numbid = 1;
+
+        return str1;
+      }
+
+    // assing data from the function to the var
+      var str1 = numb649array();
+  // copy array because we need different format of outputs
+      var array2 = str1.slice();
+
+   // modify our str1 array because i need a view, not only numbers
+      for(l=0; l<str1.length; l++){
+        str1[l] = "<div class='divdata2'>" + (l+1) +"</div><br/><div class='divdata'>" + str1[l] + "</div>";
+      }
+
+      // use console for check
+     console.log(array2.join(""));
+     console.log(str1);
+
+
+     // display length of array
+      var mu = str1.length;
+    // we'll show it in your screen
+      var du = str1.join("<br/>");
+      // we'll send it to your txt file
+      var pu = array2.join("\n");
+
+
+      // how many unique elems do we have
+      console.log(mu);
+      // display result on html in form
+     document.getElementById("place1").innerHTML=(du);
+
+
+//////////////////// that's how we've created filr and put there all our data
+
+     (function () {
+ var textFile = null,
+   makeTextFile = function (text) {
+     var data = new Blob([text], {type: 'text/plain'});
+
+     // If we are replacing a previously generated file we need to
+     // manually revoke the object URL to avoid memory leaks.
+     if (textFile !== null) {
+       window.URL.revokeObjectURL(textFile);
+     }
+
+     textFile = window.URL.createObjectURL(data);
+
+     return textFile;
+   };
+
+
+   create.addEventListener('click', function () {
+     var link = document.getElementById('downloadlink');
+    link.href = makeTextFile(pu);
+    link.style.display = 'block';
+   }, false);
+ })();
+   }
+
+
+   </script>
+</body>
+
+<h6 align="center">
+created by "TJQKAs"
+</h6>
+</html>
