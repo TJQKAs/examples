@@ -242,6 +242,20 @@ text-shadow: rgb(31, 17, 7) 4px 4px 4px;
    }
 
 
+///////clear the input fields ////////
+   var inputElements = document.getElementsByTagName('input');
+   for(var i = 0; i < inputElements.length; i++){
+     if(inputElements[i].type == "number"){
+       inputElements[i].value = "";
+     }
+   }
+
+
+
+
+
+
+
 /////////////for debugging////
       // var elems = 6;
        // number of cases
