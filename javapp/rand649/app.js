@@ -24,47 +24,47 @@ document.getElementById('discmes').className="hidden";
 
 
         // assign to variables data which was gotten by input form
- //        if (lol.value < 8 && lol.value > 0){
- //          var elems = lol.value;
- //          console.log(elems);
- //        } else {
- //          var respond1 = "<table class='error_mes' id='respond01'><tr><th>Number of elements must be between 1-7 !</th></tr></table>";
- //         document.getElementById("error1").innerHTML=(respond1);
- //         document.getElementById('error1').className="show";
- //         function alertMessage1(){
- //         document.getElementById('respond01').className="hidden";
- //        }
- //        setTimeout(function() { alertMessage1() }, 5000);
- //        }
- //
- //
- //        if  (dol.value < 50){
- //        var sizeNum = dol.value;
- //        console.log(sizeNum);
- //        } else {
- //        var respond2 = "<table class='error_mes' id='respond02'><tr><th>Row of lottery must be between 1-49 and more than number of elements !</th></tr></table>";
- //        document.getElementById("error2").innerHTML=(respond2);
- //        document.getElementById('error2').className="show";
- //        function alertMessage2(){
- //        document.getElementById('respond02').className="hidden";
- //        }
- //        setTimeout(function() { alertMessage2() }, 5000);
- // }
- //
- //
- //        if (mol.value < 101){
- //         var choice = mol.value;
- //         console.log(choice);
- //        } else {
- //        var respond3 = "<table class='error_mes' id='respond03'><tr><th>Number of combinations must be between 1- 100!</th></tr></table>";
- //        document.getElementById("error3").innerHTML=(respond3);
- //        document.getElementById('error3').className="show";
- //        function alertMessage3(){
- //        document.getElementById('respond03').className="hidden";
- //        }
- //        setTimeout(function() { alertMessage3() }, 5000);
- //        }
- //
+        if (lol.value < 8 && lol.value > 0){
+          var elems = lol.value;
+          console.log(elems);
+        } else {
+          var respond1 = "<table class='error_mes' id='respond01'><tr><th>Number of elements must be between 1-7 !</th></tr></table>";
+         document.getElementById("error1").innerHTML=(respond1);
+         document.getElementById('error1').className="show";
+         function alertMessage1(){
+         document.getElementById('respond01').className="hidden";
+        }
+        setTimeout(function() { alertMessage1() }, 5000);
+        }
+
+
+        if  (dol.value < 50){
+        var sizeNum = dol.value;
+        console.log(sizeNum);
+        } else {
+        var respond2 = "<table class='error_mes' id='respond02'><tr><th>Row of lottery must be between 1-49 and more than number of elements !</th></tr></table>";
+        document.getElementById("error2").innerHTML=(respond2);
+        document.getElementById('error2').className="show";
+        function alertMessage2(){
+        document.getElementById('respond02').className="hidden";
+        }
+        setTimeout(function() { alertMessage2() }, 5000);
+ }
+
+
+        if (mol.value < 101){
+         var choice = mol.value;
+         console.log(choice);
+        } else {
+        var respond3 = "<table class='error_mes' id='respond03'><tr><th>Number of combinations must be between 1- 100!</th></tr></table>";
+        document.getElementById("error3").innerHTML=(respond3);
+        document.getElementById('error3').className="show";
+        function alertMessage3(){
+        document.getElementById('respond03').className="hidden";
+        }
+        setTimeout(function() { alertMessage3() }, 5000);
+        }
+ 
 
 ///////clear the input fields ////////
    var inputElements = document.getElementsByTagName('input');
@@ -74,16 +74,16 @@ document.getElementById('discmes').className="hidden";
      }
    }
 
-  //  if(elems > sizeNum){
-  //   elems = 6;
-  //   sizeNum = 49;
-  //  }
+   if(elems > sizeNum){
+    elems = 6;
+    sizeNum = 49;
+   }
 /////////////for debugging////
-      var elems = 6;
+      // var elems = 6;
        // number of cases
-      var choice = 20;
+      // var choice = 20;
       //size of row of numb
-      var sizeNum = 49;
+      // var sizeNum = 49;
 //////////////////////////////
 
     function numb649(){
