@@ -5,6 +5,7 @@
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.7.0/math.min.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
   </head>
     <body>
     <style type="text/css">
@@ -14,9 +15,11 @@
 body
 .hidden{display: none;}
 .show{display:inline !important;}
+
  .tg .tg-yw4l{vertical-align:top}
  .col-sm-5 { width: 41.66666666666667%;
    }
+
    .btn {
      background: #f74343;
  background-image: -webkit-linear-gradient(top, #f74343, #f2c94e);
@@ -35,6 +38,7 @@ body
  border: solid #f7f7f7 0px;
  text-decoration: none;
 }
+
 .btn:hover {
  background: #ffdd54;
  background-image: -webkit-linear-gradient(top, #ffdd54, #c2f536);
@@ -44,16 +48,23 @@ body
  background-image: linear-gradient(to bottom, #ffdd54, #c2f536);
  text-decoration: none;
    }
+
    .divdata {
      width: 180px;
 height: 46px;
+
 border: 3px rgb(247,67,67) solid;
+
 padding: 8px;
+
 margin: 0px;
+
 -webkit-box-sizing: inherit;
 -moz-box-sizing: inherit;
 box-sizing: inherit;
+
 background: rgb(241, 178, 108);
+
 color: rgb(25,25,25);
 font-size: 16px auto;
 font-weight: bold;
@@ -61,29 +72,38 @@ font-family: inherit;
 font-style: normal;
 text-decoration: inherit;
 text-align: center;
+
 line-height: 1.3em;
 letter-spacing: 0em;
 text-shadow: 0px 0px 0px rgb(89,89,89);
+
 -webkit-border-radius: 6px;
 -moz-border-radius: 6px;
 border-radius: 6px;
+
 -moz-box-shadow: inset -2px 2px 69px 0px rgb(255, 255, 255);
 -webkit-box-shadow: inset -2px 2px 69px 0px rgb(255, 255, 255);
 box-shadow: inset -2px 2px 69px 0px rgb(255, 255, 255);
+
    }
 .divdata2 {
   width: 35px;
 height: 13px;
+
 padding: 3px;
+
 -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=63)";
 filter: alpha(opacity=63);
 -moz-opacity: 0.63;
 -khtml-opacity: 0.63;
 opacity: 0.63;
+
 -webkit-box-sizing: content-box;
 -moz-box-sizing: content-box;
 box-sizing: content-box;
+
 background: rgb(255, 123, 0);
+
 color: rgb(1, 1, 1);
 font-size: 14px auto;
 font-weight: bold;
@@ -91,13 +111,17 @@ font-family: 'Times New Roman', Times, serif;
 font-style: normal;
 text-decoration: blink;
 text-align: center;
+
 line-height: 1.2em;
 letter-spacing: 0em;
 text-shadow: 1px 0px 0px rgb(0, 0, 0);
+
 -webkit-border-radius: 4px;
 -moz-border-radius: 4px;
 border-radius: 4px;
+
 }
+
 /*first paragraph*/
 .text_title2
 {
@@ -106,6 +130,7 @@ font-size: 16px;
 background-color: rgb(255, 255, 255);
 text-shadow: rgb(150, 150, 150) 1px 1px 0px, rgb(171, 168, 168) 1px 1px 1px;
 }
+
 .command_text
 {
 color: rgb(247, 148, 19);
@@ -113,6 +138,9 @@ font-size: 16px;
 background-color: rgb(255, 255, 255);
 text-shadow: rgba(255, 255, 255, 0.2) 3px 2px 3px;
 }
+
+
+
 /*text in the title*/
 .div_text_shadow
 {
@@ -121,11 +149,14 @@ font-size: 50px;
 background-color: rgb(255, 123, 0);
 text-shadow: rgb(31, 17, 7) 4px 4px 4px;
 }
+
 .css-input { border-style:solid; padding:5px; font-size:14px; border-width:0px; border-radius:50px; background-color:#FF9B17; border-color:#060504; color:#060504; box-shadow: 1px 0px 9px 0px rgba(16,53,201,.33); text-shadow:0px 0px 0px rgba(0,0,51,.82); font-weight:bold; font-style:italic; font-family:serif;  }
 .css-input:focus { outline:none; }
+
 .font-text{
   color: rgb(245, 29, 22);
 }
+
 .font-text1{
   color: rgb(0, 0, 0);
 }
@@ -134,11 +165,15 @@ text-shadow: rgb(31, 17, 7) 4px 4px 4px;
   background-color: rgb(230, 195, 163);
   font-size: 12px;
   }
+
   .error_mes{
     border: 0px solid black;
     background-color: rgb(230, 195, 163);
-    font-size: 9px;
+    font-size: 12px;
     }
+
+
+
  </style>
  <h2 class='div_text_shadow' align="center";> Your right numbers here!!!</h2><br/><br/><br/>
  <table class="tg" width="100%" align="left";>
@@ -206,15 +241,19 @@ text-shadow: rgb(31, 17, 7) 4px 4px 4px;
 
  </table>
       <script>
+
 document.getElementById('disclaimer').onclick=function(event){
-var disclmes = "<table class='disclaimer_table'><tr><th>The information contained in this website is for general information purposes only. The information is provided by us and while we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is therefore strictly at your own risk.<br/> In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.<br/> Through this website you are able to link to other websites which are not under the control of us. We have no control over the nature, content and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them.<br/>Every effort is made to keep the website up and running smoothly. However, we take no responsibility for, and will not be liable for, the website being temporarily unavailable due to technical issues beyond our control.</th></tr></table>";
+  var disclmes = "<table class='disclaimer_table'><tr><th>The information contained in this website is for general information purposes only. The information is provided by us and while we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is therefore strictly at your own risk.<br/> In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.<br/> Through this website you are able to link to other websites which are not under the control of us. We have no control over the nature, content and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them.<br/>Every effort is made to keep the website up and running smoothly. However, we take no responsibility for, and will not be liable for, the website being temporarily unavailable due to technical issues beyond our control.</th></tr></table>";
 document.getElementById("discmes").innerHTML=(disclmes);
 document.getElementById('discmes').className="show";
 }
+
 document.getElementById('discmes').onclick=function(event){
 document.getElementById('discmes').className="hidden";
 }
+
       console.log(math.sqrt(4));
+
       // find info which we've typed in the forms
       //elems
       var lol = document.getElementById('lolz');
@@ -222,53 +261,66 @@ document.getElementById('discmes').className="hidden";
       var dol = document.getElementById('dolz');
       //combinations
       var mol = document.getElementById('molz');
-
-
+      // assign to variables data which was gotten by input form
       function getOurData() {
         //numbers in case
 
 
-        // assign to variables data which was gotten by input form
-        if (lol.value < 8 && lol.value > 0){
-          var elems = lol.value;
-          console.log(elems);
-        } else {
-          var respond1 = "<table class='error_mes' id='respond01'><tr><th>Number of elements must be equal or less 7!</th></tr></table>";
-         document.getElementById("error1").innerHTML=(respond1);
-         document.getElementById('error1').className="show";
-         function alertMessage1(){
-         document.getElementById('respond01').className="hidden";
-        }
-        setTimeout(function() { alertMessage1() }, 5000);
-        }
+       if (lol.value < 8 && lol.value > 0){
+         var elems = lol.value;
+         console.log(elems);
+       } else {
+         var respond1 = "<table class='error_mes' id='respond01'><tr><th>Number of elements must be equal or less 7!</th></tr></table>";
+        var  elems = null;
+        var sizeNum = null;
+        var  choice = null;
+        document.getElementById("error1").innerHTML=(respond1);
+        document.getElementById('error1').className="show";
+        function alertMessage1(){
+        document.getElementById('respond01').className="hidden";
+      }
+       setTimeout(function() { alertMessage1() }, 5000);
+
+}
 
 
-        if  (dol.value < 50){
-        var sizeNum = dol.value;
-        console.log(sizeNum);
-        } else {
-        var respond2 = "<table class='error_mes' id='respond02'><tr><th>Row of lottery must be less or equal 49 and more than number of elements !</th></tr></table>";
-        document.getElementById("error2").innerHTML=(respond2);
-        document.getElementById('error2').className="show";
-        function alertMessage2(){
-        document.getElementById('respond02').className="hidden";
-        }
-        setTimeout(function() { alertMessage2() }, 5000);
- }
 
 
-        if (mol.value < 101){
-         var choice = mol.value;
-         console.log(choice);
-        } else {
-        var respond3 = "<table class='error_mes' id='respond03'><tr><th>Number of combinations must be equal or less 100!</th></tr></table>";
-        document.getElementById("error3").innerHTML=(respond3);
-        document.getElementById('error3').className="show";
-        function alertMessage3(){
-        document.getElementById('respond03').className="hidden";
-        }
-        setTimeout(function() { alertMessage3() }, 5000);
-        }
+if  (dol.value < 50 &&  dol.value > lol.value){
+  var sizeNum = dol.value;
+  console.log(sizeNum);
+} else {
+var respond2 = "<table class='error_mes' id='respond02'><tr><th>Row of lottery must be less or equal 49 and more than number of elements !</th></tr></table>";
+var  elems = null;
+var sizeNum = null;
+var  choice = null;
+document.getElementById("error2").innerHTML=(respond2);
+document.getElementById('error2').className="show";
+function alertMessage2(){
+document.getElementById('respond02').className="hidden";
+}
+setTimeout(function() { alertMessage2() }, 5000);
+}
+
+
+
+      if (mol.value < 101){
+        var choice = mol.value;
+        console.log(choice);
+      } else {
+      var respond3 = "<table class='error_mes' id='respond03'><tr><th>Number of combinations must be equal or less 100!</th></tr></table>";
+      var  elems = null;
+      var sizeNum = null;
+      var  choice = null;
+      document.getElementById("error3").innerHTML=(respond3);
+      document.getElementById('error3').className="show";
+      function alertMessage3(){
+      document.getElementById('respond03').className="hidden";
+    }
+     setTimeout(function() { alertMessage3() }, 5000);
+
+}
+
 
 
 ///////clear the input fields ////////
@@ -279,24 +331,19 @@ document.getElementById('discmes').className="hidden";
      }
    }
 
-   if(elems > sizeNum){
-    elems = 6;
-    sizeNum = 49;
-     var respond4 = "<table class='error_mes' id='respond04'><tr><th>Row of lottery must be more than number of elements! </th></tr></table>";
-     document.getElementById("error2").innerHTML=(respond4);
-     document.getElementById('error2').className="show";
-     function alertMessage4(){
-     document.getElementById('respond04').className="hidden";
-     }
-     setTimeout(function() { alertMessage4() }, 7000);
 
-   }
+
+
+
+
+
 /////////////for debugging////
       // var elems = 6;
        // number of cases
       // var choice = 20;
       //size of row of numb
       // var sizeNum = 49;
+
 //////////////////////////////
 
     function numb649(){
@@ -315,6 +362,7 @@ document.getElementById('discmes').className="hidden";
         i = chodarray.length;
         }
         // sort our elem in array
+
          /// math part this my variation filter, throws away the combinations with index lower than 0.33
          var averrow = math.std(chodarray)/((sizeNum-1)/2);
          var averrow = Math.round(averrow*100)/100;
@@ -326,6 +374,7 @@ document.getElementById('discmes').className="hidden";
          console.log(averrow);
          return chodarray;
        }
+
         function numb649array(){
         // create array to which we input our chodarray elems
         var str1 = [];
@@ -341,50 +390,67 @@ document.getElementById('discmes').className="hidden";
         });
         j = str1.length;
         // var numbid = 1;
+
         return str1;
       }
+
     // assing data from the function to the var
       var str1 = numb649array();
   // copy array because we need different format of outputs
       var array2 = str1.slice();
+
    // modify our str1 array because i need a view, not only numbers
       for(l=0; l<str1.length; l++){
         str1[l] = "<div class='divdata2'>" + (l+1) +"</div><br/><div class='divdata'>" + str1[l] + "</div>";
       }
+
       // use console for check
      console.log(array2.join(""));
      console.log(str1);
+
+
      // display length of array
       var mu = str1.length;
     // we'll show it in your screen
       var du = str1.join("<br/>");
       // we'll send it to your txt file
       var pu = array2.join("\n");
+
+
       // how many unique elems do we have
       console.log(mu);
       // display result on html in form
      document.getElementById("place1").innerHTML=(du);
+
+
 //////////////////// that's how we've created filr and put there all our data
+
      (function () {
  var textFile = null,
    makeTextFile = function (text) {
      var data = new Blob([text], {type: 'text/plain'});
+
      // If we are replacing a previously generated file we need to
      // manually revoke the object URL to avoid memory leaks.
      if (textFile !== null) {
        window.URL.revokeObjectURL(textFile);
      }
+
      textFile = window.URL.createObjectURL(data);
+
      return textFile;
    };
+
+
    create.addEventListener('click', function () {
      var link = document.getElementById('downloadlink');
     link.href = makeTextFile(pu);
     link.style.display = 'block';
    }, false);
  })();
+   }
 
-}
+
    </script>
 </body>
 
