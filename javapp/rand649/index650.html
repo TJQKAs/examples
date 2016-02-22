@@ -165,6 +165,14 @@ text-shadow: rgb(31, 17, 7) 4px 4px 4px;
   font-size: 12px;
   }
 
+  .error_mes{
+    border: 0px solid black;
+    background-color: rgb(230, 195, 163);
+    font-size: 12px;
+    }
+
+
+
  </style>
  <h2 class='div_text_shadow' align="center";> Your right numbers here!!!</h2><br/><br/><br/>
  <table class="tg" width="100%" align="left";>
@@ -261,7 +269,7 @@ document.getElementById('discmes').className="hidden";
          var elems = lol.value;
          console.log(elems);
        } else {
-         var respond1 = "<table class='disclaimer_table' id='respond01'><tr><th>Number of elements must be equal or less 7!</th></tr></table>";
+         var respond1 = "<table class='error_mes' id='respond01'><tr><th>Number of elements must be equal or less 7!</th></tr></table>";
         var  elems = null;
         var sizeNum = null;
         var  choice = null;
@@ -277,11 +285,11 @@ document.getElementById('discmes').className="hidden";
 
 
 
-if  (dol.value < 50 || dol.value > lol.value){
+if  (dol.value < 50 &&  dol.value > lol.value){
   var sizeNum = dol.value;
   console.log(sizeNum);
 } else {
-var respond2 = "<table class='disclaimer_table' id='respond02'><tr><th>Row of lottery must be less or equal 49 and more than number of elements !</th></tr></table>";
+var respond2 = "<table class='error_mes' id='respond02'><tr><th>Row of lottery must be less or equal 49 and more than number of elements !</th></tr></table>";
 var  elems = null;
 var sizeNum = null;
 var  choice = null;
@@ -299,7 +307,7 @@ setTimeout(function() { alertMessage2() }, 5000);
         var choice = mol.value;
         console.log(choice);
       } else {
-      var respond3 = "<table class='disclaimer_table' id='respond03'><tr><th>Number of combinations must be equal or less 100!</th></tr></table>";
+      var respond3 = "<table class='error_mes' id='respond03'><tr><th>Number of combinations must be equal or less 100!</th></tr></table>";
       var  elems = null;
       var sizeNum = null;
       var  choice = null;
