@@ -1,7 +1,7 @@
 <!-- code describe conditon and display list of the choices which made by random function -->
 <!doctype html>
 <html lang="en">
-<title> Rignum - Right numbers! </title>
+<title> Rignum - Right numbers! Your lotto helper</title>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.7.0/math.min.js" type="text/javascript"></script>
@@ -11,6 +11,10 @@
  /*.tg  {border-collapse:collapse;border-spacing:0;}
  .tg td{font-family:Arial, sans-serif;font-size:14% auto;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
  .tg th{font-family:Arial, sans-serif;font-size:14% auto;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}*/
+body
+.hidden{display: none;}
+.show{display:inline !important;}
+
  .tg .tg-yw4l{vertical-align:top}
  .col-sm-5 { width: 41.66666666666667%;
    }
@@ -145,11 +149,21 @@ background-color: rgb(255, 123, 0);
 text-shadow: rgb(31, 17, 7) 4px 4px 4px;
 }
 
-.css-input { border-style:solid; padding:5px; font-size:14px; border-width:3px; border-radius:50px; background-color:#FF9B17; border-color:#060504; color:#060504; box-shadow: 1px 0px 9px 0px rgba(16,53,201,.33); text-shadow:0px 0px 0px rgba(0,0,51,.82); font-weight:bold; font-style:italic; font-family:serif;  }
+.css-input { border-style:solid; padding:5px; font-size:14px; border-width:0px; border-radius:50px; background-color:#FF9B17; border-color:#060504; color:#060504; box-shadow: 1px 0px 9px 0px rgba(16,53,201,.33); text-shadow:0px 0px 0px rgba(0,0,51,.82); font-weight:bold; font-style:italic; font-family:serif;  }
 .css-input:focus { outline:none; }
 
+.font-text{
+  color: rgb(245, 29, 22);
+}
 
-
+.font-text1{
+  color: rgb(0, 0, 0);
+}
+.disclaimer_table{
+  border: 3px solid black;
+  background-color: rgb(230, 195, 163);
+  font-size: 12px;
+  }
 
  </style>
  <h2 class='div_text_shadow' align="center";> Your right numbers here!!!</h2><br/><br/><br/>
@@ -161,18 +175,24 @@ text-shadow: rgb(31, 17, 7) 4px 4px 4px;
      </th>
      <th class="tg-yw4l" width="38%">
        <p class="text_title2">We are glad to see you dear guest on this website. Look the news about your local lottery.
-       What is the jackpot today? Maybe a couple of hundreds millions, maybe not.</p><br/><br/>
+       What is the jackpot today? <br/>Maybe a couple of hundreds millions, maybe not, we just offer you to
+       try our  generator of numbers, but read our <a class="font-text" id="disclaimer">Disclaimer</a>
+       <span id="discmes"  hidden><br/><br/><a id="discmesh"></a><br/><br></span> before, and then: </p><br/>
 
-       <p class="command_text">1. Fill the quantity of the numbers which you should guess.<br/><br/>
+       <p class="command_text">1. Fill the quantity of  numbers which you should guess.<br/><br/>
 
        2. Fill the quantity of numbers of the row, which the lottery has.<br/><br/>
-       3. Fill the number of combinations which you are going to get, then push <em>"Get your combinations"</em>, to see it.<br/><br/>
+       3. Fill the number of combinations which you are going to get, then push <em class="font-text">"Get your combinations"</em>, to see it.<br/><br/>
 
-       4. Push <em>"Create file"</em> and<em> "Download"</em> to get your combinations in "txt" file. <br/><br/>
+       4. Push <em class="font-text">"Create file"</em> and<em class="font-text"> "Download"</em> to get your combinations in "txt" file. <br/><br/>
 
-       5. Join the lottery with the Right Numbers and get the Prize! </p><br/>
+       5. Join your lottery with the<em class="font-text"> Right Numbers</em> and get the Prize! </p><br/>
 
-       <p align="center" class="text_title2">Well, maybe not right now,</br> we just multiply your luck!!!</p><br/><br/>
+       <p align="center" class="text_title2">Well, maybe not right now,</br> we just multiply your luck!!!</p><br/><br/><br/><br/>
+
+       <h6 align="center">
+       <a class="font-text1" href="https://github.com/TJQKAs">created by "TJQKAs"</a>
+       </h6>
 
      </th>
      <th class="tg-yw4l" width="2%">
@@ -180,10 +200,13 @@ text-shadow: rgb(31, 17, 7) 4px 4px 4px;
      <th class="tg-yw4l" width="30%">
 
        <form> Number of elements (for example 6,  max - 7):<br/>
+         <span id="error1" hidden></span>
          <input class='css-input' type="number" name="quantity" class="enter" value="" placeholder="Type numb of elem..." id="lolz"/></br>
           from the row of the lottery (for example 49, max - 49):<br/>
+          <span id="error2" hidden></span>
          <input class='css-input' type="number" name="quantity" class="enter" value="" placeholder="Type size of numb row..." id="dolz"/></br>
           Amount of combinations (for example 20, max - 100):<br/>
+          <span id="error3" hidden></span>
          <input class='css-input' type="number" name="quantity" class="enter" value="" placeholder="Type numb of comb..." id="molz"/><br/><br/>
          <input type="button" class="btn" value="Get your combinations" OnClick="getOurData()"/>
    </form><br/>
@@ -206,40 +229,89 @@ text-shadow: rgb(31, 17, 7) 4px 4px 4px;
 
      </th>
    </tr>
+
  </table>
       <script>
+
+document.getElementById('disclaimer').onclick=function(event){
+  var disclmes = "<table class='disclaimer_table'><tr><th>The information contained in this website is for general information purposes only. The information is provided by us and while we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is therefore strictly at your own risk.<br/> In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.<br/> Through this website you are able to link to other websites which are not under the control of us. We have no control over the nature, content and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them.<br/>Every effort is made to keep the website up and running smoothly. However, we take no responsibility for, and will not be liable for, the website being temporarily unavailable due to technical issues beyond our control.</th></tr></table>";
+document.getElementById("discmes").innerHTML=(disclmes);
+document.getElementById('discmes').className="show";
+}
+
+document.getElementById('discmes').onclick=function(event){
+document.getElementById('discmes').className="hidden";
+}
 
       console.log(math.sqrt(4));
 
       // find info which we've typed in the forms
+      //elems
       var lol = document.getElementById('lolz');
+      //row
       var dol = document.getElementById('dolz');
+      //combinations
       var mol = document.getElementById('molz');
       // assign to variables data which was gotten by input form
       function getOurData() {
         //numbers in case
-        if (lol.value < 8){
-        var elems = lol.value;
-      } else
-      {
-        alert("Please, set the size of combination less than 8!");
+
+
+       if (lol.value < 8 && lol.value > 0){
+         var elems = lol.value;
+         console.log(elems);
+       } else {
+         var respond1 = "<table class='disclaimer_table' id='respond01'><tr><th>Number of elements must be equal or less 7!</th></tr></table>";
+        var  elems = null;
+        var sizeNum = null;
+        var  choice = null;
+        document.getElementById("error1").innerHTML=(respond1);
+        document.getElementById('error1').className="show";
+        function alertMessage1(){
+        document.getElementById('respond01').className="hidden";
       }
+       setTimeout(function() { alertMessage1() }, 5000);
+
+}
+
+
+
+
+if  (dol.value < 50 || dol.value > lol.value){
+  var sizeNum = dol.value;
+  console.log(sizeNum);
+} else {
+var respond2 = "<table class='disclaimer_table' id='respond02'><tr><th>Row of lottery must be less or equal 49 and more than number of elements !</th></tr></table>";
+var  elems = null;
+var sizeNum = null;
+var  choice = null;
+document.getElementById("error2").innerHTML=(respond2);
+document.getElementById('error2').className="show";
+function alertMessage2(){
+document.getElementById('respond02').className="hidden";
+}
+setTimeout(function() { alertMessage2() }, 5000);
+}
+
 
 
       if (mol.value < 101){
-      var choice = mol.value;
-    } else
-    {
-      alert("Please, set the number of combinations not more than 100!");
+        var choice = mol.value;
+        console.log(choice);
+      } else {
+      var respond3 = "<table class='disclaimer_table' id='respond03'><tr><th>Number of combinations must be equal or less 100!</th></tr></table>";
+      var  elems = null;
+      var sizeNum = null;
+      var  choice = null;
+      document.getElementById("error3").innerHTML=(respond3);
+      document.getElementById('error3').className="show";
+      function alertMessage3(){
+      document.getElementById('respond03').className="hidden";
     }
+     setTimeout(function() { alertMessage3() }, 5000);
 
+}
 
-     if (dol.value < 50){
-      var sizeNum = dol.value;
-   }  else
-   {
-    alert("Please, set the row of lottery less or equal 49!");
-   }
 
 
 ///////clear the input fields ////////
@@ -373,7 +445,5 @@ text-shadow: rgb(31, 17, 7) 4px 4px 4px;
    </script>
 </body>
 
-<h6 align="center">
-created by "TJQKAs"
-</h6>
+
 </html>
