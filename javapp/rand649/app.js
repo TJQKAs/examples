@@ -64,7 +64,7 @@ document.getElementById('discmes').className="hidden";
         }
         setTimeout(function() { alertMessage3() }, 5000);
         }
- 
+
 
 ///////clear the input fields ////////
    var inputElements = document.getElementsByTagName('input');
@@ -146,7 +146,7 @@ document.getElementById('discmes').className="hidden";
     // we'll show it in your screen
       var du = str1.join("<br/>");
       // we'll send it to your txt file
-      var pu = array2.join("\n");
+      var pu = array2.join(";    \n");
       // how many unique elems do we have
       console.log(mu);
       // display result on html in form
