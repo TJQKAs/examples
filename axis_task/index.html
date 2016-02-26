@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
 
 <style type="text/css">
+.hidden{display: none;}
+.show{display:inline !important;}
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
@@ -13,7 +19,8 @@
 </style>
 <table  width="900" heigth="600" class="tg">
   <tr>
-    <td class="tg-yw4l" height="33%">statement</td>
+    <td class="tg-yw4l" height="33%" align="center">statement <span>7</span><span> + 4 = </span>
+      <input type="number" name="quantity" min="11" max="14" placeholder="?"></td>
   </tr>
   <table class="tg">
   <tr>input forms
@@ -21,11 +28,23 @@
     <th class="tg-yw4l" width=35px height="30px">2</th>
     <th class="tg-yw4l" width=35px height="30px">3</th>
     <th class="tg-yw4l" width=35px height="30px">4</th>
-    <th class="tg-yw4l" width=35px height="30px">5</th>
+    <th class="tg-yw4l" width=35px height="30px">5
+
+      <form action="#">
+        <input type="number" name="quantity" id="firstNum" onchange="getElems()" min="6" max="9">
+      </form>
+
+    </th>
     <th class="tg-yw4l" width=35px height="30px">6</th>
     <th class="tg-yw4l" width=35px height="30px">7</th>
     <th class="tg-yw4l" width=35px height="30px">8</th>
-    <th class="tg-yw4l" width=35px height="30px">9</th>
+    <th class="tg-yw4l" width=35px height="30px">9
+
+      <form action="#">
+        <input type="number" name="quantity" id="secondNum" min="1" max="9">
+      </form>
+
+    </th>
     <th class="tg-yw4l" width=35px height="30px">10</th>
     <th class="tg-yw4l" width=35px height="30px">11</th>
     <th class="tg-yw4l" width=35px height="30px">12</th>
@@ -41,9 +60,9 @@
 </table>
   <tr>
     <td class="tg-031e" height="34%">
-      <canvas id="myCanvas" width="450" height="100" style="border:2px solid #d3d3d3;">
+      <canvas id="myCanvas" width="310" height="100" style="border:0px solid #d3d3d3;">
       Your browser does not support the HTML5 canvas tag.</canvas>
-      <canvas id="myCanvas1" width="450" height="100" style="border:2px solid #d3d3d3;">
+      <canvas id="myCanvas1" width="450" height="100" style="border:0px solid #d3d3d3;">
       Your browser does not support the HTML5 canvas tag.</canvas>
     </th>
   </tr>
@@ -60,24 +79,34 @@
 
 
 
-  <script>
+  <script type="text/javascript">
+  // $("document").ready(function(){
+
+
+       function getElems(){
+       var first = document.getElementById('firstNum');
+      //  var second = document.getElementById('secondNum');
+       console.log(first.value);
+      //  console.log(second);
+}
+
 
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
   ctx.beginPath();
-  ctx.moveTo(20, 100);
-  ctx.bezierCurveTo(20, -25, 200, -25, 200, 100);
+  ctx.moveTo(35, 100);
+  ctx.bezierCurveTo(35, -25, 310, -25, 310, 100);
   ctx.stroke();
 
 
-  var d = document.getElementById("myCanvas");
+  var d = document.getElementById("myCanvas1");
   var ctx = d.getContext("2d");
   ctx.beginPath();
-  ctx.moveTo(200, 100);
-  ctx.bezierCurveTo(200, -25, 400, -25, 400, 100);
+  ctx.moveTo(0, 100);
+  ctx.bezierCurveTo(0,15, 150, 15, 150, 100);
   ctx.stroke();
 
-
+// });
 
   </script>
 
