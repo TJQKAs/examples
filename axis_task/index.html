@@ -16,11 +16,22 @@
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg .tg-yw4l{vertical-align:top}
+
+input.formInvalid::-webkit-input-placeholder {
+   color: red;
+}
+input.formInvalid1::-webkit-input-placeholder {
+   color: green;
+}
+
+
 </style>
 <table  width="900" heigth="600" class="tg">
   <tr>
-    <td class="tg-yw4l" height="33%" align="center">statement <span>7</span><span> + 4 = </span>
-      <input type="number" name="quantity" min="11" max="14" placeholder="?"></td>
+    <td class="tg-yw4l" height="33%" align="center">statement <span id="seven">7</span> + <span id="four">4 </span> = <span id="questionM"  className="show"> ?</span>
+       <input type="number" name="number" id="thirdNum" onchange="getElems3()" min="11" max="14" style="display:none">
+     <span id="rightAns" style="display: none">14 Поздравляю!!! Все ответы правильные.</span>
+    </td>
   </tr>
   <table class="tg">
   <tr>input forms
@@ -31,9 +42,9 @@
     <th class="tg-yw4l" width=35px height="30px">5
 
       <form action="#">
-        <input type="number" name="quantity" id="firstNum" onchange="getElems()" min="6" max="9">
+        <input type="number" name="number" id="firstNum" className="show" onchange="getElems()" min="6" max="9">
       </form>
-
+       <span  id="rightNum"  style="display: none" >7</span>
     </th>
     <th class="tg-yw4l" width=35px height="30px">6</th>
     <th class="tg-yw4l" width=35px height="30px">7</th>
@@ -41,7 +52,8 @@
     <th class="tg-yw4l" width=35px height="30px">9
 
       <form action="#">
-        <input type="number" name="quantity" id="secondNum" min="1" max="9">
+        <input type="number" name="number" id="secondNum" onchange="getElems2()"  min="1" max="9" style="display: none" >
+        <span  id="rightNumS"  style="display: none" >4</span>
       </form>
 
     </th>
@@ -62,7 +74,7 @@
     <td class="tg-031e" height="34%">
       <canvas id="myCanvas" width="310" height="100" style="border:0px solid #d3d3d3;">
       Your browser does not support the HTML5 canvas tag.</canvas>
-      <canvas id="myCanvas1" width="450" height="100" style="border:0px solid #d3d3d3;">
+      <canvas id="myCanvas1" width="450" height="100" style="display: none">
       Your browser does not support the HTML5 canvas tag.</canvas>
     </th>
   </tr>
@@ -74,11 +86,6 @@
 </table>
 
 
-
-
-
-
-
   <script type="text/javascript">
   // $("document").ready(function(){
 
@@ -86,9 +93,45 @@
        function getElems(){
        var first = document.getElementById('firstNum');
       //  var second = document.getElementById('secondNum');
-       console.log(first.value);
-      //  console.log(second);
+      if (first.value != 7) {
+        document.getElementById('seven').style.backgroundColor = "#990000";
+            console.log(first.value);
+      } else {
+        document.getElementById('seven').style.backgroundColor = "#50c905";
+        document.getElementById('firstNum').className='hidden';
+        document.getElementById('rightNum').className='show';
+        document.getElementById('secondNum').className='show';
+        document.getElementById('myCanvas1').className='show';
+        setTimeout(function(){document.getElementById('seven').style.backgroundColor = "#fefefe"}, 3000);
+        console.log(first.value);
+      }
 }
+      function getElems2(){
+            var second = document.getElementById('secondNum');
+            if (second.value !=4) {
+              document.getElementById('four').style.backgroundColor = "#990000";
+            }
+            else {
+              document.getElementById('four').style.backgroundColor = "#50c905";
+                document.getElementById('secondNum').className='hidden';
+                  document.getElementById('rightNumS').className='show';
+                  document.getElementById('questionM').className='hidden';
+                  document.getElementById('thirdNum').className="show";
+                    setTimeout(function(){document.getElementById('four').style.backgroundColor = "#fefefe"}, 3000);
+}
+}
+
+      //  console.log(second);
+      function getElems3(){
+            var third = document.getElementById('thirdNum');
+             if (third.value !=11) {
+      document.getElementById("thirdNum").style.color = "red";
+      }
+      else {
+              document.getElementById("thirdNum").className="hidden";
+                document.getElementById('rightAns').className='show';
+      }
+    }
 
 
   var c = document.getElementById("myCanvas");
