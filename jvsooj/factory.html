@@ -27,8 +27,26 @@ var person2 = peopleFactory("Bill","32","Madrid", 1500, 10000);
 
 person1.displayAll();
 person2.displayAll();
-// person1.display();
-// person2.display();
+
+/// constructor
+
+var carConstructor = function(type, horsePower, speed, price, taxRate){
+  this.type = type;
+  this.horsePower = horsePower;
+  this.speed = speed;
+  this.price = parseInt(price);
+  this.taxRate = parseInt(taxRate) ;
+  this.totalPrice =  this.price*(1+(this.taxRate/100));
+  this.displays = function(){
+      document.write(this.type + " , " + this.horsePower + " , " + this.speed + " , " + this.price + " , " + this.taxRate + " , " + this.totalPrice + "<br/>");
+    };
+};
+var audi = new carConstructor("AUDI S8","420","315","100000","34");
+var ferrari = new carConstructor("Ferrari F40","478","324","700000","36");
+audi.displays();
+ferrari.displays();
+
+/// create objects by prototypesx
 
   </script>
 </body>
