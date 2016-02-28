@@ -47,6 +47,60 @@ audi.displays();
 ferrari.displays();
 
 /// create objects by prototypesx
+// we have empty object
+var interceptor = function(){
+};
+// document.write(interceptor);
+// we add some properies by using protoypes
+interceptor.prototype.model = "not defined";
+interceptor.prototype.maxSpeed = 0;
+interceptor.prototype.maxLongFly = 0;
+interceptor.prototype.maxQRockets = 0;
+interceptor.prototype.displayscreen = function(){
+  document.write("model : " + this.model + " MaxSpeed : " + this.maxSpeed + " Max Long Fly : " + this.maxLongFly + "<br/>" +  "Max rockets : " + this.maxQRockets) + "<br/>";
+};
+// set new parametrs for new var
+var mig31 = new interceptor();
+interceptor.prototype.model = "with two engines";
+interceptor.prototype.maxSpeed = 2450;
+interceptor.prototype.maxLongFly = 2500;
+interceptor.prototype.maxQRockets = 10;
+mig31.displayscreen();
+
+//Base class
+var Job = function(){
+  this.pays = true;
+};
+//Protoype method whichwe add to base class
+Job.prototype.showAll = function(){
+  document.write(this.pays ? '<br/>' + 'Please hire me' : '<br/>' + 'No thank you' + '<br/>');
+};
+// subclass
+var techJob = function(title, pays){
+  // 1)  call base Job class with all props line 71
+  Job.call(this);
+  this.title = title;
+  this.pays = pays;
+};
+
+//2)  inhering from prototype Job.protoype all properies line 75
+techJob.prototype = Object.create(Job.prototype);
+// 3) set a constructor techJob line 79
+techJob.prototype.constructor = techJob;
+
+// overwrite method showAll from Job.protoype
+techJob.prototype.showAll = function(){
+  document.write(this.pays ? "<br/>" + this.title + " is a great job, I've waited it for 2 years" + "<br/>" : "<br/>" + "Unfortunately I should reject this offer" + "<br/>");
+};
+
+
+var softCoder = new techJob("javascript",true);
+var lazyCoder = new techJob('Not defined',false);
+
+softCoder.showAll();
+lazyCoder.showAll();
+
+
 
   </script>
 </body>
