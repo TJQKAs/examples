@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+</head><body>
+  <script type="text/javascript">
+
+// factory with 3 parametres which
+var peopleFactory = function(name, age, location, salary, debt){
+// object
+  var temp = {};
+  //parametrs
+  temp.age = age;
+  temp.name = name;
+  temp.location = location;
+  temp.salary = parseInt(salary);
+  temp.debt = parseInt(debt);
+  temp.money = salary*12 - debt;
+  temp.displayAll = function(){
+  document.write(this.name + " , " + this.age + " , " + this.location + " , " + this.salary + " , " + this.debt + " , " + this.money + "<br/>");
+  }
+return temp;
+};
+
+var person1 = peopleFactory("John","22","Juarez", 2500, 28000);
+var person2 = peopleFactory("Bill","32","Madrid", 1500, 10000);
+
+person1.displayAll();
+person2.displayAll();
+// person1.display();
+// person2.display();
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- //
+// function displayAll(){
+//   var temp  =  peopleFactory();
+//           var keys = Object.keys(temp);
+//           for (var i = 0; i < keys.length; i++) {
+//   var val = temp[keys[i]];
+//   console.log(val);
+//   document.write(val, "<br/>");
+// };
+// }; -->
