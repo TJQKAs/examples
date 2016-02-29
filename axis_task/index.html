@@ -15,6 +15,10 @@
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg .tg-yw4l{vertical-align:top}
 
+input, select, textarea{
+    color: #da1616;
+}
+
 input.formInvalid::-webkit-input-placeholder {
    color: red;
 }
@@ -25,7 +29,7 @@ input.formInvalid1::-webkit-input-placeholder {
 <table  width="900" heigth="600" class="tg">
   <tr>
     <td class="tg-yw4l" height="33%" align="center">Подставьте корректные числа  в выражение: <br/><br/> <span id="seven">7</span> + <span id="four">4 </span> = <span id="questionM"  className="show"> ?</span>
-       <input type="number" name="number" id="thirdNum" onchange="getElems3()" min="11" max="14" style="display:none">
+       <input type="number" name="number" id="thirdNum"  onchange="getElems3()" min="11" max="14" style="display:none">
      <span id="rightAns" style="display: none">14  <br/><br/>Поздравляю!!! Все ответы правильные.</span>
      <br/><br/><br/><br/><br/>
     </td>
@@ -38,8 +42,8 @@ input.formInvalid1::-webkit-input-placeholder {
     <th class="tg-yw4l" width=35px height="30px"></th>
     <th class="tg-yw4l" width=35px height="30px">
 
-      <form action="#">
-        <input type="number" name="number" id="firstNum" className="show" onchange="getElems()" min="6" max="9">
+      <form action="#" onsubmit='return false'>
+        <input type="number" name="number"   id="firstNum"  className="show" onchange="getElems()" min="6" max="9">
       </form>
        <span  id="rightNum"  style="display: none" >7</span>
     </th>
@@ -50,8 +54,8 @@ input.formInvalid1::-webkit-input-placeholder {
     <th class="tg-yw4l" width=35px height="30px"></th>
     <th class="tg-yw4l" width=35px height="30px">
 
-      <form action="#">
-        <input type="number" name="number" id="secondNum" onchange="getElems2()"  min="1" max="9" style="display: none" >
+      <form action="#" onsubmit='return false' >
+        <input type="number" name="number"  id="secondNum"  onchange="getElems2()"  min="1" max="9" style="display: none" >
         <span  id="rightNumS"  style="display: none" >4</span>
       </form>
 
@@ -79,7 +83,7 @@ input.formInvalid1::-webkit-input-placeholder {
   </tr>
   <tr>
     <td class="tg-yw4l" height="33%">
-   <img src="sprite.png" alt="Sprite" style="width:875px;height:75px;">
+   <img src="sprite.png" alt="Sprite" style="width:875px;height:75px; display:block">
     </td>
   </tr>
 </table>
@@ -88,12 +92,21 @@ input.formInvalid1::-webkit-input-placeholder {
   <script type="text/javascript">
   // $("document").ready(function(){
 
+  // function stopRKey(evt) {
+  //   var evt = (evt) ? evt : ((event) ? event : null);
+  //   var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+  //   if ((evt.keyCode == 13))  {return false;}
+  // }
+  //
+  // document.onkeypress = stopRKey;
+
+
 
        function getElems(){
        var first = document.getElementById('firstNum');
       //  var second = document.getElementById('secondNum');
       if (first.value != 7) {
-        document.getElementById('seven').style.backgroundColor = "#990000";
+        document.getElementById('seven').style.backgroundColor = "#dd1616";
             console.log(first.value);
       } else {
         document.getElementById('seven').style.backgroundColor = "#50c905";
@@ -108,7 +121,7 @@ input.formInvalid1::-webkit-input-placeholder {
       function getElems2(){
             var second = document.getElementById('secondNum');
             if (second.value !=4) {
-              document.getElementById('four').style.backgroundColor = "#990000";
+              document.getElementById('four').style.backgroundColor = "#fb3636";
             }
             else {
               document.getElementById('four').style.backgroundColor = "#50c905";
@@ -132,13 +145,60 @@ input.formInvalid1::-webkit-input-placeholder {
       }
     }
 
+  var can = document.getElementById('myCanvas');
+  var ctx = can.getContext('2d');
 
-  var c = document.getElementById("myCanvas");
-  var ctx = c.getContext("2d");
+  function drawArrowhead(locx, locy, angle, sizex, sizey) {
+    var hx = sizex / 2;
+    var hy = sizey / 2;
+  ctx.translate((locx ), (locy));
+  ctx.rotate(angle);
+  ctx.translate(-hx,-hy);
+
+    ctx.beginPath();
+  ctx.moveTo(0,0);
+  ctx.lineTo(0,1*sizey);
+  ctx.lineTo(1*sizex,1*hy);
+  ctx.closePath();
+  ctx.fill();
+  }
+
+  // returns radians
+  function findAngle(sx, sy, ex, ey) {
+    // make sx and sy at the zero point
+    return Math.atan((ey - sy) / (ex - sx));
+  }
+
+  var sx = 100;
+  var sy = -125;
+  var ex = 300;
+  var ey = 95;
+
   ctx.beginPath();
-  ctx.moveTo(35, 100);
-  ctx.bezierCurveTo(35, -25, 310, -25, 310, 100);
+  ctx.fillStyle = "rgb(2, 14, 10)";
+  ctx.moveTo(0,200);
+  ctx.quadraticCurveTo(sx, sy, ex, ey);
   ctx.stroke();
+
+  var ang = findAngle(sx, sy, ex, ey);
+  ctx.fillRect(ex, ey, 2, 2);
+  drawArrowhead(ex, ey, ang, 12, 12);
+
+
+
+
+
+
+
+
+
+  //
+  // var c = document.getElementById("myCanvas");
+  // var ctx = c.getContext("2d");
+  // ctx.beginPath();
+  // ctx.moveTo(35, 100);
+  // ctx.bezierCurveTo(35, -25, 310, -25, 310, 100);
+  // ctx.stroke();
 
 
   var d = document.getElementById("myCanvas1");
@@ -147,6 +207,10 @@ input.formInvalid1::-webkit-input-placeholder {
   ctx.moveTo(0, 100);
   ctx.bezierCurveTo(0,15, 150, 15, 150, 100);
   ctx.stroke();
+
+  var ang = findAngle(0, 0, 50, 250);
+  // ctx.fillRect(0, 0, 2, 2);
+  drawArrowhead(149, 94, ang, 12, 12);
 
 // });
 
