@@ -110,24 +110,22 @@ $("document").ready(function(){
   //shift left logo
   $("#logo2").css("float", "left");
   // paragraph 2 become green
-  $("#p_two").css("color", "green");
+  $("#p_two").css("color", "rgb(255, 24, 24)");
 
   //we can put background inside second paragraph
-  $("#p_two").css({
-    "background" : "url('13.jpg') repeat-y"
-  });
+  $("#p_two").css({"background" : "url('13.jpg') repeat-y"});
 
   // change all a-tag links changed color
-  $("a").css("color", "yellow");
+  $("a").css("color", "rgb(20, 226, 109)");
 
   // we change a-tag inside table-form into blue
-  $("#tableData a").css("color","blue");
+  $("#tableData a").css("color","rgb(151, 53, 237)");
 
   // we change a-tag ling to orange after em-tag
-  $("em + a").css("color","orange");
+  $("em + a").css("color","rgb(246, 229, 0)");
 
   //inside paragraph we change every em-tag
-  $("p > em").css("color","grey");
+  $("p > em").css("color","rgb(0, 48, 255)");
 
   //we third line in our Harry Porter list we change to brown
   $("#oListIndent li:nth-child(3)").css("color", "brown");
@@ -135,8 +133,8 @@ $("document").ready(function(){
   //select text with id name in list-item
   $("li[name]").html("'and the Goblet of Fire'");
 
-  // change  text value in input form
-  $("input[type='text']#yourName").val("Myname");
+  // set value as default in input form
+  $("input[type='text']#yourName").val("John");
 
   //find text which has a link to google and change it
   $("a[href*='google']").css("font-weight", "bolder");
