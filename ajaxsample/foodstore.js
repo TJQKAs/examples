@@ -19,12 +19,13 @@ var xmlHttp;
     }
 }
 
-if (!xmlHttp)
+if (!xmlHttp) {
 alert("can't create that object cause of some problem!");
-
-else
+}
+else {
   return xmlHttp;
   console.log(xmlHttp);
+}
 }
 // 2-Basic funciton!!!
 function firstLoad(){

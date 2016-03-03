@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <title></title>
+  </head>
+  <body>
+    <table class="table table-bordered">
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="col-xs-3">
+            <div id="panel1" class="panel panel-primary">
+              <div class="panel-heading" id="panelH1">
+                #panel1
+              </div>
+              <div class="panel-body">content
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div id="panel2" class="panel panel-primary">
+              <div class="panel-heading">
+                #panel2
+              </div>
+              <div class="panel-body">content
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div id="panel3" class="panel panel-primary">
+              <div class="panel-heading">
+                #panel3
+              </div>
+              <div class="panel-body">content
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div id="panel4" class="panel panel-primary">
+              <div class="panel-heading">
+                #panel4
+              </div>
+              <div class="panel-body">content
+              </div>
+            </div>
+          </div>
+          </td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+      </tr>
+    </table>
+   <script>
+    $(document).ready(function(){
+        // types of jquery animation
+       $('#panel1').hide(1300).delay(1500).show(1000).slideUp(2000).slideDown(2000).css({background:'rgb(107, 252, 27)'});
+      // change colors of background and font
+       $('#panelH1').css({background:'rgb(226, 81, 0)', color:'rgb(255, 207, 62)', 'font-weight':'bold'});
+  // jquery animation 
+      $('#panel2').fadeOut(1000).fadeToggle(1400).toggle(500).toggle(500).css({opacity:'0.8'});
+    });
+   </script>
+
+
+
+  </body>
+</html>
