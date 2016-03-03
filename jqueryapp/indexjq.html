@@ -11,7 +11,23 @@
   <body>
     <table class="table table-bordered">
       <tr>
-        <td>1</td>
+        <td>
+          <div class="container">
+            <div class="jumbotron" align= 'center';>
+              <h1>Jquery animation samples </h1>
+              <button id="btn1">#btn1</button>
+              <button id="btn2">#btn2</button>
+              <button id="btn3">#btn3</button>
+              <button id="btn4">#btn4</button>
+              <button class="panel-button" data-panelId="panel5">#btn5</button>
+              <button class="panel-button" data-panelId="panel6">#btn6</button>
+              <button class="panel-button" data-panelId="panel7">#btn7</button>
+              <button class="panel-button" data-panelId="panel8">#btn8</button>
+            </div>
+          </div>
+
+
+        </td>
         <td>2</td>
         <td>3</td>
       </tr>
@@ -56,6 +72,48 @@
               </div>
             </div>
           </div>
+
+          <div class="col-xs-3">
+            <div id="panel5" class="panel panel-primary">
+              <div class="panel-heading">
+                #panel5
+              </div>
+              <div class="panel-body">content
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div id="panel6" class="panel panel-primary">
+              <div class="panel-heading">
+                #panel6
+              </div>
+              <div class="panel-body">content
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div id="panel7" class="panel panel-primary">
+              <div class="panel-heading">
+                #panel7
+              </div>
+              <div class="panel-body">content
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div id="panel8" class="panel panel-primary">
+              <div class="panel-heading">
+                #panel8
+              </div>
+              <div class="panel-body">content
+              </div>
+            </div>
+          </div>
+
+
           </td>
       </tr>
       <tr>
@@ -70,8 +128,41 @@
        $('#panel1').hide(1300).delay(1500).show(1000).slideUp(2000).slideDown(2000).css({background:'rgb(107, 252, 27)'});
       // change colors of background and font
        $('#panelH1').css({background:'rgb(226, 81, 0)', color:'rgb(255, 207, 62)', 'font-weight':'bold'});
-  // jquery animation 
+  // jquery animation
       $('#panel2').fadeOut(1000).fadeToggle(1400).toggle(500).toggle(500).css({opacity:'0.8'});
+
+       // event listner - by mouse clicking to button
+          $('#btn1').on('click',function(){
+            $('#panel1').toggle(1000).css({background:'rgb(0, 83, 246)'});
+          });
+          //mouse over
+          $('#panel1').on('mouseover',function(){
+            $('#panel1').toggle(1000).css({background:'rgb(6, 208, 196)'});
+          });
+
+          $('#btn2').on('click',function(){
+            $('#panel2').css({background:'rgb(184, 1, 187)'});
+            $('#panel2 .panel-body').html('we change text by clicking');
+          });
+          $('#panel2').on('click',function(){
+            $('#panel2').css({background:'rgb(58, 157, 184)'});
+            $('#panel2 .panel-body').html('we returned it back');
+          });
+         /// DRY rule  for buttons 5,6,7,8
+         $('.panel-button').on('click', function(){
+           var content = "This is new content";
+            var panelId = $(this).attr('data-panelid');
+            $('#' + panelId).toggle(150);
+            $('#' + panelId + '  .panel-body').html(content);
+            console.log(content);
+         });
+
+
+
+
+
+
+
     });
    </script>
 
