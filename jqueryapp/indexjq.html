@@ -148,6 +148,16 @@
             $('#panel2').css({background:'rgb(58, 157, 184)'});
             $('#panel2 .panel-body').html('we returned it back');
           });
+
+          $('#btn3').on('click', function(){
+             $('#panel3').animate({
+               width : '150',
+               heigth : '150',
+               marginLeft : "0.6in",
+              fontSize : "2em",
+               borderWidth : "10px"
+             }, 1000);
+          });
          /// DRY rule  for buttons 5,6,7,8
          $('.panel-button').on('click', function(){
            var content = "This is new content";
