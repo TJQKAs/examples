@@ -164,6 +164,7 @@
             var panelId = $(this).attr('data-panelid');
             $('#' + panelId).toggle(150);
             $('#' + panelId + '  .panel-body').html(content);
+            $('#' + panelId).css({background:'rgb(71, 66, 131)'});
             console.log(content);
          });
 
