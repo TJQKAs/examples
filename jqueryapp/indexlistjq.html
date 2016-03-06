@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <title></title>
+    <style type="text/css">
+    .list{
+      list-style-type:square;
+      background-color: rgb(17, 113, 215);
+      color:rgb(169, 228, 59);
+    }
+    .special{
+      color:rgb(203, 2, 128);
+      font-style: oblique;
+      font-size: 14px;
+    }
+   .sublist{
+     font-size: 18px;
+     background-color: rgb(17, 215, 132);
+   }
+    </style>
+  </head>
+  <body>
+    <ul class="list">
+      <li>one</li>
+      <li class="special">two</li>
+      <li>three</li>
+      <li>four</li>
+      <li>
+      <ul class="sublist">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </li>
+    </ul>
+    <script type="text/javascript">
+
+$(function(){
+  $('.sublist li').on('click', function(){
+     $(this).hide(3000);
+  });
+});
+
+
+// // wherevere we click to elem with class list we find there elems with class special and remove this class
+//    $(function(){
+//      $('.list').on('click', function(){
+//        $(this).find('.special').remove();
+//      });
+//    });
+
+
+
+
+    // $(function(){
+    // $('li').on('click', function(){
+    //   $(this).next().hide();
+    // });
+    //
+    // $('li').on('mouseover', function(){
+    //   $(this).next().show();
+    //   // I add css class
+    //   $(this).next().addClass('special');
+    //   // I remove css class
+    //   $(this).removeClass('sublist').removeClass('list');
+    // });
+
+
+    // });
+    </script>
+</body>
+</html>
