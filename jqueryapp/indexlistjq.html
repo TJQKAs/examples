@@ -12,6 +12,7 @@
       list-style-type:square;
       background-color: rgb(17, 113, 215);
       color:rgb(169, 228, 59);
+      font-weight: 800;
     }
     .special{
       color:rgb(203, 2, 128);
@@ -42,8 +43,9 @@
     <script type="text/javascript">
 
 $(function(){
+  // wherevere we click to each li in sublist class ul , we fulfill operations below
   $('.sublist li').on('click', function(){
-     $(this).hide(3000);
+     $(this).hide(3000).delay(3000).show(1500);
   });
 });
 
