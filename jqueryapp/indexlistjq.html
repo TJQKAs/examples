@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+   <!-- Add the JQuery UI CSS -->
+   <link href="css/jquery-ui.min.css" rel="stylesheet">
+   <!-- Add the JQuery UI JS file -->
+   <script src ="js/jquery-ui.min.js" > </script>
     <title></title>
     <style type="text/css">
     .list{
@@ -23,6 +27,11 @@
      font-size: 18px;
      background-color: rgb(17, 215, 132);
    }
+
+   #draggable { width: 600px; height: 600px; padding: 0.5em; }
+
+
+
     </style>
   </head>
   <body>
@@ -40,14 +49,27 @@
       </ul>
     </li>
     </ul>
+   <ul class="special" id="moveit"> You can move it</ul>
+
     <script type="text/javascript">
 
 $(function(){
   // wherevere we click to each li in sublist class ul , we fulfill operations below
   $('.sublist li').on('click', function(){
-     $(this).hide(3000).delay(3000).show(1500);
+     $(this).hide(3000).delay(3000).show(1500).draggable();
+     var p = $(this);
+     var offset = p.offset();
+     p.html('left:  ' + offset.left + ', top: ' + offset.top);
   });
 });
+
+$('.list li').on('click', function () {
+  $(this).fadeOut(2000).delay(2000).show(3500).draggable();
+
+  $(function() {
+      $( "#moveit" ).draggable();
+    });
+  });
 
 
 // // wherevere we click to elem with class list we find there elems with class special and remove this class
