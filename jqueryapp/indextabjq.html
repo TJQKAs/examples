@@ -52,11 +52,12 @@
   <body>
     <div class="tab-panels">
       <ul class="tabs">
-        <li class="active">panel1</li>
-        <li>panel2</li>
-        <li>panel3</li>
-        <li>panel4</li>
-        <li>panel5</li>
+        <!-- rel - html attribute -->
+        <li rel="panel1" class="active">panel1</li>
+        <li rel="panel2">panel2</li>
+        <li rel="panel3">panel3</li>
+        <li rel="panel4">panel4</li>
+        <li rel="panel5">panel5</li>
       </ul>
 
     <div id="panel1" class="panel active">
@@ -92,14 +93,31 @@
 </div>
  <script>
   $(function(){
-    $('.tab-panels .tab li').on('click', function(){
+    $(' .tab-panels .tabs li').on('click', function(){
+      // the statement below allows us to manipulate with elems only in frame of the one parent elem - in our case '.tab-panels'
+      // so it's useful when you have several identicals parent elems;
+      var panel = $(this).closest('.tab-panels');
+      // why we should use the statement below?, because when you see the page first time at least
+      // you see bookmark - because this bookmark has had already  the class 'active', thus you will be able to see, to
+      //two bookmarks at once and this isn't correct
+      $panel.find(' .tabs li.active').removeClass('active');
+      // thus we add class active to bookmark to which we've clicked
+      $(this).addClass('active');
       //figure out which panel to show
+      // this - refers to li which I've clicked
+     var panelToShow = $(this).attr('rel');
 
-      // hide current panel
-
-      //show new panel 
-
-    });
+      // hide current panel - find the active panel and hide it after that - we made it function showNextPanel
+      $panel.find(' .panel.active').slideUp(300,  showNextPanel);
+      function showNextPanel(){
+                      // remove active class
+                      $(this).removeClass('active');
+                     // slide down panel which we've clicked but be can't see  without 'active' class so add this class quickly
+                     $('#' + panelToShow).slideDown(300, function(){
+                     $(this).addClass('active');
+      });
+    }
+});
   });
  </script>
 
