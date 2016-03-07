@@ -48,6 +48,25 @@
    }
   #draggable { width: 1920px; height: 1080px; padding: 0.5em; }
 
+  #slider {
+    width: 1024px;
+    height: 768px;
+    overflow: hidden;
+  }
+  #slider  .slides {
+    display: block;
+    width: 6144px;
+    margin: 0;
+    padding: 0;
+  }
+  #slider  .slide {
+    float: left;
+    list-style-type: none;
+    height: 768px;
+  }
+
+
+
    </style>
 
  </head>
@@ -93,6 +112,24 @@
       content54<br/>
     </div>
 </div>
+
+<div class="container">
+  <div class="header">
+    <h1 align="center">Slide show</h1>
+  </div>
+   <div id="slider">
+     <ul class="slides">
+       <li class="slide"><img src="css/images/01.jpg" /></li>
+       <li class="slide"><img src="css/images/02.jpg" /></li>
+       <li class="slide"><img src="css/images/03.jpg" /></li>
+       <li class="slide"><img src="css/images/04.jpg" /></li>
+       <li class="slide"><img src="css/images/05.jpg" /></li>
+       <li class="slide"><img src="css/images/06.jpg" /></li>
+     </ul>
+   </div>
+</div>
+
+
  <script>
   $(function(){
     $(' .tab-panels .tabs li').on('click', function(){
@@ -120,13 +157,64 @@
       });
     }
 });
-          // add some flexibility to our nav-bar  
-        $(function() {
-            $( "#moveIt" ).draggable();
-       });
-
+          // add some flexibility to our nav-bar
+     $(function() {
+         $( "#moveIt" ).draggable();
+         $('#slider').draggable();
+    });
   });
- </script>
+
+  //  var myInterval = setInterval(function(){
+  //    console.log(new Date());
+  //  }, 1000);
+  $(function(){
+    // params
+    var width = 1024;
+    var animationSpeed = 1000;
+    var pause = 3000;
+    var currentSlide = 1;
+    // DOM
+    //assign to var div with class slider
+    var $slider = $('#slider');
+    // find elems with class slides - set it to var
+    var $slideContainer = $slider.find('.slides');
+    // find elems in slides class elem with class slide and set it to var
+    var $slides = $slideContainer.find('.slide');
+
+    var interval;
+
+    function startSlider(){
+      interval =  setInterval(function(){
+        // find elems in slides class div and animate these with speed animationSpeed
+          $slideContainer.animate({'margin-left' : '-=' + width}, animationSpeed, function(){
+            // also we increment var currentSlide each time we shift elem-slide
+            ++ currentSlide;
+            // our conditon when we have last  slide-elem , we go back to the first, thus we make infinite cycle
+            if(currentSlide === $slides.length){
+              // also we clean our counter of current slides
+              currentSlide = 1;
+              $slideContainer.css('margin-left', 0);
+            }
+          });
+          // how much time should we show each elem - pause
+        }, pause);
+      }
+      // we interrupt our cycleshow by this function
+        function pauseSlider(){
+           clearInterval(interval);
+        }
+
+           //when mouse on the picture func pauseSlider when leaves - startSlider
+           $slider.on('mouseenter', pauseSlider).on('mouseleave', startSlider);
+         startSlider();
+    });
+
+
+
+
+
+
+</script>
 
 
 
