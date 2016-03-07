@@ -27,9 +27,7 @@
      font-size: 18px;
      background-color: rgb(17, 215, 132);
    }
-
    #draggable { width: 600px; height: 600px; padding: 0.5em; }
-
 
 
     </style>
@@ -51,11 +49,18 @@
     </ul>
    <ul class="special" id="moveit"> You can move it</ul>
 
+
+
+
+
+
+
     <script type="text/javascript">
 
 $(function(){
   // wherevere we click to each li in sublist class ul , we fulfill operations below
   $('.sublist li').on('click', function(){
+    // also you can drag to somewhere all DOM elems here  - draggable
      $(this).hide(3000).delay(3000).show(1500).draggable();
      var p = $(this);
      var offset = p.offset();
@@ -78,9 +83,6 @@ $('.list li').on('click', function () {
 //        $(this).find('.special').remove();
 //      });
 //    });
-
-
-
 
     // $(function(){
     // $('li').on('click', function(){

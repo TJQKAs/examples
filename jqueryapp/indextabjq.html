@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+   <!-- Add the JQuery UI CSS -->
+   <link href="css/jquery-ui.min.css" rel="stylesheet">
+   <!-- Add the JQuery UI JS file -->
+   <script src ="js/jquery-ui.min.js" > </script>
+   <style type="text/css">
+   .tab-panels ul {
+     margin:auto;
+     padding: 3;
+   }
+   .tab-panels li {
+     list-style-type: none;
+     /*horizontal version*/
+     display: inline-block;
+     background: rgb(191, 227, 90);
+     margin: auto;
+     padding: 3px 10px;
+     border-radius: 10px 10px 0 0;
+     color: rgb(255, 54, 0);
+     font-weight: 500;
+     font-size: 12px;
+     cursor: pointer;
+   }
+   .tab-panels ul li:hover {
+     color: rgb(48, 90, 159);
+     background: rgb(247, 106, 196);
+   }
+   .tab-panels ul li:active {
+     color: rgb(63, 159, 251);
+     background: rgb(176, 0, 75);
+   }
+   .tab-panels .panel {
+     display: none;
+     background: rgb(146, 127, 175);
+     padding: 30px;
+     border-radius: 0 0 10px 10px;
+   }
+   .tab-panels  .panel.active {
+     display: block;
+   }
+   </style>
+
+ </head>
+  <body>
+    <div class="tab-panels">
+      <ul class="tabs">
+        <li class="active">panel1</li>
+        <li>panel2</li>
+        <li>panel3</li>
+        <li>panel4</li>
+        <li>panel5</li>
+      </ul>
+
+    <div id="panel1" class="panel active">
+      content11<br/>
+      content12<br/>
+      content13<br/>
+      content14<br/>
+    </div>
+    <div id="panel2" class="panel">
+      content21<br/>
+      content22<br/>
+      content23<br/>
+      content24<br/>
+    </div>
+    <div id="panel3" class="panel">
+      content31<br/>
+      content32<br/>
+      content33<br/>
+      content34<br/>
+    </div>
+    <div id="panel4" class="panel">
+      content41<br/>
+      content42<br/>
+      content43<br/>
+      content44<br/>
+    </div>
+    <div id="panel5" class="panel">
+      content51<br/>
+      content52<br/>
+      content53<br/>
+      content54<br/>
+    </div>
+</div>
+ <script>
+  $(function(){
+    $('.tab-panels .tab li').on('click', function(){
+      //figure out which panel to show
+
+      // hide current panel
+
+      //show new panel 
+
+    });
+  });
+ </script>
+
+
+
+
+  </body>
+</html>
