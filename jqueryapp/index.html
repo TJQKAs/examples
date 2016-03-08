@@ -139,8 +139,8 @@
   <div align="center">
   <h4>Form of identification</h4>
   <p>name: <input type="text" id="name"></p>
-  <p>age: <input type="text" id="age"></p>
-  <button class="btn btn-success" id="add-order">Confirm</button>
+  <p>age: <input type="number" id="age"></p>
+  <button class="btn btn-success" id="add-human">Confirm</button>
 </div>
  <script>
   $(function(){
@@ -225,6 +225,18 @@
        $(function(){
          // set var of our dom elem where we are going to display all
          var $humans = $('#humans');
+         var $name=$('#name');
+         var $age=$('#age');
+
+       // let's create a function which we'll accomplish in case of our success request
+       function addHumanParams(human){
+        // we put all elemes in li - forms and append it in sequence
+         $humans.append("<li>name: " + human.name + ",  age: " + human.age + "</li>");
+         // just look in our console that all passed well
+         console.log('success', human);
+       }
+
+
          // ajax function
          $.ajax({
            // type of request get , post , put, delete - choose the first one
@@ -235,14 +247,51 @@
             success: function(humans){
               // where each elems in var humans - human with index i
               $.each(humans, function(i, human){
-                // we put all elemes in li - forms and append it in sequence
-              $humans.append("<li>name: " + human.name + ",  age: " + human.age + "</li>");
-              // just look in our console that all passed well 
-              console.log('success', human);
+                 addHumanParams(human);
+
+              //   // we put all elemes in li - forms and append it in sequence
+              // $humans.append("<li>name: " + human.name + ",  age: " + human.age + "</li>");
+              // // just look in our console that all passed well
+              // console.log('success', human);
             });
-            }
+          },
+          /// it appears when we weren't able download our data
+          error: function(){
+          alert('something goes wrong!!!');
+          }
+         });
+
+          /// by this function we gonna post data  - by click
+         $('#add-human').on('click', function(){
+           console.log('eugene');
+           /// create var which includes data which we gonna transmit
+          var human = {
+             name: $name.val(),
+             age: $age.val(),
+          };
+          /// ajax function with post
+          $.ajax({
+            type: 'POST',
+            /// where we gonna transmit
+            url: 'http://rest.learncode.academy/api/johnbob/friends',
+
+            // var human with data
+            data: human,
+            /// so in case of success accomplish function
+            success: function(newHuman){
+            addHumanParams(newHuman);
+        },
+        /// in case of error - error 
+        error: function(){
+          alert('error saving human id ');
+        }
+          });
+
          });
        });
+
+
+
 
 </script>
 
