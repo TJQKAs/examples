@@ -305,7 +305,7 @@
            $.ajax({
              type: 'DELETE',
              /// url and the special place where we should accomplish this request
-                url: 'http://rest.learncode.academy/api/johnbob/friends' + $(this).attr('data-id'),
+                url: 'http://rest.learncode.academy/api/johnbob/friends/' + $(this).attr('data-id'),
                 success: function(){
                   $(self);
                   $li.fadeOut(500, function(){
