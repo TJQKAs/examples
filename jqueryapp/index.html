@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-   <!-- Add the JQuery UI CSS -->
+   <!-- add mustache  -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+      <!-- Add the JQuery UI CSS -->
    <link href="css/jquery-ui.min.css" rel="stylesheet">
    <!-- Add the JQuery UI JS file -->
    <script src ="js/jquery-ui.min.js" > </script>
@@ -228,10 +230,18 @@
          var $name=$('#name');
          var $age=$('#age');
 
+         var addHumanParameters = "" +
+         "<li>" +
+         "<p><strong>Name:</strong> {{name}}</p>" +
+         "<p><strong>Age:</strong> {{age}}</p>" +
+         "<button data-id='{{id}}' class='remove'>X</button>"+
+         "</li>";
        // let's create a function which we'll accomplish in case of our success request
        function addHumanParams(human){
-        // we put all elemes in li - forms and append it in sequence
-         $humans.append("<li>name: " + human.name + ",  age: " + human.age + "</li>");
+         $humans.append(Mustache.render(addHumanParameters, human));
+
+        // // we put all elemes in li - forms and append it in sequence
+        //  $humans.append("<li>name: " + human.name + ",  age: " + human.age + "</li>");
          // just look in our console that all passed well
          console.log('success', human);
        }
@@ -288,6 +298,23 @@
           });
 
          });
+         // listen any click-events in humans in class remove and fire Delete request
+         $humans.delegate('.remove', 'click', function(){
+          var $li = $(this).closest('li');
+          var self = this;
+           $.ajax({
+             type: 'DELETE',
+             /// url and the special place where we should accomplish this request
+                url: 'http://rest.learncode.academy/api/johnbob/friends' + $(this).attr('data-id'),
+                success: function(){
+                  $(self);
+                  $li.fadeOut(500, function(){
+                    $(this).remove();
+                  });
+                }
+           });
+         });
+
        });
 
 
