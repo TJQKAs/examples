@@ -67,7 +67,17 @@
     height: 768px;
   }
 
+  ul li  .edit{
+    display: none;
+  }
 
+  ul li.edit .edit {
+    display: initial;
+  }
+
+  ul li.edit .noedit {
+    display: none;
+  }
 
    </style>
 
@@ -138,9 +148,17 @@
     <li class="list-group-item">Name: John, Drink: Vodka</li> -->
     <template id="human-template">
       <li>
-      <p><strong>Name:</strong> {{name}}</p>
-      <p><strong>Age:</strong> {{age}}</p>
+      <p><strong>Name:</strong>
+        <span class="noedit name">{{name}}</span>
+       <input class="edit name"/>
+      </p>
+      <p><strong>Age:</strong>
+        <span class="noedit age">{{age}}</span>
+        <input class="edit age"/>
       <button data-id='{{id}}' class='remove'>X</button>
+      <button class="editHum noedit">Edit</button>
+      <button class="saveHum edit">Save</button>
+      <button class="cancelHum edit">Cancel</button>
       </li>
     </template>
   </ul>
@@ -237,7 +255,7 @@
          var $name=$('#name');
          var $age=$('#age');
 
-       // because we modify our input form into html from javascript now we refer to this element in html 
+       // because we modify our input form into html from javascript now we refer to this element in html
          var addHumanParameters = $('#human-template').html();
 
        // let's create a function which we'll accomplish in case of our success request
@@ -318,6 +336,27 @@
                 }
            });
          });
+
+         $humans.delegate('.editHum', 'click', function(){
+           var $li = $(this).closest('li');
+           $li.find('input.name').val( $li.find('span.name').html() );
+              $li.find('input.age').val( $li.find('span.age').html() );
+              $li.addClass('edit');
+         })
+
+         $humans.delegate('.cancelHum', 'click', function(){
+           $(this).closest('li').removeClass('edit');
+         })
+
+         $humans.delegate('.saveHum', 'click', function(){
+           var human = {
+             name: $li.find('input.name').val(),
+             age: $li.find('input.age').val()
+           }
+         })
+
+
+
        });
 </script>
 
