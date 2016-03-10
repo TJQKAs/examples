@@ -146,9 +146,12 @@
   <ul align="center" id="humans">
     <!-- <li class="list-group-item">Name: John, Drink: Vodka</li>
     <li class="list-group-item">Name: John, Drink: Vodka</li> -->
+     <!-- template type of elem which appearing depends on js code    -->
     <template id="human-template">
       <li data-id="{{id}}">
       <p><strong>Name:</strong>
+        <!-- we add some class which appears in edit mode and disappears in otherwise  -->
+        <!-- we see forms save and cancel in edit class and we can't se these otherwise, we set classes edit and noedit in css  -->
         <span class="noedit name">{{name}}</span>
        <input class="edit name"/>
       </p>
@@ -338,25 +341,32 @@
          });
 
          $humans.delegate('.editHum', 'click', function(){
+           // find nearest li - elem
            var $li = $(this).closest('li');
+           // find input with class name  and set value of span name
            $li.find('input.name').val( $li.find('span.name').html() );
               $li.find('input.age').val( $li.find('span.age').html() );
+              // add class edit thus we can see hidden buttons and forms s
               $li.addClass('edit');
          })
-
+          // if we use this function it means that we are in edit mode so, by pressing key cancel we should remove class edit
          $humans.delegate('.cancelHum', 'click', function(){
            $(this).closest('li').removeClass('edit');
          })
 
          $humans.delegate('.saveHum', 'click', function(){
+           // find closest li-elem
            var $li = $(this).closest('li');
+           // set to var data which we've grabbed from our input forms we were available in edit mode
            var human = {
              name: $li.find('input.name').val(),
              age: $li.find('input.age').val()
            };
+           // therefore after we got data from our input forms we should  transmit it by somehow,
+           // by code below
            $.ajax({
                type: 'PUT',
-               /// where we gonna transmit
+               /// where we gonna transmit 
                url: 'http://rest.learncode.academy/api/johnbob/friends/' + $li.attr('data-id'),
 
                // var human with data
