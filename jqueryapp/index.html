@@ -136,6 +136,13 @@
   <ul align="center" id="humans">
     <!-- <li class="list-group-item">Name: John, Drink: Vodka</li>
     <li class="list-group-item">Name: John, Drink: Vodka</li> -->
+    <template id="human-template">
+      <li>
+      <p><strong>Name:</strong> {{name}}</p>
+      <p><strong>Age:</strong> {{age}}</p>
+      <button data-id='{{id}}' class='remove'>X</button>
+      </li>
+    </template>
   </ul>
 
   <div align="center">
@@ -230,12 +237,9 @@
          var $name=$('#name');
          var $age=$('#age');
 
-         var addHumanParameters = "" +
-         "<li>" +
-         "<p><strong>Name:</strong> {{name}}</p>" +
-         "<p><strong>Age:</strong> {{age}}</p>" +
-         "<button data-id='{{id}}' class='remove'>X</button>"+
-         "</li>";
+       // because we modify our input form into html from javascript now we refer to this element in html 
+         var addHumanParameters = $('#human-template').html();
+
        // let's create a function which we'll accomplish in case of our success request
        function addHumanParams(human){
          $humans.append(Mustache.render(addHumanParameters, human));
