@@ -147,7 +147,7 @@
     <!-- <li class="list-group-item">Name: John, Drink: Vodka</li>
     <li class="list-group-item">Name: John, Drink: Vodka</li> -->
     <template id="human-template">
-      <li>
+      <li data-id="{{id}}">
       <p><strong>Name:</strong>
         <span class="noedit name">{{name}}</span>
        <input class="edit name"/>
@@ -349,11 +349,31 @@
          })
 
          $humans.delegate('.saveHum', 'click', function(){
+           var $li = $(this).closest('li');
            var human = {
              name: $li.find('input.name').val(),
              age: $li.find('input.age').val()
+           };
+           $.ajax({
+               type: 'PUT',
+               /// where we gonna transmit
+               url: 'http://rest.learncode.academy/api/johnbob/friends/' + $li.attr('data-id'),
+
+               // var human with data
+               data: human,
+               /// so in case of success accomplish function
+               success: function(newHuman){
+              $li.find('span.name').html(human.name);
+              $li.find('span.age').html(human.age);
+              $li.removeClass('edit');
+           },
+
+           /// in case of error - error
+           error: function(){
+             alert('error updating human id ');
            }
-         })
+             });
+         });
 
 
 
