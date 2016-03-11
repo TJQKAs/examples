@@ -18,6 +18,10 @@
       <ul id="shit">
       </ul>
       <li id="shit2"></li>
+      <br/><br/>
+        <li id="shit3"></li>
+        <br/><br/>
+          <li id="shit4"></li>
     </div>
     <script>
     $(document).ready(function(){
@@ -38,6 +42,36 @@
     console.log(xml);
   }
   });
+
+  $.ajax({
+type: "GET",
+url: "http://www.walottery.com/RSS.xml",
+dataType: "xml",
+success: function(data) {
+  $(data).find('item').each(function(){
+ var title = $(this).find('title').text();
+ var desc = $(this).find('description').text();
+ $("<li></li>").html(title + ", " + desc).appendTo("#shit3");
+ });
+  console.log(data);
+}
+});
+
+$.ajax({
+type: "GET",
+url: "http://www.mdlottery.com/feed/",
+dataType: "xml",
+success: function(data1) {
+$(data1).find('item').each(function(){
+var title = $(this).find('title').text();
+var desc = $(this).find('description').text();
+$("<li></li>").html(title + ", " + desc).appendTo("#shit4");
+});
+console.log(data1);
+}
+});
+
+
 
 
 
