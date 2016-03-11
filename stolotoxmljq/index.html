@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+   <!-- add mustache  -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+      <!-- Add the JQuery UI CSS -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" rel="stylesheet">
+    <title></title>
+  </head>
+  <body>
+    <h1> We are trying to get some info from www.stoloto.ru</h1>
+    <div>
+      <ul id="shit">
+      </ul>
+      <li id="shit2"></li>
+    </div>
+    <script>
+    $(document).ready(function(){
+     var fog = "I want my money";
+     $("#shit").html(fog);
+
+     $.ajax({
+   type: "GET",
+   url: "http://www.stoloto.ru/rss/games",
+   dataType: "xml",
+   success: function(xml) {
+
+     $(xml).find('item').each(function(){
+    var title = $(this).find('title').text();
+    var desc = $(this).find('description').text();
+    $("<li></li>").html(title + ", " + desc).appendTo("#shit2");
+    });
+    console.log(xml);
+  }
+  });
+
+
+
+
+    });
+    </script>
+  </body>
+</html>
