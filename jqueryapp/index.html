@@ -203,6 +203,7 @@
      $(function() {
          $( "#moveIt" ).draggable();
          $('#slider').draggable();
+         $('#humans').draggable();
     });
   });
 
@@ -366,7 +367,7 @@
            // by code below
            $.ajax({
                type: 'PUT',
-               /// where we gonna transmit 
+               /// where we gonna transmit
                url: 'http://rest.learncode.academy/api/johnbob/friends/' + $li.attr('data-id'),
 
                // var human with data
