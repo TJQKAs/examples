@@ -22,6 +22,8 @@
         <li id="shit3"></li>
         <br/><br/>
           <li id="shit4"></li>
+          <br/><br/><br/><br/>
+                <li id="shit5"></li>
     </div>
     <script>
     $(document).ready(function(){
@@ -73,7 +75,19 @@ console.log(data1);
 
 
 
-
+$.ajax({
+type: "GET",
+url: "http://www.illinoislottery.com/lottery/feed/RSS.xml",
+dataType: "xml",
+success: function(data) {
+$(data).find('item').each(function(){
+var title = $(this).find('title').text();
+var desc = $(this).find('description').text();
+$("<li></li>").html(title + ", " + desc).appendTo("#shit5");
+});
+console.log(data);
+}
+});
 
 
     });
