@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<show>
+  <movie>
+    <name>collateral</name>
+    <release>2004</release>
+    <end_date>2010</end_date>
+    <network country="US">Tristar</network>
+    <poster href="http://photos1.blogger.com/blogger/7701/3367/1600/collateral_fondo.jpg" width="1024" height="768"></poster>
+      <viewers units="millions">10.20</viewers>
+  </movie>
+
+  <movie>
+    <name>Final Destination 5</name>
+    <release>2011</release>
+    <end_date>2016</end_date>
+    <network country="US">Universal</network>
+    <poster href="http://www.heyuguys.com/images/2011/08/final-destination-5-poster-1.jpg"  width="1024" height="768"></poster>
+      <viewers units="millions">20.21</viewers>
+  </movie>
+
+  <movie>
+    <name>AVP</name>
+    <release>2011</release>
+    <end_date>2016</end_date>
+    <network country="US">Sony</network>
+    <poster href="http://www.tabletwallpapers.org/download/aliens-vs-predator-wallpaper_1024x768.jpg" width="1024" height="768"></poster>
+      <viewers units="millions">40.20</viewers>
+  </movie>
+
+</show>

@@ -24,6 +24,8 @@
           <li id="shit4"></li>
           <br/><br/><br/><br/>
                 <li id="shit5"></li>
+                <br/><br/><br/><br/>
+                      <li id="shit6"></li>
     </div>
     <script>
     $(document).ready(function(){
@@ -67,7 +69,7 @@ success: function(data1) {
 $(data1).find('item').each(function(){
 var title = $(this).find('title').text();
 var desc = $(this).find('description').text();
-$("<li></li>").html(title + ", " + desc).appendTo("#shit4");
+$("<li></li>").html(title + ", " +  desc).appendTo("#shit4");
 });
 console.log(data1);
 }
@@ -88,6 +90,28 @@ $("<li></li>").html(title + ", " + desc).appendTo("#shit5");
 console.log(data);
 }
 });
+
+$.ajax({
+type: "GET",
+url: "data/show.xml",
+dataType: "xml",
+success: function(data) {
+$(data).find('movie').each(function(){
+var title = $(this).find('name').text();
+// in this case we grab data between xml - tags
+var desc = $(this).find('release').text();
+// but in this case we grab data from tag attribute
+var img = $(this).find('poster').attr('href');
+$("<li></li>").html(title + ", " + desc).appendTo("#shit6");
+// by this statement we display our pictures from links 
+$('<img src="' + img +'">').appendTo("#shit6");
+
+
+});
+console.log(data);
+}
+});
+
 
 
     });
