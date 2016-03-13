@@ -28,4 +28,16 @@
       <viewers units="millions">40.20</viewers>
   </movie>
 
+  <movie>
+    <name>Termintor</name>
+    <release>2015</release>
+    <end_date>2016</end_date>
+    <network country="US">Sony</network>
+    <poster href="http://free4kwallpaper.com/wp-content/uploads/2016/01/Movie-Review-Terminator-Genisys-4K-Wallpaper.jpg" width="1024" height="768"></poster>
+      <viewers units="millions">40.20</viewers>
+  </movie>
+
+
+
+
 </show>
