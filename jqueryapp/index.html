@@ -50,6 +50,9 @@
    }
   #draggable { width: 1920px; height: 1080px; padding: 0.5em; }
 
+  #resizable { width: 300px; height: 150px; padding: 5px; }
+ #resizable h3 { text-align: center; margin: 0; }
+
   #slider {
     width: 1024px;
     height: 768px;
@@ -206,6 +209,17 @@
          $('#humans').draggable();
     });
   });
+
+ $(function(){
+    $( "#moveIt").resizable();
+    $( "#slider").resizable();
+    $( "#humans").resizable();
+    //  maxHeight: 1080,
+    //  maxWidth: 1920,
+    //  minHeight: 108,
+    //  minWidth: 19
+   });
+
 
 //////////////////////////////////////////////slider ////////////////////////////////////////
   //  var myInterval = setInterval(function(){
