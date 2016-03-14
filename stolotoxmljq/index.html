@@ -8,12 +8,19 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
    <!-- add mustache  -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
       <!-- Add the JQuery UI CSS -->
    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" rel="stylesheet">
     <title></title>
   </head>
   <body>
     <h1> We are trying to get some info from www.stoloto.ru</h1>
+    <div>
+      <input type="file" id="idupload"/>
+      <img id="imgpreview" title="Image Preview">
+    </div>
+
     <div>
       <ul id="shit">
       </ul>
@@ -103,7 +110,7 @@ var desc = $(this).find('release').text();
 // but in this case we grab data from tag attribute
 var img = $(this).find('poster').attr('href');
 $("<li></li>").html(title + ", " + desc).appendTo("#shit6");
-// by this statement we display our pictures from links 
+// by this statement we display our pictures from links
 $('<img src="' + img +'">').appendTo("#shit6");
 
 
@@ -112,6 +119,19 @@ console.log(data);
 }
 });
 
+$('#upload').on('click',function(){
+        $('#upload_form').ajaxForm({
+            target:'#preview',
+            beforeSubmit:function(e){
+                $('.progress').show();
+            },
+            success:function(e){
+                $('.progress').hide();
+            },
+            error:function(e){
+            }
+        }).submit();
+    });
 
 
     });
