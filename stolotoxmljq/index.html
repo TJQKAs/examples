@@ -16,9 +16,10 @@
   </head>
   <body>
     <h1> We are trying to get some info from www.stoloto.ru</h1>
+
     <div>
-      <input type="file" id="idupload"/>
-      <img id="imgpreview" title="Image Preview">
+      <input type="file" id="idupload" onchange="imagepreview(this);"/>
+      <img id="imgpreview" alt="Image Preview">
     </div>
 
     <div>
@@ -132,9 +133,19 @@ $('#upload').on('click',function(){
             }
         }).submit();
     });
-
-
     });
+
+    function imagepreview(input){
+      if(input.files && input.files[0] ){
+        var fileread=new FileReader();
+        fileread.onload = function(e){
+          $("#imgpreview").attr('src', e.target.result);
+        };
+        fileread.readAsDataURL(input.files[0]);
+      }
+
+    }
+
     </script>
   </body>
 </html>
