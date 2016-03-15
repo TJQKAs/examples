@@ -16,9 +16,9 @@
   </head>
   <body>
     <h1> We are trying to get some info from www.stoloto.ru</h1>
-
-    <div>
-      <input type="file" id="idupload" onchange="imagepreview(this);"/>
+      <!-- form below to input img -->
+    <div id="main">
+      <input type="file" id="idupload" onchange="imagepreview(this)"/>
       <img id="imgpreview" alt="Image Preview">
     </div>
 
@@ -121,17 +121,21 @@ console.log(data);
 });
 
     });
-
+ var image;
 // by this function we can upload img files
-    function imagepreview(input){
-      if(input.files && input.files[0] ){
+     function imagepreview(input){
+     for (i=0; i<4; i++){
+      if(input.files && input.files[i] ){
         var fileread=new FileReader();
-        fileread.onload = function(e){
+          fileread.onload = function(e){
           $("#imgpreview").attr('src', e.target.result);
         };
-        fileread.readAsDataURL(input.files[0]);
+        fileread.readAsDataURL(input.files[i]);
+            console.log(input.files[i]);
       }
     }
+    }
+
 
     </script>
   </body>
