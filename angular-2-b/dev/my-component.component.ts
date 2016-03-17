@@ -3,10 +3,15 @@ import{Component} from 'angular2/core';
 @Component({
   // here we make all configuration of our component
   selector: 'my-component',
-  template: `<h1>this is my component!</h1>
-  <p>Hey it's my next string add it just rigth now</p>`,
+  template: `
+  <h1>this is my component!</h1>
+  Hi my name is {{name}}, this my first app ,<span [class.is-awesome]="inputElement.value=== 'yes' "> I think it's very nice</span>
+     <br/><br/>
+     Am I rigth?
+     <input type="text" #inputElement (keyup)="0">`,
+     styleUrls: ['src/css/component.css']
 })
 // i'm going to export this class and use it outside
 export class MyComponentComponent {
-
+    name  = 'Bill';
 }
