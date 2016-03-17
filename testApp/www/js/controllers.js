@@ -50,7 +50,7 @@ angular.module('testApp.controllers', [])
   // console.log("app ctrl");
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('MyStocksCtrl', function($scope) {
   $scope.playlists = [
     { title: 'array object title property defined the second item', id: 1 },
     { title: 'Chill', id: 2 },

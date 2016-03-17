@@ -1,4 +1,10 @@
-angular.module('testApp', ['ionic', 'testApp.controllers'])
+angular.module('testApp', [
+  'ionic',
+  'testApp.controllers',
+  'testApp.services',
+  'testApp.filters',
+  'testApp.directives'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -26,27 +32,27 @@ angular.module('testApp', ['ionic', 'testApp.controllers'])
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
-  
-    .state('app.playlists', {
-      url: '/playlists',
+
+    .state('app.myStocks', {
+      url: '/my-stocks',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/my-stocks.html',
+          controller: 'MyStocksCtrl'
         }
       }
     })
 
-  .state('app.single', {
-    url: "/playlists/:id",
+  .state('app.stock', {
+    url: "/:stockTicker",
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/stock.html',
+        controller: 'StockCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/my-stocks');
   // console.log("config app.js");
 });
