@@ -1,6 +1,7 @@
 angular.module('testApp', [
   'ionic',
   'testApp.controllers',
+  // we add new dependecies
   'testApp.services',
   'testApp.filters',
   'testApp.directives'

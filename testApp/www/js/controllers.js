@@ -49,21 +49,24 @@ angular.module('testApp.controllers', [])
   };
   // console.log("app ctrl");
 })
-
-.controller('MyStocksCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'array object title property defined the second item', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 },
-      { title: 'new data from controller', id: 7 }
+// dependecies as array of string
+.controller('MyStocksCtrl', ['$scope',
+ function($scope) {
+  // define new scope array
+  $scope.myStocksArray = [
+    {ticker: "GPRO"},
+    {ticker: "AAPL"},
+    {ticker: "FB"},
+    {ticker: "NFLX"},
+    {ticker: "TSLA"},
+    {ticker: "INTC"},
+    {ticker: "MSFT"},
+    {ticker: "GE"},
   ];
-  // console.log("playlists ctrl");
-})
+}])
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-  $scope.dynamicViewStateFromParam = $stateParams.id;
-// console.log("playlist ctrl");
-});
+.controller('StockCtrl', ['$scope', '$stateParams',
+function($scope, $stateParams){
+  $scope.ticker = $stateParams.stockTicker;
+
+}]);
