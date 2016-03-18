@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-// import second component , make directives below and appen my-component  html tags 
+// import second component , make directives below and appen my-component  html tags
 import {MyComponentComponent} from "./my-component.component";
 
 @Component({
@@ -22,6 +22,7 @@ import {MyComponentComponent} from "./my-component.component";
 </p>
   <my-component></my-component>
     `,
+    //we need MyComponentComponent and put it into my-component 
     directives : [MyComponentComponent]
 })
 // this our default class
