@@ -20,7 +20,6 @@ import{OnInit} from 'angular2/core';
          switchNumber4
        }"
 
-
        [style.display]="name.value === '' ? 'none' : 'block' ">
          <h2>The Puzzle | {{switch1.value == switchNumber1 && switch2.value ==  switchNumber2 && switch3.value == switchNumber3 && switch4.value == switchNumber4  ?  'SOLVED'  : 'NOT SOLVED' }}</h2>
 
