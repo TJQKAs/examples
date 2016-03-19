@@ -75,9 +75,10 @@ function($scope, $stateParams, stockDataService){
 
   $scope.ticker = $stateParams.stockTicker;
 // use on-listener to listen any events in ionicView after enter events
-// when it happen we run getPriceData where we run getPriceData function which call  getPriceData method  and grab data from json file via our service  
+// when it happen we run getPriceData where we run getPriceData function which call  getPriceData method  and grab data from json file via our service
   $scope.$on("$ionicView.afterEnter", function(){
     getPriceData();
+    getDetailsData();
   })
 // all we wrapped into getPriceData function
 function getPriceData(){
@@ -90,4 +91,15 @@ function getPriceData(){
      console.log(data);
   });
 }
+function getDetailsData(){
+//call stockDataService which is in services.js call it's method getPriceData  and put there param - ticker
+// by which we gonna grab data of prices  from json file
+// assign result to var promise
+  var promise = stockDataService.getDetailsData($scope.ticker);
+
+  promise.then(function(data){
+     console.log(data);
+  });
+}
+
 }]);
