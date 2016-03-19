@@ -9,6 +9,7 @@ var getDetailsData = function(ticker){
   $http.get(url)
   .success(function(json){
   var jsonData = json.query.results.quote;
+   deferred.resolve(jsonData);
      console.log(jsonData);
     //  var jsonData = json.list.resources[0].resource.fields;
      //happy end!!! deferred - resolved

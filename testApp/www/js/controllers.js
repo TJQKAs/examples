@@ -74,12 +74,17 @@ function($scope, $stateParams, stockDataService){
 // "http://finance.yahoo.com/webservice/v1/symbols/YHOO/quote?format=json&view=detail"
 
   $scope.ticker = $stateParams.stockTicker;
+  $scope.chartView = 1;
 // use on-listener to listen any events in ionicView after enter events
 // when it happen we run getPriceData where we run getPriceData function which call  getPriceData method  and grab data from json file via our service
   $scope.$on("$ionicView.afterEnter", function(){
     getPriceData();
     getDetailsData();
   })
+ // by this function we get the meaning of the chartView from button which we've clicked 
+  $scope.chartViewFunc = function(n){
+    $scope.chartView = n;
+  }
 // all we wrapped into getPriceData function
 function getPriceData(){
 //call stockDataService which is in services.js call it's method getPriceData  and put there param - ticker
@@ -89,6 +94,8 @@ function getPriceData(){
 
   promise.then(function(data){
      console.log(data);
+     // bind price data to new scope var which we gonna show
+     $scope.stockPriceData = data;
   });
 }
 function getDetailsData(){
@@ -99,6 +106,8 @@ function getDetailsData(){
 
   promise.then(function(data){
      console.log(data);
+     // bind detail data about company to scope var
+     $scope.stockDetailsData = data;
   });
 }
 
