@@ -65,13 +65,22 @@ angular.module('testApp.controllers', [])
   ];
 }])
 
-.controller('StockCtrl', ['$scope', '$stateParams', '$http', 'stockDataService',
-function($scope, $stateParams, $http, stockDataService){
+
+//we deleted http -service in controller which we used before because we use service from services.js
+.controller('StockCtrl', ['$scope', '$stateParams', 'stockDataService',
+function($scope, $stateParams, stockDataService){
 //  "get" - method we put in our services.js and create factory - watch services.js but instead
 // we create one more dependency - stockDataService
 // "http://finance.yahoo.com/webservice/v1/symbols/YHOO/quote?format=json&view=detail"
 
   $scope.ticker = $stateParams.stockTicker;
+// use on-listener to listen any events in ionicView after enter events
+// when it happen we run getPriceData where we run getPriceData function which call  getPriceData method  and grab data from json file via our service  
+  $scope.$on("$ionicView.afterEnter", function(){
+    getPriceData();
+  })
+// all we wrapped into getPriceData function
+function getPriceData(){
 //call stockDataService which is in services.js call it's method getPriceData  and put there param - ticker
 // by which we gonna grab data of prices  from json file
 // assign result to var promise
@@ -80,5 +89,5 @@ function($scope, $stateParams, $http, stockDataService){
   promise.then(function(data){
      console.log(data);
   });
-
+}
 }]);
