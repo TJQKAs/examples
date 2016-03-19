@@ -65,8 +65,20 @@ angular.module('testApp.controllers', [])
   ];
 }])
 
-.controller('StockCtrl', ['$scope', '$stateParams',
-function($scope, $stateParams){
+.controller('StockCtrl', ['$scope', '$stateParams', '$http', 'stockDataService',
+function($scope, $stateParams, $http, stockDataService){
+//  "get" - method we put in our services.js and create factory - watch services.js but instead
+// we create one more dependency - stockDataService
+// "http://finance.yahoo.com/webservice/v1/symbols/YHOO/quote?format=json&view=detail"
+
   $scope.ticker = $stateParams.stockTicker;
+//call stockDataService which is in services.js call it's method getPriceData  and put there param - ticker
+// by which we gonna grab data of prices  from json file
+// assign result to var promise
+  var promise = stockDataService.getPriceData($scope.ticker);
+
+  promise.then(function(data){
+     console.log(data);
+  });
 
 }]);
