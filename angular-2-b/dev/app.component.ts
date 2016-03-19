@@ -24,7 +24,7 @@ import{OnInit} from 'angular2/core';
        [style.display]="name.value === '' ? 'none' : 'block' ">
          <h2>The Puzzle | {{switch1.value == switchNumber1 && switch2.value ==  switchNumber2 && switch3.value == switchNumber3 && switch4.value == switchNumber4  ?  'SOLVED'  : 'NOT SOLVED' }}</h2>
 
-         <p>Welcome to the game<span class="name">{{name.value}}</span></p>
+         <p>Welcome to the game<span class="name">  {{name.value}}</span></p>
          <br/>
          Switch 1:
          <input type="text" #switch1 (keyup)="0"><br/>
@@ -35,9 +35,9 @@ import{OnInit} from 'angular2/core';
          Switch 4:
          <input type="text" #switch4 (keyup)="0"><br/>
        </section>
-       <h2 [style.display]="switch1.value == switchNumber1 && switch2.value ==
+       <h4 [style.display]="switch1.value == switchNumber1 && switch2.value ==
        switchNumber2 && switch3.value == switchNumber3 && switch4.value ==
-       switchNumber4 ? 'block' : 'none' ">Congrats {{name.value}}!  you did it</h2>
+       switchNumber4 ? 'block' : 'none' ">Congrats {{name.value}}!  you did it</h4>
 
     `,
 
@@ -51,10 +51,10 @@ export class AppComponent implements OnInit {
  switchNumber4: number;
 
  ngOnInit(){
-   this.switchNumber1 = Math.round(Math.random());
-    this.switchNumber2 = Math.round(Math.random());
-     this.switchNumber3 = Math.round(Math.random());
-      this.switchNumber4 = Math.round(Math.random());
+   this.switchNumber1 = Math.round(Math.random()*2)+1);
+    this.switchNumber2 = Math.round(Math.random()*2)+1);
+     this.switchNumber3 = Math.round(Math.random()*2)+1);
+      this.switchNumber4 = Math.round(Math.random()*2)+1);
        console.log(this.switchNumber1, this.switchNumber2, this.switchNumber3, this.switchNumber4);
  }
 }
