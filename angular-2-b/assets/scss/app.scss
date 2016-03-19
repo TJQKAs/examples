@@ -4,3 +4,29 @@ body {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
 }
+
+.setup, .puzzle {
+  padding: 20px;
+  margin-bottom: 32px;
+
+  h2 {
+    margin:0;
+  }
+}
+.setup {
+  border: 5px solid rgb(223, 254, 101);
+  background-color: rgb(212, 94, 25);
+}
+.puzzle {
+  border: 5px solid rgb(102, 200, 231);
+  background-color: rgb(21, 163, 83);
+}
+
+.puzzlle.solved {
+  border: 5px solid rgb(255, 23, 218);
+  background-color: rgb(157, 0, 242);
+}
+.name {
+  font-weight: bold;
+  color: rgb(0, 255, 11);
+}
