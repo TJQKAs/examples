@@ -21,16 +21,23 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             AppComponent = (function () {
                 function AppComponent() {
                     this.name = "John Connor";
+                    this.values = "";
                 }
                 AppComponent.prototype.onTest = function () {
                     var getname = "Hi I m glad";
                     return getname;
                 };
+                AppComponent.prototype.onKeyup = function (value) {
+                    this.values += value + ' | ';
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        // data bindng by curly braces 
-                        template: "<h1 class=\"{{'hyper'}}\">{{onTest()}}</h1>\n     <input type=\"text\" value=\"{{name}}\" class=\"{{'hyper'}}\">\n  "
+                        // data bindng by curly braces
+                        // [value]="name" - prop binding first case; everything with prefix ng - is directive [ngClass]="{hyper: true};
+                        //(keyup)="onKeyup() - whenever we listen events and catch them by (keyup)  we want fire func onKeyup();
+                        // set the var inputElem and put value of this var  in func , so we can make oprations with him
+                        template: "<h1 class=\"{{'hyper'}}\">{{onTest()}}</h1>\n <br/>\n     <input type=\"text\" [value]=\"name\"  [ngClass]=\"{hyper: true}\"  (keyup)=\"onKeyup(inputElem.value)\" #inputElem>\n    <p>{{values}}<br/></p>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
@@ -41,4 +48,4 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFhQTtnQkFBQTtvQkFDRyxTQUFJLEdBQUcsYUFBYSxDQUFDO2dCQU14QixDQUFDO2dCQUxJLDZCQUFNLEdBQU47b0JBRUUsSUFBSSxPQUFPLEdBQUcsYUFBYSxDQUFDO29CQUM3QixNQUFNLENBQUMsT0FBTyxDQUFDO2dCQUNsQixDQUFDO2dCQWpCRDtvQkFBQyxnQkFBUyxDQUFFO3dCQUdiLFFBQVEsRUFBRSxRQUFRO3dCQUNsQiwrQkFBK0I7d0JBQ2hDLFFBQVEsRUFBRSxzSEFFUjtxQkFFRixDQUFDOztnQ0FBQTtnQkFTRixtQkFBQztZQUFELENBUEEsQUFPQyxJQUFBO1lBUEQsdUNBT0MsQ0FBQSIsImZpbGUiOiJhcHAuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gJ2FuZ3VsYXIyL2NvcmUnO1xuXG4gICBAQ29tcG9uZW50ICh7XG5cblxuICBzZWxlY3RvcjogJ215LWFwcCcsXG4gIC8vIGRhdGEgYmluZG5nIGJ5IGN1cmx5IGJyYWNlcyBcbiB0ZW1wbGF0ZTogYDxoMSBjbGFzcz1cInt7J2h5cGVyJ319XCI+e3tvblRlc3QoKX19PC9oMT5cbiAgICAgPGlucHV0IHR5cGU9XCJ0ZXh0XCIgdmFsdWU9XCJ7e25hbWV9fVwiIGNsYXNzPVwie3snaHlwZXInfX1cIj5cbiAgYFxuXG59KVxuLy8gdGhpcyBvdXIgZGVmYXVsdCBjbGFzc1xuZXhwb3J0IGNsYXNzIEFwcENvbXBvbmVudCB7XG4gICBuYW1lID0gXCJKb2huIENvbm5vclwiO1xuICAgICBvblRlc3QoKXtcblxuICAgICAgIHZhciBnZXRuYW1lID0gXCJIaSBJIG0gZ2xhZFwiO1xuICAgICAgcmV0dXJuIGdldG5hbWU7XG4gICB9XG59XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFrQkE7Z0JBQUE7b0JBQ0csU0FBSSxHQUFHLGFBQWEsQ0FBQztvQkFDckIsV0FBTSxHQUFHLEVBQUUsQ0FBQztnQkFTZixDQUFDO2dCQVJJLDZCQUFNLEdBQU47b0JBQ0UsSUFBSSxPQUFPLEdBQUcsYUFBYSxDQUFDO29CQUM3QixNQUFNLENBQUMsT0FBTyxDQUFDO2dCQUNsQixDQUFDO2dCQUVDLDhCQUFPLEdBQVAsVUFBUSxLQUFhO29CQUNsQixJQUFJLENBQUMsTUFBTSxJQUFJLEtBQUssR0FBRyxLQUFLLENBQUU7Z0JBQ2pDLENBQUM7Z0JBMUJIO29CQUFDLGdCQUFTLENBQUU7d0JBR2IsUUFBUSxFQUFFLFFBQVE7d0JBQ2xCLDhCQUE4Qjt3QkFDOUIsK0dBQStHO3dCQUMvRyx3R0FBd0c7d0JBQ3hHLCtGQUErRjt3QkFDaEcsUUFBUSxFQUFFLGdOQUlSO3FCQUVGLENBQUM7O2dDQUFBO2dCQWFGLG1CQUFDO1lBQUQsQ0FYQSxBQVdDLElBQUE7WUFYRCx1Q0FXQyxDQUFBIiwiZmlsZSI6ImFwcC5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSAnYW5ndWxhcjIvY29yZSc7XG5cbiAgIEBDb21wb25lbnQgKHtcblxuXG4gIHNlbGVjdG9yOiAnbXktYXBwJyxcbiAgLy8gZGF0YSBiaW5kbmcgYnkgY3VybHkgYnJhY2VzXG4gIC8vIFt2YWx1ZV09XCJuYW1lXCIgLSBwcm9wIGJpbmRpbmcgZmlyc3QgY2FzZTsgZXZlcnl0aGluZyB3aXRoIHByZWZpeCBuZyAtIGlzIGRpcmVjdGl2ZSBbbmdDbGFzc109XCJ7aHlwZXI6IHRydWV9O1xuICAvLyhrZXl1cCk9XCJvbktleXVwKCkgLSB3aGVuZXZlciB3ZSBsaXN0ZW4gZXZlbnRzIGFuZCBjYXRjaCB0aGVtIGJ5IChrZXl1cCkgIHdlIHdhbnQgZmlyZSBmdW5jIG9uS2V5dXAoKTtcbiAgLy8gc2V0IHRoZSB2YXIgaW5wdXRFbGVtIGFuZCBwdXQgdmFsdWUgb2YgdGhpcyB2YXIgIGluIGZ1bmMgLCBzbyB3ZSBjYW4gbWFrZSBvcHJhdGlvbnMgd2l0aCBoaW1cbiB0ZW1wbGF0ZTogYDxoMSBjbGFzcz1cInt7J2h5cGVyJ319XCI+e3tvblRlc3QoKX19PC9oMT5cbiA8YnIvPlxuICAgICA8aW5wdXQgdHlwZT1cInRleHRcIiBbdmFsdWVdPVwibmFtZVwiICBbbmdDbGFzc109XCJ7aHlwZXI6IHRydWV9XCIgIChrZXl1cCk9XCJvbktleXVwKGlucHV0RWxlbS52YWx1ZSlcIiAjaW5wdXRFbGVtPlxuICAgIDxwPnt7dmFsdWVzfX08YnIvPjwvcD5cbiAgYFxuXG59KVxuLy8gdGhpcyBvdXIgZGVmYXVsdCBjbGFzc1xuZXhwb3J0IGNsYXNzIEFwcENvbXBvbmVudCB7XG4gICBuYW1lID0gXCJKb2huIENvbm5vclwiO1xuICAgdmFsdWVzID0gXCJcIjtcbiAgICAgb25UZXN0KCl7XG4gICAgICAgdmFyIGdldG5hbWUgPSBcIkhpIEkgbSBnbGFkXCI7XG4gICAgICByZXR1cm4gZ2V0bmFtZTtcbiAgIH1cblxuICAgICBvbktleXVwKHZhbHVlOiBzdHJpbmcpe1xuICAgICAgICB0aGlzLnZhbHVlcyArPSB2YWx1ZSArICcgfCAnIDtcbiAgICAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
