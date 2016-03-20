@@ -10,7 +10,8 @@ import{OnInit} from 'angular2/core';
        <section class="setup">
        <h2>Game Setup</h2>
                Enter your name dude:
-             <input type="text" #name (keyup)="0">
+             <input type="text" #name (keyup)="0"><br/>
+             <h5>Guess four numbers between 1 - 3</h5>
        </section>
        <section
        [ngClass]="{
