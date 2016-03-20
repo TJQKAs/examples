@@ -1,5 +1,7 @@
 angular.module('testApp', [
   'ionic',
+  'nvd3',
+  'nvChart',
   'testApp.controllers',
   // we add new dependecies
   'testApp.services',
