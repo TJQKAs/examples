@@ -1,4 +1,27 @@
 angular.module('testApp.services', [])
+
+// new factory which shows us time
+.factory('dateService', function($filter){
+
+var currentDate = function(){
+  var d = new Date();
+  var date = $filter('date')(d, 'yyyy-MM-dd');
+  return date;
+};
+
+var oneYearAgo = function(){
+  var d = new Date(new Date().setDate(new Date().getDate() - 365));
+    var date = $filter('date')(d, 'yyyy-MM-dd');
+    return date;
+};
+// here we return common result as a result of service which includes results from 2 functions
+ return {
+   currentDate: currentDate,
+   oneYearAgo: oneYearAgo
+ };
+})
+
+
 .factory('stockDataService', function($q, $http){
 
 // one more method to retrieve more detailed data about stocks  from another api

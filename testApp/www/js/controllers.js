@@ -67,11 +67,13 @@ angular.module('testApp.controllers', [])
 
 
 //we deleted http -service in controller which we used before because we use service from services.js
-.controller('StockCtrl', ['$scope', '$stateParams', 'stockDataService',
-function($scope, $stateParams, stockDataService){
+.controller('StockCtrl', ['$scope', '$stateParams', 'stockDataService', 'dateService',
+function($scope, $stateParams, stockDataService, dateService){
 //  "get" - method we put in our services.js and create factory - watch services.js but instead
 // we create one more dependency - stockDataService
 // "http://finance.yahoo.com/webservice/v1/symbols/YHOO/quote?format=json&view=detail"
+console.log(dateService.currentDate());
+console.log(dateService.oneYearAgo());
 
   $scope.ticker = $stateParams.stockTicker;
   $scope.chartView = 1;
@@ -81,7 +83,7 @@ function($scope, $stateParams, stockDataService){
     getPriceData();
     getDetailsData();
   })
- // by this function we get the meaning of the chartView from button which we've clicked 
+ // by this function we get the meaning of the chartView from button which we've clicked
   $scope.chartViewFunc = function(n){
     $scope.chartView = n;
   }
