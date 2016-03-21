@@ -14,7 +14,8 @@ import {PropBindingComponent} from './prop-binding.component';
  <br/><br/>
  <p>{{name}}</p>
  <section class="child">
- <my-prop-binding [myName] = "name"  [myAge] = "40"></my-prop-binding>
+ <my-prop-binding [myName] = "name"  [myAge] = "40" (hobbiesChange)="hobbies=$event"></my-prop-binding>
+ <p>My hobbies are: {{hobbies}}</p>
  </section>`,
  directives: [PropBindingComponent]
 
@@ -22,5 +23,6 @@ import {PropBindingComponent} from './prop-binding.component';
 // this our default class
 export class AppComponent {
    name = "";
+   hobbies = "";
 
 }

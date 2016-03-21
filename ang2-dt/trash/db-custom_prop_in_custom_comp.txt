@@ -1,0 +1,50 @@
+////parent Component
+import {Component} from 'angular2/core';
+import {PropBindingComponent} from './prop-binding.component';
+
+   @Component ({
+
+// in input field we type name and use two-way databinding to convey to child component "prop-binding-component"
+// by ngModel .. also name should appear in our arrow braces prop-binding-component - data which the child class
+// will export from prop-binding-component.ts ...
+  selector: 'my-app',
+ template: `
+ <h1 class="{{'parent'}}">Parent component</h1>
+ <h2>Please type your name below</h2>
+ <input type="text" [(ngModel)]="name">
+ <br/><br/>
+ <p>{{name}}</p>
+ <section class="child">
+ <my-prop-binding [myName] = "name"  [myAge] = "40"></my-prop-binding>
+ </section>`,
+ directives: [PropBindingComponent]
+
+})
+// this our default class
+export class AppComponent {
+   name = "";
+
+}
+//////////child component
+import {Component} from 'angular2/core';
+import{Input} from 'angular2/core';
+
+@Component ({
+  selector: 'my-prop-binding',
+  template: `
+               <h2>This is a child Component</h2>
+               <h2>Hello, {{name}} and I am {{age}}</h2>
+               <h2>{{hisName}}</h2>
+  `,
+  // we use - 'inputs' to check that this is exactly 'myName' from the parent class so which we'll convey to parent Component by exporting with
+  // PropBindingComponent class
+  inputs: ['name:myName', 'age:myAge']
+})
+
+
+export class PropBindingComponent {
+   myName = '';
+   hisName = "His name Georg";
+   // export decorator
+  @Input ('myAge')  age = "34"
+}
