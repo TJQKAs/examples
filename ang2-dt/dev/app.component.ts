@@ -1,35 +1,26 @@
 import {Component} from 'angular2/core';
+import {PropBindingComponent} from './prop-binding.component';
 
    @Component ({
 
-
+// in input field we type name and use two-way databinding to convey to child component "prop-binding-component"
+// by ngModel .. also name should appear in our arrow braces prop-binding-component - data which the child class
+// will export from prop-binding-component.ts ...
   selector: 'my-app',
-  // data bindng by curly braces
-  // [value]="name" - prop binding first case; everything with prefix ng - is directive [ngClass]="{hyper: true};
-  //(keyup)="onKeyup() - whenever we listen events and catch them by (keyup)  we want fire func onKeyup();
-  // set the var inputElem and put value of this var  in func , so we can make oprations with him
-
-  //   <input type="text" [(ngModel)]="name"> two way data binding - which handle input and output data from the same var
- template: `<h1 class="{{'hyper'}}">{{onTest()}}</h1>
- <br/>
-     <input type="text" [value]="name"  [ngClass]="{hyper: true}"  (keyup)="onKeyup(inputElem.value)" #inputElem>
-    <p>{{values}}<br/></p>
-    <br/><br/><br/>
-    <input type="text" [(ngModel)]="name">
-    <p>Your name : {{name}}</p>
-  `
+ template: `
+ <h1 class="{{'parent'}}">Parent component</h1>
+ <h2>Please type your name below</h2>
+ <input type="text" [(ngModel)]="name">
+ <br/><br/>
+ <p>{{name}}</p>
+ <section class="child">
+ <my-prop-binding [myName] = "name"  [myAge] = "40"></my-prop-binding>
+ </section>`,
+ directives: [PropBindingComponent]
 
 })
 // this our default class
 export class AppComponent {
-   name = "John Connor";
-   values = "";
-     onTest(){
-       var getname = "Hi I m glad";
-      return getname;
-   }
+   name = "";
 
-     onKeyup(value: string){
-        this.values += value + ' | ' ;
-     }
 }
