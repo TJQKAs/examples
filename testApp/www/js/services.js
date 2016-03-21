@@ -1,8 +1,5 @@
 angular.module('testApp.services', [])
 
-
-
-
 .factory('encodeURIService', function(){
 
    return {
@@ -95,9 +92,8 @@ var getPriceData = function(ticker){
   var getHistoricalData = function(ticker, fromDate, todayDate){
 
   var deferred  = $q.defer(),
-  query = 'select = from yahoo.finance.historicaldata where symbol = "' + ticker +'" and startDate = "' + fromDate + ' " and endDate = " ' + todayDate+'  '  ;
-  url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20(%22" + ticker + "%22)&format=json&env=http://datatables.org/alltables.env"
-
+  query = 'select * from yahoo.finance.historicaldata where symbol = " ' + ticker + ' " and startDate =  " ' + fromDate + ' " and endDate = " ' + todayDate + ' " ';
+  url =  'http://query.yahooapis.com/v1/public/yql?q= ' + encodeURIService.encode(query) + ' &format=json&env=http://datatables.org/alltables.env';
    $http.get(url)
    .success(function(json){
      console.log(json);

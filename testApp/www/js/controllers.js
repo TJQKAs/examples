@@ -114,7 +114,6 @@ function getChartData(){
 
   });
 }
-
 $scope.myData = [
 {
   "key" : "Quantity" ,
@@ -151,7 +150,7 @@ var y1TickFormat = function(d) {
 };
 
 var y2TickFormat = function(d) {
-  return '$' + d3.format('s')(d);
+  return d3.format('s')(d);
 };
 
 var y3TickFormat = function(d) {
@@ -159,7 +158,7 @@ var y3TickFormat = function(d) {
 };
 
 var y4TickFormat = function(d) {
-  return '$' + d3.format(',.2s ')(d);
+  return d3.format(',.2s ')(d);
 };
 
 var xValueFunction = function(d, i) {
@@ -190,5 +189,6 @@ $scope.chartOptions = {
   y4AxisTickFormat: y4TickFormat,
   transitionDuration: 500
 };
+
 
 }]);
