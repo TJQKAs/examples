@@ -1,7 +1,21 @@
 angular.module('testApp.services', [])
 
+
+
+
+.factory('encodeURIService', function(){
+
+   return {
+     encode: function(string){
+       console.log(string);
+       return encodeURIComponent(string).replace(/\"/g, "%22").replace(/\ /g, "%20" ).replace(/[ ! '()]/g, escape);
+     }
+   };
+})
+
+
 // new factory which shows us time
-.factory('dateService', function($filter){
+.factory('dateService', function($filter) {
 
 var currentDate = function(){
   var d = new Date();
@@ -22,13 +36,17 @@ var oneYearAgo = function(){
 })
 
 
-.factory('stockDataService', function($q, $http){
+.factory('stockDataService', function($q, $http, encodeURIService){
 
 // one more method to retrieve more detailed data about stocks  from another api
 var getDetailsData = function(ticker){
   // "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20(%22YHOO%22)&format=json&env=http://datatables.org/alltables.env"
   var deferred=$q.defer(),
-  url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20(%22" + ticker + "%22)&format=json&env=http://datatables.org/alltables.env"
+  query = 'select * from yahoo.finance.quotes where symbol IN (" '  + ticker + '  " ) ',
+  url =  'http://query.yahooapis.com/v1/public/yql?q= ' + encodeURIService.encode(query) + ' &format=json&env=http://datatables.org/alltables.env';
+
+  console.log(url);
+
   $http.get(url)
   .success(function(json){
   var jsonData = json.query.results.quote;
@@ -70,4 +88,31 @@ var getPriceData = function(ticker){
     getPriceData: getPriceData,
     getDetailsData: getDetailsData
   };
-});
+})
+
+.factory('chartDataService', function($q, $http, encodeURIService){
+
+  var getHistoricalData = function(ticker, fromDate, todayDate){
+
+  var deferred  = $q.defer(),
+  query = 'select = from yahoo.finance.historicaldata where symbol = "' + ticker +'" and startDate = "' + fromDate + ' " and endDate = " ' + todayDate+'  '  ;
+  url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20(%22" + ticker + "%22)&format=json&env=http://datatables.org/alltables.env"
+
+   $http.get(url)
+   .success(function(json){
+     console.log(json);
+     var jsonData = json;
+     deferred.resolve(jsonData);
+   })
+   .error(function(error){
+     console.log("Chart error data : " + error);
+     deferred.reject();
+   });
+   return deferred.promise;
+
+  };
+  return {
+    getHistoricalData: getHistoricalData
+  };
+
+})
