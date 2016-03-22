@@ -71,6 +71,10 @@ console.log(dateService.oneYearAgo());
   $scope.chartView = 4;
   $scope.oneYearAgo = dateService.oneYearAgo();
   $scope.todayDate = dateService.currentDate();
+
+ console.log($scope.oneYearAgo);
+  console.log($scope.todayDate);
+
 // use on-listener to listen any events in ionicView after enter events
 // when it happen we run getPriceData where we run getPriceData function which call  getPriceData method  and grab data from json file via our service
   $scope.$on("$ionicView.afterEnter", function(){
@@ -111,9 +115,10 @@ function getDetailsData(){
 function getChartData(){
   var promise = chartDataService.getHistoricalData($scope.ticker, $scope.oneYearAgo, $scope.todayDate);
   promise.then(function(data){
-
   });
+
 }
+
 $scope.myData = [
 {
   "key" : "Quantity" ,
