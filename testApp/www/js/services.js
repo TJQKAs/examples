@@ -97,9 +97,39 @@ var getPriceData = function(ticker){
 
    $http.get(url)
    .success(function(json){
-     console.log(json);
-     var jsonData = json;
-     deferred.resolve(jsonData);
+     var jsonData = json.query.results.quote;
+
+    var priceData = [];
+    var volumeData =[];
+
+          jsonData.forEach(function(dayDataObject){
+            // console.log(dayDataObject);
+            var dateToMillis = dayDataObject.Date,
+            date = Date.parse(dateToMillis),
+            price = parseFloat(Math.round(dayDataObject.Close * 100) / 100).toFixed(3),
+            volume = dayDataObject.Volume,
+
+            volumDatum = '[' + date + ',' + volume + ']',
+            priceDatum = '[' + date + ',' + price + ']';
+
+          //  console.log(volumDatum, priceDatum);
+
+            volumeData.unshift(volumDatum);
+            priceData.unshift(priceDatum);
+          });
+
+          var formattedChartData =
+          '[{'+
+           '"key":' + '"volume",' +
+           '"bar":' + 'true,' +
+           '"values":' + '[' + volumeData + ']' +
+           '},' +
+            '{' +
+                '"key":' + '"'+ ticker + '",' +
+                '"values":' + '[' + priceData + ']' +
+          '}]';
+     deferred.resolve(formattedChartData);
+    //  console.log(formattedChartData);
    })
    .error(function(error){
      console.log("Chart error data : " + error);

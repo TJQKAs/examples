@@ -1,8 +1,8 @@
 angular.module('testApp', [
   'ionic',
+  'testApp.controllers',
   'nvd3',
   'nvChart',
-  'testApp.controllers',
   // we add new dependecies
   'testApp.services',
   'testApp.filters',
