@@ -126,15 +126,17 @@ function getChartData(){
 
         console.log($scope.myData);
 
-        $scope.options = {
+        var marginBottom = ($window.innerWidth / 100)*10;
+
+        $scope.chartOptions = {
              chart: {
                  type: 'linePlusBarChart',
                  height: 500,
                  margin: {
-                     top: 30,
-                     right: 75,
-                     bottom: 50,
-                     left: 75
+                     top: 15,
+                     right: 70,
+                     bottom: marginBottom,
+                     left: 70
                  },
                  bars: {
                      forceY: [0]
@@ -142,10 +144,10 @@ function getChartData(){
                  bars2: {
                      forceY: [0]
                  },
-                 color: ['#2ca02c', 'darkred'],
+                 color: ['rgb(0, 50, 201)', 'rgb(46, 224, 255)'],
                  x: function(d,i) { return i },
                  xAxis: {
-                     axisLabel: 'X Axis',
+                     axisLabel: 'Time Scale',
                      tickFormat: function(d) {
                          var dx = $scope.myData[0].values[d] && $scope.myData[0].values[d].x || 0;
                          if (dx > 0) {
@@ -157,31 +159,31 @@ function getChartData(){
                  x2Axis: {
                      tickFormat: function(d) {
                          var dx = $scope.myData[0].values[d] && $scope.myData[0].values[d].x || 0;
-                         return d3.time.format('%b-%Y')(new Date(dx))
+                         return d3.time.format('%b %Y')(new Date(dx))
                      },
                      showMaxMin: false
                  },
                  y1Axis: {
-                     axisLabel: 'Y1 Axis',
+                     axisLabel: 'Trade Volume $',
                      tickFormat: function(d){
                          return d3.format(',f')(d);
                      },
                      axisLabelDistance: 12
                  },
                  y2Axis: {
-                     axisLabel: 'Y2 Axis',
+                     axisLabel: 'Price $',
                      tickFormat: function(d) {
-                         return '$' + d3.format(',.2f')(d)
+                         return '$' + d3.format(',.s')(d)
                      }
                  },
                  y3Axis: {
                      tickFormat: function(d){
-                         return d3.format(',f')(d);
+                         return d3.format(',2s')(d);
                      }
                  },
                  y4Axis: {
                      tickFormat: function(d) {
-                         return '$' + d3.format(',.2f')(d)
+                         return '$' + d3.format(',.2s')(d)
                      }
                  }
              }
@@ -194,7 +196,6 @@ function getChartData(){
 
 });
 }
-
 
 
 }]);
