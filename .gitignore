@@ -5,3 +5,7 @@
 /testApp/plugins/
 /angular-2-b/node_modules/
 /ang2-dt/node_modules/
+/TTT-game/.DS_Store
+/TTT-game/.idea/*
+/TTT-game/.sass-cache/*
+/TTT-game/!.gitkeep
