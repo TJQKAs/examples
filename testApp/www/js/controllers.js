@@ -135,7 +135,7 @@ function getChartData(){
                  height: 400,
                  margin: {
                      top: 15,
-                     right: 70,
+                     right: 40,
                      bottom: marginBottom,
                      left: 70
                  },
@@ -145,6 +145,8 @@ function getChartData(){
                  bars2: {
                      forceY: [0]
                  },
+                 interpolate: "cardinal",
+                 transitionDuration: 500,
                  color: ['rgb(0, 50, 201)', 'rgb(46, 224, 255)'],
                  x: function(d,i) { return i },
                  xAxis: {
@@ -165,14 +167,14 @@ function getChartData(){
                      showMaxMin: false
                  },
                  y1Axis: {
-                     axisLabel: 'Trade Volume $',
+                     axisLabel: 'Vol. $',
                      tickFormat: function(d){
                          return d3.format(',f')(d);
                      },
                      axisLabelDistance: 12
                  },
                  y2Axis: {
-                     axisLabel: 'Price $',
+                     axisLabel: 'P.$',
                      tickFormat: function(d) {
                          return '$' + d3.format(',.s')(d)
                      }

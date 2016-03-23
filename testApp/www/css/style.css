@@ -1,1 +1,22 @@
-/* Empty. Add your own CSS if you like */
+/*ChartStyle*/
+#interActiveChart{
+  height: 80vmin;
+}
+.nv-focus .nv-barsWrap{
+  display: none;
+}
+/*.nv-focus .nv-y1 .tick{
+  display: none;
+}*/
+
+.nv-focus .nvd.nv-wrap.nv-axis{
+  display: none;
+}
+
+.nv-legend-text, .nv-legend-symbol{
+  display: none;
+}
+
+svg text{
+  font: 400 10pt "Helvetica Neue", sans-serif !important;
+}

@@ -36,7 +36,7 @@
 
               <!-- <div ng-if="chartView == 4"  nv-chart="options" style="height: 70vh;"></div> -->
 
-              <nvd3  ng-if="chartView==4" options="chartOptions" data="myData" style="height:10vh;"></nvd3>
+              <nvd3  ng-if="chartView==4" options="chartOptions" data="myData" id="interActiveChart"></nvd3>
 
               <img ng-if="chartView == 5"   ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=my&q=l&l=on&z=m&a=vm" style="width: 100%">
              <!-- http://chart.finance.yahoo.com/z7s=YAHOO&t=1d&q=l&l=on&z=m&a=vm -->
