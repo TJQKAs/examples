@@ -1,4 +1,4 @@
-System.register(['angular2/core', './prop-binding.component'], function(exports_1, context_1) {
+System.register(['angular2/core', "./bindings/input.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,30 +10,29 @@ System.register(['angular2/core', './prop-binding.component'], function(exports_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, prop_binding_component_1;
+    var core_1, input_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (prop_binding_component_1_1) {
-                prop_binding_component_1 = prop_binding_component_1_1;
+            function (input_component_1_1) {
+                input_component_1 = input_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.name = "";
-                    this.hobbies = "";
+                    // initialize two js objects
+                    this.mySelf = { myName: ' ', myAge: ' ' };
+                    this.confirmedMySelf = { myName: ' ', myAge: ' ' };
                 }
                 AppComponent = __decorate([
                     core_1.Component({
-                        // in input field we type name and use two-way databinding to convey to child component "prop-binding-component"
-                        // by ngModel .. also name should appear in our arrow braces prop-binding-component - data which the child class
-                        // will export from prop-binding-component.ts ...
+                        //
                         selector: 'my-app',
-                        template: "\n <h1 class=\"{{'parent'}}\">Parent component</h1>\n <h2>Please type your name below</h2>\n <input type=\"text\" [(ngModel)]=\"name\">\n <br/><br/>\n <p>{{name}}</p>\n <section class=\"child\">\n <my-prop-binding [myName] = \"name\"  [myAge] = \"40\" (hobbiesChange)=\"hobbies=$event\"></my-prop-binding>\n <p>My hobbies are: {{hobbies}}</p>\n </section>",
-                        directives: [prop_binding_component_1.PropBindingComponent]
+                        template: "<div class=\"container\">\n                 <my-input (submitted)=\"onSubmit($event)\"></my-input>\n                  </div>\n                  <div class=\"container\">\n                ...\n                  </div>  ",
+                        directives: [input_component_1.InputComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
@@ -44,4 +43,4 @@ System.register(['angular2/core', './prop-binding.component'], function(exports_
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUF1QkE7Z0JBQUE7b0JBQ0csU0FBSSxHQUFHLEVBQUUsQ0FBQztvQkFDVixZQUFPLEdBQUcsRUFBRSxDQUFDO2dCQUVoQixDQUFDO2dCQXhCRTtvQkFBQyxnQkFBUyxDQUFFO3dCQUVmLGdIQUFnSDt3QkFDaEgsZ0hBQWdIO3dCQUNoSCxpREFBaUQ7d0JBQy9DLFFBQVEsRUFBRSxRQUFRO3dCQUNuQixRQUFRLEVBQUUscVdBU0M7d0JBQ1gsVUFBVSxFQUFFLENBQUMsNkNBQW9CLENBQUM7cUJBRWxDLENBQUM7O2dDQUFBO2dCQU1GLG1CQUFDO1lBQUQsQ0FKQSxBQUlDLElBQUE7WUFKRCx1Q0FJQyxDQUFBIiwiZmlsZSI6ImFwcC5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSAnYW5ndWxhcjIvY29yZSc7XG5pbXBvcnQge1Byb3BCaW5kaW5nQ29tcG9uZW50fSBmcm9tICcuL3Byb3AtYmluZGluZy5jb21wb25lbnQnO1xuXG4gICBAQ29tcG9uZW50ICh7XG5cbi8vIGluIGlucHV0IGZpZWxkIHdlIHR5cGUgbmFtZSBhbmQgdXNlIHR3by13YXkgZGF0YWJpbmRpbmcgdG8gY29udmV5IHRvIGNoaWxkIGNvbXBvbmVudCBcInByb3AtYmluZGluZy1jb21wb25lbnRcIlxuLy8gYnkgbmdNb2RlbCAuLiBhbHNvIG5hbWUgc2hvdWxkIGFwcGVhciBpbiBvdXIgYXJyb3cgYnJhY2VzIHByb3AtYmluZGluZy1jb21wb25lbnQgLSBkYXRhIHdoaWNoIHRoZSBjaGlsZCBjbGFzc1xuLy8gd2lsbCBleHBvcnQgZnJvbSBwcm9wLWJpbmRpbmctY29tcG9uZW50LnRzIC4uLlxuICBzZWxlY3RvcjogJ215LWFwcCcsXG4gdGVtcGxhdGU6IGBcbiA8aDEgY2xhc3M9XCJ7eydwYXJlbnQnfX1cIj5QYXJlbnQgY29tcG9uZW50PC9oMT5cbiA8aDI+UGxlYXNlIHR5cGUgeW91ciBuYW1lIGJlbG93PC9oMj5cbiA8aW5wdXQgdHlwZT1cInRleHRcIiBbKG5nTW9kZWwpXT1cIm5hbWVcIj5cbiA8YnIvPjxici8+XG4gPHA+e3tuYW1lfX08L3A+XG4gPHNlY3Rpb24gY2xhc3M9XCJjaGlsZFwiPlxuIDxteS1wcm9wLWJpbmRpbmcgW215TmFtZV0gPSBcIm5hbWVcIiAgW215QWdlXSA9IFwiNDBcIiAoaG9iYmllc0NoYW5nZSk9XCJob2JiaWVzPSRldmVudFwiPjwvbXktcHJvcC1iaW5kaW5nPlxuIDxwPk15IGhvYmJpZXMgYXJlOiB7e2hvYmJpZXN9fTwvcD5cbiA8L3NlY3Rpb24+YCxcbiBkaXJlY3RpdmVzOiBbUHJvcEJpbmRpbmdDb21wb25lbnRdXG5cbn0pXG4vLyB0aGlzIG91ciBkZWZhdWx0IGNsYXNzXG5leHBvcnQgY2xhc3MgQXBwQ29tcG9uZW50IHtcbiAgIG5hbWUgPSBcIlwiO1xuICAgaG9iYmllcyA9IFwiXCI7XG5cbn1cbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFzQkE7Z0JBQUE7b0JBQ0UsNEJBQTRCO29CQUMxQixXQUFNLEdBQUcsRUFBQyxNQUFNLEVBQUMsR0FBRyxFQUFFLEtBQUssRUFBRSxHQUFHLEVBQUMsQ0FBQztvQkFDbEMsb0JBQWUsR0FBRyxFQUFDLE1BQU0sRUFBRSxHQUFHLEVBQUUsS0FBSyxFQUFDLEdBQUcsRUFBQyxDQUFDO2dCQUMvQyxDQUFDO2dCQXZCRTtvQkFBQyxnQkFBUyxDQUFFO3dCQUdmLEVBQUU7d0JBQ0EsUUFBUSxFQUFFLFFBQVE7d0JBQ25CLFFBQVEsRUFBRSw0TkFLZ0I7d0JBQ1QsVUFBVSxFQUFFLENBQUMsZ0NBQWMsQ0FBQztxQkFFN0MsQ0FBQzs7Z0NBQUE7Z0JBVUYsbUJBQUM7WUFBRCxDQUpBLEFBSUMsSUFBQTtZQUpELHVDQUlDLENBQUEiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tICdhbmd1bGFyMi9jb3JlJztcbmltcG9ydCB7SW5wdXRDb21wb25lbnR9ZnJvbSBcIi4vYmluZGluZ3MvaW5wdXQuY29tcG9uZW50XCI7XG5cbiAgIEBDb21wb25lbnQgKHtcblxuXG4vL1xuICBzZWxlY3RvcjogJ215LWFwcCcsXG4gdGVtcGxhdGU6IGA8ZGl2IGNsYXNzPVwiY29udGFpbmVyXCI+XG4gICAgICAgICAgICAgICAgIDxteS1pbnB1dCAoc3VibWl0dGVkKT1cIm9uU3VibWl0KCRldmVudClcIj48L215LWlucHV0PlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY29udGFpbmVyXCI+XG4gICAgICAgICAgICAgICAgLi4uXG4gICAgICAgICAgICAgICAgICA8L2Rpdj4gIGAsXG4gICAgICAgICAgICAgICAgICBkaXJlY3RpdmVzOiBbSW5wdXRDb21wb25lbnRdXG5cbn0pXG5cbi8vPG15LWlucHV0IChzdWJtaXR0ZWQpPVwib25TdWJtaXQoJGV2ZW50KVwiPjwvbXktaW5wdXQ+IC0gY2F0Y2ggIHN1Ym1pc3Npb24gLCBydW4gZnVuY3Rpb24gb25TdWJtaXQgd2l0aCAkZXZlbnRcbi8vICRldmVudCAtIG1lYW5zIHRoYXQgSSBjYW4ndCBjaGFuZ2UgYW55IHZhbHVlcyB3aGljaCBwYXNzZWQgYnkgJGV2ZW50IHRocm91Z2ggbXkgb25TdWJtaXQgZnVuY3Rpb25cblxuLy8gdGhpcyBvdXIgZGVmYXVsdCBjbGFzc1xuZXhwb3J0IGNsYXNzIEFwcENvbXBvbmVudCB7XG4gIC8vIGluaXRpYWxpemUgdHdvIGpzIG9iamVjdHNcbiAgICBteVNlbGYgPSB7bXlOYW1lOicgJywgbXlBZ2U6ICcgJ307XG4gICAgY29uZmlybWVkTXlTZWxmID0ge215TmFtZTogJyAnLCBteUFnZTonICd9O1xufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

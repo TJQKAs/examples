@@ -1,28 +1,27 @@
 import {Component} from 'angular2/core';
-import {PropBindingComponent} from './prop-binding.component';
+import {InputComponent}from "./bindings/input.component";
 
    @Component ({
 
-// in input field we type name and use two-way databinding to convey to child component "prop-binding-component"
-// by ngModel .. also name should appear in our arrow braces prop-binding-component - data which the child class
-// will export from prop-binding-component.ts ...
+
+//
   selector: 'my-app',
- template: `
- <h1 class="{{'parent'}}">Parent component</h1>
- <h2>Please type your name below</h2>
- <input type="text" [(ngModel)]="name">
- <br/><br/>
- <p>{{name}}</p>
- <section class="child">
- <my-prop-binding [myName] = "name"  [myAge] = "40" (hobbiesChange)="hobbies=$event"></my-prop-binding>
- <p>My hobbies are: {{hobbies}}</p>
- </section>`,
- directives: [PropBindingComponent]
+ template: `<div class="container">
+                 <my-input (submitted)="onSubmit($event)"></my-input>
+                  </div>
+                  <div class="container">
+                ...
+                  </div>  `,
+                  directives: [InputComponent]
 
 })
+
+//<my-input (submitted)="onSubmit($event)"></my-input> - catch  submission , run function onSubmit with $event
+// $event - means that I can't change any values which passed by $event through my onSubmit function
+
 // this our default class
 export class AppComponent {
-   name = "";
-   hobbies = "";
-
+  // initialize two js objects
+    mySelf = {myName:' ', myAge: ' '};
+    confirmedMySelf = {myName: ' ', myAge:' '};
 }

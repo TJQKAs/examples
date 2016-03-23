@@ -5,21 +5,27 @@ body {
   font-size: 16px;
   background-color: rgb(208, 249, 249);
 }
-.parent{
-  background-color: rgb(230, 108, 193);
-  color: rgb(70, 77, 241);
-  font-size: 12px;
-  font-style: oblique;
-  font-weight: bold;
-  font-family: fantasy;
-  padding: 10px;
-  border: 2px solid rgb(0, 229, 240);
+.container{
+  padding: 16px;
+  border: 2px solid rgb(2, 31, 88);
+  background: rgb(90, 81, 147);
+  margin-bottom: 40px;
 }
-.child{
-  background-color: rgb(139, 19, 14);
-  color: rgb(255, 255, 255);
-  padding: 12px;
-  font-size: 10px;
-  font-style: italic;
-  border: 5px solid rgb(83, 15, 171);
+button{
+  padding: 5px 10px;
+  border: solid 4px rgb(13, 207, 131);
+  background-color: rgb(33, 159, 2);
+  border-radius: 5px;
+  cursor:default;
+}
+button:not([disabled]){
+  cursor: pointer;
+}
+
+button:not([disabled]):hover {
+  background-color: rgb(235, 76, 87);
+  color:rgb(156, 131, 8);
+}
+.highlight{
+  font-weight: bold;
 }

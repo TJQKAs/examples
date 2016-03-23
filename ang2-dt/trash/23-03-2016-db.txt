@@ -1,0 +1,106 @@
+////
+import {Component} from 'angular2/core';
+
+   @Component ({
+
+  selector: 'my-app',
+ template: ``
+})
+// this our default class
+export class AppComponent {
+
+}
+
+
+////
+
+
+
+import {Component} from 'angular2/core';
+import {PropBindingComponent} from './prop-binding.component';
+
+   @Component ({
+
+// in input field we type name and use two-way databinding to convey to child component "prop-binding-component"
+// by ngModel .. also name should appear in our arrow braces prop-binding-component - data which the child class
+// will export from prop-binding-component.ts ...
+  selector: 'my-app',
+ template: `
+ <h1 class="{{'parent'}}">Parent component</h1>
+ <h2>Please type your name below</h2>
+ <input type="text" [(ngModel)]="name">
+ <br/><br/>
+ <p>{{name}}</p>
+ <section class="child">
+ <my-prop-binding [myName] = "name"  [myAge] = "40" (hobbiesChange)="hobbies=$event"></my-prop-binding>
+ <p>My hobbies are: {{hobbies}}</p>
+ </section>`,
+ directives: [PropBindingComponent]
+
+})
+// this our default class
+export class AppComponent {
+   name = "";
+   hobbies = "";
+
+}
+///////////prop-binding-component///////////
+// EventEmitter - allows us emit events
+import {Component, EventEmitter} from 'angular2/core';
+import{Input} from 'angular2/core';
+
+@Component ({
+  selector: 'my-prop-binding',
+  template: `
+               <h2>This is a child Component</h2>
+               <h2>Hello, {{name}} and I am {{age}}</h2>
+               <h2>{{hisName}}</h2>
+               <h4>I have hobbies:</h4>
+              <input type="text" (keyup)="onHobbiesChanged(hobbies.value)" #hobbies >
+  `,
+  // we use - 'inputs' to check that this is exactly 'myName' from the parent class so which we'll convey to parent Component by exporting with
+  // PropBindingComponent class
+  inputs: ['name:myName'],
+  outputs:['hobbiesChange']
+})
+
+
+export class PropBindingComponent {
+   myName = '';
+   hisName = "His name Georg";
+   // export decorator
+  @Input ('myAge')  age = "34";
+
+  hobbiesChange = new EventEmitter<string>();
+
+  onHobbiesChanged(hobbies: string){
+   this.hobbiesChange.emit(hobbies);
+  }
+}
+//////////app.scss//////////////
+////////////app.scss////////////
+body {
+  padding: 32px;
+  margin: 32px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  background-color: rgb(208, 249, 249);
+}
+.parent{
+  background-color: rgb(230, 108, 193);
+  color: rgb(70, 77, 241);
+  font-size: 12px;
+  font-style: oblique;
+  font-weight: bold;
+  font-family: fantasy;
+  padding: 10px;
+  border: 2px solid rgb(0, 229, 240);
+}
+.child{
+  background-color: rgb(139, 19, 14);
+  color: rgb(255, 255, 255);
+  padding: 12px;
+  font-size: 10px;
+  font-style: italic;
+  border: 5px solid rgb(83, 15, 171);
+}
