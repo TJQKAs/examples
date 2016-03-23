@@ -6,11 +6,11 @@
     </div>
   </div>
 
-  <h2 class="title button-left button-right">{{stockPriceData.price}}</h2>
+  <h2 class="title button-left button-right">{{stockPriceData.price | shrinkNumber:2}}</h2>
 
   <div class="button" side="right">
     <div class="button button-clear">
-      <h6>{{stockPriceData.chg_percent}}%</h6>
+      <h6>{{stockPriceData.chg_percent | shrinkNumber:3}}%</h6>
   </div>
 </div>
 
@@ -36,7 +36,7 @@
 
               <!-- <div ng-if="chartView == 4"  nv-chart="options" style="height: 70vh;"></div> -->
 
-              <nvd3  ng-if="chartView==4" options="chartOptions" data="myData" style="height:70vh;"></nvd3>
+              <nvd3  ng-if="chartView==4" options="chartOptions" data="myData" style="height:10vh;"></nvd3>
 
               <img ng-if="chartView == 5"   ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=my&q=l&l=on&z=m&a=vm" style="width: 100%">
              <!-- http://chart.finance.yahoo.com/z7s=YAHOO&t=1d&q=l&l=on&z=m&a=vm -->
@@ -45,9 +45,9 @@
                <div class="item item-devider">Market Data</div>
                   <div class="row row-center">
                     <div class="col">Ask: </div>
-                    <div class="col">{{stockDetailsData.Ask}}</div>
+                    <div class="col">{{stockDetailsData.Ask | shrinkNumber:2}}</div>
                     <div class="col">Bid:  </div>
-                    <div class="col">{{stockDetailsData.Bid}}</div>
+                    <div class="col">{{stockDetailsData.Bid | shrinkNumber:2}}</div>
              </div>
 
              <div class="row row-center">
@@ -59,22 +59,22 @@
 
              <div class="row row-center">
                <div class="col">Max price of the day: </div>
-               <div class="col">{{stockPriceData.day_high}}</div>
+               <div class="col">{{stockPriceData.day_high | shrinkNumber:2}}</div>
                <div class="col">Min price of the day:  </div>
-               <div class="col">{{stockPriceData.day_low}}</div>
+               <div class="col">{{stockPriceData.day_low | shrinkNumber:2}}</div>
              </div>
 
              <div class="row row-center">
                <div class="col">Max year price: </div>
-               <div class="col">{{stockPriceData.year_high}}</div>
+               <div class="col">{{stockPriceData.year_high | shrinkNumber:2}}</div>
                <div class="col">Min year price:  </div>
-               <div class="col">{{stockPriceData.year_low}}</div>
+               <div class="col">{{stockPriceData.year_low | shrinkNumber:2}}</div>
            </div>
               <div class="row row-center">
                  <div class="col">Today's volume: </div>
-                 <div class="col">{{stockPriceData.volume}}</div>
+                 <div class="col">{{stockPriceData.volume | shrinkNumber:2}}</div>
                  <div class="col">Average volume: </div>
-                 <div class="col">{{stockDetailsData.AverageDailyVolume}}</div>
+                 <div class="col">{{stockDetailsData.AverageDailyVolume | shrinkNumber:2}}</div>
            </div>
 
             <div class="row row-center">
@@ -112,9 +112,9 @@
     <div class="item item-devider">Market Data</div>
        <div class="row row-center">
          <div class="col">Ask: </div>
-         <div class="col">{{stockDetailsData.Ask}}</div>
+         <div class="col">{{stockDetailsData.Ask | shrinkNumber:2}}</div>
          <div class="col">Bid:  </div>
-         <div class="col">{{stockDetailsData.Bid}}</div>
+         <div class="col">{{stockDetailsData.Bid | shrinkNumber:2}}</div>
   </div>
 
   <div class="row row-center">
@@ -126,22 +126,22 @@
 
   <div class="row row-center">
     <div class="col">Max price of the day: </div>
-    <div class="col">{{stockPriceData.day_high}}</div>
+    <div class="col">{{stockPriceData.day_high | shrinkNumber:2}}</div>
     <div class="col">Min price of the day:  </div>
-    <div class="col">{{stockPriceData.day_low}}</div>
+    <div class="col">{{stockPriceData.day_low | shrinkNumber:2}}</div>
   </div>
 
   <div class="row row-center">
     <div class="col">Max year price: </div>
-    <div class="col">{{stockPriceData.year_high}}</div>
+    <div class="col">{{stockPriceData.year_high | shrinkNumber:2}}</div>
     <div class="col">Min year price:  </div>
-    <div class="col">{{stockPriceData.year_low}}</div>
+    <div class="col">{{stockPriceData.year_low | shrinkNumber:2}}</div>
 </div>
    <div class="row row-center">
       <div class="col">Today's volume: </div>
-      <div class="col">{{stockPriceData.volume}}</div>
+      <div class="col">{{stockPriceData.volume | shrinkNumber:3}}</div>
       <div class="col">Average volume: </div>
-      <div class="col">{{stockDetailsData.AverageDailyVolume}}</div>
+      <div class="col">{{stockDetailsData.AverageDailyVolume | shrinkNumber:3}}</div>
 </div>
 
  <div class="row row-center">

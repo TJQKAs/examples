@@ -54,6 +54,7 @@ angular.module('testApp.controllers', [])
     {ticker: "INTC"},
     {ticker: "MSFT"},
     {ticker: "GE"},
+    {ticker: "YHOO"}
   ];
 }])
 
@@ -126,12 +127,12 @@ function getChartData(){
 
         console.log($scope.myData);
 
-        var marginBottom = ($window.innerWidth / 100)*10;
+        var marginBottom = ($window.innerWidth / 100)*20;
 
         $scope.chartOptions = {
              chart: {
                  type: 'linePlusBarChart',
-                 height: 500,
+                 height: 400,
                  margin: {
                      top: 15,
                      right: 70,
@@ -188,7 +189,7 @@ function getChartData(){
                  }
              }
          };
-         console.log($scope.options);
+         console.log($scope.chartOptions);
 
 
 
