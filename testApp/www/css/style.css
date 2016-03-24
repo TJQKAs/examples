@@ -61,6 +61,35 @@
    fill: rgb(42, 4, 21);
 }
 
+#interActiveChart .nv-focus .nv-line{
+  stroke: rgb(255, 0, 0);
+  stroke-width: 3px;
+}
+
+#interActiveChart .nv-context .nv-line{
+  stroke: rgb(166, 13, 13);
+  stroke-opacity: .8;
+  stroke-width: 2px;
+}
+
+#interActiveChart .nv-line{
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#interActiveChart .nv-barsWrap rect {
+  fill: rgb(23, 6, 105);
+  fill-opacity: 1;
+  shape-rendering: crispEdges;
+  }
+
+  #interActiveChart .nv-brushBackground rect {
+  shape-rendering: crispEdges;
+  stroke-width: 1;
+  stroke: rgb(183, 230, 0);
+  }
+
+
 svg text{
   font: 400 10pt "Helvetica Neue", sans-serif !important;
 }
