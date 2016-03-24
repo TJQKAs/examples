@@ -42,7 +42,7 @@
            <!-- all data below we retrieve from json   -->
 
            <div class="card" id="market-data-card">
-               <div class="item item-devider">Market Data<span class="last-trade"> last trade: {{stockPriceData.utctime | date: 'h:m a'}}</span></div>
+               <div class="item item-devider">Market Data<span class="last-trade"> last trade: {{stockPriceData.utctime | date: 'hh:mm:ss a'}}</span></div>
                   <div class="row row-center">
                     <div class="col">Ask: </div>
                     <div class="col col-20">{{stockDetailsData.Ask | shrinkNumber:2}}</div>
