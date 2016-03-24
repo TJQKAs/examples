@@ -1,23 +1,18 @@
-<ion-view view-title="{{ticker}}">
+<ion-view view-title="{{ticker}}" drag-content="false">
   <div class="bar bar-subheader bar-light">
     <div class="button" side="left">
       <div class="button button-clear">
         <h6>{{stockDetailsData.Name}}</h6>
     </div>
   </div>
-
   <h2 class="title button-left button-right">{{stockPriceData.price | shrinkNumber:2}}</h2>
-
   <div class="button" side="right">
     <div class="button button-clear">
       <h6>{{stockPriceData.chg_percent | shrinkNumber:3}}%</h6>
   </div>
 </div>
-
 </div>
-
-  <ion-content class="has-subheader">
-
+  <ion-content class="has-subheader" scrollbar-y="false">
     <div class="button-bar">
       <!-- if chartView is equal to 1 I want add active class to this elem otherwise do not add anything -->
       <a ng-click="chartViewFunc(1)" ng-class="chartView == 1 ? 'active' : '' " class="button">Day</a>
@@ -31,13 +26,9 @@
     <img ng-if="chartView == 1" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=1d&q=l&l=on&z=m&a=vm" style="width: 100%">
  <!-- each graph to each time period  -->
       <img ng-if="chartView == 2" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=5d&q=l&l=on&z=m&a=vm" style="width: 100%">
-
           <img ng-if="chartView == 3"  ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=3m&q=l&l=on&z=m&a=vm" style="width: 100%">
-
               <!-- <div ng-if="chartView == 4"  nv-chart="options" style="height: 70vh;"></div> -->
-
               <nvd3  ng-if="chartView==4" options="chartOptions" data="myData" id="interActiveChart"></nvd3>
-
               <img ng-if="chartView == 5"   ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=my&q=l&l=on&z=m&a=vm" style="width: 100%">
              <!-- http://chart.finance.yahoo.com/z7s=YAHOO&t=1d&q=l&l=on&z=m&a=vm -->
            <!-- all data below we retrieve from json   -->

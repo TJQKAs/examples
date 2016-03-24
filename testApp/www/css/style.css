@@ -2,19 +2,63 @@
 #interActiveChart{
   height: 80vmin;
 }
-.nv-focus .nv-barsWrap{
-  display: none;
-}
-/*.nv-focus .nv-y1 .tick{
-  display: none;
-}*/
 
-.nv-focus .nvd.nv-wrap.nv-axis{
-  display: none;
+.nv-focus .nv-barsWrap,
+.nv-focus .nv-y1 .nv-axisMaxMin,
+.nv-focus .nv-y1 .domain,
+.nv-focus .nv-y1 .tick,
+.nv-context .nv-x .nv-axisMaxMin,
+.nv-context .nv-y2 .domain,
+.nv-context .nv-y2 .nv-axisMaxMin,
+.nv-context .nv-y2 .tick {
+  display: none !important;
 }
 
-.nv-legend-text, .nv-legend-symbol{
-  display: none;
+
+.nv-focus .nv-x .tick:first-of-type text,
+#interActiveChart text.nv-axislabel{
+  text-anchor: start !important;
+}
+.nv-focus .nv-y2 .tick text,
+.nv-focus .nv-y2 .nv-axisMaxMin text,
+.nv-focus .nv-x .tick:last-of-type text,
+.nv-context .nv-y1 .tick text,
+.nv-context .nv-y1 .nv-axisMaxMin text {
+  text-anchor: end !important;
+}
+#interActiveChart svg text {
+  font-size: 3vmin !important;
+}
+
+#interActiveChart .nv-axis line{
+  stroke-dasharray: 3,3;
+  stroke: rgb(178, 23, 255);
+}
+#interActiveChart .nv-axis path.domain{
+  stroke-dasharray: 4,4;
+  stroke-opacity: .5;
+  stroke-width: 1px;
+}
+#interActiveChart .nv-focus .domain{
+  stroke: rgb(0, 161, 241);
+}
+
+#interActiveChart .nv-focus .nv-axislabel,
+#interActiveChart .nv-focus .nv-axisMaxMin text{
+  fill: rgb(2, 156, 41);
+}
+#interActiveChart .nv-context .domain{
+  stroke: rgb(251, 82, 36);
+}
+
+#interActiveChart .nv-context .nv-axislabel,
+#interActiveChart .nv-context .nv-axisMaxMin text{
+  fill: rgb(251, 82, 36);
+}
+
+#interActiveChart .nv-focus .nv-y2 .tick text,
+#interActiveChart .nv-context .nv-y1 .tick text{
+   fill: rgb(42, 4, 21);
 }
 
 svg text{

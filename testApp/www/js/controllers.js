@@ -135,9 +135,9 @@ function getChartData(){
                  height: 400,
                  margin: {
                      top: 15,
-                     right: 40,
+                     right: 0,
                      bottom: marginBottom,
-                     left: 70
+                     left: 0
                  },
                  bars: {
                      forceY: [0]
@@ -146,6 +146,7 @@ function getChartData(){
                      forceY: [0]
                  },
                  interpolate: "cardinal",
+                 noData: 'Loading data ...',
                  transitionDuration: 500,
                  color: ['rgb(0, 50, 201)', 'rgb(46, 224, 255)'],
                  x: function(d,i) { return i },

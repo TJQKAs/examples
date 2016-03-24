@@ -4,7 +4,7 @@ import {Component, EventEmitter}from 'angular2/core';
 @Component({
   selector: 'my-confirm',
   template: `<h4>Did you enter correct data about yourself? </h4>
-  <p>Your name is  <span>{{mySelf.myName}}</span>  and You are  <span>{{mySelf.myAge}}</span>  old.
+  <p>Your name is  <span>{{mySelf.myName}}</span>  and You are  <span>{{mySelf.myAge}}</span>  years old.
   Please click on 'Confirm' button to assert your details</p>
   <div>
     <label for="myName">Your name</label><br/>
