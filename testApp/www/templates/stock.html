@@ -21,6 +21,7 @@
       <a ng-click="chartViewFunc(4)" ng-class="chartView == 4 ? 'active' : '' " class="button">Year</a>
       <a ng-click="chartViewFunc(5)" ng-class="chartView == 5 ? 'active' : '' " class="button">All time</a>
     </div>
+
     <!-- we get graph from yahoo for each ticker by ng-scr and url  -->
     <!-- we add ng-if condition thus we can see graph if chartView is equal to smth  -->
     <img ng-if="chartView == 1" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=1d&q=l&l=on&z=m&a=vm" style="width: 100%">
@@ -32,6 +33,7 @@
               <img ng-if="chartView == 5"   ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=my&q=l&l=on&z=m&a=vm" style="width: 100%">
              <!-- http://chart.finance.yahoo.com/z7s=YAHOO&t=1d&q=l&l=on&z=m&a=vm -->
            <!-- all data below we retrieve from json   -->
+
            <div class="card">
                <div class="item item-devider">Market Data</div>
                   <div class="row row-center">
@@ -75,8 +77,6 @@
               <div class="col">{{stockDetailsData.EBITDA}}</div>
            </div>
 
-           </div>
-
 
            <div class="card">
                <div class="item item-devider">Notes</div>
@@ -92,74 +92,11 @@
                <i class="icon ion-ios-arrow-right"></i>
              </a>
            </div>
-
-
+         </div>
              </ion-content>
            </ion-view>
 
   <!-- http://chart.finance.yahoo.com/z7s=YAHOO&t=1d&q=l&l=on&z=m&a=vm -->
 <!-- all data below we retrieve from json   -->
-<div class="card">
-    <div class="item item-devider">Market Data</div>
-       <div class="row row-center">
-         <div class="col">Ask: </div>
-         <div class="col">{{stockDetailsData.Ask | shrinkNumber:2}}</div>
-         <div class="col">Bid:  </div>
-         <div class="col">{{stockDetailsData.Bid | shrinkNumber:2}}</div>
-  </div>
-
-  <div class="row row-center">
-    <div class="col">Open price: </div>
-    <div class="col">{{stockDetailsData.Open}}</div>
-    <div class="col">Prev. close price:  </div>
-    <div class="col">{{stockDetailsData.PreviousClose}}</div>
-</div>
-
-  <div class="row row-center">
-    <div class="col">Max price of the day: </div>
-    <div class="col">{{stockPriceData.day_high | shrinkNumber:2}}</div>
-    <div class="col">Min price of the day:  </div>
-    <div class="col">{{stockPriceData.day_low | shrinkNumber:2}}</div>
-  </div>
-
-  <div class="row row-center">
-    <div class="col">Max year price: </div>
-    <div class="col">{{stockPriceData.year_high | shrinkNumber:2}}</div>
-    <div class="col">Min year price:  </div>
-    <div class="col">{{stockPriceData.year_low | shrinkNumber:2}}</div>
-</div>
-   <div class="row row-center">
-      <div class="col">Today's volume: </div>
-      <div class="col">{{stockPriceData.volume | shrinkNumber:3}}</div>
-      <div class="col">Average volume: </div>
-      <div class="col">{{stockDetailsData.AverageDailyVolume | shrinkNumber:3}}</div>
-</div>
-
- <div class="row row-center">
-   <div class="col">Market Cap. billion$: </div>
-   <div class="col">{{stockDetailsData.MarketCapitalization}}</div>
-   <div class="col">EBITDA: </div>
-   <div class="col">{{stockDetailsData.EBITDA}}</div>
-</div>
-
-</div>
-
-
-<div class="card">
-    <div class="item item-devider">Notes</div>
-    <a class="item ">
-       <h2>No title</h2>
-     </a>
-</div>
-
-<div class="card">
-  <div class="item item-devider">News</div>
-  <a class="item item-icon-right">
-    <h2>News Story Title</h2>
-    <i class="icon ion-ios-arrow-right"></i>
-  </a>
-</div>
-
-
   </ion-content>
 </ion-view>
