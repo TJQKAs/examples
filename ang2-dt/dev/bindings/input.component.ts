@@ -1,11 +1,12 @@
 import {Component, EventEmitter} from 'angular2/core';
+
 @Component({
   selector:  'my-input',
   //   <input type="text" id="myName" [(ngModel)]="mySelf.myName" (keyup)="onKeyup()"> - 2w databinding
   // by (keyup)="onKeyup()" - start process
   //
   template: `
-  <h2>Please type details about you</h2>
+  <h4>Please type below the details about you</h4>
   <div>
     <label for="myName">Your name</label><br/>
     <input type="text" id="myName" [(ngModel)]="mySelf.myName" (keyup)="onKeyup()">
@@ -20,12 +21,13 @@ import {Component, EventEmitter} from 'angular2/core';
   <br/>
   <button [disabled]="!isValid" (click)="onSubmit()">Submit</button>
   `,
-  // add outputs 
+  inputs: ['mySelf'],
+  // add outputs
   outputs: ['submitted']
 })
 
 export class InputComponent {
-mySelf = {myName:'', myAge: ''};
+mySelf = {myName:' ', myAge: ' '};
 isFilled = false;
 isValid = false;
 // by EventEmitter we fire event
