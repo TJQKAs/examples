@@ -98,6 +98,13 @@ function getPriceData(){
      console.log(data);
      // bind price data to new scope var which we gonna show
      $scope.stockPriceData = data;
+
+    if(data.chg_percent >= 0 && data != null){
+      $scope.reactiveColor = {'background-color':'rgb(0, 200, 2)'};
+    }
+    else  if(data.chg_percent < 0 && data != null){
+      $scope.reactiveColor = {'background-color':'rgb(255, 43, 43)'};
+    }
   });
 }
 

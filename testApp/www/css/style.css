@@ -93,3 +93,95 @@
 svg text{
   font: 400 10pt "Helvetica Neue", sans-serif !important;
 }
+
+/*Short button bar */
+#short-button-bar .button{
+  line-height: normal;
+  min-height: 10px;
+  border: solid 1px rgb(6, 127, 139);
+  border-radius: 3px;
+  font-size: 7pt;
+  font-style: normal; ;
+  font-weight: normal;
+  color:rgb(0, 5, 3);
+  background-color: rgb(180, 225, 245);
+}
+#short-button-bar .button.active{
+  line-height: normal;
+  min-height: 10px;
+  border: solid 1px rgb(6, 127, 139);
+  border-radius: 3px;
+  font-size: 7pt;
+  font-style: italic;
+  font-weight: bolder;
+  color:rgb(0, 5, 3);
+  background-color:rgb(0, 167, 228);
+}
+#short-button-bar {
+  -webkit-box-shadow: 0px 0px 0px 3px rgb(72, 254, 221);
+}
+
+/*helper styles*/
+
+.display-flex{
+  display: flex !important;
+}
+.no-margin {
+  margin: 0 !important;
+}
+
+/*Stock subheader bar */
+#stock-subheader-bar {
+  border-top: none;
+}
+#stock-name {
+  color:rgb(56, 0, 59);
+  float:left;
+  font-size: 3.5vmin;
+  font-weight: bolder;
+  margin: auto 0;
+  max-width: 33vw;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+}
+
+#stock-price {
+  font-size: 5vmin;
+  line-height: 30pt;
+}
+#stock-change{
+  font-size: 3vmin;
+  font-weight: bolder;
+  float: right;
+  line-height: 12pt;
+  margin:auto 0;
+}
+
+/*Stock navbar*/
+
+#stock-navbar ion-header-bar{
+  border: none;
+}
+#stock-navbar .back-text{
+  font-size: 9pt;
+}
+
+/*Market data card*/
+
+#market-data-card{
+  font-size: 3.25vmin;
+}
+
+#market-data-card .col-20{
+  font-weight: bolder;
+}
+
+#market-data-card .col-20:last-of-type{
+  text-align: right;
+}
+
+#market-data-card .last-trade{
+  font-size: 3vmin;
+  float:right;
+}

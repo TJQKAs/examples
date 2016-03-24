@@ -1,19 +1,26 @@
 <ion-view view-title="{{ticker}}" drag-content="false">
-  <div class="bar bar-subheader bar-light">
+
+<ion-nav-bar id="stock-navbar" class="bar-dark ng-style:reactiveColor">
+  <ion-nav-back-button></ion-nav-back-button>
+</ion-nav-bar>
+
+
+
+  <div class="bar bar-subheader bar-light" id="stock-subheader-bar">
     <div class="button" side="left">
-      <div class="button button-clear">
-        <h6>{{stockDetailsData.Name}}</h6>
+      <div class="button button-clear display-flex">
+        <h6 id="stock-name">{{stockDetailsData.Name}}</h6>
     </div>
   </div>
-  <h2 class="title button-left button-right">{{stockPriceData.price | shrinkNumber:2}}</h2>
+  <h2 class="title button-left button-right" id="stock-price">{{stockPriceData.price | shrinkNumber:2}}</h2>
   <div class="button" side="right">
     <div class="button button-clear">
-      <h6>{{stockPriceData.chg_percent | shrinkNumber:3}}%</h6>
+      <h6 id="stock-change" ng-class="stockPriceData.change < 0 ? 'assertive' : 'balaned' "><span ng-if="stockPriceData.change > 0">+</span>{{stockPriceData.change | shrinkNumber:2}}<br/><span ng-if="stockPriceData.change > 0">+</span>({{stockPriceData.chg_percent | shrinkNumber:3}}%)</h6>
   </div>
 </div>
 </div>
   <ion-content class="has-subheader" scrollbar-y="false">
-    <div class="button-bar">
+    <div class="button-bar" id="short-button-bar">
       <!-- if chartView is equal to 1 I want add active class to this elem otherwise do not add anything -->
       <a ng-click="chartViewFunc(1)" ng-class="chartView == 1 ? 'active' : '' " class="button">Day</a>
       <a ng-click="chartViewFunc(2)" ng-class="chartView == 2 ? 'active' : '' " class="button">Week</a>
@@ -34,47 +41,47 @@
              <!-- http://chart.finance.yahoo.com/z7s=YAHOO&t=1d&q=l&l=on&z=m&a=vm -->
            <!-- all data below we retrieve from json   -->
 
-           <div class="card">
-               <div class="item item-devider">Market Data</div>
+           <div class="card" id="market-data-card">
+               <div class="item item-devider">Market Data<span class="last-trade"> last trade: {{stockPriceData.utctime | date: 'h:m a'}}</span></div>
                   <div class="row row-center">
                     <div class="col">Ask: </div>
-                    <div class="col">{{stockDetailsData.Ask | shrinkNumber:2}}</div>
+                    <div class="col col-20">{{stockDetailsData.Ask | shrinkNumber:2}}</div>
                     <div class="col">Bid:  </div>
-                    <div class="col">{{stockDetailsData.Bid | shrinkNumber:2}}</div>
+                    <div class="col col-20">{{stockDetailsData.Bid | shrinkNumber:2}}</div>
              </div>
 
              <div class="row row-center">
                <div class="col">Open price: </div>
-               <div class="col">{{stockDetailsData.Open}}</div>
+               <div class="col col-20">{{stockDetailsData.Open}}</div>
                <div class="col">Prev. close price:  </div>
-               <div class="col">{{stockDetailsData.PreviousClose}}</div>
+               <div class="col col-20">{{stockDetailsData.PreviousClose}}</div>
            </div>
 
              <div class="row row-center">
                <div class="col">Max price of the day: </div>
-               <div class="col">{{stockPriceData.day_high | shrinkNumber:2}}</div>
+               <div class="col col-20">{{stockPriceData.day_high | shrinkNumber:2}}</div>
                <div class="col">Min price of the day:  </div>
-               <div class="col">{{stockPriceData.day_low | shrinkNumber:2}}</div>
+               <div class="col col-20">{{stockPriceData.day_low | shrinkNumber:2}}</div>
              </div>
 
              <div class="row row-center">
                <div class="col">Max year price: </div>
-               <div class="col">{{stockPriceData.year_high | shrinkNumber:2}}</div>
+               <div class="col col-20">{{stockPriceData.year_high | shrinkNumber:2}}</div>
                <div class="col">Min year price:  </div>
-               <div class="col">{{stockPriceData.year_low | shrinkNumber:2}}</div>
+               <div class="col col-20">{{stockPriceData.year_low | shrinkNumber:2}}</div>
            </div>
               <div class="row row-center">
                  <div class="col">Today's volume: </div>
-                 <div class="col">{{stockPriceData.volume | shrinkNumber:2}}</div>
+                 <div class="col col-20">{{stockPriceData.volume | shrinkNumber:2}}</div>
                  <div class="col">Average volume: </div>
-                 <div class="col">{{stockDetailsData.AverageDailyVolume | shrinkNumber:2}}</div>
+                 <div class="col col-20">{{stockDetailsData.AverageDailyVolume | shrinkNumber:2}}</div>
            </div>
 
             <div class="row row-center">
               <div class="col">Market Cap. billion$: </div>
-              <div class="col">{{stockDetailsData.MarketCapitalization}}</div>
+              <div class="col col-20">{{stockDetailsData.MarketCapitalization}}</div>
               <div class="col">EBITDA: </div>
-              <div class="col">{{stockDetailsData.EBITDA}}</div>
+              <div class="col col-20">{{stockDetailsData.EBITDA}}</div>
            </div>
 
 
