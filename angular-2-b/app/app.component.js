@@ -28,7 +28,7 @@ System.register(['angular2/core', './attribute-directives.component'], function(
                     core_1.Component({
                         selector: 'my-app',
                         template: "<my-attribute-directives></my-attribute-directives>",
-                        directives: [attribute_directives_component_1.AttributeDirectivesComponent]
+                        directives: [attribute_directives_component_1.AttributeDirectives]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

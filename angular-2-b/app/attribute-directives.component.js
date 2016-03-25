@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './highlight.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,27 +10,31 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var AttributeDirectivesComponent;
+    var core_1, highlight_directive_1;
+    var AttributeDirectives;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (highlight_directive_1_1) {
+                highlight_directive_1 = highlight_directive_1_1;
             }],
         execute: function() {
-            AttributeDirectivesComponent = (function () {
-                function AttributeDirectivesComponent() {
+            AttributeDirectives = (function () {
+                function AttributeDirectives() {
                 }
-                AttributeDirectivesComponent = __decorate([
+                AttributeDirectives = __decorate([
                     core_1.Component({
                         selector: 'my-attribute-directives',
-                        template: ""
+                        template: "\n  <div myHighLight>\n    Highlight me\n  </div> <br/><br/>\n  <div myHighLight>\n    Do it again\n  </div> <br/><br/>\n\n  ",
+                        directives: [highlight_directive_1.HighlightDirective]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AttributeDirectivesComponent);
-                return AttributeDirectivesComponent;
+                ], AttributeDirectives);
+                return AttributeDirectives;
             }());
-            exports_1("AttributeDirectivesComponent", AttributeDirectivesComponent);
+            exports_1("AttributeDirectives", AttributeDirectives);
         }
     }
 });
