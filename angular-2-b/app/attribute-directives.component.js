@@ -27,7 +27,7 @@ System.register(['angular2/core', './highlight.directive'], function(exports_1, 
                 AttributeDirectives = __decorate([
                     core_1.Component({
                         selector: 'my-attribute-directives',
-                        template: "\n  <div myHighLight>\n    Highlight me\n  </div> <br/><br/>\n  <div myHighLight>\n    Do it again\n  </div> <br/><br/>\n\n  ",
+                        template: "\n  <div myHighLight>\n    Highlight me\n  </div> <br/><br/>\n  <div myHighLight>\n    Do it again\n  </div> <br/><br/>\n  ",
                         directives: [highlight_directive_1.HighlightDirective]
                     }), 
                     __metadata('design:paramtypes', [])
@@ -38,4 +38,5 @@ System.register(['angular2/core', './highlight.directive'], function(exports_1, 
         }
     }
 });
-//# sourceMappingURL=attribute-directives.component.js.map
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImF0dHJpYnV0ZS1kaXJlY3RpdmVzLmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztZQWdCQTtnQkFBQTtnQkFFQSxDQUFDO2dCQWZEO29CQUFDLGdCQUFTLENBQUM7d0JBQ1QsUUFBUSxFQUFFLHlCQUF5Qjt3QkFDbkMsUUFBUSxFQUFFLDZIQU9UO3dCQUNELFVBQVUsRUFBRSxDQUFDLHdDQUFrQixDQUFDO3FCQUNqQyxDQUFDOzt1Q0FBQTtnQkFJRiwwQkFBQztZQUFELENBRkEsQUFFQyxJQUFBO1lBRkQscURBRUMsQ0FBQSIsImZpbGUiOiJhdHRyaWJ1dGUtZGlyZWN0aXZlcy5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSAnYW5ndWxhcjIvY29yZSc7XG5pbXBvcnQge0hpZ2hsaWdodERpcmVjdGl2ZX0gZnJvbSAnLi9oaWdobGlnaHQuZGlyZWN0aXZlJztcblxuQENvbXBvbmVudCh7XG4gIHNlbGVjdG9yOiAnbXktYXR0cmlidXRlLWRpcmVjdGl2ZXMnLFxuICB0ZW1wbGF0ZTogYFxuICA8ZGl2IG15SGlnaExpZ2h0PlxuICAgIEhpZ2hsaWdodCBtZVxuICA8L2Rpdj4gPGJyLz48YnIvPlxuICA8ZGl2IG15SGlnaExpZ2h0PlxuICAgIERvIGl0IGFnYWluXG4gIDwvZGl2PiA8YnIvPjxici8+XG4gIGAsXG4gIGRpcmVjdGl2ZXM6IFtIaWdobGlnaHREaXJlY3RpdmVdXG59KVxuXG5leHBvcnQgY2xhc3MgQXR0cmlidXRlRGlyZWN0aXZlc3tcblxufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
