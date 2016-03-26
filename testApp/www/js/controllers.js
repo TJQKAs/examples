@@ -60,8 +60,8 @@ angular.module('testApp.controllers', [])
 
 
 //we deleted http -service in controller which we used before because we use service from services.js
-.controller('StockCtrl', ['$scope', '$stateParams', '$window','stockDataService', 'dateService', 'chartDataService',
-function($scope, $stateParams, $window, stockDataService, dateService, chartDataService){
+.controller('StockCtrl', ['$scope', '$stateParams', '$window','$ionicPopup', 'stockDataService', 'dateService', 'chartDataService',
+function($scope, $stateParams, $window,$ionicPopup, stockDataService, dateService, chartDataService){
 //  "get" - method we put in our services.js and create factory - watch services.js but instead
 // we create one more dependency - stockDataService
 // "http://finance.yahoo.com/webservice/v1/symbols/YHOO/quote?format=json&view=detail"
@@ -88,6 +88,45 @@ console.log(dateService.oneYearAgo());
     $scope.chartView = n;
   };
 // all we wrapped into getPriceData function
+
+$scope.addNote = function(){
+  $scope.note = {title: 'Note', body: '', date: $scope.todayDate, ticker: $scope.ticker};
+  // custom popup
+  var note = $ionicPopup.show({
+    template: '<input type="text" ng-model="note.title" id="stock-note-title"><textarea type="text" ng-model="note.body" id="stock-note-body"></textarea>',
+    title: "New note for " + $scope.ticker,
+    // subTitle: "Please use normal things",
+    scope: $scope,
+    buttons: [
+      {text: 'Cancel',
+       onTap: function(e){
+         return;
+       }},
+      {
+        text: '<b>Save<b/>',
+        type:'button-balanced',
+        onTap: function(e){
+          // if(!$scope.data.wifi){
+          //   // don't allow user to close until he enters wi-fi pass
+          //   e.preventDefault();
+          // } else {
+          //   return $scope.data.wifi;
+          // }
+          console.log('save: ', $scope.note);
+        }
+      }
+    ]
+  });
+  note.then(function(res){
+    console.log('Tapped : ', res);
+  });
+};
+
+
+
+
+
+
 function getPriceData(){
 //call stockDataService which is in services.js call it's method getPriceData  and put there param - ticker
 // by which we gonna grab data of prices  from json file
