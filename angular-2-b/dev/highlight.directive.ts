@@ -3,7 +3,7 @@ import {Directive, ElementRef, OnInit, Renderer} from 'angular2/core';
 //[myHighLight]' - but it's not a property binding in that way  it's way of definition name in Directives  it's just a selector name
 @Directive ({
     selector: '[myHighlight]',
-    inputs: ['highlightColor']
+    inputs: ['highlightColor:myHighlight']
 })
 
 
