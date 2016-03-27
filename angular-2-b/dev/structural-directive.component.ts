@@ -22,6 +22,21 @@ import {Component} from 'angular2/core';
         <li class="underlined" *ngFor="#item of list, #i = index">{{item}} - number {{i+1}}</li>
       </ul>
     </div>
+  </section>
+  <section class="directive">
+    <h2>[ngSwitch]</h2>
+    <div>
+      Enter red, yellow or green color
+      <br/>
+      <input type="text" #color (keyup)="0">
+    </div>
+    <div [ngSwitch]="color.value">
+      <template [ngSwitchWhen]="'red'"><span style="color: red">Color is red</span></template>
+      <template [ngSwitchWhen]="'yellow'"><span style="color: yellow">Color is yellow</span></template>
+      <template [ngSwitchWhen]="'green'"><span style="color: green">Color is green</span></template>
+      <template ngSwitchDefault><span style="color: blue">Blue is default color</span></template>
+      </div>
+
   </section>`
 
 
