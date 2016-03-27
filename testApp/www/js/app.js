@@ -4,6 +4,7 @@ angular.module('testApp', [
   'testApp.controllers',
   'nvd3',
   'nvChart',
+  'cb.x2js',
   // we add new dependecies
   'testApp.services',
   'testApp.filters',

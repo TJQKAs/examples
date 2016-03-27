@@ -60,8 +60,8 @@ angular.module('testApp.controllers', [])
 
 
 //we deleted http -service in controller which we used before because we use service from services.js
-.controller('StockCtrl', ['$scope', '$stateParams', '$window','$ionicPopup', 'stockDataService', 'dateService', 'chartDataService','notesService',
-function($scope, $stateParams, $window,$ionicPopup, stockDataService, dateService, chartDataService, notesService){
+.controller('StockCtrl', ['$scope', '$stateParams', '$window','$ionicPopup', 'stockDataService', 'dateService', 'chartDataService','notesService','newsService',
+function($scope, $stateParams, $window,$ionicPopup, stockDataService, dateService, chartDataService, notesService, newsService){
 //  "get" - method we put in our services.js and create factory - watch services.js but instead
 // we create one more dependency - stockDataService
 // "http://finance.yahoo.com/webservice/v1/symbols/YHOO/quote?format=json&view=detail"
@@ -83,8 +83,20 @@ console.log(dateService.oneYearAgo());
     getPriceData();
     getDetailsData();
     getChartData();
+    getNews();
     $scope.stockNotes = notesService.getNotes($scope.ticker);
   });
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+$scope.openWindow = function(link){
+
+  console.log("openWindow ->" + link);
+};
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
  // by this function we get the meaning of the chartView from button which we've clicked
   $scope.chartViewFunc = function(n){
     $scope.chartView = n;
@@ -142,7 +154,7 @@ $scope.openNote = function(index, title, body){
         text: '<b>Save<b/>',
         type:'button-balanced button-small',
                 onTap: function(e){
-                notesService.deleteNote($scope.ticker, index);  
+                notesService.deleteNote($scope.ticker, index);
                 notesService.addNote($scope.ticker, $scope.note);
         }
       }
@@ -156,7 +168,14 @@ $scope.openNote = function(index, title, body){
 ///////////////////////////////////////////////////////
 
 
+function getNews(){
+  $scope.newsStories = [];
+  var promise = newsService.getNews($scope.ticker);
 
+  promise.then(function(data){
+    $scope.newsStories = data;
+  });
+}
 
 
 
