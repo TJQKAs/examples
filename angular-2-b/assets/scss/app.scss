@@ -4,3 +4,19 @@ body {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
 }
+
+.directives {
+  border: 2px solid rgb(198, 246, 6);
+  background-color: rgb(230, 162, 30);
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.red{
+  color: rgb(18, 0, 228);
+}
+.underlined {
+  text-decoration: underline;
+  text-decoration-style: double;
+  text-decoration-color: rgb(137, 250, 250);
+}
