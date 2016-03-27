@@ -185,3 +185,22 @@ svg text{
   font-size: 3vmin;
   float:right;
 }
+/*notes card style*/
+
+#stock-notes .add-stock-notes{
+  border: solid 2px rgb(103, 4, 200);
+  border-radius: 3px;
+  color:rgb(21, 4, 133);
+  float:right;
+  font-size: 11pt;
+  font-weight: 300;
+  padding: 0 5px;
+}
+#stock-note-title {
+  border-bottom: 3px solid rgb(152, 167, 227);
+  padding: 0 5px;
+}
+#stock-note-body {
+  min-height: 100px;
+  padding: 10px 5px 5px;
+}
