@@ -11,6 +11,10 @@ var TTTGame = (function(){
     this.game = phaserGame;
     // array we we put our road sprites
     this.arrTiles = [];
+   // should we start render obstacles
+    this.hasStarted = false;
+
+    this.isDead = false;
     // this means that as a default user didn't click to mouse
     this.mouseTouchDown = false;
 
@@ -18,6 +22,14 @@ var TTTGame = (function(){
    // as default taxi doesn't jump
     this.isJumping = false;
     this.currentJumpHeight = 0;
+
+   // count every road element that has been rendered
+   this.roadCount = 0;
+   // point in the future where obstacle should be
+   this.nextObstacleIndex = 0;
+   //array with obstacles
+   this.arrObstacles = [];
+
 
 
     this.taxi = undefined;
@@ -29,6 +41,13 @@ var TTTGame = (function(){
       y: GAME_HEIGHT / 2 - 100
     }
   }
+
+TTTGame.prototype.gameOver = function(){
+  // how to add hex color example : hex color red #ff0000 and it doesn't work you should cut # and put 0x instead : 0xff0000
+
+  this.taxi.tint = 0x14ff00;
+  // this.tile.tint = 'rgb(250, 0, 0)';
+};
 
 
 
@@ -53,12 +72,62 @@ TTTGame.prototype.calculatePositionOnRoadWithXPosition = function(xpos){
      }
 };
 
+
+TTTGame.prototype.calculateNextObstacleIndex = function(){
+  // low rate
+  var minimumOffset = 3;
+  // high rate
+    var maximumOffset = 10;
+    // random number
+    var num = Math.random()*(maximumOffset - minimumOffset);
+    // place where should be the next obstacle = current sprite road elem + rand number + low rate
+    this.nextObstacleIndex = this.roadCount + Math.round(num) + minimumOffset;
+};
+
+// function
+  TTTGame.prototype.checkObstacles = function () {
+    var i = this.arrObstacles.length - 1;
+    while(i >= 0){
+      var sprite = this.arrObstacles[i];
+      if(sprite.x < this.taxi.x - 10){
+        this.arrObstacles.splice(i,1);
+      };
+      var dx = sprite.x - this.taxi.x;
+      dx = Math.pow(dx,2);
+      var dy = (sprite.y - sprite.height / 2) - this.taxi.y;
+      dy = Math.pow(dy,2);
+      var distance = Math.sqrt(dx + dy);
+      if(distance < 25){
+        //we have a hit
+        if(!this.isDead){
+          this.gameOver();
+        };  };
+      i--;
+    }  };
+
+
+
 TTTGame.prototype.generateRoad = function(){
+//increment count of road elemes which has been rendered each time we call this function
+  this.roadCount++;
+  var tile = 'tile_road_1';
+  //boolean
+  isObstacle = false;
+ // whether or not should we generate obstacle
+ // if firstly we've already had more road's sprites than obstacles, secondly if process of rendering
+ // obstacles has been run
+if(this.roadCount >this.nextObstacleIndex && this.hasStarted){
+  // we change sprite instead of part of the road we assign to var tile - obstacle
+  tile = 'obstacle_1';
+  isObstacle = true;
+  // call method which tell us the moment of the next obstacle
+  this.calculateNextObstacleIndex();
+};
   //create first sprite from preloading
     // var sprite = this.game.add.sprite(0, 0, 'tile_road_1');
   //set position of object
   //  add sprite in the first index of array
-   var sprite = new Phaser.Sprite(this.game, 0, 0, 'tile_road_1');
+   var sprite = new Phaser.Sprite(this.game, 0, 0, tile);
    // add world to first index to the beginning
    this.game.world.addChildAt(sprite, 0);
     sprite.anchor.setTo(0.5, 1.0);
@@ -66,6 +135,11 @@ TTTGame.prototype.generateRoad = function(){
     sprite.y=this.roadStartPosition.y ;
     // we fill our empty array by sprites which are the same parts of our road
     this.arrTiles.push(sprite);
+
+    if(isObstacle){
+      this.arrObstacles.push(sprite);
+    };
+
   };
 
  TTTGame.prototype.moveTilesWithSpeed = function(speed){
@@ -96,6 +170,7 @@ TTTGame.prototype.generateRoad = function(){
  // responsible for preloading assets
    this.game.load.image('tile_road_1', 'static/img/assets/tile_road_1.png');
    this.game.load.image('taxi', 'static/img/assets/taxi.png');
+   this.game.load.image('obstacle_1', 'static/img/assets/obstacle_1.png')
 
   };
 
@@ -113,6 +188,11 @@ TTTGame.prototype.generateRoad = function(){
 
 TTTGame.prototype.touchDown = function(){
     this.mouseTouchDown = true;
+    // check whether the process of obstacle rendering has been initialized before
+    if(!this.hasStarted){
+      this.hasStarted = true;
+    };
+
     if(!this.isJumping){
       this.isJumping = true;
     }
@@ -152,6 +232,9 @@ TTTGame.prototype.touchUp = function(){
       var pointOnRoad = this.calculatePositionOnRoadWithXPosition(this.taxi_X);
       this.taxi.x = pointOnRoad.x;
       this.taxi.y = pointOnRoad.y + this.currentJumpHeight;
+
+            this.checkObstacles();
+
       this.moveTilesWithSpeed(SPEED);
   };
 
