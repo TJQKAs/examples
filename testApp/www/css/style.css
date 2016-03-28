@@ -204,3 +204,26 @@ svg text{
   min-height: 100px;
   padding: 10px 5px 5px;
 }
+/*news style*/
+#stock-news .icon{
+  color:rgb(176, 14, 113);
+  font-size: 11pt;
+  right: 0;
+}
+
+#stock-news h2{
+  font-weight: 400;
+  white-space: normal;
+}
+
+#stock-news p{
+  color: rgb(250, 169, 102);
+  font-size: 9pt;
+  margin: 10px auto 0;
+  white-space: normal;
+}
+
+#stock-news .item-icon-right{
+  padding-right: 30px;
+  
+}
