@@ -27,6 +27,7 @@
     "./dev/attribute-directives.component.ts",
     "./dev/boot.ts",
     "./dev/highlight.directive.ts",
-    "./dev/structural-directive.component.ts"
+    "./dev/structural-directive.component.ts",
+    "./dev/unless.directive.ts"
   ]
 }
