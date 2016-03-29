@@ -46,7 +46,7 @@ TTTGame.prototype.gameOver = function(){
   // how to add hex color example : hex color red #ff0000 and it doesn't work you should cut # and put 0x instead : 0xff0000
 
   this.taxi.tint = 0x14ff00;
-  // this.tile.tint = 'rgb(250, 0, 0)';
+
 };
 
 

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML >
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Tutorial</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+ <script type="text/javascript">
+
+    // call funcToCall x-times with y-sec delay
+    function CallAnotherFunction(times, delay, funcToCall){
+
+
+
+       var i = 0;
+       (function loopit(){
+         i++;
+         funcToCall();
+         if(i< times)
+         setTimeout(loopit, delay);
+       })();
+    };
+  function functionToCall(){
+    $("#output").append("<br/>  Function called");
+  }
+
+  $(function(){
+    CallAnotherFunction(20, 500, functionToCall);
+  });
+
+
+
+
+ </script>
+<body>
+  <h1>Type Test Function</h1>
+  <div id="output"></div>
+</body>
+</html>
