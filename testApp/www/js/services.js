@@ -81,6 +81,72 @@ var oneYearAgo = function(){
 })
 
 
+.factory('fillMyStocksCacheService', function(CacheFactory){
+
+  var myStocksCache;
+// if we can't get list of stocks to which I follow
+  if(!CacheFactory.get(myStocksCache)){
+    myStocksCache = CacheFactory('myStocksCache', {
+      storageMode: 'localStorage'
+  });
+} else {
+  myStocksCache = CacheFactory.get(myStocksCache);
+}
+
+   var fillMyStocksCache = function(){
+
+      var myStocksArray = [
+       {ticker: "GPRO"},
+       {ticker: "AAPL"},
+       {ticker: "FB"},
+       {ticker: "NFLX"},
+       {ticker: "TSLA"},
+       {ticker: "INTC"},
+       {ticker: "MSFT"},
+       {ticker: "GE"},
+       {ticker: "YHOO"}
+     ];
+    myStocksCache.put('myStocks', myStocksArray);
+   };
+   return {
+     fillMyStocksCache: fillMyStocksCache
+ };
+})
+
+.factory('myStocksCacheService', function(CacheFactory){
+  var myStocksCache = CacheFactory.get('myStocksCache');
+
+   return myStocksCache;
+
+})
+
+.factory('myStocksArrayService', function(fillMyStocksCacheService, myStocksCacheService){
+
+  if(!myStocksCacheService.info('myStocks')){
+    fillMyStocksCacheService.fillMyStocksCache();
+  }
+   var myStocks = myStocksCacheService.get('myStocks');
+   return  myStocks;
+
+})
+
+
+.factory('followStockService', function(){
+
+  return{
+    follow: function(ticker){
+
+    },
+    unfollow: function(ticker){
+
+    },
+    checkIfFollow: function(ticker){
+
+    }
+
+  };
+})
+
 
 .factory('stockDataService', function($q, $http, encodeURIService, stockDetailsCacheService){
 

@@ -42,20 +42,11 @@ angular.module('testApp.controllers', [])
   // console.log("app ctrl");
 })
 // dependecies as array of string
-.controller('MyStocksCtrl', ['$scope',
- function($scope) {
+.controller('MyStocksCtrl', ['$scope', 'myStocksArrayService',
+ function($scope, myStocksArrayService) {
   // define new scope array
-  $scope.myStocksArray = [
-    {ticker: "GPRO"},
-    {ticker: "AAPL"},
-    {ticker: "FB"},
-    {ticker: "NFLX"},
-    {ticker: "TSLA"},
-    {ticker: "INTC"},
-    {ticker: "MSFT"},
-    {ticker: "GE"},
-    {ticker: "YHOO"}
-  ];
+  $scope.myStocksArray = myStocksArrayService;
+  console.log(myStocksArrayService);
 }])
 
 
