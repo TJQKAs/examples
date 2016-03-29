@@ -1,5 +1,5 @@
-$mainColor: rgb(157, 245, 163);
-$width: 50%;
+$mainColor: rgb(187, 252, 168);
+$width: 60%;
 
 body {
   padding: 32px;
@@ -24,7 +24,7 @@ header .brand{
 .main {
   width: $width;
   margin: 32px auto;
-  padding: 16px
+  padding: 16px;
   border: solid 2px rgb(0, 107, 24);
   background-color: rgb(37, 224, 39);
 }
@@ -50,13 +50,13 @@ button{
 button:hover{
   background-color: rgb(71, 86, 131);
 }
-button.danger{
+button .danger{
   background-color: rgb(255, 0, 0);
   color: rgb(0, 0, 0);
   border: 2px solid rgb(0, 0, 0);
 }
 
-button.danger:hover{
+button .danger:hover{
   background-color: rgb(125, 0, 67);
   color: rgb(255, 255, 255);
   border: 2px solid rgb(0, 0, 0);
@@ -73,8 +73,8 @@ section:last-of-type{
   padding-bottom: 0;
 }
 
-#item-ant{
-  width: 60px;
+#item-amt{
+  width: 60%;
   text-align: center;
   color:rgb(38, 31, 52);
 }

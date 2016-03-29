@@ -24,10 +24,8 @@
   },
   "files": [
     "./dev/app.component.ts",
-    "./dev/attribute-directives.component.ts",
     "./dev/boot.ts",
-    "./dev/highlight.directive.ts",
-    "./dev/structural-directive.component.ts",
-    "./dev/unless.directive.ts"
+    "./dev/shopping-list/shopping-list.component.ts",
+    "./dev/shopping-list/shopping-new-item-list.component.ts"
   ]
 }
