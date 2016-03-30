@@ -131,16 +131,44 @@ var oneYearAgo = function(){
 })
 
 
-.factory('followStockService', function(){
+.factory('followStockService', function(myStocksArrayService, myStocksCacheService){
 
   return{
     follow: function(ticker){
-
+      //add var and assign object with prop ticker to which we gonna follow
+      var stockToAdd = {"ticker": ticker};
+      // use myStocksArrayService to push new following object
+      myStocksArrayService.push(stockToAdd);
+      // after that we should reset array with following objects
+      myStocksCacheService.put('myStocks', myStocksCacheService);
     },
     unfollow: function(ticker){
+    // to reject to follow
+    // iterate each object in myStocksArrayService
+   for(var i =0; i < myStocksArrayService.length; i++){
+     // in array ticker prop of object and if  this is equal to current ticker then
+     if(myStocksArrayService[i].ticker == ticker){
+       // splice object from array
+       myStocksArrayService.splice(i, 1);
+       //remove it
+       myStocksCacheService.remove('myStocks');
+       //update myStocks using  updated myStocksArrayService 
+       myStocksCacheService.put('myStocks', myStocksArrayService);
+       break;
+     }
+   }
 
-    },
+  },
+    // check if we've choose this ticker before
     checkIfFollow: function(ticker){
+      for(var i=0; i< myStocksArrayService.length; i++){
+        // if ticker in array is the same , so we've done it we've already followed
+        if(myStocksArrayService[i].ticker == ticker){
+          // we confirm it
+          return true;
+        }
+      }
+        return false;
 
     }
 

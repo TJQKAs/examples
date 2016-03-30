@@ -4,8 +4,6 @@
   <ion-nav-back-button></ion-nav-back-button>
 </ion-nav-bar>
 
-
-
   <div class="bar bar-subheader bar-light" id="stock-subheader-bar">
     <div class="button" side="left">
       <div class="button button-clear display-flex">
@@ -41,7 +39,17 @@
              <!-- http://chart.finance.yahoo.com/z7s=YAHOO&t=1d&q=l&l=on&z=m&a=vm -->
            <!-- all data below we retrieve from json   -->
 
+
+
+
            <div class="card" id="market-data-card">
+
+             <!-- this is my follow button I don't know why it doesn't show in the sub header bar  -->
+             <ion-nav-button side="right">
+               <button class="button icon-right ng-style:reactiveColor" ng-class="following ? 'ion-ios-checkmark-empty' : 'ion-ios-plus' " ng-bind="following ? 'Following' : 'Follow' " ng-click="toggleFollow()">
+               </button>
+             </ion-nav-button>
+
                <div class="item item-devider">Market Data<span class="last-trade"> last trade: {{stockPriceData.utctime | date: 'hh:mm:ss a'}}</span></div>
                   <div class="row row-center">
                     <div class="col">Ask: </div>

@@ -1,6 +1,6 @@
 /*ChartStyle*/
 #interActiveChart{
-  height: 80vmin;
+  height: 80vmin auto;
 }
 
 .nv-focus .nv-barsWrap,
@@ -225,5 +225,5 @@ svg text{
 
 #stock-news .item-icon-right{
   padding-right: 30px;
-  
+
 }

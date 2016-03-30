@@ -49,10 +49,10 @@ angular.module('testApp.controllers', [])
   console.log(myStocksArrayService);
 }])
 
-
+// add service in contorller and add new variable
 //we deleted http -service in controller which we used before because we use service from services.js
-.controller('StockCtrl', ['$scope', '$stateParams', '$window','$ionicPopup', 'stockDataService', 'dateService', 'chartDataService','notesService','newsService',
-function($scope, $stateParams, $window,$ionicPopup, stockDataService, dateService, chartDataService, notesService, newsService){
+.controller('StockCtrl', ['$scope', '$stateParams', '$window','$ionicPopup','followStockService','stockDataService', 'dateService', 'chartDataService','notesService','newsService',
+function($scope, $stateParams, $window,$ionicPopup, followStockService, stockDataService, dateService, chartDataService, notesService, newsService){
 //  "get" - method we put in our services.js and create factory - watch services.js but instead
 // we create one more dependency - stockDataService
 // "http://finance.yahoo.com/webservice/v1/symbols/YHOO/quote?format=json&view=detail"
@@ -64,9 +64,30 @@ console.log(dateService.oneYearAgo());
   $scope.oneYearAgo = dateService.oneYearAgo();
   $scope.todayDate = dateService.currentDate();
   $scope.stockNotes = [];
+  // pass ticker through method 'checkIfFollow' of the service 'followStockService'
+  $scope.following = followStockService.checkIfFollow($scope.ticker);
 
  console.log($scope.oneYearAgo);
   console.log($scope.todayDate);
+
+ // function which define whether we follow or not
+  $scope.toggleFollow = function(){
+    // if  we follow
+    if($scope.following){
+      // call followStockService and fulfill function unfollow to special ticker
+      followStockService.unfollow($scope.ticker);
+      // turn var following to false because we've followed to ticker before now we reject
+      $scope.following = false;
+    }
+    else {
+      // but otherwise we start follow to this ticker by clicking to this toggle
+      followStockService.follow($scope.ticker);
+      // because we follow now we turn $scope.following to true
+      $scope.following = true;
+    }
+  }
+
+
 
 // use on-listener to listen any events in ionicView after enter events
 // when it happen we run getPriceData where we run getPriceData function which call  getPriceData method  and grab data from json file via our service
@@ -184,10 +205,10 @@ function getPriceData(){
      $scope.stockPriceData = data;
 
     if(data.chg_percent >= 0 && data != null){
-      $scope.reactiveColor = {'background-color':'rgb(0, 200, 2)'};
+      $scope.reactiveColor = {'background-color':'rgb(0, 200, 2)', 'border-color' : 'rgba(45, 129, 0, .5)'};
     }
     else  if(data.chg_percent < 0 && data != null){
-      $scope.reactiveColor = {'background-color':'rgb(255, 43, 43)'};
+      $scope.reactiveColor = {'background-color':'rgb(255, 43, 43)', 'border-color' : 'rgba(125, 0, 0, .5)'};
     }
   });
 }
