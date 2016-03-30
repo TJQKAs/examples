@@ -1,4 +1,5 @@
 import{Component, EventEmitter}from 'angular2/core';
+import {ListItem}from './listItem';
 
 @Component({
  selector:'shopping-new-list-item',
@@ -20,7 +21,7 @@ import{Component, EventEmitter}from 'angular2/core';
 export class ShoppingNewListComponent{
 // js object
   item = {name: '', amount: 0};
-  itemAdded = new EventEmitter<{name: string, amount: number}>();
+  itemAdded = new EventEmitter<ListItem>();
 
 // by clicking we fire this function which pass this.item to whoever be able catch this event (in our shopping-list component)
 onClick(){
