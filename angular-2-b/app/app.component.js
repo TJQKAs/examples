@@ -1,4 +1,4 @@
-System.register(['angular2/core', './shopping-list/shopping-list.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './component1.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,15 @@ System.register(['angular2/core', './shopping-list/shopping-list.component'], fu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, shopping_list_component_1;
+    var core_1, component1_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (shopping_list_component_1_1) {
-                shopping_list_component_1 = shopping_list_component_1_1;
+            function (component1_component_1_1) {
+                component1_component_1 = component1_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -27,8 +27,8 @@ System.register(['angular2/core', './shopping-list/shopping-list.component'], fu
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "<header>\n      <div class=\"brand\">Shopping list</div>\n                    </header>\n                    <div class=\"main\">\n                      <shopping-list></shopping-list>\n                    </div>\n\n\n\n\n\n\n    ",
-                        directives: [shopping_list_component_1.ShoppingListComponent]
+                        template: "<h1>hello everybody</h1>\n    <component-1></component-1>",
+                        directives: [component1_component_1.Component1Component]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
@@ -39,4 +39,4 @@ System.register(['angular2/core', './shopping-list/shopping-list.component'], fu
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUF1QkE7Z0JBQUE7Z0JBRUEsQ0FBQztnQkF0QkQ7b0JBQUMsZ0JBQVMsQ0FBQzt3QkFFUCxRQUFRLEVBQUUsUUFBUTt3QkFDbEIsUUFBUSxFQUFFLHdPQVlUO3dCQUNELFVBQVUsRUFBRSxDQUFDLCtDQUFxQixDQUFDO3FCQUd0QyxDQUFDOztnQ0FBQTtnQkFHRixtQkFBQztZQUFELENBRkEsQUFFQyxJQUFBO1lBRkQsdUNBRUMsQ0FBQSIsImZpbGUiOiJhcHAuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gJ2FuZ3VsYXIyL2NvcmUnO1xuaW1wb3J0IHtTaG9wcGluZ0xpc3RDb21wb25lbnR9IGZyb20gJy4vc2hvcHBpbmctbGlzdC9zaG9wcGluZy1saXN0LmNvbXBvbmVudCc7XG5cbkBDb21wb25lbnQoe1xuXG4gICAgc2VsZWN0b3I6ICdteS1hcHAnLFxuICAgIHRlbXBsYXRlOiBgPGhlYWRlcj5cbiAgICAgIDxkaXYgY2xhc3M9XCJicmFuZFwiPlNob3BwaW5nIGxpc3Q8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPC9oZWFkZXI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJtYWluXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPHNob3BwaW5nLWxpc3Q+PC9zaG9wcGluZy1saXN0PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cblxuXG5cblxuXG5cbiAgICBgLFxuICAgIGRpcmVjdGl2ZXM6IFtTaG9wcGluZ0xpc3RDb21wb25lbnRdXG5cblxufSlcbmV4cG9ydCBjbGFzcyBBcHBDb21wb25lbnQgIHtcblxufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFZQTtnQkFBQTtnQkFFQSxDQUFDO2dCQVZEO29CQUFDLGdCQUFTLENBQUM7d0JBRVAsUUFBUSxFQUFFLFFBQVE7d0JBQ2xCLFFBQVEsRUFBRSwyREFDa0I7d0JBQzVCLFVBQVUsRUFBQyxDQUFDLDBDQUFtQixDQUFDO3FCQUVuQyxDQUFDOztnQ0FBQTtnQkFHRixtQkFBQztZQUFELENBRkEsQUFFQyxJQUFBO1lBRkQsdUNBRUMsQ0FBQSIsImZpbGUiOiJhcHAuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gJ2FuZ3VsYXIyL2NvcmUnO1xuaW1wb3J0IHtDb21wb25lbnQxQ29tcG9uZW50fWZyb20gJy4vY29tcG9uZW50MS5jb21wb25lbnQnO1xuXG5cbkBDb21wb25lbnQoe1xuXG4gICAgc2VsZWN0b3I6ICdteS1hcHAnLFxuICAgIHRlbXBsYXRlOiBgPGgxPmhlbGxvIGV2ZXJ5Ym9keTwvaDE+XG4gICAgPGNvbXBvbmVudC0xPjwvY29tcG9uZW50LTE+YCxcbiAgICBkaXJlY3RpdmVzOltDb21wb25lbnQxQ29tcG9uZW50XVxuXG59KVxuZXhwb3J0IGNsYXNzIEFwcENvbXBvbmVudCAge1xuXG59XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
