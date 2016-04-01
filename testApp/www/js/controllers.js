@@ -269,13 +269,39 @@ function getChartData(){
              }
          };
          console.log($scope.chartOptions);
+       });
+       }
+
+
+       }])
 
 
 
+// add controller responsible for searching
+.controller('SearchCtrl', ['$scope','$state', 'modalService', 'searchService',
+function($scope, $state, modalService, searchService){
 
+  $scope.closeModal = function(){
+    modalService.closeModal();
+  };
 
-});
-}
+  $scope.search = function(){
+    $scope.searchResults = '';
+    startSearch($scope.searchQuery)
+  };
 
+// add a delay function
+  var startSearch =  ionic.debounce(function(query){
+    searchService.search(query).then(function(data){
+      $scope.searchResults = data;
+    });
+  },1500);
+
+  // after clicking we run this function which should close search modal and turn us to our choice
+  // which we defined by ticker
+  $scope.goToStock = function(ticker){
+    modalService.closeModal();
+    $state.go('app.stock', {stockTicker: ticker});
+  }
 
 }]);

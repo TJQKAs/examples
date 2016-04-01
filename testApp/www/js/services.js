@@ -385,5 +385,36 @@ var getPriceData = function(ticker){
       return deferred.promise;
      }
    };
+})
+/////////////factory Searching /////
+.factory('searchService', function($q, $http){
 
-});
+  return {
+    search:  function(query){
+      var deferred = $q.defer(),
+      //http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=YHOO&callback=YAHOO.Finance.SymbolSuggest.ssCallback//
+      url = 'https://s.yimg.com/aq/autoc?query='+query+ '&region=CA&lang=en-CA&callback=YAHOO.util.ScriptNodeDataSource.callbacks';
+      YAHOO = window.YAHOO ={
+        util:{
+          ScriptNodeDataSource:{}
+        }
+      };
+         YAHOO.util.ScriptNodeDataSource.callbacks = function(data){
+           var jsonData = data.ResultSet.Result;
+           deferred.resolve(jsonData);
+         };
+       $http.jsonp(url).then(YAHOO.util.ScriptNodeDataSource.callbacks);
+       return deferred.promise;
+     }
+   };
+ })
+
+//       YAHOO.Finance.SymbolSuggest.ssCallback = function(data){
+//         var jsonData = data.ResultSet.Result;
+//         deferred.resolve(jsonData);
+//       };
+//       $http.jsonp(url).then(YAHOO.Finance.SymbolSuggest.ssCallback);
+//       return deferred.promise;
+//     }
+//   };
+// })
