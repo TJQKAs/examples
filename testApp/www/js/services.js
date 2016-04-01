@@ -1,5 +1,5 @@
 angular.module('testApp.services', [])
-
+///////////////////////////////////////////////////
 .factory('encodeURIService', function(){
 
    return {
@@ -9,6 +9,7 @@ angular.module('testApp.services', [])
      }
    };
 })
+
 ////////////////modal service ///////////
 .service('modalService',  function($ionicModal){
      this.openModal = function(id){
@@ -16,12 +17,13 @@ angular.module('testApp.services', [])
 
   if(id == 1){
     $ionicModal.fromTemplateUrl('templates/search.html', {
-     scope: null,
-     controller: 'SearchCtrl'
-   }).then(function(modal) {
+      scope: null,
+       controller: 'SearchCtrl'
+     }).then(function(modal){
      _this.modal = modal;
      _this.modal.show();
    });
+
    } else if (id == 2) {
    $ionicModal.fromTemplateUrl('templates/login.html', {
      scope: $scope
@@ -46,15 +48,14 @@ angular.module('testApp.services', [])
 
 
 
+//////////////////////////////////////////////////
 // new factory which shows us time
 .factory('dateService', function($filter) {
-
 var currentDate = function(){
   var d = new Date();
   var date = $filter('date')(d, 'yyyy-MM-dd');
   return date;
 };
-
 var oneYearAgo = function(){
   var d = new Date(new Date().setDate(new Date().getDate() - 365));
     var date = $filter('date')(d, 'yyyy-MM-dd');
@@ -66,7 +67,7 @@ var oneYearAgo = function(){
    oneYearAgo: oneYearAgo
  };
 })
-
+/////////////////////////////////////////////////////////////////
 .factory('chartDataCacheService', function(CacheFactory){
   var chartDataCache;
     // if we cannot find chartDataCache in our factory we must create it
@@ -82,11 +83,10 @@ var oneYearAgo = function(){
     }
   return chartDataCache;
 })
-
-
+///////////////////////////////////////////////////////////////////////////////////
 .factory('stockDetailsCacheService', function(CacheFactory){
   var stockDetailsCache;
-  if(!CacheFactory.get(stockDetailsCache)){
+  if(!CacheFactory.get('stockDetailsCache')){
     stockDetailsCache = CacheFactory('stockDetailsCache',{
       maxAge: 60*1000,
       deleteOnExpire: 'aggressive',
@@ -99,7 +99,7 @@ var oneYearAgo = function(){
   return stockDetailsCache;
 
 })
-
+///////////////////////////////////////////////////
 .factory('notesCacheService', function(CacheFactory){
    var notesCache;
 
@@ -115,21 +115,19 @@ var oneYearAgo = function(){
    return notesCache;
 })
 
-
+/////////////////////////////////////////////////////////////////////////
 .factory('fillMyStocksCacheService', function(CacheFactory){
-
   var myStocksCache;
 // if we can't get list of stocks to which I follow
-  if(!CacheFactory.get(myStocksCache)){
+  if(!CacheFactory.get('myStocksCache')){
     myStocksCache = CacheFactory('myStocksCache', {
       storageMode: 'localStorage'
   });
 } else {
-  myStocksCache = CacheFactory.get(myStocksCache);
+  myStocksCache = CacheFactory.get('myStocksCache');
 }
 
    var fillMyStocksCache = function(){
-
       var myStocksArray = [
        {ticker: "GPRO"},
        {ticker: "AAPL"},
@@ -147,14 +145,14 @@ var oneYearAgo = function(){
      fillMyStocksCache: fillMyStocksCache
  };
 })
-
+//////////////////////////////////////////////////////////
 .factory('myStocksCacheService', function(CacheFactory){
   var myStocksCache = CacheFactory.get('myStocksCache');
 
    return myStocksCache;
 
 })
-
+///////////////////////////////////////////////////////
 .factory('myStocksArrayService', function(fillMyStocksCacheService, myStocksCacheService){
 
   if(!myStocksCacheService.info('myStocks')){
@@ -165,7 +163,7 @@ var oneYearAgo = function(){
 
 })
 
-
+///////////////////////////////////////////////////////
 .factory('followStockService', function(myStocksArrayService, myStocksCacheService){
 
   return{
@@ -175,7 +173,7 @@ var oneYearAgo = function(){
       // use myStocksArrayService to push new following object
       myStocksArrayService.push(stockToAdd);
       // after that we should reset array with following objects
-      myStocksCacheService.put('myStocks', myStocksCacheService);
+      myStocksCacheService.put('myStocks', myStocksArrayService);
     },
     unfollow: function(ticker){
     // to reject to follow
@@ -209,7 +207,7 @@ var oneYearAgo = function(){
 
   };
 })
-
+///////////////////////////////////////////////////////////////////////////
 
 .factory('stockDataService', function($q, $http, encodeURIService, stockDetailsCacheService){
 
@@ -271,7 +269,7 @@ var getPriceData = function(ticker){
     getDetailsData: getDetailsData
   };
 })
-
+///////////////////////////////////////////////////////////////////
 .factory('chartDataService', function($q, $http, encodeURIService, chartDataCacheService){
 
   var getHistoricalData = function(ticker, fromDate, todayDate){
@@ -337,7 +335,7 @@ var getPriceData = function(ticker){
     getHistoricalData: getHistoricalData
   };
 })
-
+//////////////////////////////////////////////////////
 .factory('notesService', function(notesCacheService){
 
   return {
@@ -364,7 +362,7 @@ var getPriceData = function(ticker){
     }
   }
 })
-
+////////////////////////////////////////////////////////////////
 .factory('newsService', function($q, $http){
 
    return {

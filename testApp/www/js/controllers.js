@@ -1,7 +1,7 @@
 angular.module('testApp.controllers', [])
 
-.controller('AppCtrl', ['$scope', 'modalService',
-function($scope, modalService) {
+.controller('AppCtrl', [ '$scope', '$ionicModal', 'modalService',
+function($scope, $ionicModal, modalService) {
     $scope.modalService = modalService;
 
 }])
