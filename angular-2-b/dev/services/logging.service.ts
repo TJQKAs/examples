@@ -7,6 +7,7 @@ import{Injectable} from 'angular2/core';
 export class LoggingService{
   // service displays string in console
   log(message: string){
+    message = message + ' ' + message;
     console.log(message);
   }
 }

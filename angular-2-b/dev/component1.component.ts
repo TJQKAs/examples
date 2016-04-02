@@ -14,10 +14,11 @@ import{LoggingService} from './services/logging.service';
 export class Component1Component{
   //use constuctor to bind injecting service with private variable
   constructor(private _loggingService: LoggingService){}
-
+ // retrieve data from input form and put it through function
+ // which tells us to pass var message through referal _loggingService which is referal to the service in our constructor
+ // and service LoggingService just makes console.log - massage
     onLog(message: string){
       // show message from service
       this._loggingService.log(message);
-
     }
 }
