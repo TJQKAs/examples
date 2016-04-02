@@ -1,3 +1,17 @@
+/*Search style*/
+
+#search {
+  background-color: rgba(145, 122, 255, 1);
+}
+#search .search-input{
+  background-color: rgba(127, 101, 255, 0.75);
+}
+#search input{
+  background-color: rgba(180, 226, 249, 0.66);
+}
+
+
+
 /*ChartStyle*/
 #interActiveChart{
   height: 80vmin auto;
@@ -226,4 +240,27 @@ svg text{
 #stock-news .item-icon-right{
   padding-right: 30px;
 
+}
+
+.font-normal{
+  font-weight: normal !important;
+}
+
+.border-none{
+  border: none !important;
+}
+
+.margin-auto,
+.margin-auto svg {
+  margin: auto !important;
+}
+.text-align-center{
+  text-align: center !important;
+}
+
+.text-uppercase{
+  text-transform: uppercase !important;
+}
+.text-capitalize{
+  text-transform: capitalize !important;
 }
