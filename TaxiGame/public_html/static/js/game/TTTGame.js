@@ -9,43 +9,97 @@ var TTTGame = (function(){
 
   function TTTGame(phaserGame){
     this.game = phaserGame;
-    // array we we put our road sprites
-    this.arrTiles = [];
-   // should we start render obstacles
-    this.hasStarted = false;
 
+
+   // what we see when game over
+    this.gameOverGraphic = undefined;
+
+
+    // game vars
     this.isDead = false;
+    // should we start render obstacles
+     this.hasStarted = false;
     // this means that as a default user didn't click to mouse
     this.mouseTouchDown = false;
-
+    // array we we put our road sprites
+    this.arrTiles = [];
+    // count every road element that has been rendered
+    this.roadCount = 0;
+    // point in the future where obstacle should be
+    this.nextObstacleIndex = 0;
+    this.numberOfIterations = 0;
+ /////Taxi jump
     this.jumpSpeed = JUMP_HEIGHT;
    // as default taxi doesn't jump
     this.isJumping = false;
     this.currentJumpHeight = 0;
 
-   // count every road element that has been rendered
-   this.roadCount = 0;
-   // point in the future where obstacle should be
-   this.nextObstacleIndex = 0;
+
    //array with obstacles
    this.arrObstacles = [];
 
 
-
+   ///////// taxi vars
     this.taxi = undefined;
     this.taxi_X = TAXI_START_X;
     // how many iterations do we need
-    this.numberOfIterations = 0;
+
     this.roadStartPosition = {
       x: GAME_WIDTH +100,
       y: GAME_HEIGHT / 2 - 100
     }
   }
 
+
+TTTGame.prototype.reset = function(){
+  this.game.tweens.removeFrom(this.taxi);
+  this.taxi.rotation = 0;
+  this.isDead = false;
+  this.hasStarted = false;
+  this.jumpSpeed = JUMP_HEIGHT;
+  this.isJumping = false;
+  this.currentJumpHeight = 0;
+  this.arrObstacles = [];
+  this.mouseTouchDown = false;
+  this.nextObstacleIndex = 0;
+  this.taxi_X = TAXI_START_X;
+  this.gameOverGraphic.visible = false;
+  };
+
+
+
+
 TTTGame.prototype.gameOver = function(){
   // how to add hex color example : hex color red #ff0000 and it doesn't work you should cut # and put 0x instead : 0xff0000
+      // car is dead ; we can't start game , clean  array with obstacles
+         this.isDead = true;
+         this.hasStarted = false;
+         this.arrObstacles = [];
+         // becuase now we wonna see it
+         this.gameOverGraphic.visible = true;
 
-  this.taxi.tint = 0x14ff00;
+        var dieSpeed = SPEED / 10;
+        // create tween for taxi and set for tween props
+        var tween_1 = this.game.add.tween(this.taxi);
+        tween_1.to({
+          x: this.taxi.x + 220,
+            y: this.taxi.y - 340
+          }, 300 * dieSpeed, Phaser.Easing.Quadratic.Out);
+
+          var tween_2 = this.game.add.tween(this.taxi);
+          tween_2.to({
+              y: GAME_HEIGHT + 40
+            }, 1300 * dieSpeed, Phaser.Easing.Quadratic.In);
+
+            tween_1.chain(tween_2);
+            tween_1.start();
+
+           var tween_rotate = this.game.add.tween(this.taxi);
+           tween_rotate.to({
+             angle: 200
+             }, 1300*dieSpeed, Phaser.Easing.Linear.None);
+             tween_rotate.start();
+
 
 };
 
@@ -170,7 +224,8 @@ if(this.roadCount >this.nextObstacleIndex && this.hasStarted){
  // responsible for preloading assets
    this.game.load.image('tile_road_1', 'static/img/assets/tile_road_1.png');
    this.game.load.image('taxi', 'static/img/assets/taxi.png');
-   this.game.load.image('obstacle_1', 'static/img/assets/obstacle_1.png')
+   this.game.load.image('obstacle_1', 'static/img/assets/obstacle_1.png');
+   this.game.load.image('gameover', 'static/img/assets/gameover.png');
 
   };
 
@@ -183,12 +238,28 @@ if(this.roadCount >this.nextObstacleIndex && this.hasStarted){
        this.taxi = new Phaser.Sprite(this.game, x, y,'taxi');
        this.taxi.anchor.setTo(0.5, 1.0);
        this.game.add.existing(this.taxi);
+
+       /*reassign new x,y, coords */
+        x = this.game.world.centerX;
+        y = this.game.world.centerY - 50;
+       // load sprite with game over image and set coords x,y,
+       this.gameOverGraphic = new Phaser.Sprite(this.game, x, y, 'gameover');
+       this.gameOverGraphic.anchor.setTo(0.5, 0.5);
+       // we shouldn't see it when game starts
+       /*this.gameOverGraphic.visible = false;*/
+       this.game.add.existing(this.gameOverGraphic);
+       this.reset();
  };
 
 
 TTTGame.prototype.touchDown = function(){
     this.mouseTouchDown = true;
     // check whether the process of obstacle rendering has been initialized before
+    if(this.isDead){
+      this.reset();
+      return ;
+    }
+
     if(!this.hasStarted){
       this.hasStarted = true;
     };
@@ -201,9 +272,6 @@ TTTGame.prototype.touchDown = function(){
 TTTGame.prototype.touchUp = function(){
        this.mouseTouchDown = false;
 };
-
-
-
 
   TTTGame.prototype.update = function(){
     // check whether the user has clicked yet to mouse
@@ -225,20 +293,21 @@ TTTGame.prototype.touchUp = function(){
         this.generateRoad();
       };
 
-      if(this.isJumping){
-        this.taxiJump();
-      };
+       // if game over we throw taxi away
+       if(!this.isDead){
+               if(this.isJumping){
+               this.taxiJump();
+       };
 
-      var pointOnRoad = this.calculatePositionOnRoadWithXPosition(this.taxi_X);
-      this.taxi.x = pointOnRoad.x;
-      this.taxi.y = pointOnRoad.y + this.currentJumpHeight;
+              var pointOnRoad = this.calculatePositionOnRoadWithXPosition(this.taxi_X);
+              this.taxi.x = pointOnRoad.x;
+              this.taxi.y = pointOnRoad.y + this.currentJumpHeight;
 
-            this.checkObstacles();
+              this.checkObstacles();
+        };
+        this.moveTilesWithSpeed(SPEED);
 
-      this.moveTilesWithSpeed(SPEED);
   };
-
-
 
   return TTTGame;
 
