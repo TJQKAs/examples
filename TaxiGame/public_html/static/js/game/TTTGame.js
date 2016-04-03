@@ -4,8 +4,8 @@ var TTTGame = (function(){
   var ANGLE = 26.55;
   var TILE_WIDTH = 68;
   var SPEED = 5;
-  var TAXI_START_X = 30;
-  var JUMP_HEIGHT = 15;
+  var TAXI_START_X = 100;
+  var JUMP_HEIGHT = 10;
 
   function TTTGame(phaserGame){
     this.game = phaserGame;
@@ -13,7 +13,8 @@ var TTTGame = (function(){
 
    // what we see when game over
     this.gameOverGraphic = undefined;
-
+    this.counter = undefined;
+    this.scoreCount = 0;
 
     // game vars
     this.isDead = false;
@@ -21,6 +22,9 @@ var TTTGame = (function(){
      this.hasStarted = false;
     // this means that as a default user didn't click to mouse
     this.mouseTouchDown = false;
+
+    this.taxiTargetX = 0;
+
     // array we we put our road sprites
     this.arrTiles = [];
     // count every road element that has been rendered
@@ -34,10 +38,8 @@ var TTTGame = (function(){
     this.isJumping = false;
     this.currentJumpHeight = 0;
 
-
    //array with obstacles
    this.arrObstacles = [];
-
 
    ///////// taxi vars
     this.taxi = undefined;
@@ -52,8 +54,10 @@ var TTTGame = (function(){
 
 
 TTTGame.prototype.reset = function(){
+  this.scoreCount = 0;
+  this.counter.setScore(0, false);
   this.game.tweens.removeFrom(this.taxi);
-  this.taxi.rotation = 5;
+  this.taxi.rotation = 0;
   this.isDead = false;
   this.hasStarted = false;
   this.jumpSpeed = JUMP_HEIGHT;
@@ -64,6 +68,7 @@ TTTGame.prototype.reset = function(){
   this.nextObstacleIndex = 0;
   this.taxi_X = TAXI_START_X;
   this.gameOverGraphic.visible = false;
+  this.taxiTargetX = 0;
   };
 
 
@@ -144,6 +149,10 @@ TTTGame.prototype.calculateNextObstacleIndex = function(){
     while(i >= 0){
       var sprite = this.arrObstacles[i];
       if(sprite.x < this.taxi.x - 10){
+        // increase score
+        this.scoreCount ++;
+        // animate increasing
+        this.counter.setScore(this.scoreCount, true);
         this.arrObstacles.splice(i,1);
       };
       var dx = sprite.x - this.taxi.x;
@@ -226,7 +235,9 @@ if(this.roadCount >this.nextObstacleIndex && this.hasStarted){
    this.game.load.image('taxi', 'static/img/assets/taxi.png');
    this.game.load.image('obstacle_1', 'static/img/assets/obstacle_1.png');
    this.game.load.image('gameover', 'static/img/assets/gameover.png');
-
+   this.game.load.atlasJSONArray('numbers',
+   'static/img/spritesheets/numbers.png',
+   'static/img/spritesheets/numbers.json');
   };
 
   TTTGame.prototype.create = function(){
@@ -248,8 +259,30 @@ if(this.roadCount >this.nextObstacleIndex && this.hasStarted){
        // we shouldn't see it when game starts
        /*this.gameOverGraphic.visible = false;*/
        this.game.add.existing(this.gameOverGraphic);
+
+       this.counter = new TTTCounter(this.game, 0, 0);
+       this.game.add.existing(this.counter);
+       this.counter.x = this.game.world.centerX
+       this.counter.y = 40;
+
        this.reset();
  };
+
+TTTGame.prototype.calculateTaxiPosition = function(){
+     var multiplier = 0.025;
+     // exposition of taxi on the screen
+     var num = TAXI_START_X + (this.scoreCount * GAME_WIDTH * multiplier);
+     // set limits % of GAME_WIDTH
+     if(num > GAME_WIDTH * 0.60)  {
+       num = 0.60 * GAME_WIDTH;
+     };
+     this.taxiTargetX = num;
+     if(this.taxi_X < this.taxiTargetX){
+       var easing = 15;
+       this.taxi_X += (this.taxiTargetX - this.taxi_X) / easing;
+     };
+};
+
 
 
 TTTGame.prototype.touchDown = function(){
@@ -297,7 +330,11 @@ TTTGame.prototype.touchUp = function(){
        if(!this.isDead){
                if(this.isJumping){
                this.taxiJump();
+
+             this.calculateTaxiPosition();
+
        };
+
 
               var pointOnRoad = this.calculatePositionOnRoadWithXPosition(this.taxi_X);
               this.taxi.x = pointOnRoad.x;
