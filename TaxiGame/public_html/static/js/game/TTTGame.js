@@ -53,7 +53,7 @@ var TTTGame = (function(){
 
 TTTGame.prototype.reset = function(){
   this.game.tweens.removeFrom(this.taxi);
-  this.taxi.rotation = 0;
+  this.taxi.rotation = 5;
   this.isDead = false;
   this.hasStarted = false;
   this.jumpSpeed = JUMP_HEIGHT;

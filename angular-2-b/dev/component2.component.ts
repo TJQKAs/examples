@@ -1,6 +1,7 @@
 import{Component} from 'angular2/core';
 import{LoggingService} from './services/logging.service';
 import{CalculatorService} from './services/calculator.service';
+import{DataService} from './services/data.service';
 
 @Component({
   selector: 'component-2',
@@ -20,19 +21,25 @@ import{CalculatorService} from './services/calculator.service';
   <button (click)="onDiv(num1.value, num2.value)">DIVIDE</button>
   <br/>
   <p>Result: {{result}}</p>
-
-
+   </div>
+   <div>
+     <h3>Data Service</h3>
+     <button (click)="onGetData()">Get Data</button>
+     <p>Current result: {{data}}</p>
+     <input type="text" #newData>
+     <button (click)="onInsertElem(newData.value)">Add word</button>
    </div>
   `,
-  providers: [LoggingService, CalculatorService]
+  providers: [LoggingService, CalculatorService, DataService]
 })
 // by clicking I pass message.value through function onLog which is a string
 
 export class Component2Component{
   result: string;
+  data: string;
 
   //use constuctor to bind injecting service with private variable
-  constructor(private _loggingService: LoggingService, private _calcService: CalculatorService){}
+  constructor(private _loggingService: LoggingService, private _calcService: CalculatorService, private _dataServ: DataService){}
  // retrieve data from input form and put it through function
  // which tells us to pass var message through referal _loggingService which is referal to the service in our constructor
  // and service LoggingService just makes console.log - massage
@@ -57,6 +64,18 @@ export class Component2Component{
 
     onDiv(num1: number, num2: number){
       this.result =  this._calcService.divide(+ num1, + num2);
+    }
+
+   onGetData(){
+     this.data = this._dataServ.getRandomString();
+   }
+
+   // var value type string we got meaning from tag #newData after that we got newData.value
+   // by clicking button we called function onInsertElem with this value which is a string
+    onInsertElem(value: string){
+      // function called referal _dataServ of DataService which has a method insertElem
+      // which add this newData var to array
+      this._dataServ.insertElem(value);
     }
 
 }
