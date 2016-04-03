@@ -99,6 +99,20 @@ var oneYearAgo = function(){
   return stockDetailsCache;
 
 })
+////////////////////////////////////////////////////
+.factory('stockPriceCacheService', function(CacheFactory){
+  var stockPriceCache;
+  if(!CacheFactory.get('stockPriceCache')){
+    stockPriceCache = CacheFactory('stockPriceCache',{
+      maxAge: 5*1000,
+      deleteOnExpire: 'aggressive',
+      storageMode: 'localStorage'
+    });
+  } else {
+    stockPriceCache = CacheFactory.get('stockPriceCache');
+  }
+  return stockPriceCache;
+})
 ///////////////////////////////////////////////////
 .factory('notesCacheService', function(CacheFactory){
    var notesCache;
@@ -209,7 +223,7 @@ var oneYearAgo = function(){
 })
 ///////////////////////////////////////////////////////////////////////////
 
-.factory('stockDataService', function($q, $http, encodeURIService, stockDetailsCacheService){
+.factory('stockDataService', function($q, $http, encodeURIService, stockDetailsCacheService, stockPriceCacheService){
 
 // one more method to retrieve more detailed data about stocks  from another api
 var getDetailsData = function(ticker){
@@ -248,6 +262,9 @@ var getDetailsData = function(ticker){
 var getPriceData = function(ticker){
 // use $q.defer - method which signalize us whether request was successful or not
   var deferred = $q.defer(),
+
+
+  cacheKey = ticker,
   // our request url
   url = "http://finance.yahoo.com/webservice/v1/symbols/" + ticker + "/quote?format=json&view=detail";
   $http.get(url)
@@ -255,6 +272,7 @@ var getPriceData = function(ticker){
      var jsonData = json.list.resources[0].resource.fields;
      //happy end!!! deferred - resolved
      deferred.resolve(jsonData);
+     stockPriceCacheService.put(cacheKey, jsonData);
   })
   // bad end !!! deferred - rejected
     .error(function(error){

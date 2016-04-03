@@ -6,11 +6,28 @@ function($scope, $ionicModal, modalService) {
 
 }])
 // dependecies as array of string
-.controller('MyStocksCtrl', ['$scope', 'myStocksArrayService',
- function($scope, myStocksArrayService) {
-  // define new scope array
-  $scope.myStocksArray = myStocksArrayService;
-  console.log(myStocksArrayService);
+.controller('MyStocksCtrl', ['$scope', 'myStocksArrayService', 'stockDataService', 'stockPriceCacheService', 'followStockService',
+ function($scope, myStocksArrayService, stockDataService, stockPriceCacheService, followStockService) {
+
+   $scope.$on("$ionicView.afterEnter", function(){
+      $scope.getMyStocksData();
+   });
+   $scope.getMyStocksData = function(){
+ // for each elem from myStocksArrayService call getPriceData method from stockDataService
+  myStocksArrayService.forEach(function(stock){
+      var promise = stockDataService.getPriceData(stock.ticker);
+      $scope.myStocksData = [];
+      promise.then(function(data){
+        $scope.myStocksData.push(stockPriceCacheService.get(data.symbol));
+               });
+            });
+            $scope.$broadcast('scroll.refreshComplete');
+       };
+       $scope.unfollowStock = function(ticker){
+         followStockService.unfollow(ticker);
+         $scope.getMyStocksData();
+       };
+
 }])
 
 // add service in contorller and add new variable
