@@ -45,8 +45,8 @@ import{ShoppingListService} from './shopping-list.service';
    //<shopping-list-item [item]="selectedItem" (removed)="onRemove()"
    // listen message for (removed) if we catch one we fulfill function onRemove
    // which sets to this selectedItem param null
-   // that's how we can clean elem which we've deleted just before 
-   add this function because without
+   // that's how we can clean elem which we've deleted just before
+  //  add this function because without
    onRemove(){
      this.selectedItem = null;
    }
