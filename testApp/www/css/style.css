@@ -264,3 +264,50 @@ svg text{
 .text-capitalize{
   text-transform: capitalize !important;
 }
+
+.color-red{
+  color:rgb(255, 0, 0) !important;
+}
+
+.background-red{
+  background-color: rgb(255, 0, 0) !important;
+}
+.background-green{
+  background-color: rgb(68, 233, 0) !important;
+}
+/*My stocks style*/
+#my-stocks .item-content{
+  padding: 5px 0px 5px 5px;
+}
+
+#my-stocks h3{
+  font-size: 4.75vmin;
+}
+#my-stocks h3{
+  font-size: 3.25vmin;
+  font-weight: 400;
+  font-style: italic;
+}
+
+#my-stocks .stock-price-time{
+  padding-right: 10px;
+  text-align: right;
+}
+
+#my-stocks .stock-price-time h3{
+ font-weight: normal;
+}
+
+#my-stocks .stock-change {
+  border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    margin-right: -10px;
+}
+#my-stocks .stock-change h3,
+#my-stocks .stock-change h6{
+  color:rgb(64, 64, 64);
+}
+
+#my-stocks .inset-shadow{
+  -webkit-box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
