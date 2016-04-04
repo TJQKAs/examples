@@ -1,0 +1,66 @@
+<!DOCTYPE HTML >
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Tutorial</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+ <script type="text/javascript">
+////////// our random array
+     function Arrnumb(maxLimit, sizeNum){
+       var chArray = [];
+   for( i = 0; i < maxLimit; i++ ){
+     var numb = Math.floor((Math.random()*sizeNum)+1);
+         chArray.push(numb);
+   };
+   return chArray;
+ };
+   var chArray2 = Arrnumb(100, 100);
+   var chArray = Arrnumb(1000,1000);
+     console.log(chArray);
+     console.log(chArray.length);
+     console.log($.unique(chArray).length);
+     // merge 2 arrays and trow away elems which repeat and show length of incorporated array
+    console.log($.unique($.merge(chArray, chArray2)).length);
+    var mergedArray = $.unique($.merge(chArray, chArray2));
+
+  // each value of array we divide to the length of array
+    var newArray = $.map(mergedArray, function(item, idx){
+      return item / mergedArray.length;
+    });
+   console.log(newArray);
+
+
+   // function checks array mergedArray and takes elems which divides to numbers without tail
+     function checkifW(numbers){
+          var grepArray =  $.grep(mergedArray, function(item){
+     return item%numbers == 0;
+    });
+    return grepArray;
+  }
+      grepArray = checkifW(23);
+       console.log(grepArray);
+
+       $(function(){
+           console.log($.makeArray($("div")));
+       });
+
+
+    //////////////////////// in that way i call script some.js by clicking button
+       $(function(){
+         $('input').click(function(){
+           $.getScript("some.js");
+         });
+       });
+
+ </script>
+ <body>
+   <div id="out1"></div>
+      <div id="out2"></div>
+         <div id="out3"></div>
+            <div id="out4"></div>
+               <div id="out5"></div>
+
+   <input  id="clickOnMe"type="button" value="Type it" />
+ </body>
+</html>

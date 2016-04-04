@@ -10,8 +10,6 @@
     // call funcToCall x-times with y-sec delay
     function CallAnotherFunction(times, delay, funcToCall){
 
-
-
        var i = 0;
        (function loopit(){
          i++;
@@ -25,15 +23,25 @@
   }
 
   $(function(){
-    CallAnotherFunction(20, 500, functionToCall);
+    CallAnotherFunction(2, 500, functionToCall);
   });
 
+  var numbers = [1,2,3,4,5,6,7];
+   // check if ti's array
+    console.log($.isArray(numbers));
+    console.log($.isEmptyObject(numbers));
+    console.log($.isPlainObject(numbers));
+    console.log($.isNumeric(numbers));
+    console.log($.isWindow(numbers));
+    console.log($.type(numbers));
 
+   $('#output1').append($.isEmptyObject(numbers));
 
 
  </script>
 <body>
   <h1>Type Test Function</h1>
   <div id="output"></div>
+    <div id="output1"></div>
 </body>
 </html>

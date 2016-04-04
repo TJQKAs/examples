@@ -1,412 +1,104 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-   <!-- add mustache  -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
-      <!-- Add the JQuery UI CSS -->
-   <link href="css/jquery-ui.min.css" rel="stylesheet">
-   <!-- Add the JQuery UI JS file -->
-   <script src ="js/jquery-ui.min.js" > </script>
-   <style type="text/css">
-   .tab-panels ul {
-     margin:auto;
-     padding: 3;
-   }
-   .tab-panels li {
-     list-style-type: none;
-     /*horizontal version*/
-     display: inline-block;
-     background: rgb(227, 135, 90);
-     margin: auto;
-     padding: 3px 10px;
-     border-radius: 10px 10px 0 0;
-     color: rgb(255, 54, 0);
-     font-weight: 500;
-     font-size: 12px;
-     cursor: pointer;
-   }
-   .tab-panels ul li:hover {
-     color: rgb(48, 90, 159);
-     background: rgb(247, 106, 196);
-   }
-   .tab-panels ul li:active {
-     color: rgb(63, 159, 251);
-     background: rgb(176, 0, 75);
-   }
-   .tab-panels .panel {
-     display: none;
-     background: rgb(146, 127, 177);
-     padding: 30px;
-     border-radius: 0 0 10px 10px;
-   }
-   .tab-panels  .panel.active {
-     display: block;
-   }
-  #draggable { width: 1920px; height: 1080px; padding: 0.5em; }
+<!DOCTYPE HTML >
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Tutorial</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
 
-  #resizable { width: 300px; height: 150px; padding: 5px; }
- #resizable h3 { text-align: center; margin: 0; }
-
-  #slider {
-    width: 1024px;
-    height: 768px;
-    overflow: hidden;
-  }
-  #slider  .slides {
-    display: block;
-    width: 6144px;
-    margin: 0;
-    padding: 0;
-  }
-  #slider  .slide {
-    float: left;
-    list-style-type: none;
-    height: 768px;
-  }
-
-  ul li  .edit{
-    display: none;
-  }
-
-  ul li.edit .edit {
-    display: initial;
-  }
-
-  ul li.edit .noedit {
-    display: none;
-  }
-
-   </style>
-
- </head>
-  <body>
-    <div class="tab-panels" id="moveIt">
-      <ul class="tabs">
-        <!-- rel - html attribute -->
-        <li rel="panel1" class="active">panel1</li>
-        <li rel="panel2">panel2</li>
-        <li rel="panel3">panel3</li>
-        <li rel="panel4">panel4</li>
-        <li rel="panel5">panel5</li>
-      </ul>
-
-    <div id="panel1" class="panel active">
-      content11<br/>
-      content12<br/>
-      content13<br/>
-      content14<br/>
-    </div>
-    <div id="panel2" class="panel">
-      content21<br/>
-      content22<br/>
-      content23<br/>
-      content24<br/>
-    </div>
-    <div id="panel3" class="panel">
-      content31<br/>
-      content32<br/>
-      content33<br/>
-      content34<br/>
-    </div>
-    <div id="panel4" class="panel">
-      content41<br/>
-      content42<br/>
-      content43<br/>
-      content44<br/>
-    </div>
-    <div id="panel5" class="panel">
-      content51<br/>
-      content52<br/>
-      content53<br/>
-      content54<br/>
-    </div>
+<h3>Playing with Server Data</h3>
+<div>
+  <h3>Message from the Server:</h3>
+  <p id="first">Waiting for Message</p>
 </div>
 
-<div class="container">
-  <div class="header">
-    <h1 align="center">Slide show</h1>
-  </div>
-   <div id="slider">
-     <ul class="slides">
-       <li class="slide"><img src="css/images/01.jpg" /></li>
-       <li class="slide"><img src="css/images/02.jpg" /></li>
-       <li class="slide"><img src="css/images/03.jpg" /></li>
-       <li class="slide"><img src="css/images/04.jpg" /></li>
-       <li class="slide"><img src="css/images/05.jpg" /></li>
-       <li class="slide"><img src="css/images/06.jpg" /></li>
-     </ul>
-   </div>
+<form id="theForm">
+  <button type="button" id="oneButton">Get Text</button><br />
+
+<div>
+  <h3>Double Number on the Server:</h3>
+  <span></span><br />
 </div>
+<input type="text" name="data" id="data"></input>
+<button type="button" id="twoButton">Double Number</button><br /><br />
+<button type="button" id="threeButton">Get XML Data</button>
 
-<h3 align="center">Jquery AJAX Sample</h3><br/><br/>
-<h5 aligh="center"><h5/><br/>
-  <ul align="center" id="humans">
-    <!-- <li class="list-group-item">Name: John, Drink: Vodka</li>
-    <li class="list-group-item">Name: John, Drink: Vodka</li> -->
-     <!-- template type of elem which appearing depends on js code    -->
-    <template id="human-template">
-      <li data-id="{{id}}">
-      <p><strong>Name:</strong>
-        <!-- we add some class which appears in edit mode and disappears in otherwise  -->
-        <!-- we see forms save and cancel in edit class and we can't se these otherwise, we set classes edit and noedit in css  -->
-        <span class="noedit name">{{name}}</span>
-       <input class="edit name"/>
-      </p>
-      <p><strong>Age:</strong>
-        <span class="noedit age">{{age}}</span>
-        <input class="edit age"/>
-      <button data-id='{{id}}' class='remove'>X</button>
-      <button class="editHum noedit">Edit</button>
-      <button class="saveHum edit">Save</button>
-      <button class="cancelHum edit">Cancel</button>
-      </li>
-    </template>
-  </ul>
-
-  <div align="center">
-  <h4>Form of identification</h4>
-  <p>name: <input type="text" id="name"></p>
-  <p>age: <input type="number" id="age"></p>
-  <button class="btn btn-success" id="add-human">Confirm</button>
+</form>
+<div>
+  <h3>XML Data from the Server:</h3>
 </div>
- <script>
-  $(function(){
-    $(' .tab-panels .tabs li').on('click', function(){
-      // the statement below allows us to manipulate with elems only in frame of the one parent elem - in our case '.tab-panels'
-      // so it's useful when you have several identicals parent elems;
-      var $panel = $(this).closest('.tab-panels');
-      // why we should use the statement below?, because when you see the page first time at least
-      // you see bookmark - because this bookmark has had already  the class 'active', thus you will be able to see, to
-      //two bookmarks at once and this isn't correct
-      $panel.find(' .tabs li.active').removeClass('active');
-      // thus we add class active to bookmark to which we've clicked
-      $(this).addClass('active');
-      //figure out which panel to show
-      // this - refers to li which I've clicked
-     var panelToShow = $(this).attr('rel');
+  <div id="customers">Customer Information</div>
+  <script type="text/javascript">
 
-      // hide current panel - find the active panel and hide it after that - we made it function showNextPanel
-      $panel.find(' .panel.active').slideUp(300,  showNextPanel);
-      function showNextPanel(){
-                      // remove active class
-                      $(this).removeClass('active');
-                     // slide down panel which we've clicked but be can't see  without 'active' class so add this class quickly
-                     $('#' + panelToShow).slideDown(300, function(){
-                     $(this).addClass('active');
-      });
-    }
+  $("document").ready(function() {
+  $("#oneButton").on("click",getInfoFromServer);
+  $("#twoButton").on("click",getDblFromServer);
+  $("#threeButton").on("click",getXmlFromServer);
 });
-          // add some flexibility to our nav-bar
-     $(function() {
-         $( "#moveIt" ).draggable();
-         $('#slider').draggable();
-         $('#humans').draggable();
-    });
+
+// Pull text from a text file on the server
+// Type defines the type of request to make being GET or POST
+// Success defines the function to call if the request
+// succeeds
+// Error could be defined to specify the function to call if
+// an error happens
+
+function getInfoFromServer() {
+$.ajax({
+  type: "GET",
+  url: "textFromServer.txt",
+  success: postToPage});
+}
+
+// Function called to display the message from the server
+// Receives the text and the server status
+function postToPage(data, status) {
+  $('#first').text(data);
+}
+
+// Load a value into a span
+// I define that the program getDouble.php should be executed
+// getDouble is sent the information in the form and then it
+// stores the returned info in the span
+
+function getDblFromServer() {
+  $("span").load("getDouble.php",
+  $("#theForm").serializeArray());
+}
+
+// Here I define that I'm receiving xml data from the server
+
+function getXmlFromServer() {
+$.ajax({
+  type: "GET",
+  url: "customers.xml",
+  datatype: "xml",
+  success: postToPageTwo});
+}
+
+// I use the find method to search through the xml data
+// When I match for any of these attributes I append them to
+// the div named customers
+
+function postToPageTwo(data) {
+
+  $(data).find('customer').each(function(){
+    var id = $(this).attr('id');
+    var firstName = $(this).find('firstName').text();
+    var lastName = $(this).find('lastName').text();
+    var street = $(this).find('street').text();
+    var city = $(this).find('city').text();
+    var zip = $(this).find('zip').text();
+
+    $('<div class="firstname"></div>').html(firstName).appendTo('#customers');
+    $('<div class="lastname"></div>').html(lastName).appendTo('#customers');
+    $('<div class="street"></div>').html(street).appendTo('#customers');
+    $('<div class="city"></div>').html(city).appendTo('#customers');
+    $('<div class="zip"></div><br />').html(zip).appendTo('#customers');
+
   });
-
- $(function(){
-    $( "#moveIt").resizable();
-    $( "#slider").resizable();
-    $( "#humans").resizable();
-    //  maxHeight: 1080,
-    //  maxWidth: 1920,
-    //  minHeight: 108,
-    //  minWidth: 19
-   });
-
-
-//////////////////////////////////////////////slider ////////////////////////////////////////
-  //  var myInterval = setInterval(function(){
-  //    console.log(new Date());
-  //  }, 1000);
-  $(function(){
-    // params
-    var width = 1024;
-    var animationSpeed = 1000;
-    var pause = 3000;
-    var currentSlide = 1;
-    // DOM
-    //assign to var div with class slider
-    var $slider = $('#slider');
-    // find elems with class slides - set it to var
-    var $slideContainer = $slider.find('.slides');
-    // find elems in slides class elem with class slide and set it to var
-    var $slides = $slideContainer.find('.slide');
-
-    var interval;
-
-    function startSlider(){
-      interval =  setInterval(function(){
-        // find elems in slides class div and animate these with speed animationSpeed
-          $slideContainer.animate({'margin-left' : '-=' + width}, animationSpeed, function(){
-            // also we increment var currentSlide each time we shift elem-slide
-            ++ currentSlide;
-            // our conditon when we have last  slide-elem , we go back to the first, thus we make infinite cycle
-            if(currentSlide === $slides.length){
-              // also we clean our counter of current slides
-              currentSlide = 1;
-              $slideContainer.css('margin-left', 0);
-            }
-          });
-          // how much time should we show each elem - pause
-        }, pause);
-      }
-      // we interrupt our cycleshow by this function
-        function pauseSlider(){
-           clearInterval(interval);
-        }
-
-           //when mouse on the picture func pauseSlider when leaves - startSlider
-           $slider.on('mouseenter', pauseSlider).on('mouseleave', startSlider);
-         startSlider();
-    });
-       ////////////////////////////ajax////////////////////////
-       $(function(){
-         // set var of our dom elem where we are going to display all
-         var $humans = $('#humans');
-         var $name=$('#name');
-         var $age=$('#age');
-
-       // because we modify our input form into html from javascript now we refer to this element in html
-         var addHumanParameters = $('#human-template').html();
-
-       // let's create a function which we'll accomplish in case of our success request
-       function addHumanParams(human){
-         $humans.append(Mustache.render(addHumanParameters, human));
-
-        // // we put all elemes in li - forms and append it in sequence
-        //  $humans.append("<li>name: " + human.name + ",  age: " + human.age + "</li>");
-         // just look in our console that all passed well
-         console.log('success', human);
-       }
-
-
-         // ajax function
-         $.ajax({
-           // type of request get , post , put, delete - choose the first one
-            type: 'GET',
-            // set adress of the data file
-            url: 'http://rest.learncode.academy/api/johnbob/friends',
-            // grab data put in var humans - and skip data through  the function
-            success: function(humans){
-              // where each elems in var humans - human with index i
-              $.each(humans, function(i, human){
-                 addHumanParams(human);
-
-              //   // we put all elemes in li - forms and append it in sequence
-              // $humans.append("<li>name: " + human.name + ",  age: " + human.age + "</li>");
-              // // just look in our console that all passed well
-              // console.log('success', human);
-            });
-          },
-          /// it appears when we weren't able download our data
-          error: function(){
-          alert('something goes wrong!!!');
-          }
-         });
-
-          /// by this function we gonna post data  - by click
-         $('#add-human').on('click', function(){
-           console.log('eugene');
-           /// create var which includes data which we gonna transmit
-          var human = {
-             name: $name.val(),
-             age: $age.val(),
-          };
-          /// ajax function with post
-          $.ajax({
-            type: 'POST',
-            /// where we gonna transmit
-            url: 'http://rest.learncode.academy/api/johnbob/friends',
-
-            // var human with data
-            data: human,
-            /// so in case of success accomplish function
-            success: function(newHuman){
-            addHumanParams(newHuman);
-        },
-        /// in case of error - error
-        error: function(){
-          alert('error saving human id ');
-        }
-          });
-
-         });
-         // listen any click-events in humans in class remove and fire Delete request
-         $humans.delegate('.remove', 'click', function(){
-          var $li = $(this).closest('li');
-          var self = this;
-           $.ajax({
-             type: 'DELETE',
-             /// url and the special place where we should accomplish this request
-                url: 'http://rest.learncode.academy/api/johnbob/friends/' + $(this).attr('data-id'),
-                success: function(){
-                  $(self);
-                  $li.fadeOut(500, function(){
-                    $(this).remove();
-                  });
-                }
-           });
-         });
-
-         $humans.delegate('.editHum', 'click', function(){
-           // find nearest li - elem
-           var $li = $(this).closest('li');
-           // find input with class name  and set value of span name
-           $li.find('input.name').val( $li.find('span.name').html() );
-              $li.find('input.age').val( $li.find('span.age').html() );
-              // add class edit thus we can see hidden buttons and forms s
-              $li.addClass('edit');
-         })
-          // if we use this function it means that we are in edit mode so, by pressing key cancel we should remove class edit
-         $humans.delegate('.cancelHum', 'click', function(){
-           $(this).closest('li').removeClass('edit');
-         })
-
-         $humans.delegate('.saveHum', 'click', function(){
-           // find closest li-elem
-           var $li = $(this).closest('li');
-           // set to var data which we've grabbed from our input forms we were available in edit mode
-           var human = {
-             name: $li.find('input.name').val(),
-             age: $li.find('input.age').val()
-           };
-           // therefore after we got data from our input forms we should  transmit it by somehow,
-           // by code below
-           $.ajax({
-               type: 'PUT',
-               /// where we gonna transmit
-               url: 'http://rest.learncode.academy/api/johnbob/friends/' + $li.attr('data-id'),
-
-               // var human with data
-               data: human,
-               /// so in case of success accomplish function
-               success: function(newHuman){
-              $li.find('span.name').html(human.name);
-              $li.find('span.age').html(human.age);
-              $li.removeClass('edit');
-           },
-
-           /// in case of error - error
-           error: function(){
-             alert('error updating human id ');
-           }
-             });
-         });
-
-
-
-       });
+}
 </script>
-
-
-
-
-  </body>
+</body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML >
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Tutorial</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+ <script type="text/javascript">
+
+    ////////////////////// in that way i call script some.js by clicking button
+       $(function(){
+         $('input').click(function(){
+           $.getScript("some.js");
+         });
+       });
+
+       $(function(){
+         $.fn.everythird = function(){
+           var arr=[];
+           $.each(this, function(idx, item){
+             if (idx%3 == 0);
+             arr.push(item);
+           });
+           return this.pushStack(arr , "everythird", "");
+         }
+
+
+          $('#clickit').click(function(){
+$("div").everythird().css("color", "Red").end().css("font-weigth", "bold");
+});
+});
+
+
+ </script>
+ <body>
+   <input  id="clickOnMe"type="button" value="Type it" />
+      <input  id="clickit"type="button" value="Print Array" />
+
+   <div id="out1">1</div>
+      <div id="out2">2</div>
+         <div id="out3">3</div>
+            <div id="out4">4</div>
+               <div id="out5">5</div>
+               <br/><br/>
+               <div id="out6"></div>
+ </body>
+</html>
