@@ -321,4 +321,13 @@ function($scope, $state, modalService, searchService){
     $state.go('app.stock', {stockTicker: ticker});
   }
 
+}])
+
+.controller('LoginSignupCtrl', ['$scope', 'modalService',function($scope,modalService){
+
+  $scope.closeModal = function(){
+    modalService.closeModal();
+  };
+
+
 }]);
