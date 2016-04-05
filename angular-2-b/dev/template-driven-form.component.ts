@@ -1,12 +1,9 @@
 import{Component}from 'angular2/core';
 
-
-
 //    <form (ngSubmit)="onSubmit(f)" #f="ngFrom">
 // by clicking button submit we call function onSubmit with argument #f
 // and #f is a reference to  ngForm , which includes all elems in elem form
 // thus we submit data from all forms which belong to <form>
-
 @Component({
   selector: 'template-driven-form',
   template:`
