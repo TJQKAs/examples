@@ -1,23 +1,11 @@
 import {Component} from 'angular2/core';
-import {ShoppingListComponent} from './shopping-list/shopping-list.component';
-
+import{TemplateDrivenFromComponent} from './template-driven-form.component';
 @Component({
 
     selector: 'my-app',
-    template: `<header>
-      <div class="brand">Shopping list</div>
-                    </header>
-                    <div class="main">
-                      <shopping-list></shopping-list>
-                    </div>
-
-
-
-
-
-
+    template: `<template-driven-form></template-driven-form>
     `,
-    directives: [ShoppingListComponent]
+    directives: [TemplateDrivenFromComponent]
 
 
 })
