@@ -9,7 +9,7 @@
 
     ////////////////////// in that way i call script some.js by clicking button
        $(function(){
-         $('input').click(function(){
+         $('#clickit').click(function(){
            $.getScript("some.js");
          });
        });
@@ -23,18 +23,97 @@
            });
            return this.pushStack(arr , "everythird", "");
          }
-
-
           $('#clickit').click(function(){
 $("div").everythird().css("color", "Red").end().css("font-weigth", "bold");
 });
 });
+///////////////////////////////////////////////////////////////////////////////
+// multicomponent function
+ $(function(){
 
+    //  var x = $('#varx').val(Number);
+    //  var y = $('#vary').val(Number);
+    // var x = $("#varx").val();
+    // var y = $("#vary").val();
+
+
+
+     var calc = {
+
+       divide : function(x,y){return x/y;},
+       clickbtndivide: function(event){
+         var x =  parseInt($("#varx").val());
+         var y = parseInt($("#vary").val());
+        console.log(this.divide(x,y));
+       $('#out3').append('<br/>'+ this.divide(x,y));
+       },
+
+
+
+       add : function(x,y){return (x+y);},
+       clickbtnadd: function(event){
+         var x =  parseInt($("#varx").val());
+         var y = parseInt($("#vary").val());
+     console.log(this.add(x,y));
+       $('#out3').append('<br/>'+ this.add(x,y));
+       },
+
+
+
+           subs : function(x,y){return x-y;},
+           clickbtnsubs: function(event){
+             var x =  parseInt($("#varx").val());
+             var y = parseInt($("#vary").val());
+         console.log(this.subs(x,y));
+            $('#out3').append('<br/>'+ this.subs(x,y));
+           },
+
+           mult : function(x,y){return x*y;},
+           clickbtnmult: function(event){
+             var x =  parseInt($("#varx").val());
+             var y = parseInt($("#vary").val());
+         console.log(this.mult(x,y));
+            $('#out3').append('<br/>'+ this.mult(x,y));
+           },
+     }
+    $(function(){
+       $('#clickAdd').click($.proxy(calc.clickbtnadd, calc));
+    });
+    $(function(){
+       $('#clickDivide').click($.proxy(calc.clickbtndivide, calc));
+    });
+    $(function(){
+       $('#clickSubs').click($.proxy(calc.clickbtnsubs, calc));
+    });
+    $(function(){
+       $('#clickMult').click($.proxy(calc.clickbtnmult, calc));
+    });
+
+
+
+   //
+  //  console.log(x,y);
+  //    var zat = calc.add(44,55);
+  //    // we call by this way
+  //    calc.divide(33,43);
+  //   $('#out3').append('<br/>'+ calc.add(x,y));
+
+ });
 
  </script>
  <body>
    <input  id="clickOnMe"type="button" value="Type it" />
       <input  id="clickit"type="button" value="Print Array" />
+      <br/>
+  <input type="text" id="varx">
+  <br/>
+  <input type="text" id="vary">
+
+<input  id="clickAdd"type="button" value="+" />
+<input  id="clickDivide"type="button" value="/" />
+<input  id="clickSubs"type="button" value="-" />
+<input  id="clickMult"type="button" value="*" />
+<br/><br/>
 
    <div id="out1">1</div>
       <div id="out2">2</div>
