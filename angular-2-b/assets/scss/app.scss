@@ -24,7 +24,16 @@ button {
 
 button:not([disabled]):hover {
   background-color: rgb(255, 110, 64);
+
 }
 .validaton-error{
   color:rgb(187, 45, 0);
 }
+
+.none{
+  display: none;
+}
+
+// .none:not([disabled]){
+//   display: none;
+// }
