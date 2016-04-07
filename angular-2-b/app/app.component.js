@@ -31,7 +31,7 @@ System.register(['angular2/core', './template-driven-form.component', './data-dr
                     core_1.Component({
                         selector: 'my-app',
                         template: "<template-driven-form></template-driven-form><br/><br/>\n     <data-driven-form></data-driven-form>\n\n    ",
-                        directives: [template_driven_form_component_1.TemplateDrivenFromComponent, data_driven_form_component_1.DataDrivenFromComponent]
+                        directives: [template_driven_form_component_1.TemplateDrivenFormComponent, data_driven_form_component_1.DataDrivenFormComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

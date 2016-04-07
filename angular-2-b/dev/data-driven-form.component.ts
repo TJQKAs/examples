@@ -1,4 +1,5 @@
-import{Component}from 'angular2/core';
+import{Component, OnInit}from 'angular2/core';
+import{FormBuilder, Validators} from 'angular2/common';
 
 //    <form (ngSubmit)="onSubmit(f)" #f="ngFrom">
 // by clicking button submit we call function onSubmit with argument #f
@@ -8,20 +9,20 @@ import{Component}from 'angular2/core';
   selector: 'data-driven-form',
   template:`
    <h2>Additional information</h2>
-   <form (ngSubmit)="onSubmit()">
+   <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
      <div>
        <label for="occupation">Occupation:</label>
-       <input ngControl="occupation" type="text" id="occupation">
+       <input [ngFormControl]="myForm.controls['occupation']" type="text" id="occupation">
       <span class="validaton-error">not valid</span>
      </div>
      <div>
        <label for="education">Education:</label>
-       <input ngControl="education" type="text" id="education" required>
+       <input [ngFormControl]="myForm.controls['education']" type="text" id="education">
        <span class="validaton-error">not valid</span>
      </div>
      <div>
        <label for="annual">Annual income:</label>
-       <input ngControl="annual" type="number" id="annual" required>
+       <input [ngFormControl]="myForm.controls['annual']" type="number" id="annual">
         <span class="validaton-error">not valid</span>
      </div>
      <button type="submit">Submit</button>
@@ -35,14 +36,36 @@ import{Component}from 'angular2/core';
 
   `
 })
+//[ngFormModel]="myForm"  => it means that now ngFormModel should use my ControlGroup instead of default type
 
-export class DataDrivenFromComponent{
+
+export class DataDrivenFormComponent implements OnInit{
+// myForm - property refers to ControlGroup - which controls validation of my forms
+ myForm: ControlGroup;
  user ={occupation: ' ', education: ' ', annual: ' '};
 
+// FormBuilder - service that creates forms and our refernce to it - _formBuilder
+ constructor(private _formBuilder: FormBuilder){}
+
   onSubmit(form){
-     this.user.occupation = form.value['occupation'];
-        this.user.education = form.value['education'];
-           this.user.annual = form.value['annual'];
+    console.log(this.myForm);
+    this.user.occupation = form.value['occupation'];
+       this.user.education = form.value['education'];
+          this.user.annual = form.value['annual'];
 
   }
+
+//:any means that it might be whatever argument in OnInit
+ ngOnInit():any{
+   //access to FormBuilder and run method group
+   // in left side my prop which responsible for controlling of my forms (3 elems in this case)
+   // in right side I tell : let  "this.myFrom" be equal to my new control  method "group"
+   // which I've created by using FromBuilder service
+    this.myForm = this._formBuilder.group({
+      // 'name of  object' :[' default meaning', validation logic (in our case Validators.reqiured means that we only check whether our form is not empty)]
+      'occupation':['',Validators.required],
+            'education':['',Validators.required],
+                  'annual':['',Validators.required],
+    });
+ }
 }

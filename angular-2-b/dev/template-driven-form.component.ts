@@ -12,17 +12,17 @@ import{Component}from 'angular2/core';
      <div>
        <label for="name">Name:</label>
        <input ngControl="name" type="text" id="name" #name="ngForm" required>
-      <span class="validaton-error" *ngIf="!name.valid">not valid</span>
+      <span class="validation-error" *ngIf="!name.valid">not valid</span>
      </div>
      <div>
        <label for="surname">Surname:</label>
        <input ngControl="surname" type="text" id="surname" #surname="ngForm" required>
-       <span class="validaton-error" *ngIf="!surname.valid">not valid</span>
+       <span class="validation-error" *ngIf="!surname.valid">not valid</span>
      </div>
      <div>
        <label for="age">Age:</label>
        <input ngControl="age" type="number" id="age" #age="ngForm" required>
-        <span class="validaton-error" *ngIf="!age.valid">not valid</span>
+        <span class="validation-error" *ngIf="!age.valid">not valid</span>
      </div>
      <div>
        <label for="country">Country:</label>
@@ -31,17 +31,17 @@ import{Component}from 'angular2/core';
      <div>
        <label for="mail">Mail:</label>
        <input ngControl="mail" type="text" id="mail" #mail="ngForm" required>
-       <span class="validaton-error" *ngIf="!mail.valid">not valid</span>
+       <span class="validation-error" *ngIf="!mail.valid">not valid</span>
      </div>
      <div>
        <label for="password">Password:</label>
        <input ngControl="password" type="text" id="name" #password="ngForm" required>
-        <span class="validaton-error" *ngIf="!password.valid">not valid</span>
+        <span class="validation-error" *ngIf="!password.valid">not valid</span>
      </div>
      <div>
        <label for="confirm-password">Confirm Password:</label>
        <input ngControl="confirm-password" type="text" id="confirm-password" #confirmPassword="ngForm" required>
-        <span class="validaton-error" *ngIf="!confirmPassword.valid">not valid</span>
+        <span class="validation-error" *ngIf="!confirmPassword.valid">not valid</span>
      </div>
      <button type="submit" [disabled]="!f.valid || password.value !== confirmPassword.value">Submit</button>
       </form>
@@ -57,7 +57,7 @@ import{Component}from 'angular2/core';
   `
 })
 
-export class TemplateDrivenFromComponent{
+export class TemplateDrivenFormComponent{
  user ={name: ' ', surname: ' ', age: ' ', mail: ' ', country: ' '};
 
   onSubmit(form){

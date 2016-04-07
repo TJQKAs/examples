@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
-import{TemplateDrivenFromComponent} from './template-driven-form.component';
-import{DataDrivenFromComponent}from './data-driven-form.component';
+import{TemplateDrivenFormComponent} from './template-driven-form.component';
+import{DataDrivenFormComponent}from './data-driven-form.component';
 @Component({
 
     selector: 'my-app',
@@ -8,7 +8,7 @@ import{DataDrivenFromComponent}from './data-driven-form.component';
      <data-driven-form></data-driven-form>
 
     `,
-    directives: [TemplateDrivenFromComponent, DataDrivenFromComponent]
+    directives: [TemplateDrivenFormComponent, DataDrivenFormComponent]
 
 
 })
