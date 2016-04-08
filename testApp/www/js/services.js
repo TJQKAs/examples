@@ -117,7 +117,7 @@ var oneYearAgo = function(){
     $rootScope.currentUser = '';
      firebaseRef.unauth();
   };
-  ///function was added to resolve the problem whatever we refresh the page we loose the presence of current authentication
+  ///function was added to resolve the problem whenever we refresh the page we loose the presence of current authentication
   //this function call Firebase method to get info about current user
     var getUser = function(){
        return firebaseRef.getAuth();
