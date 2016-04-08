@@ -32,10 +32,8 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1, contex
                     this.user = { occupation: ' ', education: ' ', annual: ' ' };
                 }
                 DataDrivenFormComponent.prototype.onSubmit = function (form) {
-                    console.log(this.myForm);
-                    this.user.occupation = form.value['occupation'];
-                    this.user.education = form.value['education'];
-                    this.user.annual = form.value['annual'];
+                    console.log(this.myForm.value);
+                    this.user = this.myForm.value;
                 };
                 //:any means that it might be whatever argument in OnInit
                 DataDrivenFormComponent.prototype.ngOnInit = function () {
@@ -47,13 +45,13 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1, contex
                         // 'name of  object' :[' default meaning', validation logic (in our case Validators.reqiured means that we only check whether our form is not empty)]
                         'occupation': ['', common_1.Validators.required],
                         'education': ['', common_1.Validators.required],
-                        'annual': ['', common_1.Validators.required],
+                        'annual': ['', common_1.Validators.required]
                     });
                 };
                 DataDrivenFormComponent = __decorate([
                     core_1.Component({
                         selector: 'data-driven-form',
-                        template: "\n   <h2>Additional information</h2>\n   <form [ngFormModel]=\"myForm\" (ngSubmit)=\"onSubmit()\">\n     <div>\n       <label for=\"occupation\">Occupation:</label>\n       <input [ngFormControl]=\"myForm.controls['occupation']\" type=\"text\" id=\"occupation\">\n      <span class=\"validaton-error\">not valid</span>\n     </div>\n     <div>\n       <label for=\"education\">Education:</label>\n       <input [ngFormControl]=\"myForm.controls['education']\" type=\"text\" id=\"education\">\n       <span class=\"validaton-error\">not valid</span>\n     </div>\n     <div>\n       <label for=\"annual\">Annual income:</label>\n       <input [ngFormControl]=\"myForm.controls['annual']\" type=\"number\" id=\"annual\">\n        <span class=\"validaton-error\">not valid</span>\n     </div>\n     <button type=\"submit\">Submit</button>\n      </form>\n   <div>\n     <h4> Your additional information are: </h4>\n     <h5>Your occupation: {{user.occupation}}</h5>\n     <h5>Your education: {{user.education}}</h5>\n     <h5>Your annual income: {{user.annual}}</h5>\n   </div>\n\n  "
+                        template: "\n   <h2>Additional information</h2>\n   <form [ngFormModel]=\"myForm\" (ngSubmit)=\"onSubmit()\">\n     <div>\n       <label for=\"occupation\">Occupation:</label>\n       <input [ngFormControl]=\"myForm.controls['occupation']\" type=\"text\" id=\"occupation\" #occupation=\"ngForm\">\n      <span class=\"validaton-error\" *ngIf=\"!occupation.valid\">not valid</span>\n     </div>\n     <div>\n       <label for=\"education\">Education:</label>\n       <input [ngFormControl]=\"myForm.controls['education']\" type=\"text\" id=\"education\" #education=\"ngForm\">\n       <span class=\"validaton-error\" *ngIf=\"!education.valid\">not valid</span>\n     </div>\n     <div>\n       <label for=\"annual\">Annual income:</label>\n       <input [ngFormControl]=\"myForm.controls['annual']\" type=\"number\" id=\"annual\" #annual=\"ngForm\">\n        <span class=\"validaton-error\" *ngIf=\"!annual.valid\">not valid</span>\n     </div>\n     <button type=\"submit\">Submit</button>\n      </form>\n   <div>\n     <h4> Your additional information are: </h4>\n     <h5>Your occupation: {{user.occupation}}</h5>\n     <h5>Your education: {{user.education}}</h5>\n     <h5>Your annual income: {{user.annual}}</h5>\n   </div>\n\n  "
                     }), 
                     __metadata('design:paramtypes', [common_1.FormBuilder])
                 ], DataDrivenFormComponent);

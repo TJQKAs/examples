@@ -12,18 +12,18 @@ import{FormBuilder, Validators} from 'angular2/common';
    <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
      <div>
        <label for="occupation">Occupation:</label>
-       <input [ngFormControl]="myForm.controls['occupation']" type="text" id="occupation">
-      <span class="validaton-error">not valid</span>
+       <input [ngFormControl]="myForm.controls['occupation']" type="text" id="occupation" #occupation="ngForm">
+      <span class="validaton-error" *ngIf="!occupation.valid">not valid</span>
      </div>
      <div>
        <label for="education">Education:</label>
-       <input [ngFormControl]="myForm.controls['education']" type="text" id="education">
-       <span class="validaton-error">not valid</span>
+       <input [ngFormControl]="myForm.controls['education']" type="text" id="education" #education="ngForm">
+       <span class="validaton-error" *ngIf="!education.valid">not valid</span>
      </div>
      <div>
        <label for="annual">Annual income:</label>
-       <input [ngFormControl]="myForm.controls['annual']" type="number" id="annual">
-        <span class="validaton-error">not valid</span>
+       <input [ngFormControl]="myForm.controls['annual']" type="number" id="annual" #annual="ngForm">
+        <span class="validaton-error" *ngIf="!annual.valid">not valid</span>
      </div>
      <button type="submit">Submit</button>
       </form>
@@ -48,10 +48,8 @@ export class DataDrivenFormComponent implements OnInit{
  constructor(private _formBuilder: FormBuilder){}
 
   onSubmit(form){
-    console.log(this.myForm);
-    this.user.occupation = form.value['occupation'];
-       this.user.education = form.value['education'];
-          this.user.annual = form.value['annual'];
+    console.log(this.myForm.value);
+    this.user = this.myForm.value;
 
   }
 
@@ -65,7 +63,7 @@ export class DataDrivenFormComponent implements OnInit{
       // 'name of  object' :[' default meaning', validation logic (in our case Validators.reqiured means that we only check whether our form is not empty)]
       'occupation':['',Validators.required],
             'education':['',Validators.required],
-                  'annual':['',Validators.required],
+                  'annual':['',Validators.required]
     });
  }
 }
