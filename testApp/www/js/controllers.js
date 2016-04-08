@@ -1,8 +1,12 @@
 angular.module('testApp.controllers', [])
 
-.controller('AppCtrl', [ '$scope', '$ionicModal', 'modalService',
-function($scope, $ionicModal, modalService) {
+.controller('AppCtrl', [ '$scope', '$ionicModal', 'modalService','userService',
+function($scope, $ionicModal, modalService, userService) {
     $scope.modalService = modalService;
+
+    $scope.logout = function(){
+       userService.logout();
+    };
 
 }])
 // dependecies as array of string
@@ -323,11 +327,23 @@ function($scope, $state, modalService, searchService){
 
 }])
 
-.controller('LoginSignupCtrl', ['$scope', 'modalService',function($scope,modalService){
+.controller('LoginSignupCtrl', ['$scope', 'modalService', 'userService', function($scope,modalService, userService){
+
+  $scope.user = {email: ' ', password: ' '};
 
   $scope.closeModal = function(){
     modalService.closeModal();
   };
+
+ //add signup method  to controller
+  $scope.signup = function(user){
+     userService.signup(user);
+  };
+
+  $scope.login = function(user){
+     userService.login(user);
+  };
+
 
 
 }]);

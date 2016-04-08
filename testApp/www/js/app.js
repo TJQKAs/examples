@@ -1,5 +1,6 @@
 angular.module('testApp', [
   'ionic',
+  'firebase',
   'angular-cache',
   'testApp.controllers',
   'nvd3',

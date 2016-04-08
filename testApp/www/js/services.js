@@ -1,4 +1,8 @@
 angular.module('testApp.services', [])
+
+
+// new constant service which binds our firebase
+.constant('FIREBASE_URL', 'https://testapp08.firebaseio.com/')
 ///////////////////////////////////////////////////
 .factory('encodeURIService', function(){
 
@@ -70,6 +74,68 @@ var oneYearAgo = function(){
    oneYearAgo: oneYearAgo
  };
 })
+////////////////////////////////////////////////////////////////////////////////////////
+.factory('firebaseRef', function($firebase, FIREBASE_URL){
+  var firebaseRef = new Firebase(FIREBASE_URL);
+  return firebaseRef;
+})
+
+.factory('userService', function($rootScope, firebaseRef, modalService){
+  var login = function(user){
+    // user method of  Firebase to check authontication object with email and password by calling it's refernce firebaseRef
+    firebaseRef.authWithPassword({
+      email       : user.email,
+      password : user.password
+        // call function with 2 arguments which this function can get after we call Firebase  error and we print it or we close  login page
+    }, function(error, authData){
+      if(error){
+   console.log("Login failed:" , error);
+      } else {
+        $rootScope.currentUser = user;
+   modalService.closeModal();
+   console.log("Successful authentication:" , authData);
+      }
+    });
+  };
+  // function signup  with user arg
+  var signup = function(user){
+    // user method of  Firebase to create object with email and password by calling it's refernce firebaseRef
+    firebaseRef.createUser({
+      email       : user.email,
+      password : user.password
+        // call function with 2 arguments which this function can get after we call Firebase  error and we print it or success that we print also
+    }, function(error, userData){
+      if(error){
+   console.log("Error creating user :" , error );
+      } else {
+        login(user);
+   console.log("Successful created new user with uid:" , userData.uid);
+      }
+    });
+  };
+  var logout = function(){
+    $rootScope.currentUser = '';
+     firebaseRef.unauth();
+  };
+  ///function was added to resolve the problem whatever we refresh the page we loose the presence of current authentication
+  //this function call Firebase method to get info about current user
+    var getUser = function(){
+       return firebaseRef.getAuth();
+    };
+
+    if(getUser()){
+      $rootScope.currentUser = getUser;
+    }
+  /// return reference to function which return smth
+  return {
+    login: login,
+    signup: signup,
+    logout: logout
+};
+})
+
+
+
 /////////////////////////////////////////////////////////////////
 .factory('chartDataCacheService', function(CacheFactory){
   var chartDataCache;
