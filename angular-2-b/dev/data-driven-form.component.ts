@@ -1,5 +1,5 @@
 import{Component, OnInit}from 'angular2/core';
-import{FormBuilder, Validators} from 'angular2/common';
+import{FormBuilder, Validators, Control} from 'angular2/common';
 
 //    <form (ngSubmit)="onSubmit(f)" #f="ngFrom">
 // by clicking button submit we call function onSubmit with argument #f
@@ -63,7 +63,21 @@ export class DataDrivenFormComponent implements OnInit{
       // 'name of  object' :[' default meaning', validation logic (in our case Validators.reqiured means that we only check whether our form is not empty)]
       'occupation':['',Validators.required],
             'education':['',Validators.required],
-                  'annual':['',Validators.required]
+            // unlike to others data-driven-validators we create custom validator which contains
+            // default validator - required (checks whether our field is empty) and our validator hasNumbers (checks whether
+          // our field of annual income contain only digits)
+                  'annual':['',Validators.compose([
+                    Validators.required,
+                    Validators.hasNumbers
+                  ])]
     });
  }
+}
+// add custom validator - function which checks our condition
+function hasNumbers(control: Control):{[s: string]: boolean}{
+  // validator checks that our string should contain only digits
+  if(!control.value.match('/\d+/g')){
+    // return param of custom validator false
+    return {noNumbers: true};
+  }
 }

@@ -12,6 +12,14 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1, contex
     };
     var core_1, common_1;
     var DataDrivenFormComponent;
+    // add custom validator - function which checks our condition
+    function hasNumbers(control) {
+        // validator checks that our string should contain only digits
+        if (!control.value.match('/\d+/g')) {
+            // return param of custom validator false
+            return { noNumbers: true };
+        }
+    }
     return {
         setters:[
             function (core_1_1) {
@@ -45,7 +53,13 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1, contex
                         // 'name of  object' :[' default meaning', validation logic (in our case Validators.reqiured means that we only check whether our form is not empty)]
                         'occupation': ['', common_1.Validators.required],
                         'education': ['', common_1.Validators.required],
-                        'annual': ['', common_1.Validators.required]
+                        // unlike to others data-driven-validators we create custom validator which contains
+                        // default validator - required (checks whether our field is empty) and our validator hasNumbers (checks whether
+                        // our field of annual income contain only digits)
+                        'annual': ['', common_1.Validators.compose([
+                                common_1.Validators.required,
+                                common_1.Validators.hasNumbers
+                            ])]
                     });
                 };
                 DataDrivenFormComponent = __decorate([
