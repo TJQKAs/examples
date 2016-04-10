@@ -79,8 +79,16 @@ var oneYearAgo = function(){
   var firebaseRef = new Firebase(FIREBASE_URL);
   return firebaseRef;
 })
+/////////////////////////////////// new factory to save user's notes
+.factory('firebaseUserRef', function(firebaseRef){
+   // call to array 'users' by child from Firebase via refernce
+   // firebaseRef  get data and assign it to var userRef
+    var userRef = firebaseRef.child('users');
+    // and return userRef
+    return userRef;
+})
 
-.factory('userService', function($rootScope, firebaseRef, modalService){
+.factory('userService', function($rootScope, $window, firebaseRef, firebaseUserRef, myStocksArrayService, myStocksCacheService, notesCacheService, modalService){
   var login = function(user){
     // user method of  Firebase to check authontication object with email and password by calling it's refernce firebaseRef
     firebaseRef.authWithPassword({
@@ -109,13 +117,44 @@ var oneYearAgo = function(){
    console.log("Error creating user :" , error );
       } else {
         login(user);
+        // push signups to array emails to store all signups
+        firebaseRef.child('emails').push(user.email);
+        // call method child of firebaseUserRef and create unique note to each user  and append info about stocks
+        // in myStocksArrayService
+        firebaseUserRef.child(userData.uid).child('stocks').set(myStocksArrayService);
+
+        // get info from notesCacheService and set it to stocksWithNotes
+        var stocksWithNotes = notesCacheService.keys();
+        console.log(stocksWithNotes);
+
+       //each note from cach put to var array notes
+        stocksWithNotes.forEach(function(stocksWithNotes){
+          var notes = notesCacheService.get(stocksWithNotes);
+
+      //from array notes each note push to note of ticker which we call from
+      // notes which belongs to user with uid from Firebase which we've call by reference firebaseUserRef
+        notes.forEach(function(note){
+          firebaseUserRef.child(userData.uid).child('notes').child(note.ticker).push(note);
+        });
+    });
+
+
+
+
+
    console.log("Successful created new user with uid:" , userData.uid);
       }
     });
   };
   var logout = function(){
+    firebaseRef.unauth();
+    // remove all notes from cache
+    notesCacheService.removeAll();
+    // remove all action with follow / unfollow from cache
+    myStocksCacheService.removeAll();
+    //reload window
+    $window.location.reload(true);
     $rootScope.currentUser = '';
-     firebaseRef.unauth();
   };
   ///function was added to resolve the problem whenever we refresh the page we loose the presence of current authentication
   //this function call Firebase method to get info about current user
@@ -126,11 +165,30 @@ var oneYearAgo = function(){
     if(getUser()){
       $rootScope.currentUser = getUser;
     }
+
+    var updateStocks = function(stocks){
+      // thus we access to notes of user's stock  and update it
+      // find user by uid find his stocks note and change it by foreign param stocks
+      firebaseUserRef.child(getUser().uid).child('stocks').set(stocks);
+    };
+   // method with 2 foreign params ticker and notes which belongs to ticker
+    var updateNotes = function(ticker, notes){
+      // remove previous notes - array
+      firebaseUserRef.child(getUser().uid).child('notes').child(ticker).remove();
+      // push each current note to notes array
+          notes.forEach(function(note){
+      firebaseUserRef.child(getUser().uid).child('notes').child(note.ticker).push(note);
+      });
+    };
+
   /// return reference to function which return smth
   return {
     login: login,
     signup: signup,
-    logout: logout
+    logout: logout,
+    updateNotes: updateNotes,
+    updateStocks: updateStocks,
+    getUser: getUser
 };
 })
 
@@ -247,7 +305,7 @@ var oneYearAgo = function(){
 })
 
 ///////////////////////////////////////////////////////
-.factory('followStockService', function(myStocksArrayService, myStocksCacheService){
+.factory('followStockService', function(myStocksArrayService, myStocksCacheService, userService){
 
   return{
     follow: function(ticker){
@@ -257,6 +315,11 @@ var oneYearAgo = function(){
       myStocksArrayService.push(stockToAdd);
       // after that we should reset array with following objects
       myStocksCacheService.put('myStocks', myStocksArrayService);
+
+      //in case we have user we call updateStocks method from userService
+      if(userService.getUser()){
+         userService.updateStocks(myStocksArrayService);
+      }
     },
     unfollow: function(ticker){
     // to reject to follow
@@ -270,6 +333,10 @@ var oneYearAgo = function(){
        myStocksCacheService.remove('myStocks');
        //update myStocks using  updated myStocksArrayService
        myStocksCacheService.put('myStocks', myStocksArrayService);
+       //in case we have user we call updateStocks method from userService
+       if(userService.getUser()){
+          userService.updateStocks(myStocksArrayService);
+       }
        break;
      }
    }
@@ -423,7 +490,7 @@ var getPriceData = function(ticker){
   };
 })
 //////////////////////////////////////////////////////
-.factory('notesService', function(notesCacheService){
+.factory('notesService', function(notesCacheService, userService){
 
   return {
     getNotes: function (ticker) {
@@ -440,12 +507,27 @@ var getPriceData = function(ticker){
         stockNotes.push(note);
       }
        notesCacheService.put(ticker, stockNotes);
+      //in case we have user
+       if(userService.getUser()){
+         // get info' s ticker from cache
+         var notes = notesCacheService.get(ticker);
+         // call userService and its method to update cache info about notes of  concrete  ticker
+         userService.updateNotes(ticker, stockNotes);
+       }
     },
     deleteNote: function(ticker, index){
          var stockNotes = [];
          stockNotes = notesCacheService.get(ticker);
          stockNotes.splice(index, 1);
          notesCacheService.put(ticker, stockNotes);
+
+         //in case we have user
+          if(userService.getUser()){
+            // get info' s ticker from cache
+            var notes = notesCacheService.get(ticker);
+            // call userService and its method to update cache info about notes of  concrete  ticker
+            userService.updateNotes(ticker, stockNotes);
+          }
     }
   }
 })
