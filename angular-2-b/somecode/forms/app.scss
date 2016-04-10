@@ -1,0 +1,39 @@
+
+body {
+  padding: 32px;
+  margin: 32px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  background-color: rgb(157, 210, 254);
+}
+
+label{
+  display:flex;
+}
+input{
+  width: auto;
+  font-size: inherit;
+}
+
+button {
+  margin: 10px 0;
+  border: 2px solid rgb(0, 41, 133);
+  background-color: rgb(0, 195, 230);
+  border-radius: 5px;
+}
+
+button:not([disabled]):hover {
+  background-color: rgb(255, 110, 64);
+
+}
+.validation-error{
+  color:rgb(187, 45, 0);
+}
+
+.none{
+  display: none;
+}
+
+// .none:not([disabled]){
+//   display: none;
+// }
