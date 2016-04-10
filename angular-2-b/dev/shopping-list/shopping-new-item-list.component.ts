@@ -43,9 +43,11 @@ ngOnInit():any{
   // call method group of FormBuilder via refernce _formBuilder and put there
   // my forms (inputs or elements)which I'm going to check
   this.myForm =this._formBuilder.group({
+    // default validator
         'itemName':[' ', Validators.required],
         'itemAmount':[' ', Validators.compose([
             Validators.required,
+            // validator which we've made
             greaterthanZero
         ])],
   });
