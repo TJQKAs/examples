@@ -88,8 +88,10 @@ var oneYearAgo = function(){
     return userRef;
 })
 
-.factory('userService', function($rootScope, $window, firebaseRef, firebaseUserRef, myStocksArrayService, myStocksCacheService, notesCacheService, modalService){
-  var login = function(user){
+.factory('userService', function($rootScope, $window, $timeout, firebaseRef, firebaseUserRef, myStocksArrayService, myStocksCacheService, notesCacheService, modalService){
+
+ // we should separate two even login and signup
+  var login = function(user, signup){
     // user method of  Firebase to check authontication object with email and password by calling it's refernce firebaseRef
     firebaseRef.authWithPassword({
       email       : user.email,
@@ -100,8 +102,23 @@ var oneYearAgo = function(){
    console.log("Login failed:" , error);
       } else {
         $rootScope.currentUser = user;
-   modalService.closeModal();
+       // if it's signup mode we just close it
+        if(signup) {modalService.closeModal();
    console.log("Successful authentication:" , authData);
+ } else {
+    // remove all previous temp data from cache services before we download data which connected with current user
+    myStocksCacheService.removeAll();
+    notesCacheService.removeAll();
+
+      // call all info which conncted with this user by using loadUserData (stock and notes)
+        loadUserData(authData);
+      // close window with authentication forms
+        modalService.closeModal();
+        // refresh screen with time delay 800 ms
+        $timeout(function(){
+          $window.location.reload(true);
+        }, 800);
+           }
       }
     });
   };
@@ -116,7 +133,7 @@ var oneYearAgo = function(){
       if(error){
    console.log("Error creating user :" , error );
       } else {
-        login(user);
+        login(user, true);
         // push signups to array emails to store all signups
         firebaseRef.child('emails').push(user.email);
         // call method child of firebaseUserRef and create unique note to each user  and append info about stocks
@@ -171,6 +188,8 @@ var oneYearAgo = function(){
       // find user by uid find his stocks note and change it by foreign param stocks
       firebaseUserRef.child(getUser().uid).child('stocks').set(stocks);
     };
+
+
    // method with 2 foreign params ticker and notes which belongs to ticker
     var updateNotes = function(ticker, notes){
       // remove previous notes - array
@@ -180,6 +199,46 @@ var oneYearAgo = function(){
       firebaseUserRef.child(getUser().uid).child('notes').child(note.ticker).push(note);
       });
     };
+//////////////////////////////////loadUserData///////////////////////////
+    var loadUserData = function(authData){
+       // get each stock from stocks of user with uid via firebaseUserRef  and makes snapshot with it
+      firebaseUserRef.child(authData.uid).child('stocks').once('value', function(snapshot){
+       // create empty array
+      var stocksFromDatabase = [];
+
+    //  everytime we create new var stockToAdd to put in stock.ticker info
+      snapshot.val().forEach(function(){
+        var stockToAdd =  {ticker: stock.ticker};
+        // after that we add it to our array
+        stocksFromDatabase.push(stockToAdd);
+            });
+            myStocksCacheService.put('myStocks', stocksFromDatabase);
+          },
+      // in case of error we show error
+    function(error){
+      console.log("Firebase error => stocks " + error);
+    });
+
+    // the same way to get user notes
+    firebaseUserRef.child(authData.uid).child('notes').once('value', function(snapshot){
+      //pass data from stocksWithNotes and
+      snapshot.forEach(function(stocksWithNotes){
+       //cerate empty array
+       var notesFromDatabase = [];
+        // get each note from stocksWithNotes and push its value to array notesFromDatabase
+       stocksWithNotes.forEach(function(note){
+            notesFromDatabase.push(note.val());
+            // set cacheKey to ticker of note
+            var cacheKey = note.child('ticker').val();
+            notesCacheService.put(cacheKey, notesFromDatabase);
+       });
+      });
+    }, function(error){
+      console.log("Firebase error => notes " + error);
+    });
+    };
+
+    ////////////////////loadUserData///////////////////
 
   /// return reference to function which return smth
   return {
@@ -270,15 +329,15 @@ var oneYearAgo = function(){
 
    var fillMyStocksCache = function(){
       var myStocksArray = [
-       {ticker: "GPRO"},
-       {ticker: "AAPL"},
-       {ticker: "FB"},
-       {ticker: "NFLX"},
-       {ticker: "TSLA"},
-       {ticker: "INTC"},
-       {ticker: "MSFT"},
-       {ticker: "GE"},
-       {ticker: "YHOO"}
+      //  {ticker: "GPRO"},
+      //  {ticker: "AAPL"},
+      //  {ticker: "FB"},
+      //  {ticker: "NFLX"},
+      //  {ticker: "TSLA"},
+      //  {ticker: "INTC"},
+      //  {ticker: "MSFT"},
+      //  {ticker: "GE"},
+      //  {ticker: "YHOO"}
      ];
     myStocksCache.put('myStocks', myStocksArray);
    };

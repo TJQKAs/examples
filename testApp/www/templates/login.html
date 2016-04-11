@@ -6,7 +6,8 @@
     </div>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="login(user)">
+     <!-- becuase initially we didn't log in  login(false) -->
+    <form ng-submit="login(user, false)">
       <div class="list">
         <label class="item item-input item-floating-label">
           <span class="input-label">E-mail</span>
