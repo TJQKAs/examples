@@ -1,0 +1,17 @@
+table{
+  margin-top: auto;
+  width: 60%;
+  height: 60%;
+  background-color: rgb(251, 197, 46);
+}
+
+tr{
+  width: 33%;
+  height:100%;
+  background-color: rgb(220, 153, 247);
+}
+
+th{
+  width: 33%;
+  height: 100%;
+}
