@@ -15,3 +15,11 @@ th{
   width: 33%;
   height: 100%;
 }
+.square{
+
+  width: 100px;
+  height: 100px;
+  vertical-align: top;
+  margin: auto;
+  background-color: rgb(162, 13, 130);
+}

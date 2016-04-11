@@ -16,19 +16,16 @@
            $.getScript("some.js");
          });
        });
-
 // call mult.js  script
             $.getScript("mult.js");
+                $.getScript("fadeinout.js");
  </script>
  <body>
 <table>
   <tr>
     <th>
-      <input type="text" id="varx">
-      <br/>
-      <input type="text" id="vary">
-      <br/>
-
+      <input type="text" id="varx"><br/>
+      <input type="text" id="vary"><br/>
       <input  id="clickAdd"type="button" value="+" />
       <input  id="clickDivide"type="button" value="/" />
       <input  id="clickSubs"type="button" value="-" />
@@ -36,9 +33,12 @@
       <div id="out1"></div>
     </th>
     <th>
+      <input type="radio" name="group1" checked value="slow"/> Slow <br/>
+        <input type="radio" name="group1" checked value="medium"/> Medium <br/>
+          <input type="radio" name="group1" checked value="fast"/> Fast <br/>
+          <div  id="fadeElem" class="square" />
     </th>
     <th>
-      <!-- <input  id="clickOnMe"type="button" value="Type it" /> -->
          <input  id="clickit"type="button" value="Print Array" />
          <br/>
   <br/>
