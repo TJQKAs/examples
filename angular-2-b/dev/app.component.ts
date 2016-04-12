@@ -15,22 +15,22 @@ import {Component} from 'angular2/core';
     <section class="pipe">
       <h2>The lowercase  and uppercase pipe</h2>
       <input type="text" #inputCasePipe (keyup)="0"><br/>
-      <div>Output lowercase: XX</div>
-            <div>Output uppercase: XX</div>
+      <div>Output lowercase: {{inputCasePipe.value | lowercase}}</div>
+            <div>Output uppercase: {{inputCasePipe.value | uppercase}}</div>
     </section>
 
     <section class="pipe">
       <h2>Slice pipe</h2>
       <input type="text" #inputSlicePipe (keyup)="0" (keyup)="0"> - from <input type="text"  #start (keyup)="0" >
- to <input type="text #end" (keyup)="0" >
-      <div>Output: XX</div>
+ to <input type="text"  #end (keyup)="0" >
+      <div>Output: {{inputSlicePipe.value | slice:start.value:end.value}}</div>
     </section>
 
     <section class="pipe">
       <h2>Number Pipes</h2>
       <input type="text" #inputNumberPipes (keyup)="0"> - currency <input type="text" #currency  value="USD" (change)="0"><br/>
-      <div>Output decimal: XX</div>
-            <div>Output currency: XX</div>
+      <div>Output decimal: {{1.0 * inputNumberPipes.value | number: '1.1-5' }}</div>
+            <div>Output currency: {{1.0 * inputNumberPipes.value | currency:currency.value:currencyShort.checked}}</div>
               <input type="checkbox" #currencyShort (change)="0">Short currency code
     </section>
 
