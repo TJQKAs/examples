@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>JQuery Tutorial</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.7.0/math.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="random.js"></script>
+  <script type="text/javascript" src="listArray.js"></script>
 </head>
   <link rel="stylesheet" href="style.css">
  <script type="text/javascript">
@@ -18,7 +21,15 @@
        });
 // call mult.js  script
             $.getScript("mult.js");
-                $.getScript("fadeinout.js");
+            $.getScript("fadeinout.js");
+
+
+       var foggy =  $.myRandom(6,49);
+       console.log(foggy);
+
+       var dozzy = $.listArray(6,49,1000);
+
+       console.log(dozzy);
  </script>
  <body>
 <table>
@@ -51,7 +62,7 @@
 <table>
 <tr>
   <th>
-    <div></div>
+   <div id="counter1"></div>
   </th>
   <th></th>
   <th></th>
