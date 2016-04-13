@@ -51,7 +51,7 @@ import {ReversePipe} from './reverse-pipe';
 
     <section class="pipe">
       <h2>Async (stateful) pipes</h2>
-      <div>Output (obtained after 2s): XX</div>
+      <div>Output (obtained after 5s): {{stateFullPromise | async}}</div>
     </section>
     `,
     pipes: [ReversePipe]
@@ -59,4 +59,8 @@ import {ReversePipe} from './reverse-pipe';
 })
 export class AppComponent  {
    today = new Date();
+
+   stateFullPromise = new Promise((resolve, reject) => {
+     setTimeout(() => resolve('Data is here!'), 5000);
+   });
 }
