@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {ReversePipe} from './reverse-pipe';
 
 
 @Component({
@@ -41,10 +42,19 @@ import {Component} from 'angular2/core';
     </section>
 
     <section class="pipe">
+      <h2>Custom reverse pipe</h2>
+      <input type="text" #inputReversePipes (keyup)="0"><br/>
+      <div>Output: {{inputReversePipes.value | myReverse}}</div>
+    </section>
+
+
+
+    <section class="pipe">
       <h2>Async (stateful) pipes</h2>
       <div>Output (obtained after 2s): XX</div>
     </section>
     `,
+    pipes: [ReversePipe]
 
 })
 export class AppComponent  {
