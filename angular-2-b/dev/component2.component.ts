@@ -18,6 +18,6 @@ constructor(private  _router:  Router){}
 // method which we call by clicking button
  onNavigate(){
    //here call method navigate from Router via _router and set argument - where we are going to go
-   this._router.navigate(['Component1']);
+   this._router.navigate(['Component1', {source: 'Component2'}]);
  }
 }

@@ -9,7 +9,7 @@ import{Component2Component}from './component2.component';
     template: `
    <header>
      <ul>
-       <li><a [routerLink]="['Component1']">Component1</a></li>
+       <li><a [routerLink]="['Component1', {source:'AppComponent', optional:'This is optional'}]">Component1</a></li>
        <li><a [routerLink]="['Component2']">Component2</a></li>
      </ul>
    </header>
@@ -20,7 +20,8 @@ import{Component2Component}from './component2.component';
 // array consists of all routes which we gonna use with this component
 @RouteConfig([
   // 1)path; 2) name of route's identification; 3) which component should handle this route
-   {path: ' /component-1', name: 'Component1', component: Component1Component},
+   //' /component-1/   (this is param which we add to component) :source',
+   {path: ' /component-1/:source', name: 'Component1', component: Component1Component},
    {path: ' /component-2', name: 'Component2', component: Component2Component}
 ])
 
