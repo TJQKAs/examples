@@ -20,7 +20,7 @@ import{Component2Component}from './component2.component';
 // array consists of all routes which we gonna use with this component
 @RouteConfig([
   // 1)path; 2) name of route's identification; 3) which component should handle this route
-   {path: ' /component-1', name: 'Component1', component: Component1Component },
+   {path: ' /component-1', name: 'Component1', component: Component1Component},
    {path: ' /component-2', name: 'Component2', component: Component2Component}
 ])
 

@@ -7,6 +7,7 @@
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.7.0/math.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="random.js"></script>
   <script type="text/javascript" src="listArray.js"></script>
+  <script type="text/javascript" src="plugin_sample.js"></script>
 </head>
   <link rel="stylesheet" href="style.css">
  <script type="text/javascript">
@@ -23,11 +24,11 @@
             $.getScript("mult.js");
             $.getScript("fadeinout.js");
 
-
+  // jquery function which  I created
        var foggy =  $.myRandom(6,49);
        console.log(foggy);
-
-       var dozzy = $.listArray(6,49,100);
+  // jquery function which  I created
+       var dozzy = $.listRandomArray(6,49,10);
 
        console.log(dozzy);
  </script>
@@ -53,16 +54,16 @@
          <input  id="clickit"type="button" value="Print Array" />
          <br/>
   <br/>
-      <div id="out2"></div>
-         <div id="out3"></div>
-           <div id="out4"></div>
+      <div id="out2">You should see it in console also1</div>
+         <div id="out3">You should see it in console also2</div>
+           <div id="out4">You should see it in console also3</div>
     </th>
   </tr>
 </table>
 <table>
 <tr>
   <th>
-   <div id="counter1"></div>
+   <div id="counter1">and this also </div>
   </th>
   <th></th>
   <th></th>
