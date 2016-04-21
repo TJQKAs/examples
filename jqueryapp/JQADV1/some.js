@@ -6,7 +6,7 @@ var numb = Math.floor((Math.random()*sizeNum)+1);
 };
 return chArray;
 };
-var chArray = Arrnumb(1000,1000);
+var chArray = Arrnumb(1000,2000);
 $('#out2').append('<br/>'+chArray.length);
 $('#out3').append('<br/>'+$.unique(chArray).length);
 
