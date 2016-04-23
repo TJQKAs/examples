@@ -25,6 +25,8 @@
   "files": [
     "./dev/app.component.ts",
     "./dev/boot.ts",
+    "./dev/component1-main.component.ts",
+    "./dev/component1-sub.component.ts",
     "./dev/component1.component.ts",
     "./dev/component2.component.ts"
   ]
