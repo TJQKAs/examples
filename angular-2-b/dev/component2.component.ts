@@ -1,5 +1,5 @@
 import {Component}from 'angular2/core';
-import{Router}from 'angular2/router';
+import{Router, CanDeactivate, ComponentInstruction}from 'angular2/router';
 
 @Component({
 
@@ -10,8 +10,8 @@ import{Router}from 'angular2/router';
    `
 
 })
-
-export class Component2Component{
+// CanDeactive - lifecycle interface
+export class Component2Component implements CanDeactivate{
 // we should use routing object that's why we should inject Router
 constructor(private  _router:  Router){}
 
@@ -19,5 +19,9 @@ constructor(private  _router:  Router){}
  onNavigate(){
    //here call method navigate from Router via _router and set argument - where we are going to go
    this._router.navigate(['Component1', {source: 'Component2'}]);
+ }
+ // method of lifecycle interface with 2 arg(next - what we gonna do and previous instruction)
+ routerCanDeactivate(nextInstruction:ComponentInstruction, prevInstruction:ComponentInstruction):any{
+   return confirm("Yes or Not");
  }
 }
