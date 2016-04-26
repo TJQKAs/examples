@@ -24,7 +24,7 @@ var ArrayGr = checkifW(chArray, 2);
 
 /// each for the function
 $(ArrayGr).each(function(idx, item){
-   $('#out3').append("<br/>"+ item).css("color","green");
+   $('#out3').append("<br/>"+ item).css("color","blue");
 
 });
 // append each elem of array to elem with tag #out6
