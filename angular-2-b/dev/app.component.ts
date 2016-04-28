@@ -1,31 +1,42 @@
 import {Component} from 'angular2/core';
-import{RouteConfig, ROUTER_DIRECTIVES}from 'angular2/router';
-import{Component1Component}from './component1.component';
-import{Component2Component}from './component2.component';
+import {HttpService} from './http.service';
 
 @Component({
 
     selector: 'my-app',
     template: `
-   <header>
-     <ul>
-       <li><a [routerLink]="['Component1', {source:'AppComponent', optional:'This is optional'}]">Component1</a></li>
-       <li><a [routerLink]="['Component2']">Component2</a></li>
-     </ul>
-   </header>
-    <router-outlet></router-outlet>
+    <div>
+    <div class="input">
+      <label for="title">Title</label>
+      <input type="text" id="title" #title>
+    </div>
+    <div class="input">
+      <label for="body">Body</label>
+      <input type="text" id="body" #body>
+    </div>
+    <div class="input">
+      <label for="user-id">User id</label>
+      <input type="text" id="user-id" #userId>
+    </div>
+    <button (click)="onPost(title.value, body.value, userId.value)">Post Data</button>
+    <button (click)="onGetPosts()">Get all Posts</button>
+    <p>Response:{{response | json }}</p>
+    </div>
     `,
-    directives: [ROUTER_DIRECTIVES]
+    providers: [HttpService]
 })
-// array consists of all routes which we gonna use with this component
-@RouteConfig([
-  // 1)path; 2) name of route's identification; 3) which component should handle this route
-   //' /component-1/   (this is param which we add to component) :source',
-   // to use subroutes after :source put 3 dots  like :  ' /component-1/:source/...',
-   {path: ' /component-1/:source/...', name: 'Component1', component: Component1Component},
-   {path: ' /component-2', name: 'Component2', component: Component2Component}
-])
 
 export class AppComponent  {
+  // define property where we save the request
+   response: string;
 
+   constructor(private _httpService: HttpService){}
+
+   onGetPosts(){
+      this._httpService.getPosts()
+      .subscribe(
+        response => this.response = response,
+        error => console.log("error")
+      )
+   }
 }
