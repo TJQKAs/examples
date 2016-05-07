@@ -6,6 +6,7 @@ var numb = Math.floor((Math.random()*sizeNum)+1);
 };
 return chArray;
 };
+
 var chArray = Arrnumb(10,10);
 // append to elem with tag #out meaning of length of chArray
 $('#out2').append('<br/>'+chArray.length);
