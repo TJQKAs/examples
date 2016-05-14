@@ -11,8 +11,8 @@ while (balls < 10) {
 circle = new createjs.Shape();
  circle.graphics.beginFill("green").drawCircle(Math.random()*50, Math.random()*50, 40);
  //Set position of Shape instance.
- circle.x = Math.random()*500;
- circle.y = Math.random()*500;
+ circle.x = Math.random()*100;
+ circle.y = Math.random()*100;
  //Add Shape instance to stage display list.
  stage.addChild(circle);
  //Update stage will render next frame
